@@ -770,7 +770,8 @@ MonoBehaviour:
   - {fileID: 651562193}
   - {fileID: 296496793}
   - {fileID: 80166147}
-  playerRessource: 5
+  playerRessourceCurrent: 5
+  playerRessourceMax: 5
   playerRessourceText: {fileID: 1647992312}
   activeCardSlots:
   - {fileID: 2097054832}

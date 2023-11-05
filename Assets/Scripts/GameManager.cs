@@ -7,7 +7,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<Card> deck;
-    public int playerRessource;
+    public int playerRessourceCurrent;
+    public int playerRessourceMax;
     public TextMeshProUGUI playerRessourceText;
 
     public Transform[] activeCardSlots;
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRessourceText.text = playerRessource.ToString();
+        playerRessourceText.text = playerRessourceCurrent.ToString();
         
     }
 
@@ -90,12 +91,18 @@ public class GameManager : MonoBehaviour
 
     public void PayCardCost(int cardCost)
     {
-        playerRessource -= cardCost;
+        if ((playerRessourceCurrent - cardCost) >= 0)
+        {
+            playerRessourceCurrent -= cardCost;
+        }
     }
 
     public void RefundCardCost(int cardCost)
     {
-        playerRessource += cardCost;
+        if (playerRessourceMax >= (playerRessourceCurrent + cardCost))
+        {
+            playerRessourceCurrent += cardCost;
+        }
     }
 
     public void EndTurn()
