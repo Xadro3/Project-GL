@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
             randomCard.transform.position = playerHandSlots[i].position;
             randomCard.transform.SetParent(playerHandSlots[i].transform);
             randomCard.SetParent(playerHandSlots[i]);
+            randomCard.initialDaddy = playerHandSlots[i].transform;
             randomCard.wasPlayed = false;
             deck.Remove(randomCard);
             availablePlayerHandSlots[i] = false;
@@ -90,6 +91,11 @@ public class GameManager : MonoBehaviour
     public void PayCardCost(int cardCost)
     {
         playerRessource -= cardCost;
+    }
+
+    public void RefundCardCost(int cardCost)
+    {
+        playerRessource += cardCost;
     }
 
     public void EndTurn()

@@ -14,18 +14,17 @@ public class Card : MonoBehaviour
     public bool isDragging = false;
     
     private Vector3 offset;
-    private Transform initialPosition;
+    public Transform initialDaddy;
 
     private Transform playerHandSlot;
     private Slot activeCardSlot;
 
-     GameManager gm;
+    GameManager gm;
     
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        initialPosition = transform;
 
     }
 
@@ -73,6 +72,7 @@ public class Card : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             GameManager.AssignToPlayerHand(this, playerHandSlot, activeCardSlot);
+            gm.RefundCardCost(cardCost);
             wasPlayed = false;
             Debug.Log(gameObject);
         }
@@ -90,10 +90,10 @@ public class Card : MonoBehaviour
             {
                 Slot slot = collider.GetComponent<Slot>();
             
-                if (slot != null && slot.GetComponent<Collider>().CompareTag("ActiveCardSlot") && !slot.hasCard)
+                if (slot != null && slot.CompareTag("ActiveCardSlot") && !slot.hasCard)
                 {
                     GameManager.AssignToActiveSlot(this, slot);
-                    //GameManager.PayCardCost(cardCost);
+                    gm.PayCardCost(cardCost);
                     activeCardSlot = slot;
                     wasPlayed = true;
 
@@ -101,11 +101,10 @@ public class Card : MonoBehaviour
                 }
             }
         }
-
+        //put card back to playerhand when not played on an active card slot
         if (!wasPlayed)
         {
-            transform.position = initialPosition.position;
-            Debug.Log("I am getting triggered!");
+            transform.position = initialDaddy.position;
         }
     }
 
