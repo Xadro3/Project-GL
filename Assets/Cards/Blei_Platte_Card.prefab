@@ -104,6 +104,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3802128196844446163, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802128196844446163, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5039187264195345074, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: m_text
       value: "Wehrt Alpha Strahlung ab.\nGew\xE4hrt Schutz von Beta & Gamma.\nEs
