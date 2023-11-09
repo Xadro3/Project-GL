@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour
 {
@@ -31,6 +32,24 @@ public class Node : MonoBehaviour
                 break;
         }
 
+    }
+    public void EnterNode()
+    {
+        switch (eventType)
+        {
+            case 1:
+                SceneManager.LoadScene("Workshop");
+                break;
+            case 2:
+                SceneManager.LoadScene("Shops");
+                break;
+            case 3:
+                SceneManager.LoadScene("Event");
+                break;
+            case 4:
+                SceneManager.LoadScene("Encounter");
+                break;
+        }
     }
 
 

@@ -433,6 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221713681}
   - component: {fileID: 221713680}
+  - component: {fileID: 221713682}
   m_Layer: 0
   m_Name: Nodes
   m_TagString: Untagged
@@ -496,6 +497,18 @@ Transform:
   - {fileID: 20447459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &221713682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221713679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dec90b9fc2763d40986ef257a1f1192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &287221989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,6 +561,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Node (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5544922213465563678, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544922213465563678, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544922213465563678, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544922213465563678, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558116158090764713, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_Size.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558116158090764713, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558116158090764713, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5289781b7cadd124fb1e11defca34b49, type: 3}
+    - target: {fileID: 5558116158090764713, guid: 25583076071c77545b5595933a2749ed, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -576,7 +621,7 @@ GameObject:
   - component: {fileID: 447534295}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

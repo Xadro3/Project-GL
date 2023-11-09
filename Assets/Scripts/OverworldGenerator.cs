@@ -33,7 +33,7 @@ public class OverworldGenerator : MonoBehaviour
             noEncounters = (noShops + noEvents + noWorkshops) - nodes.Length;
         }
 
-        //TODO: Fix this atrocity below
+       
         foreach (GameObject node in nodes){
             if (setShops <= noShops)
             {
