@@ -41,7 +41,7 @@ public class CardMovementHandler : MonoBehaviour
     public void DrawCardSetup(int handIndex, Transform parent)
     {
         SetHandIndex(handIndex);
-        SetParent(parent);
+        SetNewParent(parent);
         SetPosition(parent);
         SetInitialHandslot(parent);
     }
@@ -57,11 +57,10 @@ public class CardMovementHandler : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SetParent(Transform parent)
+    private void SetNewParent(Transform parent)
     {
         playerHandSlot = parent.transform;
-        transform.parent = playerHandSlot;
-        Debug.Log(card.name + "New parent: "+ parent);
+        transform.parent.SetParent(playerHandSlot);
     }
 
     private void SetPosition(Transform newPosition)
@@ -98,7 +97,7 @@ public class CardMovementHandler : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             activeCardSlot.HasCard(false);
-            SetParent(initialHandSlot);
+            SetNewParent(initialHandSlot);
             SetPosition(initialHandSlot);
             gm.RefundCardCost(card);
             wasPlayed = false;
@@ -122,7 +121,7 @@ public class CardMovementHandler : MonoBehaviour
                 {
                     activeCardSlot = slot;
                     activeCardSlot.HasCard(true);
-                    SetParent(activeCardSlot.transform);
+                    SetNewParent(activeCardSlot.transform);
                     SetPosition(activeCardSlot.transform);
                     wasPlayed = true;
                     gm.PayCardCost(card);

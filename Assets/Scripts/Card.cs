@@ -11,16 +11,13 @@ public class Card : MonoBehaviour
     public int durability;
     public int repair;
 
-    public int cardCost = 1;
     public bool wasPlayed = false;
 
     GameManager gm;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-
     }
 
     // Update is called once per frame
@@ -28,6 +25,8 @@ public class Card : MonoBehaviour
     {
         
     }
+
+
 
 
  

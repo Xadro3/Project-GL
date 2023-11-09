@@ -2670,6 +2670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1496388653}
+  - component: {fileID: 1496388654}
   m_Layer: 5
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -2697,6 +2698,25 @@ RectTransform:
   m_AnchoredPosition: {x: -794, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1496388654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496388652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923c028679119554ea6bb91bc6e74f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  alphaResistance: 0
+  alphaResistanceMax: 50
+  betaResistance: 0
+  betaResistanceMax: 50
+  gammaResistance: 0
+  gammaResistanceMax: 50
 --- !u!1 &1571297988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,6 +3221,7 @@ GameObject:
   - component: {fileID: 1808573612}
   - component: {fileID: 1808573614}
   - component: {fileID: 1808573613}
+  - component: {fileID: 1808573615}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -3262,6 +3283,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808573611}
   m_CullTransparentMesh: 1
+--- !u!114 &1808573615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808573611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980fb93fb17e8a849ba2fd31d16b3257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 0
 --- !u!1 &1842576987
 GameObject:
   m_ObjectHideFlags: 0

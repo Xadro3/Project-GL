@@ -83,17 +83,17 @@ public class GameManager : MonoBehaviour
 
     public void PayCardCost(Card card)
     {
-        if ((playerRessourceCurrent - card.cardCost) >= 0)
+        if ((playerRessourceCurrent - card.cost) >= 0)
         {
-            playerRessourceCurrent -= card.cardCost;
+            playerRessourceCurrent -= card.cost;
         }
     }
 
     public void RefundCardCost(Card card)
     {
-        if (playerRessourceMax >= (playerRessourceCurrent + card.cardCost))
+        if (playerRessourceMax >= (playerRessourceCurrent + card.cost))
         {
-            playerRessourceCurrent += card.cardCost;
+            playerRessourceCurrent += card.cost;
         }
     }
 
