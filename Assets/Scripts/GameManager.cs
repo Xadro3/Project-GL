@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<Card> deck;
+    public Transform deckParent;
     public int playerRessourceCurrent;
     public int playerRessourceMax;
     public TextMeshProUGUI playerRessourceText;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public List<Enemy> wagons;
 
     public List<Card> discardPile;
+    public Transform discardPileParent;
 
     public List<Card> graveyardPile;
 
@@ -62,9 +64,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void DrawCards()
-    {
+    {        
         for (int i = 0; i < availablePlayerHandSlots.Length; i++)
         {
+            if (deck.Count <= 0)
+            {
+                Shuffle();
+            }
             if (!playerHandSlots[i].GetComponent<Slot>().hasCard)
             {
                 Card randomCard = deck[Random.Range(0, deck.Count)];
@@ -72,17 +78,19 @@ public class GameManager : MonoBehaviour
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
                 deck.Remove(randomCard);
                 availablePlayerHandSlots[i] = false;
+                playerHandSlots[i].GetComponent<Slot>().HasCard(true);
             }
         }
     }
 
-    public void Shuffe()
+    public void Shuffle()
     {
         if (discardPile.Count >= 1)
         {
             foreach (Card card in discardPile)
             {
                 deck.Add(card);
+                card.BackInPlay(deckParent);
             }
             discardPile.Clear();
         }
@@ -115,6 +123,7 @@ public class GameManager : MonoBehaviour
     {
         TurnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
         Debug.Log("Resolving the turn!");
+        DrawCards();
     }
 
 }

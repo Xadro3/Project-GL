@@ -54,10 +54,13 @@ public class CardMovementHandler : MonoBehaviour
     public void MoveToDiscardPile()
     {
         gm.discardPile.Add(card);
+        activeCardSlot.HasCard(false);
+        SetNewParent(gm.discardPileParent);
+        SetPosition(gm.discardPileParent);
         gameObject.SetActive(false);
     }
 
-    private void SetNewParent(Transform parent)
+    public void SetNewParent(Transform parent)
     {
         playerHandSlot = parent.transform;
         transform.SetParent(playerHandSlot);
@@ -101,6 +104,7 @@ public class CardMovementHandler : MonoBehaviour
             SetPosition(initialHandSlot);
             gm.RefundCardCost(card);
             wasPlayed = false;
+            initialHandSlot.GetComponent<Slot>().HasCard(true);
             Debug.Log(gameObject);
         }
     }
@@ -124,6 +128,7 @@ public class CardMovementHandler : MonoBehaviour
                     SetNewParent(activeCardSlot.transform);
                     SetPosition(activeCardSlot.transform);
                     wasPlayed = true;
+                    initialHandSlot.GetComponent<Slot>().HasCard(false);
                     gm.PayCardCost(card);
 
                     return;

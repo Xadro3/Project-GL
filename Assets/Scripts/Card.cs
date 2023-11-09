@@ -9,7 +9,10 @@ public class Card : MonoBehaviour
 
     public int cost;
     public int durability;
+    public int durabilityCurrent;
     public int repair;
+    public int repairCurrent;
+
 
     public enum ProtectionType
     {
@@ -41,16 +44,23 @@ public class Card : MonoBehaviour
 
     public int AdjustDurability(int damage)
     {
-        durability -= damage;
-        if (durability < 0)
+        durabilityCurrent -= damage;
+        if (durabilityCurrent < 0)
         {
             CardMovementHandler.MoveToDiscardPile();
-            return Mathf.Abs(durability);
+            return Mathf.Abs(durabilityCurrent);
         }
         else
         {
             return 0;
         }
+    }
+
+    public void BackInPlay(Transform newParent)
+    {
+        CardMovementHandler.SetNewParent(newParent);
+        durabilityCurrent = durability;
+        repairCurrent = repair;
     }
 
 
