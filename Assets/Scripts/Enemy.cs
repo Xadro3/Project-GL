@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
         Gamma
     }
 
+    public DamageType damageType;
+
     private void Start()
     {
         GenerateRandomDamage();
@@ -23,10 +25,11 @@ public class Enemy : MonoBehaviour
     private void GenerateRandomDamage()
     {
         // select random type
-        DamageType selectedType = (DamageType)Random.Range(0, 3);
+        //DamageType damageType = (DamageType)Random.Range(0, 3);
+        DamageType damageType = DamageType.Alpha;
 
         // random damage value based on type
-        switch (selectedType)
+        switch (damageType)
         {
             case DamageType.Alpha:
                 damageValue = Random.Range(1, 13); // Alpha damage range: 1 to 12
@@ -38,7 +41,7 @@ public class Enemy : MonoBehaviour
                 damageValue = Random.Range(1, 5);  // Gamma damage range: 1 to 4
                 break;
         }
-        Debug.Log("Enemy selected " + selectedType.ToString() + " damage with value: " + damageValue);
+        Debug.Log("Enemy selected " + damageType.ToString() + " damage with value: " + damageValue);
     }
 
 }

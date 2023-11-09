@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     [Range(0,100)]
-    public int health = 100;
+    public int health = 20;
+    [Range(0, 100)]
+    public int healthMax = 20;
     public int alphaResistance = 0;
     [Range(0, 50)]
     public int alphaResistanceMax = 25;
@@ -15,35 +17,53 @@ public class PlayerHealthManager : MonoBehaviour
     [Range(0, 50)]
     public int gammaResistanceMax = 25;
 
-    private int totalDamage = 0;
-
     private void Start()
     {
     }
 
     // function to apply damage -> currently only total damage no debuffs here
-    public void ApplyDamage(int alphaDamage, int betaDamage, int gammaDamage)
+    public void ApplyDamage(int damageValue, string damageType)
     {
-        if (alphaResistance + alphaDamage > alphaResistanceMax)
+        if (damageType == "Alpha")
         {
-            totalDamage += alphaDamage;
+            alphaResistance += damageValue;
         }
-        if (betaResistance + betaDamage > betaResistanceMax)
+        if (damageType == "Beta")
         {
-            totalDamage += betaDamage;
+            betaResistance += damageValue;
         }
-        if (gammaResistance + gammaDamage > gammaResistanceMax)
+        if (damageType == "Gamma")
         {
-            totalDamage += gammaDamage;
+            gammaResistance += damageValue;
         }
-
-        health -= totalDamage;
-
+        if (damageType == "Pure")
+        {
+            health -= damageValue;
+        }
         // check if player survived damage
+        CheckResistances();
         if (health <= 0)
         {
             // trigger Game Over
             Debug.Log("Game Over!");
         }
     }
+
+    private void CheckResistances()
+    {
+        if (alphaResistance >= alphaResistanceMax)
+        {
+            health -= Mathf.RoundToInt(healthMax * 0.75f);
+            Debug.Log("Aua! Ich habe schaden bekommen!");
+        }
+        if (betaResistance >= betaResistanceMax)
+        {
+            ApplyDamage(3, "Pure");
+        }
+        if (gammaResistance >= gammaResistanceMax)
+        {
+            Debug.Log("Rework Gamma Konsequenzes!");
+        }
+    }
+
 }

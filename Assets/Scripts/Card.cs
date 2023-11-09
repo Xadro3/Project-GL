@@ -18,15 +18,18 @@ public class Card : MonoBehaviour
         Gamma
     }
 
-    public ProtectionType cardProtectionType;
+    public ProtectionType[] protectionTypes;
 
     public bool wasPlayed = false;
 
     GameManager gm;
 
+    CardMovementHandler CardMovementHandler;
+
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
+        CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         //cardProtectionType = (ProtectionType)Random.Range(0, 3);
     }
 
@@ -34,6 +37,20 @@ public class Card : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int AdjustDurability(int damage)
+    {
+        durability -= damage;
+        if (durability < 0)
+        {
+            CardMovementHandler.MoveToDiscardPile();
+            return Mathf.Abs(durability);
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 

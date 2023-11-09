@@ -30,7 +30,7 @@ public class CardMovementHandler : MonoBehaviour
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-        card = GetComponent<Card>();
+        card = GetComponentInParent<Card>();
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public class CardMovementHandler : MonoBehaviour
         initialHandSlot = newInitialHandslot;
     }
 
-    void MoveToDiscardPile()
+    public void MoveToDiscardPile()
     {
         gm.discardPile.Add(card);
         gameObject.SetActive(false);

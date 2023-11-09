@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     public int playerRessourceMax;
     public TextMeshProUGUI playerRessourceText;
 
-    public Transform[] activeCardSlots;
+    public List<Slot> activeCardSlots;
     private Transform activeCardSlot;
     public bool[] availableCardSlots;
 
-    public Transform[] playerHandSlots;
+    public List<Slot> playerHandSlots;
     private Transform playerHandSlot;
     public bool[] availablePlayerHandSlots;
 
@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public List<Card> discardPile;
 
     public List<Card> graveyardPile;
+
+    TurnMaster TurnMaster;
+    PlayerHealthManager Player;
 
     public delegate void CardDroppedEventHandler(Card card, Slot activeCardSlot);
     public static event CardDroppedEventHandler OnAssignToSlot;
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TurnMaster = FindObjectOfType<TurnMaster>();
+        Player = FindObjectOfType<PlayerHealthManager>();
         DrawCards();
     }
 
@@ -101,12 +106,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void PlayerDamage(int damageValue, string damageType)
+    {
+        Player.ApplyDamage(damageValue, damageType);
+    }
 
     public void EndTurn()
     {
-        TurnMaster.ResolveTurn();
-        Debug.Log("Ending the turn!");
+        TurnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
+        Debug.Log("Resolving the turn!");
     }
 
 }
