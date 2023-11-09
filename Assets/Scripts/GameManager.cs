@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private Transform playerHandSlot;
     public bool[] availablePlayerHandSlots;
 
+    public List<Enemy> wagons;
+
     public List<Card> discardPile;
 
     public List<Card> graveyardPile;
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        TurnMaster.ResolveTurn();
         Debug.Log("Ending the turn!");
     }
 
