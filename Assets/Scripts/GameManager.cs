@@ -28,22 +28,17 @@ public class GameManager : MonoBehaviour
 
     public static void CardDropped(Card card, Slot activeCardSlot)
     {
-        //AssignToSlot(card, activeCardSlot);
+        //not in use anymore/yet
     }
 
     public static void AssignToActiveSlot(Card card, Slot activeCardSlot)
     {
-        card.transform.SetParent(activeCardSlot.transform);
-        activeCardSlot.HasCard(true);
-        card.transform.position = activeCardSlot.transform.position;
-
+        //not in use anymore/yet
     }
 
     public static void AssignToPlayerHand(Card card, Transform playerHandSlot, Slot activeCardSlot)
     {
-        activeCardSlot.HasCard(false);
-        card.transform.SetParent(playerHandSlot);
-        card.transform.position = playerHandSlot.transform.position;
+        //not in use anymore/yet
     }
 
     // Start is called before the first frame update
@@ -63,17 +58,14 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < availablePlayerHandSlots.Length; i++)
         {
-            Card randomCard = deck[Random.Range(0, deck.Count)];
-            randomCard.gameObject.SetActive(true);
-            randomCard.handIndex = i;
-            randomCard.transform.position = playerHandSlots[i].position;
-            randomCard.transform.SetParent(playerHandSlots[i].transform);
-            randomCard.SetParent(playerHandSlots[i]);
-            randomCard.initialDaddy = playerHandSlots[i].transform;
-            randomCard.wasPlayed = false;
-            deck.Remove(randomCard);
-            availablePlayerHandSlots[i] = false;
-
+            if (!playerHandSlots[i].GetComponent<Slot>().hasCard)
+            {
+                Card randomCard = deck[Random.Range(0, deck.Count)];
+                randomCard.gameObject.SetActive(true);
+                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
+                deck.Remove(randomCard);
+                availablePlayerHandSlots[i] = false;
+            }
         }
     }
 
@@ -89,19 +81,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PayCardCost(int cardCost)
+    public void PayCardCost(Card card)
     {
-        if ((playerRessourceCurrent - cardCost) >= 0)
+        if ((playerRessourceCurrent - card.cardCost) >= 0)
         {
-            playerRessourceCurrent -= cardCost;
+            playerRessourceCurrent -= card.cardCost;
         }
     }
 
-    public void RefundCardCost(int cardCost)
+    public void RefundCardCost(Card card)
     {
-        if (playerRessourceMax >= (playerRessourceCurrent + cardCost))
+        if (playerRessourceMax >= (playerRessourceCurrent + card.cardCost))
         {
-            playerRessourceCurrent += cardCost;
+            playerRessourceCurrent += card.cardCost;
         }
     }
 

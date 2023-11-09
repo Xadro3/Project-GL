@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2347989613327585331, guid: 6416b04a33253844c91a0efcc6268c8f, type: 3}
       propertyPath: m_Name
-      value: Blei_Platte_Card
+      value: "D\xFCnne_Blei_Platte"
       objectReference: {fileID: 0}
     - target: {fileID: 9099992805755895082, guid: 6416b04a33253844c91a0efcc6268c8f, type: 3}
       propertyPath: m_Pivot.x

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 605843190386665609}
   - component: {fileID: 8148778279294878757}
   - component: {fileID: 7701498053293340222}
+  - component: {fileID: 8007988563169288539}
   m_Layer: 5
   m_Name: Card
   m_TagString: Card
@@ -147,7 +148,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4772f6f435cea743bf7fe903fb6e144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
+  durability: 0
+  repair: 0
   wasPlayed: 0
   handIndex: 0
   cardCost: 1
   isDragging: 0
+  initialDaddy: {fileID: 0}
+--- !u!114 &8007988563169288539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521765676489099697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081c3e38e0e0e3e47b82f1d70388f9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
