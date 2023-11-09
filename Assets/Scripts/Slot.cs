@@ -5,6 +5,9 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public bool hasCard;
+
+    private Card currentCard;
+
     private void Start()
     {
         GameManager.OnAssignToSlot += HandleCardDropped;
@@ -13,6 +16,11 @@ public class Slot : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.OnAssignToSlot -= HandleCardDropped;
+    }
+
+    private Card GetCardInSlotInfo()
+    {
+        return GetComponentInChildren<Card>();
     }
 
     private void HandleCardDropped(Card card, Slot slot)

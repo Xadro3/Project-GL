@@ -60,7 +60,7 @@ public class CardMovementHandler : MonoBehaviour
     private void SetNewParent(Transform parent)
     {
         playerHandSlot = parent.transform;
-        transform.parent.SetParent(playerHandSlot);
+        transform.SetParent(playerHandSlot);
     }
 
     private void SetPosition(Transform newPosition)

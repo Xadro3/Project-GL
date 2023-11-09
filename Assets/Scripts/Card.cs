@@ -11,6 +11,15 @@ public class Card : MonoBehaviour
     public int durability;
     public int repair;
 
+    public enum ProtectionType
+    {
+        Alpha,
+        Beta,
+        Gamma
+    }
+
+    public ProtectionType cardProtectionType;
+
     public bool wasPlayed = false;
 
     GameManager gm;
@@ -18,6 +27,7 @@ public class Card : MonoBehaviour
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
+        //cardProtectionType = (ProtectionType)Random.Range(0, 3);
     }
 
     // Update is called once per frame

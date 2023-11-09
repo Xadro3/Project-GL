@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     public void PayCardCost(Card card)
     {
         if ((playerRessourceCurrent - card.cost) >= 0)
@@ -96,6 +98,8 @@ public class GameManager : MonoBehaviour
             playerRessourceCurrent += card.cost;
         }
     }
+
+
 
     public void EndTurn()
     {
