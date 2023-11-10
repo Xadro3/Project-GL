@@ -23,12 +23,14 @@ public class TurnMaster : MonoBehaviour
             //save damage of wagon and damageType
             savedDamageValue = wagon.damageValue;
             savedDamageType = wagon.damageType.ToString();
+            bool foundCard = false;
             //go through all slots one by one with the saved damage/type
             foreach (Slot activeCardSlot in activeCardSlots)
             {
                 //if slot has card do stuff
                 if (activeCardSlot.hasCard)
                 {
+                    foundCard = true;
                     Card card = activeCardSlot.GetComponentInChildren<Card>();
                     bool isAffected = false;
                     //see if wagon damage type affects card protection type
@@ -55,8 +57,11 @@ public class TurnMaster : MonoBehaviour
                             gm.PlayerDamage(savedDamageValue, savedDamageType);
                         }
                     }
-                }
-                
+                }             
+            }
+            if (!foundCard)
+            {
+                gm.PlayerDamage(savedDamageValue, savedDamageType);
             }
         }
     }

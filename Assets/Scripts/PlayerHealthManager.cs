@@ -17,8 +17,15 @@ public class PlayerHealthManager : MonoBehaviour
     [Range(0, 50)]
     public int gammaResistanceMax = 25;
 
+    public HealthBar alphaBar;
+    public HealthBar betaBar;
+    public HealthBar gammaBar;
+
     private void Start()
     {
+        alphaBar.SetMaxHealth(alphaResistanceMax);
+        betaBar.SetMaxHealth(betaResistanceMax);
+        gammaBar.SetMaxHealth(gammaResistanceMax);
     }
 
     // function to apply damage -> currently only total damage no debuffs here
@@ -27,14 +34,18 @@ public class PlayerHealthManager : MonoBehaviour
         if (damageType == "Alpha")
         {
             alphaResistance += damageValue;
+            alphaBar.SetHealth(alphaResistance);
+            Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
         }
         if (damageType == "Beta")
         {
             betaResistance += damageValue;
+            betaBar.SetHealth(betaResistance);
         }
         if (damageType == "Gamma")
         {
             gammaResistance += damageValue;
+            gammaBar.SetHealth(gammaResistance);
         }
         if (damageType == "Pure")
         {

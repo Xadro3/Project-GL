@@ -35,7 +35,6 @@ public class Card : MonoBehaviour
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         //cardProtectionType = (ProtectionType)Random.Range(0, 3);
         cardDisplay = GetComponentInParent<CardDisplay>();
-        Debug.Log("Ich koste: " + cardDisplay.card.cost + " Energy.");
         cost = cardDisplay.card.cost;
         durability = cardDisplay.card.durability;
         durabilityCurrent = durability;

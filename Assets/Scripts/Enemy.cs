@@ -60,7 +60,6 @@ public class Enemy : MonoBehaviour
                 damageValue = Random.Range(1, 5);  // Gamma damage range: 1 to 4
                 break;
         }
-        Debug.Log("Enemy selected " + damageType.ToString() + " damage with value: " + damageValue);
     }
 
 }
