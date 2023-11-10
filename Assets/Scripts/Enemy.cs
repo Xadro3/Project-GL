@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
 
     public int damageValue = 0;
+    public int roundTimer;
+    public TextMeshProUGUI roundTimerText;
 
     public enum DamageType
     {
@@ -18,10 +21,26 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        roundTimerText.text = roundTimer.ToString();
         GenerateRandomDamage();
     }
 
     // Damage Type currently is selected randomly
+    
+    public bool UpdateTimer(int i)
+    {
+        roundTimer -= i;
+        roundTimerText.text = roundTimer.ToString();
+        if (roundTimer <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void GenerateRandomDamage()
     {
         // select random type

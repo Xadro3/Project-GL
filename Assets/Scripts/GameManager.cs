@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour
 
     public List<Card> graveyardPile;
 
-    TurnMaster TurnMaster;
-    PlayerHealthManager Player;
+    TurnMaster turnMaster;
+    PlayerHealthManager player;
+    MySceneManager mySceneManager;
+    
 
     public delegate void CardDroppedEventHandler(Card card, Slot activeCardSlot);
     public static event CardDroppedEventHandler OnAssignToSlot;
@@ -51,8 +53,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TurnMaster = FindObjectOfType<TurnMaster>();
-        Player = FindObjectOfType<PlayerHealthManager>();
+        mySceneManager = FindObjectOfType<MySceneManager>();
+        turnMaster = FindObjectOfType<TurnMaster>();
+        player = FindObjectOfType<PlayerHealthManager>();
         DrawCards();
     }
 
@@ -126,17 +129,19 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDamage(int damageValue, string damageType)
     {
-        Player.ApplyDamage(damageValue, damageType);
+        player.ApplyDamage(damageValue, damageType);
     }
 
     public void EndTurn()
     {
-        TurnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
+        turnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
         Debug.Log("Resolving the turn!");
         ResetEnergy();
         DrawCards();
-
-
+        if (wagons[0].UpdateTimer(1))
+        {
+            mySceneManager.ChangeScene("Overworld");
+        }
     }
 
 }

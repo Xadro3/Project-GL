@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Alublech
   description: "Sch\xFCtzt vor Alpha und Beta."
-  artwork: {fileID: 21300000, guid: b13716926fd6b2e4eb49f94d0c4e6625, type: 3}
+  artwork: {fileID: 21300000, guid: 6349ef1a9943cf8458f5ba75aaed6f17, type: 3}
   cost: 1
   durability: 5
   repair: 0

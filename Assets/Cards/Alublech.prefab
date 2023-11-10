@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3969741759333887267
+--- !u!1001 &5375744671468150429
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8729641152444665086, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: m_Name
-      value: Alublech
+      value: Alublech Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
