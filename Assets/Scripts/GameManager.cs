@@ -96,13 +96,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetEnergy()
+    {
+        playerRessourceCurrent = playerRessourceMax;
+    }
 
-
-    public void PayCardCost(Card card)
+    public bool PayCardCost(Card card)
     {
         if ((playerRessourceCurrent - card.cost) >= 0)
         {
             playerRessourceCurrent -= card.cost;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -112,6 +120,8 @@ public class GameManager : MonoBehaviour
         {
             playerRessourceCurrent += card.cost;
         }
+
+        
     }
 
     public void PlayerDamage(int damageValue, string damageType)
@@ -123,7 +133,10 @@ public class GameManager : MonoBehaviour
     {
         TurnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
         Debug.Log("Resolving the turn!");
+        ResetEnergy();
         DrawCards();
+
+
     }
 
 }

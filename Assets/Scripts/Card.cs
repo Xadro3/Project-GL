@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // To-Do:
-    // -Move card movement to CardDragHandler
 
     public int cost;
     public int durability;
     public int durabilityCurrent;
     public int repair;
     public int repairCurrent;
+
+    
 
 
     public enum ProtectionType
@@ -26,7 +26,7 @@ public class Card : MonoBehaviour
     public bool wasPlayed = false;
 
     GameManager gm;
-
+    CardDisplay cardDisplay;
     CardMovementHandler CardMovementHandler;
 
     private void Awake()
@@ -34,12 +34,23 @@ public class Card : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         //cardProtectionType = (ProtectionType)Random.Range(0, 3);
+        cardDisplay = GetComponentInParent<CardDisplay>();
+        Debug.Log("Ich koste: " + cardDisplay.card.cost + " Energy.");
+        cost = cardDisplay.card.cost;
+        durability = cardDisplay.card.durability;
+        durabilityCurrent = durability;
+        repair = cardDisplay.card.repair;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void UpdateDisplay()
+    {
+        cardDisplay.durabilityText.text = durabilityCurrent.ToString();
     }
 
     public int AdjustDurability(int damage)

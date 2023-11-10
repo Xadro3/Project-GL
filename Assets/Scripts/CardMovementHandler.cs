@@ -99,13 +99,17 @@ public class CardMovementHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            activeCardSlot.HasCard(false);
-            SetNewParent(initialHandSlot);
-            SetPosition(initialHandSlot);
-            gm.RefundCardCost(card);
-            wasPlayed = false;
-            initialHandSlot.GetComponent<Slot>().HasCard(true);
-            Debug.Log(gameObject);
+            if (wasPlayed)
+            {
+                activeCardSlot.HasCard(false);
+                SetNewParent(initialHandSlot);
+                SetPosition(initialHandSlot);
+                gm.RefundCardCost(card);
+                wasPlayed = false;
+                initialHandSlot.GetComponent<Slot>().HasCard(true);
+                Debug.Log(gameObject);
+            }
+            
         }
     }
 
@@ -123,15 +127,20 @@ public class CardMovementHandler : MonoBehaviour
 
                 if (slot != null && slot.CompareTag("ActiveCardSlot") && !slot.hasCard)
                 {
-                    activeCardSlot = slot;
-                    activeCardSlot.HasCard(true);
-                    SetNewParent(activeCardSlot.transform);
-                    SetPosition(activeCardSlot.transform);
-                    wasPlayed = true;
-                    initialHandSlot.GetComponent<Slot>().HasCard(false);
-                    gm.PayCardCost(card);
-
-                    return;
+                    if (gm.PayCardCost(card))
+                    {
+                        activeCardSlot = slot;
+                        activeCardSlot.HasCard(true);
+                        SetNewParent(activeCardSlot.transform);
+                        SetPosition(activeCardSlot.transform);
+                        wasPlayed = true;
+                        initialHandSlot.GetComponent<Slot>().HasCard(false);
+                    }
+                    else
+                    {
+                        transform.position = initialHandSlot.position;
+                    }
+                    
                 }
             }
         }
