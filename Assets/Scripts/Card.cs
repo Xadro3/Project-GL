@@ -62,6 +62,7 @@ public class Card : MonoBehaviour
         CardMovementHandler.SetNewParent(newParent);
         durabilityCurrent = durability;
         repairCurrent = repair;
+        cardDisplay.UpdateDisplay();
     }
 
     public void SetWasPlayed(bool b)

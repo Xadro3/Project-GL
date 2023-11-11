@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Encounter.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu.unity
+    guid: 327de46a26180b14bb376d66090439ef
   - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: 4240aad9ebac8134589775af1f752053
@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Shops.unity
     guid: b7d0a05648ed82340b408536b55f247b
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 327de46a26180b14bb376d66090439ef
+    path: Assets/Scenes/Encounter.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Workshop.unity
     guid: b121be6faf0a0f34bbf60411ec6da873

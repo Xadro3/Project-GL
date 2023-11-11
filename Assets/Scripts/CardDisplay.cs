@@ -20,6 +20,11 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateDisplay();
+    }
+
+    public void UpdateDisplay()
+    {
         nameText.text = card.name;
         descriptionText.text = card.description;
 
@@ -28,7 +33,6 @@ public class CardDisplay : MonoBehaviour
         costText.text = card.cost.ToString();
         durabilityText.text = card.durability.ToString();
         repairText.text = card.repair.ToString();
-
     }
 
     // Update is called once per frame
