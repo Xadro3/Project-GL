@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
     {
         turnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
         Debug.Log("Resolving the turn!");
+        wagons[0].GenerateRandomDamage();
         ResetEnergy();
         DrawCards();
         if (wagons[0].UpdateTimer(1))

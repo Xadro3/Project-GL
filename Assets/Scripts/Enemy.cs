@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int damageValue = 0;
     public int roundTimer;
     public TextMeshProUGUI roundTimerText;
+    public TextMeshProUGUI actionText;
 
     private int alphaDamageMin = 1;
     [Range(2, 50)]
@@ -44,7 +45,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void GenerateRandomDamage()
+    public void GenerateRandomDamage()
     {
         // select random type
         //damageTypes.Add((GameConstants.radiationTypes)Random.Range(0, 3));
@@ -67,6 +68,9 @@ public class Enemy : MonoBehaviour
                 break;
             }
         }
+
+        actionText.text = damageTypes[0].ToString() + " " + damageValue.ToString();
+
     }
 
 }

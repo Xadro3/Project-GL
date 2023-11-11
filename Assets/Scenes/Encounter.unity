@@ -325,6 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 218593916}
+  - component: {fileID: 218593917}
   m_Layer: 5
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -352,6 +353,25 @@ RectTransform:
   m_AnchoredPosition: {x: 532, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &218593917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218593915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980fb93fb17e8a849ba2fd31d16b3257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 0
+  roundTimer: 5
+  roundTimerText: {fileID: 905819283}
+  alphaDamageMax: 12
+  betaDamageMax: 8
+  gammaDamageMax: 6
+  damageTypes: 00000000
 --- !u!1 &302091264
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13861692, g: 0.15986735, b: 0.8396226, a: 1}
+  m_Color: {r: 1, g: 0.9622973, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -620,7 +640,7 @@ MonoBehaviour:
   - {fileID: 316241284}
   availablePlayerHandSlots: 0101010101
   wagons:
-  - {fileID: 1808573615}
+  - {fileID: 218593917}
   discardPile: []
   discardPileParent: {fileID: 1196039485}
   graveyardPile: []
@@ -1000,7 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28034887, g: 0.7924528, b: 0.2942355, a: 1}
+  m_Color: {r: 0.06677244, g: 0.06581525, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5506,7 +5526,6 @@ GameObject:
   - component: {fileID: 1808573612}
   - component: {fileID: 1808573614}
   - component: {fileID: 1808573613}
-  - component: {fileID: 1808573615}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -5569,25 +5588,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808573611}
   m_CullTransparentMesh: 1
---- !u!114 &1808573615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808573611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980fb93fb17e8a849ba2fd31d16b3257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageValue: 0
-  roundTimer: 5
-  roundTimerText: {fileID: 905819283}
-  alphaDamageMax: 12
-  betaDamageMax: 8
-  gammaDamageMax: 6
-  damageTypes: 00000000
 --- !u!1 &1842576987
 GameObject:
   m_ObjectHideFlags: 0
