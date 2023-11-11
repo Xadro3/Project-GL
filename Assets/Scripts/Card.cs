@@ -11,14 +11,7 @@ public class Card : MonoBehaviour
     public int repair;
     public int repairCurrent;
 
-    public enum ProtectionType
-    {
-        Alpha,
-        Beta,
-        Gamma
-    }
-
-    public ProtectionType[] protectionTypes;
+    public List<GameConstants.radiationTypes> protectionTypes;
 
     public bool wasPlayed = false;
 
@@ -36,6 +29,7 @@ public class Card : MonoBehaviour
         durability = cardDisplay.card.durability;
         durabilityCurrent = durability;
         repair = cardDisplay.card.repair;
+        protectionTypes = cardDisplay.card.protectionTypes;
     }
 
     // Update is called once per frame

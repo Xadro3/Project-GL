@@ -4325,7 +4325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedDamageValue: 0
-  savedDamageType: 
+  savedDamageTypes: []
 --- !u!4 &1363516780
 Transform:
   m_ObjectHideFlags: 0
@@ -5582,7 +5582,10 @@ MonoBehaviour:
   damageValue: 0
   roundTimer: 5
   roundTimerText: {fileID: 905819283}
-  damageType: 0
+  alphaDamageMax: 12
+  betaDamageMax: 8
+  gammaDamageMax: 6
+  damageTypes: 00000000
 --- !u!1 &1842576987
 GameObject:
   m_ObjectHideFlags: 0

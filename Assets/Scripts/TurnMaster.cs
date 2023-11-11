@@ -1,12 +1,13 @@
-using UnityEngine;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class TurnMaster : MonoBehaviour
 {
     GameManager gm;
 
     public int savedDamageValue;
-    public string savedDamageType = "";
+    public List<string> savedDamageTypes;
     
 
     void Start()
@@ -20,9 +21,14 @@ public class TurnMaster : MonoBehaviour
         //go through each wagon one by one
         foreach (Enemy wagon in wagons)
         {
+            int typePosition = 0;
             //save damage of wagon and damageType
             savedDamageValue = wagon.damageValue;
-            savedDamageType = wagon.damageType.ToString();
+            //save all damage types the wagon does.
+            foreach (GameConstants.radiationTypes radiationType in wagon.damageTypes)
+            {
+                savedDamageTypes.Add(radiationType.ToString());
+            }
             bool foundCard = false;
             //go through all slots one by one with the saved damage/type
             foreach (Slot activeCardSlot in activeCardSlots)
@@ -35,18 +41,24 @@ public class TurnMaster : MonoBehaviour
                     bool isAffected = false;
                     card.SetWasPlayed(true);
                     //see if wagon damage type affects card protection type
-                    foreach (Card.ProtectionType protectionType in card.protectionTypes)
+                    foreach (GameConstants.radiationTypes radiationType in card.protectionTypes)
                     {
-                        if (protectionType.ToString() == savedDamageType)
+                        for (int i = 0; i < savedDamageTypes.Count; i++)
                         {
-                            isAffected = true;
-                            break;
+                            if(radiationType.ToString() == savedDamageTypes[i])
+                            {
+                                isAffected = true;
+                                typePosition = i;
+                                break;
+                            }
                         }
+                        break;
                     }
                     //if card is affected by wagon damage type, calculate damage
                     if (isAffected)
                     {
                         savedDamageValue = card.AdjustDurability(savedDamageValue);
+                        card.UpdateDisplay();
 
                         if (savedDamageValue == 0)
                         {
@@ -55,15 +67,15 @@ public class TurnMaster : MonoBehaviour
                         //if remaining damage after all cards is > 0 then do damage to player
                         else
                         {
-                            gm.PlayerDamage(savedDamageValue, savedDamageType);
+                            gm.PlayerDamage(savedDamageValue, savedDamageTypes[typePosition].ToString());
                         }
                     }
-                }             
+                }
             }
             //if no card is found in any slot damage gets directly to the player
             if (!foundCard)
             {
-                gm.PlayerDamage(savedDamageValue, savedDamageType);
+                gm.PlayerDamage(savedDamageValue, savedDamageTypes[typePosition].ToString());
             }
         }
     }

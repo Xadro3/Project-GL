@@ -13,14 +13,8 @@ public class SO_Card : ScriptableObject
     public int cost;
     public int durability;
     public int repair;
-
-    public enum ProtectionType
-    {
-        Alpha,
-        Beta,
-        Gamma
-    }
-    public ProtectionType[] protectionTypes;
+    
+    public List<GameConstants.radiationTypes> protectionTypes;
 
 
 }
