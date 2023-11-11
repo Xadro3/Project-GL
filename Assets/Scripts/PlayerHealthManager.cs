@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
-    [Range(0,100)]
-    public int health = 20;
+    public int health = 1;
     [Range(0, 100)]
-    public int healthMax = 20;
+    public int healthMax = 100;
     public int alphaResistance = 0;
     [Range(0, 50)]
-    public int alphaResistanceMax = 25;
+    public int alphaResistanceMax = 5;
     public int betaResistance = 0;
     [Range(0, 50)]
     public int betaResistanceMax = 25;
@@ -20,12 +19,18 @@ public class PlayerHealthManager : MonoBehaviour
     public HealthBar alphaBar;
     public HealthBar betaBar;
     public HealthBar gammaBar;
+    public HealthBar healthBar;
 
     private void Start()
     {
         alphaBar.SetMaxHealth(alphaResistanceMax);
+        alphaBar.SetHealth(alphaResistance);
         betaBar.SetMaxHealth(betaResistanceMax);
+        betaBar.SetHealth(betaResistance);
         gammaBar.SetMaxHealth(gammaResistanceMax);
+        gammaBar.SetHealth(gammaResistance);
+        healthBar.SetMaxHealth(healthMax);
+        healthBar.SetHealth(healthMax);
     }
 
     // function to apply damage -> currently only total damage no debuffs here
@@ -50,6 +55,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (damageType == "Pure")
         {
             health -= damageValue;
+            healthBar.SetHealth(health);
         }
         // check if player survived damage
         CheckResistances();
@@ -64,7 +70,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (alphaResistance >= alphaResistanceMax)
         {
-            health -= Mathf.RoundToInt(healthMax * 0.75f);
+            healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
             Debug.Log("Aua! Ich habe schaden bekommen!");
         }
         if (betaResistance >= betaResistanceMax)
