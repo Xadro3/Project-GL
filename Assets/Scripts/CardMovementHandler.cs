@@ -57,6 +57,7 @@ public class CardMovementHandler : MonoBehaviour
         activeCardSlot.HasCard(false);
         SetNewParent(gm.discardPileParent);
         SetPosition(gm.discardPileParent);
+        card.SetWasPlayed(false);
         gameObject.SetActive(false);
     }
 
@@ -99,7 +100,7 @@ public class CardMovementHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (wasPlayed)
+            if (wasPlayed && !card.wasPlayed)
             {
                 activeCardSlot.HasCard(false);
                 SetNewParent(initialHandSlot);

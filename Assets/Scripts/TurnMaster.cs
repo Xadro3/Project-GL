@@ -33,6 +33,7 @@ public class TurnMaster : MonoBehaviour
                     foundCard = true;
                     Card card = activeCardSlot.GetComponentInChildren<Card>();
                     bool isAffected = false;
+                    card.SetWasPlayed(true);
                     //see if wagon damage type affects card protection type
                     foreach (Card.ProtectionType protectionType in card.protectionTypes)
                     {
@@ -59,6 +60,7 @@ public class TurnMaster : MonoBehaviour
                     }
                 }             
             }
+            //if no card is found in any slot damage gets directly to the player
             if (!foundCard)
             {
                 gm.PlayerDamage(savedDamageValue, savedDamageType);

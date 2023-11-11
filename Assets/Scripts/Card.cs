@@ -11,9 +11,6 @@ public class Card : MonoBehaviour
     public int repair;
     public int repairCurrent;
 
-    
-
-
     public enum ProtectionType
     {
         Alpha,
@@ -73,8 +70,9 @@ public class Card : MonoBehaviour
         repairCurrent = repair;
     }
 
-
-
-
+    public void SetWasPlayed(bool b)
+    {
+        wasPlayed = b;
+    }
  
 }
