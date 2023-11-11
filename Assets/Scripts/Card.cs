@@ -46,7 +46,7 @@ public class Card : MonoBehaviour
     public int AdjustDurability(int damage)
     {
         durabilityCurrent -= damage;
-        if (durabilityCurrent < 0)
+        if (durabilityCurrent <= 0)
         {
             CardMovementHandler.MoveToDiscardPile();
             return Mathf.Abs(durabilityCurrent);

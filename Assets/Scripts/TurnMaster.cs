@@ -64,16 +64,11 @@ public class TurnMaster : MonoBehaviour
                         {
                             break;
                         }
-                        //if remaining damage after all cards is > 0 then do damage to player
-                        else
-                        {
-                            gm.PlayerDamage(savedDamageValue, savedDamageTypes[typePosition].ToString());
-                        }
                     }
                 }
             }
             //if no card is found in any slot damage gets directly to the player
-            if (!foundCard)
+            if (savedDamageValue != 0)
             {
                 gm.PlayerDamage(savedDamageValue, savedDamageTypes[typePosition].ToString());
             }

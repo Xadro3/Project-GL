@@ -10,12 +10,12 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        GameManager.OnAssignToSlot += HandleCardDropped;
+        
     }
 
     private void OnDestroy()
     {
-        GameManager.OnAssignToSlot -= HandleCardDropped;
+       
     }
 
     private Card GetCardInSlotInfo()

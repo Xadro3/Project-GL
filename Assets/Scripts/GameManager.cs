@@ -30,25 +30,11 @@ public class GameManager : MonoBehaviour
     TurnMaster turnMaster;
     PlayerHealthManager player;
     MySceneManager mySceneManager;
-    
 
-    public delegate void CardDroppedEventHandler(Card card, Slot activeCardSlot);
-    public static event CardDroppedEventHandler OnAssignToSlot;
-
-    public static void CardDropped(Card card, Slot activeCardSlot)
-    {
-        //not in use anymore/yet
-    }
-
-    public static void AssignToActiveSlot(Card card, Slot activeCardSlot)
-    {
-        //not in use anymore/yet
-    }
-
-    public static void AssignToPlayerHand(Card card, Transform playerHandSlot, Slot activeCardSlot)
-    {
-        //not in use anymore/yet
-    }
+    public bool wait;
+    private float elapsedTime;
+    [Range(2,10)]
+    public float waitTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +48,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRessourceText.text = playerRessourceCurrent.ToString();
-        
+        if (wait)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= waitTimer)
+            {
+                wait = false;
+                mySceneManager.ChangeScene("Overworld");
+            }
+        }
     }
 
     public void DrawCards()
@@ -109,6 +103,7 @@ public class GameManager : MonoBehaviour
         if ((playerRessourceCurrent - card.cost) >= 0)
         {
             playerRessourceCurrent -= card.cost;
+            UpdatePlayerRessource();
             return true;
         }
         else
@@ -122,9 +117,15 @@ public class GameManager : MonoBehaviour
         if (playerRessourceMax >= (playerRessourceCurrent + card.cost))
         {
             playerRessourceCurrent += card.cost;
+            UpdatePlayerRessource();
         }
 
         
+    }
+
+    public void UpdatePlayerRessource()
+    {
+        playerRessourceText.text = playerRessourceCurrent.ToString();
     }
 
     public void PlayerDamage(int damageValue, string damageType)
@@ -140,8 +141,13 @@ public class GameManager : MonoBehaviour
         DrawCards();
         if (wagons[0].UpdateTimer(1))
         {
-            mySceneManager.ChangeScene("Overworld");
+            wait = true;
         }
+    }
+
+    public void WaitTimer(float timerDuration, float elapsedTime)
+    {
+
     }
 
 }

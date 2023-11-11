@@ -624,6 +624,8 @@ MonoBehaviour:
   discardPile: []
   discardPileParent: {fileID: 1196039485}
   graveyardPile: []
+  wait: 0
+  waitTimer: 4.03
 --- !u!1001 &421061442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4614,7 +4616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -794, y: 0}
+  m_AnchoredPosition: {x: -851, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1496388654
@@ -5671,7 +5673,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1476380448842253577, guid: e648bd54d3bc85346b728f8212d5f291, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1476380448842253577, guid: e648bd54d3bc85346b728f8212d5f291, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5911,7 +5913,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1476380448842253577, guid: e648bd54d3bc85346b728f8212d5f291, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1476380448842253577, guid: e648bd54d3bc85346b728f8212d5f291, type: 3}
       propertyPath: m_LocalPosition.y
