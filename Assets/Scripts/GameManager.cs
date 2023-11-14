@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
     public void ResetEnergy()
     {
         playerRessourceCurrent = playerRessourceMax;
+        UpdatePlayerRessource();
     }
 
     public bool PayCardCost(Card card)
