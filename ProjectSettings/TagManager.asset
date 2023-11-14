@@ -8,6 +8,8 @@ TagManager:
   - Card
   - Node
   - Enemy
+  - Wallet
+  - PlayerInventory
   layers:
   - Default
   - TransparentFX
