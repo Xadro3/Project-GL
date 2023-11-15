@@ -14,9 +14,10 @@ public class ItemBuyable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (isDragging)
+        if (isDragging)
         {
-            transform.position = Input.mousePosition;
+            //https://youtu.be/pFpK4-EqHXQ do this 
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition-);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -26,5 +27,9 @@ public class ItemBuyable : MonoBehaviour
             GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(itemCost);
             GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<Inventory>().AddItem(this.gameObject);
         }
+    }
+    public void Drag()
+    {
+        isDragging = true;
     }
 }
