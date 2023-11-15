@@ -14,10 +14,12 @@ public class MySceneManager : MonoBehaviour
         PopulateSceneList();
 
         // Display the names of all available scenes in the console (for demonstration purposes)
+        /**
         foreach (string sceneName in sceneNames)
         {
             Debug.Log("Scene Name: " + sceneName);
         }
+        **/
     }
 
     void PopulateSceneList()

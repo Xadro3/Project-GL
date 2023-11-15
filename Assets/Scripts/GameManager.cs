@@ -6,19 +6,15 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Card> deck;
-    public Transform deckParent;
     public int playerRessourceCurrent;
     public int playerRessourceMax;
     public TextMeshProUGUI playerRessourceText;
 
     public List<Slot> activeCardSlots;
     private Transform activeCardSlot;
-    public bool[] availableCardSlots;
 
     public List<Slot> playerHandSlots;
     private Transform playerHandSlot;
-    public bool[] availablePlayerHandSlots;
 
     public List<Enemy> wagons;
 
@@ -30,18 +26,25 @@ public class GameManager : MonoBehaviour
     TurnMaster turnMaster;
     PlayerHealthManager player;
     MySceneManager mySceneManager;
+    Deck deck;
 
     public bool wait;
     private float elapsedTime;
     [Range(2,10)]
     public float waitTimer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
         turnMaster = FindObjectOfType<TurnMaster>();
         player = FindObjectOfType<PlayerHealthManager>();
+        deck = FindObjectOfType<Deck>();
+        
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         DrawCards();
     }
 
@@ -62,20 +65,19 @@ public class GameManager : MonoBehaviour
 
     public void DrawCards()
     {        
-        for (int i = 0; i < availablePlayerHandSlots.Length; i++)
+        for (int i = 0; i < playerHandSlots.Count; i++)
         {
-            if (deck.Count <= 0)
+            //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
+            if (deck.deck.Count <= (discardPile.Count + CountOccupiedHandSlots() + graveyardPile.Count))
             {
                 Shuffle();
             }
-            if (!playerHandSlots[i].GetComponent<Slot>().hasCard)
+            if (!playerHandSlots[i].hasCard)
             {
-                Card randomCard = deck[Random.Range(0, deck.Count)];
-                randomCard.gameObject.SetActive(true);
+                Card randomCard = deck.Draw();
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
-                deck.Remove(randomCard);
-                availablePlayerHandSlots[i] = false;
-                playerHandSlots[i].GetComponent<Slot>().HasCard(true);
+                deck.RemoveCard(randomCard);
+                playerHandSlots[i].HasCard(true);
             }
         }
     }
@@ -86,8 +88,8 @@ public class GameManager : MonoBehaviour
         {
             foreach (Card card in discardPile)
             {
-                deck.Add(card);
-                card.BackInPlay(deckParent);
+                deck.AddCard(card);
+                card.BackInPlay(deck.transform);
             }
             discardPile.Clear();
         }
@@ -150,6 +152,21 @@ public class GameManager : MonoBehaviour
     public void WaitTimer(float timerDuration, float elapsedTime)
     {
 
+    }
+
+    int CountOccupiedHandSlots()
+    {
+        int anzAvailableHandSlots = 0;
+
+        for (int i = 0; i < playerHandSlots.Count; i++)
+        {
+            if (playerHandSlots[i].hasCard)
+            {
+                anzAvailableHandSlots++;
+            }
+        }
+
+        return anzAvailableHandSlots;
     }
 
 }

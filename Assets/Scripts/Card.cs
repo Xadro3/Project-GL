@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
 
+    public string cardName;
     public int cost;
     public int durability;
     public int durabilityCurrent;
@@ -19,6 +20,16 @@ public class Card : MonoBehaviour
     CardDisplay cardDisplay;
     CardMovementHandler CardMovementHandler;
 
+    // Constructor
+    public Card(string cardName, int cardCost, int cardDurability, int cardRepair)
+    {
+        this.cardName = cardName;
+        this.cost = cardCost;
+        this.durability = cardDurability;
+        this.repair = cardRepair;
+    }
+
+
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
@@ -31,6 +42,8 @@ public class Card : MonoBehaviour
         repair = cardDisplay.card.repair;
         protectionTypes = cardDisplay.card.protectionTypes;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -69,5 +82,10 @@ public class Card : MonoBehaviour
     {
         wasPlayed = b;
     }
- 
+
+    public void SetActive(bool b)
+    {
+        gameObject.SetActive(b);
+    }
+
 }

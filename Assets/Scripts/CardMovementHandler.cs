@@ -7,14 +7,14 @@ public class CardMovementHandler : MonoBehaviour
 
     private int handIndex;
 
-    private bool wasPlayed = false;
-    private bool isDragging = false;
+    public bool wasPlayed = false;
+    public bool isDragging = false;
 
     private Vector3 offset;
-    private Transform initialHandSlot;
+    public Transform initialHandSlot;
 
-    private Transform playerHandSlot;
-    private Slot activeCardSlot;
+    public Transform currentSlot;
+    public Slot activeCardSlot;
 
     GameManager gm;
 
@@ -30,7 +30,7 @@ public class CardMovementHandler : MonoBehaviour
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-        card = GetComponentInParent<Card>();
+        card = GetComponent<Card>();
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class CardMovementHandler : MonoBehaviour
         SetNewParent(parent);
         SetPosition(parent);
         SetInitialHandslot(parent);
+        card.SetActive(true);
     }
 
     private void SetInitialHandslot(Transform newInitialHandslot)
@@ -58,13 +59,15 @@ public class CardMovementHandler : MonoBehaviour
         SetNewParent(gm.discardPileParent);
         SetPosition(gm.discardPileParent);
         card.SetWasPlayed(false);
-        gameObject.SetActive(false);
+        card.SetActive(false);
+        wasPlayed = false;
     }
 
     public void SetNewParent(Transform parent)
     {
-        playerHandSlot = parent.transform;
-        transform.SetParent(playerHandSlot);
+        currentSlot = parent.transform;
+        transform.SetParent(currentSlot);
+        Debug.Log(gameObject + " set my parent as: " + currentSlot);
     }
 
     private void SetPosition(Transform newPosition)
