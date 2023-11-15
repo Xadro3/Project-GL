@@ -11,6 +11,7 @@ public class CardMovementHandler : MonoBehaviour
     public bool isDragging = false;
 
     private Vector3 offset;
+    private Vector3 mousePosition;
     public Transform initialHandSlot;
 
     public Transform currentSlot;
@@ -84,9 +85,11 @@ public class CardMovementHandler : MonoBehaviour
     //Mouse movement with card
     private void OnMouseDown()
     {
+        mousePosition = Input.mousePosition - GetMouseWorldPos();
+        Debug.Log("MouseDown");
         if (!wasPlayed)
         {
-            offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isDragging = true;
         }
     }
@@ -94,8 +97,9 @@ public class CardMovementHandler : MonoBehaviour
     {
         if (isDragging)
         {
-            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+            //Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            //transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
         }
     }
 
@@ -153,6 +157,11 @@ public class CardMovementHandler : MonoBehaviour
         {
             transform.position = initialHandSlot.position;
         }
+    }
+
+    private Vector3 GetMouseWorldPos()
+    {
+        return Camera.main.WorldToScreenPoint(transform.position);
     }
 
 }

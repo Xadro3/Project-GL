@@ -17,7 +17,7 @@ public class ItemBuyable : MonoBehaviour
         if (isDragging)
         {
             //https://youtu.be/pFpK4-EqHXQ do this 
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition-);
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
     private void OnTriggerEnter(Collider other)

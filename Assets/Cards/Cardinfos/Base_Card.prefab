@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1037499463986621052}
   - component: {fileID: 7985182730163308664}
   - component: {fileID: 2210115746894351009}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Durability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 177801237318503804}
   - component: {fileID: 8777040998158837234}
   - component: {fileID: 5039187264195345074}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Subtext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093161973213488141}
   - component: {fileID: 3802128196844446163}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Irradiated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 5178257674099104525}
   - component: {fileID: 3694898175664433179}
   - component: {fileID: 6351501830754123577}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879964230484954435}
   - component: {fileID: 5212602858896972159}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 8238113719799834985}
   - component: {fileID: 6097837712117270366}
   - component: {fileID: 522856394515449150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Repair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 7005897311005398528}
   - component: {fileID: 5883797739128463623}
   - component: {fileID: 8811165738634135150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: -5465537923962665041}
   - component: {fileID: 3170304551409798378}
   - component: {fileID: 3991751051718558200}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Base_Card
   m_TagString: Card
   m_Icon: {fileID: 0}
@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4772f6f435cea743bf7fe903fb6e144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: 
   cost: 0
   durability: 0
   durabilityCurrent: 0
@@ -1189,6 +1190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081c3e38e0e0e3e47b82f1d70388f9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasPlayed: 0
+  isDragging: 0
+  initialHandSlot: {fileID: 0}
+  currentSlot: {fileID: 0}
+  activeCardSlot: {fileID: 0}
 --- !u!61 &3991751051718558200
 BoxCollider2D:
   m_ObjectHideFlags: 0
