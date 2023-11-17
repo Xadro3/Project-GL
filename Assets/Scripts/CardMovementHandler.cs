@@ -21,11 +21,15 @@ public class CardMovementHandler : MonoBehaviour
 
     Card card;
 
+    private SpriteRenderer[] spriteRenderers;
+    private MeshRenderer[] textRenderers;
+
 
     // Use this for initialization
     void Start()
     {
-        
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        textRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
     private void Awake()
@@ -92,6 +96,8 @@ public class CardMovementHandler : MonoBehaviour
             //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isDragging = true;
         }
+
+        SetSortingOrder(99);
     }
     private void OnMouseDrag()
     {
@@ -157,11 +163,28 @@ public class CardMovementHandler : MonoBehaviour
         {
             transform.position = initialHandSlot.position;
         }
+
+        SetSortingOrder(-99);
+
     }
 
     private Vector3 GetMouseWorldPos()
     {
         return Camera.main.WorldToScreenPoint(transform.position);
+    }
+
+    void SetSortingOrder(int newSortingOrder)
+    {
+        foreach (SpriteRenderer renderer in spriteRenderers)
+        {
+            renderer.sortingOrder += newSortingOrder;
+        }
+        foreach (MeshRenderer renderer in textRenderers)
+        {
+            renderer.sortingOrder += newSortingOrder;
+        }
+
+        //GetComponent<SpriteRenderer>().sortingOrder += newSortingOrder;
     }
 
 }
