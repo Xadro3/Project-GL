@@ -36,26 +36,29 @@ public class PlayerHealthManager : MonoBehaviour
     // function to apply damage -> currently only total damage no debuffs here
     public void ApplyDamage(int damageValue, string damageType)
     {
-        if (damageType == "Alpha")
+        //switch > if :)
+        switch (damageType)
         {
-            alphaResistance += damageValue;
-            alphaBar.SetHealth(alphaResistance);
-            Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
-        }
-        if (damageType == "Beta")
-        {
-            betaResistance += damageValue;
-            betaBar.SetHealth(betaResistance);
-        }
-        if (damageType == "Gamma")
-        {
-            gammaResistance += damageValue;
-            gammaBar.SetHealth(gammaResistance);
-        }
-        if (damageType == "Pure")
-        {
-            health -= damageValue;
-            healthBar.SetHealth(health);
+            case "Alpha":
+                alphaResistance += damageValue;
+                alphaBar.SetHealth(alphaResistance);
+                Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
+                break;
+
+            case "Beta":
+                betaResistance += damageValue;
+                betaBar.SetHealth(betaResistance);
+                break;
+
+            case "Gamma":
+                gammaResistance += damageValue;
+                gammaBar.SetHealth(gammaResistance);
+                break;
+
+            case "Pure":
+                health -= damageValue;
+                healthBar.SetHealth(health);
+                break;
         }
         // check if player survived damage
         CheckResistances();
