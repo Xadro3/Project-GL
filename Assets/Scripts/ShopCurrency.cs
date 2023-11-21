@@ -12,6 +12,6 @@ public class ShopCurrency : MonoBehaviour
     }
     public void RemoveMoney(int amountToRemove)
     {
-        money = money + amountToRemove;
+        money = money - amountToRemove;
     }
 }

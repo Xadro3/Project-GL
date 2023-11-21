@@ -4,32 +4,40 @@ using UnityEngine;
 
 public class ItemBuyable : MonoBehaviour
 {
-    public bool isDragging;
+    public Vector3 snapLocation;
     public int itemCost;
-    void Start()
+    Vector3 mousePosition;
+    public bool bought;
+
+    private Vector3 GetMousePos()
     {
-        
+        return Camera.main.WorldToScreenPoint(transform.position);
+    }
+    private void OnMouseDown()
+    {
+        mousePosition = Input.mousePosition - GetMousePos();
+    }
+    private void OnMouseDrag()
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+    }
+    private void OnMouseUp()
+    {
+        transform.position = snapLocation;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (isDragging)
-        {
-            //https://youtu.be/pFpK4-EqHXQ do this 
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.name == "PlayerInventory" && !isDragging)
-        {
-            GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(itemCost);
-            GameObject.FindGameObjectWithTag("PlayerInventory").GetComponent<Inventory>().AddItem(this.gameObject);
-        }
-    }
-    public void Drag()
-    {
-        isDragging = true;
-    }
+    //void Update()
+    //{
+    //    if (isDragging)
+    //    {
+    //        //https://youtu.be/pFpK4-EqHXQ do this 
+    //        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    }
+    //}
+
+    //public void Drag()
+    //{
+    //    isDragging = true;
+    //}
 }

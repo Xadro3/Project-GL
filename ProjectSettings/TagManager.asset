@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Wallet
   - PlayerInventory
+  - Items
   layers:
   - Default
   - TransparentFX
