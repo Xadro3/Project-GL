@@ -362,6 +362,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd883091d35dd4644bf0c38399a9e848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  localinventory: []
+  shopinventoryslots:
+  - {fileID: 1133068738}
+  - {fileID: 542051323}
+  - {fileID: 1941917034}
+  - {fileID: 532990701}
+  - {fileID: 440345419}
+  - {fileID: 188420893}
+  - {fileID: 252474220}
+  - {fileID: 1209646325}
+  - {fileID: 493984901}
+  - {fileID: 715510482}
+  - {fileID: 1425175582}
+  - {fileID: 693083712}
+  - {fileID: 6746283}
 --- !u!1 &252474220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,8 +1029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a524c01d6300747a150c83c56c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
-  itemCost: 0
+  snapLocation: {x: 0, y: 0, z: 0}
+  itemCost: 12
+  bought: 0
+  resaleValue: 7
 --- !u!54 &641643861
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1038,7 +1056,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1223,8 +1241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a524c01d6300747a150c83c56c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
+  snapLocation: {x: 0, y: 0, z: 0}
   itemCost: 15
+  bought: 0
+  resaleValue: 10
 --- !u!54 &719478699
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1248,7 +1268,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1783,8 +1803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a524c01d6300747a150c83c56c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
-  itemCost: 0
+  snapLocation: {x: 0, y: 0, z: 0}
+  itemCost: 13
+  bought: 0
+  resaleValue: 8
 --- !u!54 &1395208023
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1808,7 +1830,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2266,8 +2288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a524c01d6300747a150c83c56c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
+  snapLocation: {x: 0, y: 0, z: 0}
   itemCost: 15
+  bought: 0
+  resaleValue: 10
 --- !u!54 &1804488172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2291,7 +2315,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2513,8 +2537,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a524c01d6300747a150c83c56c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
-  itemCost: 0
+  snapLocation: {x: 0, y: 0, z: 0}
+  itemCost: 11
+  bought: 0
+  resaleValue: 6
 --- !u!54 &1881248242
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2538,7 +2564,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2760,8 +2786,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100, y: 10, z: 100}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 100, y: 6.776855, z: 100}
+  m_Center: {x: 0, y: 1.6115727, z: -5.5198765e-15}
 --- !u!4 &2053863010
 Transform:
   m_ObjectHideFlags: 0

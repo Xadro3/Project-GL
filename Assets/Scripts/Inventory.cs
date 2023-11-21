@@ -32,6 +32,22 @@ public class Inventory : MonoBehaviour
             SnapToGrid(game);
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Items")
+        {
+            
+            GameObject game = other.gameObject;
+            Debug.Log(game);
+            RemoveItem(game);
+            
+        }
+    }
+    private void RemoveItem(GameObject game)
+    {
+        inventory.Remove(game);
+        localinventory.Remove(game);
+    }
 
     public void SnapToGrid(GameObject item)
     {

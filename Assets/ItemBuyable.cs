@@ -8,6 +8,7 @@ public class ItemBuyable : MonoBehaviour
     public int itemCost;
     Vector3 mousePosition;
     public bool bought;
+    public int resaleValue;
 
     private Vector3 GetMousePos()
     {

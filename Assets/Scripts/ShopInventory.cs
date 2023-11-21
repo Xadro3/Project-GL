@@ -4,15 +4,53 @@ using UnityEngine;
 
 public class ShopInventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Playerinventory inventory;
+    public List<GameObject> localinventory;
+    public List<GameObject> shopinventoryslots;
+
+    private void Start()
     {
-        
+        Debug.Log(GameObject.Find("Inventory").name);
+        inventory = GameObject.Find("Inventory").GetComponent<Playerinventory>();
+    }
+    public void AddItem(GameObject item)
+    {
+        Debug.Log(item);
+        Debug.Log(inventory);
+        inventory.Remove(item);
+        localinventory.Add(item);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject);
+        if (other.gameObject.tag == "Items")
+        {
+            GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().AddMoney(other.GetComponent<ItemBuyable>().resaleValue);
+            GameObject game = other.gameObject;
+            Debug.Log(game);
+            AddItem(game);
+            SnapToGrid(game);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Items")
+        {
+
+            GameObject game = other.gameObject;
+            Debug.Log(game);
+            RemoveItem(game);
+
+        }
+    }
+    private void RemoveItem(GameObject game)
+    {
+        inventory.Remove(game);
+        localinventory.Remove(game);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SnapToGrid(GameObject item)
     {
-        
+        item.GetComponent<ItemBuyable>().snapLocation = shopinventoryslots[localinventory.Count - 1].transform.position;
     }
 }
