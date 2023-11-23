@@ -82,6 +82,7 @@ public class CardMovementHandler : MonoBehaviour
     private void SetPosition(Transform newPosition)
     {
         transform.position = newPosition.position;
+        transform.rotation = newPosition.rotation;
     }
 
     private void SetHandIndex(int newHandIndex)
