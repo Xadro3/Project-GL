@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardMovementHandler : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class CardMovementHandler : MonoBehaviour
     private Vector3 offset;
     private Vector3 mousePosition;
     public Transform initialHandSlot;
+
+    private GameObject placeholder = null;
+    private bool hasPlaceholder = false;
 
     public Transform currentSlot;
     public Slot activeCardSlot;
@@ -96,17 +100,51 @@ public class CardMovementHandler : MonoBehaviour
             //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isDragging = true;
         }
-
+        
         SetSortingOrder(99);
     }
     private void OnMouseDrag()
     {
+        if (!hasPlaceholder)
+        {
+            hasPlaceholder = true;
+            GeneratePlaceholder();
+            this.transform.SetParent(this.transform.parent.parent);
+        }
         if (isDragging)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
             //Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
             //transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+            foreach (Collider2D collider in colliders)
+            {
+                Transform handCard = collider.transform;
+                if (handCard.CompareTag("Card"))
+                {
+                    if (this.transform.position.x < handCard.position.x)
+                    {
+                        placeholder.transform.SetSiblingIndex(handCard.GetSiblingIndex());
+                        break;
+                    }
+                }
+            }
         }
+
+    }
+
+    public void GeneratePlaceholder()
+    {
+        placeholder = new GameObject();
+        placeholder.transform.SetParent(this.transform.parent);
+        placeholder.transform.localScale = new Vector3(30.89397f, 30.89397f, 30.89397f);
+        LayoutElement le = placeholder.AddComponent<LayoutElement>();
+        le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
+        le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+        le.flexibleWidth = 0;
+        le.flexibleHeight = 0;
+
+        placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
     }
 
     private void OnMouseOver()
@@ -117,10 +155,10 @@ public class CardMovementHandler : MonoBehaviour
             {
                 activeCardSlot.HasCard(false);
                 SetNewParent(initialHandSlot);
-                SetPosition(initialHandSlot);
+                //SetPosition(initialHandSlot);
                 gm.RefundCardCost(card);
                 wasPlayed = false;
-                initialHandSlot.GetComponent<Slot>().HasCard(true);
+                //initialHandSlot.GetComponent<Slot>().HasCard(true);
                 Debug.Log(gameObject);
             }
             
@@ -148,11 +186,13 @@ public class CardMovementHandler : MonoBehaviour
                         SetNewParent(activeCardSlot.transform);
                         SetPosition(activeCardSlot.transform);
                         wasPlayed = true;
-                        initialHandSlot.GetComponent<Slot>().HasCard(false);
+                        //initialHandSlot.GetComponent<Slot>().HasCard(false);
                     }
                     else
                     {
-                        transform.position = initialHandSlot.position;
+                        //transform.position = initialHandSlot.position;
+                        this.transform.SetParent(placeholder.transform.parent);
+                        this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
                     }
                     
                 }
@@ -161,10 +201,18 @@ public class CardMovementHandler : MonoBehaviour
         //put card back to playerhand when not played on an active card slot
         if (!wasPlayed)
         {
-            transform.position = initialHandSlot.position;
+            //transform.position = initialHandSlot.position;
+            this.transform.SetParent(placeholder.transform.parent);
+            this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
         }
 
         SetSortingOrder(-99);
+        if (hasPlaceholder)
+        {
+            hasPlaceholder = false;
+            Destroy(placeholder);
+        }
+        
 
     }
 

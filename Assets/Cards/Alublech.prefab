@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8729641152444665086, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: m_Name
-      value: Alublech Variant
+      value: Alublech
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

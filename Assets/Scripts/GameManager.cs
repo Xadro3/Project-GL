@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<Slot> activeCardSlots;
     private Transform activeCardSlot;
 
+    public RectTransform playerHand;
     public List<Slot> playerHandSlots;
     private Transform playerHandSlot;
 
@@ -75,7 +76,8 @@ public class GameManager : MonoBehaviour
             if (!playerHandSlots[i].hasCard)
             {
                 Card randomCard = deck.Draw();
-                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
+                //randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
+                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
                 deck.RemoveCard(randomCard);
                 playerHandSlots[i].HasCard(true);
             }
