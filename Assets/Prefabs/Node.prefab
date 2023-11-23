@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3220e537ba849fe4a9dc90437736faf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7eaea658c1fbf14887ed51e3a29b26d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventType: 0
-  eventSprite: {fileID: 21300000, guid: 5289781b7cadd124fb1e11defca34b49, type: 3}
-  shopSprite: {fileID: 21300000, guid: 7208a60a06de7f445922da857efc3be7, type: 3}
-  workshopSprite: {fileID: 21300000, guid: b1f4ba2c230b40e43902b05f9a04feaf, type: 3}
-  encounterSprite: {fileID: 21300000, guid: 3220e537ba849fe4a9dc90437736faf4, type: 3}
+  eventSprite: {fileID: 21300000, guid: 50dbf17868790e046a70e773a870e833, type: 3}
+  shopSprite: {fileID: 21300000, guid: 080ebeb80152ac94ea29e68874b98076, type: 3}
+  workshopSprite: {fileID: 21300000, guid: 17a0357cb1fc91e4fae9d9b11f6220bb, type: 3}
+  encounterSprite: {fileID: 21300000, guid: d7eaea658c1fbf14887ed51e3a29b26d, type: 3}
 --- !u!65 &727606912865319122
 BoxCollider:
   m_ObjectHideFlags: 0
