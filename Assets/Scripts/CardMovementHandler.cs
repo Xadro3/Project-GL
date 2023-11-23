@@ -32,14 +32,15 @@ public class CardMovementHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        textRenderers = GetComponentsInChildren<MeshRenderer>();
+        
     }
 
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         card = GetComponent<Card>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        textRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -232,6 +233,7 @@ public class CardMovementHandler : MonoBehaviour
         {
             renderer.sortingOrder += newSortingOrder;
         }
+        //this.transform.GetComponent<SpriteRenderer>().sortingOrder += newSortingOrder;  
 
         //GetComponent<SpriteRenderer>().sortingOrder += newSortingOrder;
     }
