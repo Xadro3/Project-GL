@@ -87,21 +87,19 @@ public class GameManager : MonoBehaviour
         int cardsInHand = CountOccupiedHandSlots();
         if (cardsInHand < playerHandMax)
         {
+            //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
+            if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count))
+            {
+                Shuffle();
+            }
+
             // drawing cards up to playerHandMax
             for (int i = 0; i < (playerHandMax - cardsInHand); i++)
             {
-                //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
-                if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count))
-                {
-                    Shuffle();
-                }
-                if (!playerHandSlots[i].hasCard)
-                {
-                    Card randomCard = deck.Draw();
-                    randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
-                    deck.RemoveCard(randomCard);
-                    playerHandSlots[i].HasCard(true);
-                }
+                Card randomCard = deck.Draw();
+                Debug.Log("I just drew the card: " + randomCard);
+                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
+                deck.RemoveCard(randomCard);
             }
         }
         
@@ -187,19 +185,8 @@ public class GameManager : MonoBehaviour
 
     int CountOccupiedHandSlots()
     {
-        int anzAvailableHandSlots = 0;
-        int currentCards = 0;
-        currentCards = playerHand.transform.childCount;
-
-        for (int i = 0; i < playerHandSlots.Count; i++)
-        {
-            if (playerHandSlots[i].hasCard)
-            {
-                anzAvailableHandSlots++;
-            }
-        }
-
-        return anzAvailableHandSlots;
+        int currentCards = playerHand.transform.childCount;
+        return currentCards;
     }
 
 }

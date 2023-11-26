@@ -49,12 +49,14 @@ public class PlayerHealthManager : MonoBehaviour
             case "Beta":
                 betaResistance += damageValue;
                 betaBar.SetHealth(betaResistance);
+                Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
                 CheckResistances();
                 break;
 
             case "Gamma":
                 gammaResistance += damageValue;
                 gammaBar.SetHealth(gammaResistance);
+                Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
                 CheckResistances();
                 break;
 
