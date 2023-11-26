@@ -7,6 +7,7 @@ public class Deck : MonoBehaviour
 {
     public List<Card> deck;
     public List<Card> playerDeck;
+    private float deckMin = 0;
 
     void Awake()
     {
