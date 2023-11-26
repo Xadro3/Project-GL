@@ -295,15 +295,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7435627785309446910, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 14.77
       objectReference: {fileID: 0}
     - target: {fileID: 7435627785309446910, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -286
+      value: 10.69
       objectReference: {fileID: 0}
     - target: {fileID: 7435627785309446910, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 280
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: 7435627785309446910, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_LocalRotation.w
@@ -383,6 +383,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8448064466691571618, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006465943274028054, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+      propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1453,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 824447856949638430, guid: 58dd9ad0d9c1d0842ada03c114a7cc77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 824447856949638430, guid: 58dd9ad0d9c1d0842ada03c114a7cc77, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2285,15 +2289,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558831684551067881, guid: 91302f538ee8e5548bd19b8c9e2fece9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 14.77
       objectReference: {fileID: 0}
     - target: {fileID: 4558831684551067881, guid: 91302f538ee8e5548bd19b8c9e2fece9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -300
+      value: 10.69
       objectReference: {fileID: 0}
     - target: {fileID: 4558831684551067881, guid: 91302f538ee8e5548bd19b8c9e2fece9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.24
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: 4558831684551067881, guid: 91302f538ee8e5548bd19b8c9e2fece9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6181,7 +6185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -833, y: 459}
+  m_AnchoredPosition: {x: 860, y: 524}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772743588
