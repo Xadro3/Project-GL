@@ -101,7 +101,7 @@ public class CardMovementHandler : MonoBehaviour
     //Mouse movement with card
     private void OnMouseDown()
     {
-        if (!gm.isPauseMenuActive)
+        if (!gm.isGamePauseActive)
         {
             mousePosition = Input.mousePosition - GetMouseWorldPos();
             if (!wasPlayed)
@@ -116,7 +116,7 @@ public class CardMovementHandler : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        if (!gm.isPauseMenuActive)
+        if (!gm.isGamePauseActive)
         {
             if (!hasPlaceholder)
             {
@@ -150,7 +150,7 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!gm.isPauseMenuActive)
+        if (!gm.isGamePauseActive)
         {
             if (Input.GetMouseButtonDown(1))
             {
@@ -172,7 +172,7 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!gm.isPauseMenuActive)
+        if (!gm.isGamePauseActive)
         {
             if (isDragging)
             {

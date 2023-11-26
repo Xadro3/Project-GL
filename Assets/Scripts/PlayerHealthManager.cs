@@ -43,26 +43,30 @@ public class PlayerHealthManager : MonoBehaviour
                 alphaResistance += damageValue;
                 alphaBar.SetHealth(alphaResistance);
                 Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
+                CheckResistances();
                 break;
 
             case "Beta":
                 betaResistance += damageValue;
                 betaBar.SetHealth(betaResistance);
+                CheckResistances();
                 break;
 
             case "Gamma":
                 gammaResistance += damageValue;
                 gammaBar.SetHealth(gammaResistance);
+                CheckResistances();
                 break;
 
             case "Pure":
                 health -= damageValue;
                 healthBar.SetHealth(health);
+                CheckResistances();
                 break;
         }
         // check if player survived damage
         CheckResistances();
-        if (health <= 0)
+        if (CheckHealth() <= 0)
         {
             // trigger Game Over
             Debug.Log("Game Over!");
@@ -74,16 +78,40 @@ public class PlayerHealthManager : MonoBehaviour
         if (alphaResistance >= alphaResistanceMax)
         {
             healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
+            alphaResistance = 0;
             Debug.Log("Aua! Ich habe schaden bekommen!");
         }
         if (betaResistance >= betaResistanceMax)
         {
             ApplyDamage(3, "Pure");
+            betaResistance = 0;
         }
         if (gammaResistance >= gammaResistanceMax)
         {
             Debug.Log("Rework Gamma Konsequenzes!");
+            gammaResistance = 0;
         }
+    }
+
+    public int CheckResistance(string radiationType)
+    {
+        switch (radiationType)
+        {
+            case "Alpha":
+                return alphaResistance;
+
+            case "Beta":
+                return alphaResistance;
+
+            case "Gamma":
+                return alphaResistance;
+        }
+        return 0;
+    }
+    
+    public int CheckHealth()
+    {
+        return health;
     }
 
 }

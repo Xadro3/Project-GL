@@ -27,9 +27,8 @@ public class TurnMaster : MonoBehaviour
     {
         foreach (Enemy wagon in wagons)
         {
-            // Initialize damage values and types from the dictionary
-            int wagonDamageValue = wagon.damageValue;
-            List<string> wagonDamageTypes = new List<string>(wagon.damageTypes.Select(type => type.ToString()));
+            
+            Dictionary<string, int> wagonDamageStats = new Dictionary<string, int>(damageStats);
 
             bool foundCard = false;
 
@@ -43,33 +42,36 @@ public class TurnMaster : MonoBehaviour
                     card.SetWasPlayed(true);
 
                     // Check if wagon damage type affects card protection type
-                    foreach (GameConstants.radiationTypes radiationType in card.protectionTypes.ToString())
+                    foreach (GameConstants.radiationTypes radiationType in card.protectionTypes)
                     {
-                        if (wagonDamageTypes.Contains(radiationType.ToString()))
+                        if (wagonDamageStats.ContainsKey(radiationType.ToString()))
                         {
                             isAffected = true;
-                            break;
+                            int damageValue = wagonDamageStats[radiationType.ToString()];
+                            wagonDamageStats[radiationType.ToString()] = card.AdjustDurability(damageValue);
+                            card.UpdateDisplay();
+
+                            if (wagonDamageStats[radiationType.ToString()] == 0)
+                            {
+                                break;
+                            }
                         }
                     }
 
-                    // If card is affected by wagon damage type, calculate damage
                     if (isAffected)
                     {
-                        wagonDamageValue = card.AdjustDurability(wagonDamageValue);
-                        card.UpdateDisplay();
-
-                        if (wagonDamageValue == 0)
-                        {
-                            break;
-                        }
+                        break;
                     }
                 }
             }
 
             // If no card is found in any slot, damage goes directly to the player
-            if (wagonDamageValue != 0)
+            foreach (var entry in wagonDamageStats)
             {
-                gm.PlayerDamage(wagonDamageValue, wagonDamageTypes.Count > 0 ? wagonDamageTypes[0] : "");
+                if (entry.Value != 0)
+                {
+                    gm.PlayerDamage(entry.Value, entry.Key);
+                }
             }
         }
     }

@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     public List<Card> graveyardPile;
 
-    public bool isPauseMenuActive = false;
+    public bool isGamePauseActive = false;
+    public Transform interactionBlock;
 
     TurnMaster turnMaster;
     PlayerHealthManager player;
@@ -58,11 +59,13 @@ public class GameManager : MonoBehaviour
     {
         if (wait)
         {
+            BlockInteraction(true);
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime >= waitTimer)
             {
                 wait = false;
+                BlockInteraction(true);
                 mySceneManager.ChangeScene("Overworld");
             }
         }
@@ -70,7 +73,13 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool b)
     {
-        isPauseMenuActive = b;
+        isGamePauseActive = b;
+    }
+
+    public void BlockInteraction(bool b)
+    {
+        interactionBlock.gameObject.SetActive(b);
+        PauseGame(b);
     }
 
     public void DrawCards()
