@@ -24,14 +24,14 @@ public class PauseMenu : MonoBehaviour
         
        if (Input.GetKeyUp(KeyCode.Escape) && !latch)
         {
-            Debug.Log("escape move");
+            //Debug.Log("escape move");
             StopAllCoroutines();
             StartCoroutine(move());
             latch = true;
         }
        else if (Input.GetKeyUp(KeyCode.Escape) && latch)
         {
-            Debug.Log("escape move back");
+            //Debug.Log("escape move back");
             StopAllCoroutines();
             StartCoroutine(moveBack());
             latch = false;
@@ -58,13 +58,14 @@ public class PauseMenu : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(move());
         latch = true;
+        Debug.Log("Ich bin der Button");
         gm.PauseGame(latch);
     }
     IEnumerator move()
     {
         while (pauseScreen.transform.position != targetPosition.transform.position)
         {
-            Debug.Log("moving");
+            //Debug.Log("moving");
             pauseScreen.transform.position = Vector3.SmoothDamp(pauseScreen.transform.position, targetPosition.transform.position, ref velocity, smoothTime);
             yield return new WaitForEndOfFrame();
         }
@@ -74,7 +75,7 @@ public class PauseMenu : MonoBehaviour
     {
         while (pauseScreen.transform.position != offscreenPosition.transform.position)
         {
-            Debug.Log("moving back");
+            //Debug.Log("moving back");
             pauseScreen.transform.position = Vector3.SmoothDamp(pauseScreen.transform.position, offscreenPosition.transform.position, ref velocity, smoothTime);
             yield return new WaitForEndOfFrame();
         }

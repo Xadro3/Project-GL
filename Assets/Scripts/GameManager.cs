@@ -57,13 +57,13 @@ public class GameManager : MonoBehaviour
     {
         if (wait)
         {
-            BlockInteraction(true);
+            PauseGame(wait);
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime >= waitTimer)
             {
                 wait = false;
-                BlockInteraction(true);
+                PauseGame(wait);
                 mySceneManager.ChangeScene("Overworld");
             }
         }
@@ -72,12 +72,13 @@ public class GameManager : MonoBehaviour
     public void PauseGame(bool b)
     {
         isGamePauseActive = b;
+        BlockInteraction(b);
     }
 
     public void BlockInteraction(bool b)
     {
         interactionBlock.gameObject.SetActive(b);
-        PauseGame(b);
+        Debug.Log("Fire");
     }
 
     public void DrawCards()
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < (playerHandMax - cardsInHand); i++)
             {
                 Card randomCard = deck.Draw();
-                Debug.Log("I just drew the card: " + randomCard);
+                //Debug.Log("I just drew the card: " + randomCard);
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
                 deck.RemoveCard(randomCard);
             }

@@ -25,13 +25,13 @@ public class Deck : MonoBehaviour
             Card addedCard = Instantiate(card, gameObject.transform.position, Quaternion.identity, gameObject.transform);
             addedCard.SetActive(false);
             playerDeck.Add(addedCard);
-            Debug.Log("Added Card: " + addedCard);
+            //Debug.Log("Added Card: " + addedCard);
         }
     }
 
     public Card Draw()
     {
-        Debug.Log("Deck.Draw got called");
+        //Debug.Log("Deck.Draw got called");
         return playerDeck[Random.Range(0, playerDeck.Count)];
     }
 
