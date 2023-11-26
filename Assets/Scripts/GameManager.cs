@@ -14,9 +14,7 @@ public class GameManager : MonoBehaviour
     private Transform activeCardSlot;
 
     public RectTransform playerHand;
-    public List<Slot> playerHandSlots;
     public int playerHandMax;
-    private Transform playerHandSlot;
 
     public List<Enemy> wagons;
 
