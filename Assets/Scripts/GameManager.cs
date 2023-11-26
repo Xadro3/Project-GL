@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
     public void BlockInteraction(bool b)
     {
         interactionBlock.gameObject.SetActive(b);
-        Debug.Log("Fire");
     }
 
     public void DrawCards()

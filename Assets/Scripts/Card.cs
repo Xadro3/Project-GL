@@ -88,6 +88,7 @@ public class Card : MonoBehaviour
     public void SetWasPlayed(bool b)
     {
         wasPlayed = b;
+        CardMovementHandler.wasPlayed = b;
     }
 
     public void SetActive(bool b)

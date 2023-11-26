@@ -58,7 +58,6 @@ public class PauseMenu : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(move());
         latch = true;
-        Debug.Log("Ich bin der Button");
         gm.PauseGame(latch);
     }
     IEnumerator move()
