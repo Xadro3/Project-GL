@@ -11,8 +11,14 @@ public class PauseMenu : MonoBehaviour
     public bool latch;
     public GameObject offscreenPosition;
     public Vector3 currentPosition;
+    private GameManager gm;
 
-    
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
+
+
     private void Update()
     {
         
@@ -41,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(moveBack());
         latch = false;
+        gm.PauseGame(latch);
     }
     public void ExitGame()
     {
@@ -51,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(move());
         latch = true;
+        gm.PauseGame(latch);
     }
     IEnumerator move()
     {

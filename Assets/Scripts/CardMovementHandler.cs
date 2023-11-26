@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class CardMovementHandler : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class CardMovementHandler : MonoBehaviour
     public Slot activeCardSlot;
 
     GameManager gm;
-
+    SortingGroup sortingGroup;
     Card card;
 
     private SpriteRenderer[] spriteRenderers;
@@ -32,7 +33,7 @@ public class CardMovementHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        SetSortingOrder(99);
     }
 
     private void Awake()
@@ -41,13 +42,19 @@ public class CardMovementHandler : MonoBehaviour
         card = GetComponent<Card>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         textRenderers = GetComponentsInChildren<MeshRenderer>();
+        sortingGroup = GetComponent<SortingGroup>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (sortingGroup.sortingOrder != transform.GetSiblingIndex() && !isDragging) 
+        {
+            SetSortingOrder(transform.GetSiblingIndex());
+        }
+        
     }
+
     public void DrawCardSetup(int handIndex, Transform parent)
     {
         SetHandIndex(handIndex);
@@ -77,7 +84,6 @@ public class CardMovementHandler : MonoBehaviour
     {
         currentSlot = parent.transform;
         transform.SetParent(currentSlot);
-        Debug.Log(gameObject + " set my parent as: " + currentSlot);
     }
 
     private void SetPosition(Transform newPosition)
@@ -95,44 +101,133 @@ public class CardMovementHandler : MonoBehaviour
     //Mouse movement with card
     private void OnMouseDown()
     {
-        mousePosition = Input.mousePosition - GetMouseWorldPos();
-        Debug.Log("MouseDown");
-        if (!wasPlayed)
+        if (!gm.isPauseMenuActive)
         {
-            //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            isDragging = true;
+            mousePosition = Input.mousePosition - GetMouseWorldPos();
+            if (!wasPlayed)
+            {
+                //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                isDragging = true;
+            }
+
+            SetSortingOrder(transform.GetSiblingIndex());
         }
         
-        SetSortingOrder(99);
     }
     private void OnMouseDrag()
     {
-        if (!hasPlaceholder)
+        if (!gm.isPauseMenuActive)
         {
-            hasPlaceholder = true;
-            GeneratePlaceholder();
-            this.transform.SetParent(this.transform.parent.parent);
-        }
-        if (isDragging)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-            //Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            //transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
-            foreach (Collider2D collider in colliders)
+            if (!hasPlaceholder)
             {
-                Transform handCard = collider.transform;
-                if (handCard.CompareTag("Card"))
+                hasPlaceholder = true;
+                GeneratePlaceholder();
+                this.transform.SetParent(this.transform.parent.parent);
+            }
+            if (isDragging)
+            {
+                transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+                //Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+                //transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+                foreach (Collider2D collider in colliders)
                 {
-                    if (this.transform.position.x < handCard.position.x)
+                    Transform handCard = collider.transform;
+                    if (handCard.CompareTag("Card"))
                     {
-                        placeholder.transform.SetSiblingIndex(handCard.GetSiblingIndex());
-                        break;
+                        if (this.transform.position.x < handCard.position.x)
+                        {
+                            placeholder.transform.SetSiblingIndex(handCard.GetSiblingIndex());
+                            break;
+                        }
                     }
                 }
             }
+
         }
 
+    }
+
+    private void OnMouseOver()
+    {
+        if (!gm.isPauseMenuActive)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (wasPlayed && !card.wasPlayed)
+                {
+                    activeCardSlot.HasCard(false);
+                    SetNewParent(initialHandSlot);
+                    //SetPosition(initialHandSlot);
+                    gm.RefundCardCost(card);
+                    wasPlayed = false;
+                    //initialHandSlot.GetComponent<Slot>().HasCard(true);
+                    Debug.Log(gameObject);
+                }
+
+            }
+        }
+        
+    }
+
+    private void OnMouseUp()
+    {
+        if (!gm.isPauseMenuActive)
+        {
+            if (isDragging)
+            {
+                isDragging = false;
+
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+
+                foreach (Collider2D collider in colliders)
+                {
+                    Slot slot = collider.GetComponent<Slot>();
+
+                    if (slot != null && slot.CompareTag("ActiveCardSlot") && !slot.hasCard)
+                    {
+                        if (gm.PayCardCost(card))
+                        {
+                            activeCardSlot = slot;
+                            activeCardSlot.HasCard(true);
+                            SetNewParent(activeCardSlot.transform);
+                            SetPosition(activeCardSlot.transform);
+                            wasPlayed = true;
+                            SetSortingOrder(transform.GetSiblingIndex());
+                            //initialHandSlot.GetComponent<Slot>().HasCard(false);
+                        }
+                        else
+                        {
+                            //transform.position = initialHandSlot.position;
+                            this.transform.SetParent(placeholder.transform.parent);
+                            this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+                            SetSortingOrder(0);
+                        }
+
+                    }
+                }
+            }
+            //put card back to playerhand when not played on an active card slot
+            if (!wasPlayed)
+            {
+                //transform.position = initialHandSlot.position;
+                this.transform.SetParent(placeholder.transform.parent);
+                this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+            }
+
+            SetSortingOrder(transform.GetSiblingIndex());
+            if (hasPlaceholder)
+            {
+                hasPlaceholder = false;
+                Destroy(placeholder);
+            }
+        }
+
+    }
+
+    private Vector3 GetMouseWorldPos()
+    {
+        return Camera.main.WorldToScreenPoint(transform.position);
     }
 
     public void GeneratePlaceholder()
@@ -149,93 +244,18 @@ public class CardMovementHandler : MonoBehaviour
         placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
     }
 
-    private void OnMouseOver()
+    public void SetSortingOrder(int newSortingOrder)
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (wasPlayed && !card.wasPlayed)
-            {
-                activeCardSlot.HasCard(false);
-                SetNewParent(initialHandSlot);
-                //SetPosition(initialHandSlot);
-                gm.RefundCardCost(card);
-                wasPlayed = false;
-                //initialHandSlot.GetComponent<Slot>().HasCard(true);
-                Debug.Log(gameObject);
-            }
-            
-        }
-    }
-
-    private void OnMouseUp()
-    {
+        
         if (isDragging)
         {
-            isDragging = false;
-
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-
-            foreach (Collider2D collider in colliders)
-            {
-                Slot slot = collider.GetComponent<Slot>();
-
-                if (slot != null && slot.CompareTag("ActiveCardSlot") && !slot.hasCard)
-                {
-                    if (gm.PayCardCost(card))
-                    {
-                        activeCardSlot = slot;
-                        activeCardSlot.HasCard(true);
-                        SetNewParent(activeCardSlot.transform);
-                        SetPosition(activeCardSlot.transform);
-                        wasPlayed = true;
-                        //initialHandSlot.GetComponent<Slot>().HasCard(false);
-                    }
-                    else
-                    {
-                        //transform.position = initialHandSlot.position;
-                        this.transform.SetParent(placeholder.transform.parent);
-                        this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
-                    }
-                    
-                }
-            }
+            sortingGroup.sortingOrder = 99;
         }
-        //put card back to playerhand when not played on an active card slot
-        if (!wasPlayed)
+        if (!isDragging)
         {
-            //transform.position = initialHandSlot.position;
-            this.transform.SetParent(placeholder.transform.parent);
-            this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+            sortingGroup.sortingOrder = newSortingOrder;
         }
 
-        SetSortingOrder(-99);
-        if (hasPlaceholder)
-        {
-            hasPlaceholder = false;
-            Destroy(placeholder);
-        }
-        
-
-    }
-
-    private Vector3 GetMouseWorldPos()
-    {
-        return Camera.main.WorldToScreenPoint(transform.position);
-    }
-
-    void SetSortingOrder(int newSortingOrder)
-    {
-        foreach (SpriteRenderer renderer in spriteRenderers)
-        {
-            renderer.sortingOrder += newSortingOrder;
-        }
-        foreach (MeshRenderer renderer in textRenderers)
-        {
-            renderer.sortingOrder += newSortingOrder;
-        }
-        //this.transform.GetComponent<SpriteRenderer>().sortingOrder += newSortingOrder;  
-
-        //GetComponent<SpriteRenderer>().sortingOrder += newSortingOrder;
     }
 
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    public bool hasCard;
+    public bool hasCard = false;
 
-    private Card currentCard;
+    private Card currentCard = null;
 
     private void Start()
     {
@@ -18,9 +18,15 @@ public class Slot : MonoBehaviour
        
     }
 
+    private void SetSortingOrder()
+    {
+        currentCard.GetComponent<CardMovementHandler>().SetSortingOrder(99);
+    }
+
     private Card GetCardInSlotInfo()
     {
-        return GetComponentInChildren<Card>();
+        currentCard = GetComponentInChildren<Card>();
+        return currentCard;
     }
 
     private void HandleCardDropped(Card card, Slot slot)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,6 +44,11 @@ public class Card : MonoBehaviour
         protectionTypes = cardDisplay.card.protectionTypes;
     }
 
+    private void Start()
+    {
+
+    }
+
 
 
     // Update is called once per frame
@@ -59,6 +65,7 @@ public class Card : MonoBehaviour
     public int AdjustDurability(int damage)
     {
         durabilityCurrent -= damage;
+        UpdateDisplay();
         if (durabilityCurrent <= 0)
         {
             CardMovementHandler.MoveToDiscardPile();

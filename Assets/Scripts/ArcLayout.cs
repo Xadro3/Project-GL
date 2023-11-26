@@ -20,47 +20,15 @@ public class ArcLayout : MonoBehaviour
 
     void Start()
     {
-
+        cardCount = transform.childCount;
     }
 
 
     void Update()
     {
-        if (cardCount == transform.childCount)
-        {
-            SetSortingOrder();
-        }
-        else
-        {
-            cardCount = transform.childCount;
-        }
-        
         //ArrangeCardsInArc();
     }
 
-    private void SetSortingOrder()
-    {
-        for (int i = 0; i < cardCount; i++)
-        {
-            Transform card = transform.GetChild(i);
-            if (card.GetComponent<Card>())
-            {
-                card.GetComponent<SpriteRenderer>().sortingOrder = i;
-                SpriteRenderer[] spriteRenderers = card.GetComponentsInChildren<SpriteRenderer>();
-                MeshRenderer[] meshRenderers = card.GetComponentsInChildren<MeshRenderer>();
-                foreach (SpriteRenderer renderer in spriteRenderers)
-                {
-                    renderer.sortingOrder = card.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                }
-                foreach (MeshRenderer renderer in meshRenderers)
-                {
-                    renderer.sortingOrder = card.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                }
-            }
-            
-        }
-        
-    }
 
     void ArrangeCardsInArc()
     {

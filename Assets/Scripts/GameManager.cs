@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public RectTransform playerHand;
     public List<Slot> playerHandSlots;
+    public int playerHandMax;
     private Transform playerHandSlot;
 
     public List<Enemy> wagons;
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Transform discardPileParent;
 
     public List<Card> graveyardPile;
+
+    public bool isPauseMenuActive = false;
 
     TurnMaster turnMaster;
     PlayerHealthManager player;
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DrawCards();
+        SetDamage(wagons[0].GenerateDamage());
     }
 
     // Update is called once per frame
@@ -64,24 +68,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PauseGame(bool b)
+    {
+        isPauseMenuActive = b;
+    }
+
     public void DrawCards()
-    {        
-        for (int i = 0; i < playerHandSlots.Count; i++)
+    {
+        int cardsInHand = CountOccupiedHandSlots();
+        if (cardsInHand < playerHandMax)
         {
-            //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
-            if (deck.deck.Count <= (discardPile.Count + CountOccupiedHandSlots() + graveyardPile.Count))
+            // drawing cards up to playerHandMax
+            for (int i = 0; i < (playerHandMax - cardsInHand); i++)
             {
-                Shuffle();
-            }
-            if (!playerHandSlots[i].hasCard)
-            {
-                Card randomCard = deck.Draw();
-                //randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHandSlots[i].transform);
-                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
-                deck.RemoveCard(randomCard);
-                playerHandSlots[i].HasCard(true);
+                //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
+                if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count))
+                {
+                    Shuffle();
+                }
+                if (!playerHandSlots[i].hasCard)
+                {
+                    Card randomCard = deck.Draw();
+                    randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
+                    deck.RemoveCard(randomCard);
+                    playerHandSlots[i].HasCard(true);
+                }
             }
         }
+        
+        
     }
 
     public void Shuffle()
@@ -140,9 +155,9 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        turnMaster.ResolveTurn(wagons.ToArray(), activeCardSlots.ToArray());
+        turnMaster.ResolveTurn(wagons, activeCardSlots);
         Debug.Log("Resolving the turn!");
-        wagons[0].GenerateRandomDamage();
+        SetDamage(wagons[0].GenerateDamage());
         ResetEnergy();
         DrawCards();
         if (wagons[0].UpdateTimer(1))
@@ -156,9 +171,16 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SetDamage(Dictionary<string, int> damageStats)
+    {
+        turnMaster.SetDamage(damageStats);
+    }
+
     int CountOccupiedHandSlots()
     {
         int anzAvailableHandSlots = 0;
+        int currentCards = 0;
+        currentCards = playerHand.transform.childCount;
 
         for (int i = 0; i < playerHandSlots.Count; i++)
         {

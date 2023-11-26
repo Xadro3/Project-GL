@@ -11,30 +11,35 @@ public class Enemy : MonoBehaviour
     public TextMeshProUGUI roundTimerText;
     public TextMeshProUGUI actionText;
 
-    private int alphaDamageMin = 1;
-    [Range(2, 50)]
-    public int alphaDamageMax;
-    private int betaDamageMin = 1;
-    [Range(2, 50)]
-    public int betaDamageMax;
-    private int gammaDamageMin = 1;
-    [Range(2, 50)]
-    public int gammaDamageMax;
+    private int alphaMin = 1;
+    [Range(1, 50)]
+    public int alphaMax;
+    private int betaMin = 1;
+    [Range(1, 50)]
+    public int betaMax;
+    private int gammaMin = 1;
+    [Range(1, 50)]
+    public int gammaMax;
 
     public List<GameConstants.radiationTypes> damageTypes;
 
+    public Dictionary<string, int> damageStats = new Dictionary<string, int>();
+
+    GameManager gm;
+
     private void Start()
     {
-        roundTimerText.text = roundTimer.ToString();
-        GenerateRandomDamage();
+        roundTimerText.text = "Time left: " + roundTimer.ToString();
+        damageStats[damageTypes[0].ToString()] = 0;
+        damageStats[damageTypes[1].ToString()] = 0;
+        damageStats[damageTypes[2].ToString()] = 0;
     }
 
-    // Damage Type currently is selected randomly
     
     public bool UpdateTimer(int i)
     {
         roundTimer -= i;
-        roundTimerText.text = roundTimer.ToString();
+        roundTimerText.text = "Time left: " + roundTimer.ToString();
         if (roundTimer <= 0)
         {
             return true;
@@ -45,32 +50,44 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GenerateRandomDamage()
+    public Dictionary<string, int> GenerateDamage()
     {
-        // select random type
-        //damageTypes.Add((GameConstants.radiationTypes)Random.Range(0, 3));
 
         for (int i = 0; i < damageTypes.Count; i++)
         {
-            if (damageTypes[i].ToString() == "Alpha")
+            switch (damageTypes[i])
             {
-                damageValue = Random.Range(alphaDamageMin, alphaDamageMax + 1);
-                break;
-            }
-            if (damageTypes[i].ToString() == "Beta")
-            {
-                damageValue = Random.Range(betaDamageMin, betaDamageMax + 1);
-                break;
-            }
-            if (damageTypes[i].ToString() == "Gamma")
-            {
-                damageValue = Random.Range(gammaDamageMin, gammaDamageMax + 1);
-                break;
+                case GameConstants.radiationTypes.Alpha:
+                    damageValue = Random.Range(alphaMin, alphaMax + 1);
+                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    break;
+
+                case GameConstants.radiationTypes.Beta:
+                    damageValue = Random.Range(betaMin, betaMax + 1);
+                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    break;
+
+                case GameConstants.radiationTypes.Gamma:
+                    damageValue = Random.Range(gammaMin, gammaMax + 1);
+                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    break;
+
+                case GameConstants.radiationTypes.Pure:
+                    damageValue = Random.Range(0,0);
+                    break;
             }
         }
-
-        actionText.text = damageTypes[0].ToString() + " " + damageValue.ToString();
-
+        UpdateDamageText();
+        return damageStats;
     }
 
+    public void UpdateDamageText()
+    {
+        actionText.text = "";
+        foreach (string damageType in damageStats.Keys)
+        {
+            int damageValue = damageStats[damageType];
+            actionText.text += $"{damageType}: {damageValue}\n";
+        }
+    }
 }
