@@ -30,12 +30,17 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         roundTimerText.text = "Time left: " + roundTimer.ToString();
-        damageStats[damageTypes[0].ToString()] = 0;
-        damageStats[damageTypes[1].ToString()] = 0;
-        damageStats[damageTypes[2].ToString()] = 0;
+        populateDamage();
     }
 
-    
+    private void populateDamage()
+    {
+        foreach (GameConstants.radiationTypes damageType in damageTypes)
+        {
+            damageStats.TryAdd(damageType.ToString(), 0);
+        }
+    }
+
     public bool UpdateTimer(int i)
     {
         roundTimer -= i;
