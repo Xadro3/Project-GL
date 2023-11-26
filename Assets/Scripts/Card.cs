@@ -66,15 +66,14 @@ public class Card : MonoBehaviour
     {
         durabilityCurrent -= damage;
         UpdateDisplay();
+        
         if (durabilityCurrent <= 0)
         {
             CardMovementHandler.MoveToDiscardPile();
-            return Mathf.Abs(durabilityCurrent);
         }
-        else
-        {
-            return 0;
-        }
+
+        return durabilityCurrent;
+
     }
 
     public void BackInPlay(Transform newParent)

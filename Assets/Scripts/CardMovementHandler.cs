@@ -75,9 +75,9 @@ public class CardMovementHandler : MonoBehaviour
         activeCardSlot.HasCard(false);
         SetNewParent(gm.discardPileParent);
         SetPosition(gm.discardPileParent);
-        //card.SetWasPlayed(false);
+        card.SetWasPlayed(false);
         card.SetActive(false);
-        //wasPlayed = false;
+        wasPlayed = false;
     }
 
     public void SetNewParent(Transform parent)

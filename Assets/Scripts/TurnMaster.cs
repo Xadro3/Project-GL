@@ -39,7 +39,6 @@ public class TurnMaster : MonoBehaviour
                     foundCard = true;
                     Card card = activeCardSlot.GetComponentInChildren<Card>();
                     bool isAffected = false;
-                    Debug.Log(card.gameObject.name + " wurde gefunden");
                     card.SetWasPlayed(true);
 
                     // Check if wagon damage type affects card protection type
@@ -49,13 +48,24 @@ public class TurnMaster : MonoBehaviour
                         {
                             isAffected = true;
                             int damageValue = wagonDamageStats[radiationType.ToString()];
+                            Debug.Log(wagon.name + " will deal: " + wagonDamageStats[radiationType.ToString()] + " of " + radiationType.ToString());
                             wagonDamageStats[radiationType.ToString()] = card.AdjustDurability(damageValue);
                             card.UpdateDisplay();
 
-                            if (wagonDamageStats[radiationType.ToString()] == 0)
+
+                            if (wagonDamageStats[radiationType.ToString()] < 0)
                             {
+                                Debug.Log("I killed a card with overkill damage. " + "Damage type: " + radiationType.ToString() + " Damage left: " + wagonDamageStats[radiationType.ToString()]);
+                                wagonDamageStats[radiationType.ToString()] = Mathf.Abs(wagonDamageStats[radiationType.ToString()]);
                                 break;
                             }
+                            if (wagonDamageStats[radiationType.ToString()] >= 0)
+                            {
+                                Debug.Log("No damage value left of damage type: " + radiationType.ToString());
+                                wagonDamageStats[radiationType.ToString()] = 0;
+
+                            }
+
                         }
                     }
                 }
