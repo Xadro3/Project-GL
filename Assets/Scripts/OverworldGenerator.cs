@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverworldGenerator : MonoBehaviour
 {
-    public GameObject[] nodes;
+    public List<GameObject> nodes;
     public int noShops;
     public int noEvents;
     public int noEncounters;
@@ -12,58 +12,53 @@ public class OverworldGenerator : MonoBehaviour
 
     private void Start()
     {
-         nodes = GameObject.FindGameObjectsWithTag("Node");
         GenerateMap();
     }
+
     public void GenerateMap()
     {
-        int setShops = 0;
-        int setEvents = 0;
-        int setEncounters = 0;
-        int setWorkshops = 0;
         
-        
-        if(noShops+noEvents+noEncounters+noWorkshops <= nodes.Length)
+        Dictionary<int, int> countMap = new Dictionary<int, int>();
+        countMap.Add(0, 0);
+        countMap.Add(1, 0);
+        countMap.Add(2, 0);
+        countMap.Add(3, 0);
+        int[] maxOccurrences = new int[] { noShops, noEvents, noEncounters, noWorkshops };
+
+        if (noShops + noEvents + noEncounters + noWorkshops <= nodes.Count)
         {
-            noEncounters = noEncounters-( nodes.Length - (noShops + noEvents + noEncounters + noWorkshops));
+            noEncounters = noEncounters - (nodes.Count - (noShops + noEvents + noEncounters + noWorkshops));
         }
 
-        if(noShops + noEvents + noEncounters + noWorkshops > nodes.Length)
+        if (noShops + noEvents + noEncounters + noWorkshops > nodes.Count)
         {
-            noEncounters = (noShops + noEvents + noWorkshops) - nodes.Length;
+            noEncounters = (noShops + noEvents + noWorkshops) - nodes.Count;
         }
 
-       
-        foreach (GameObject node in nodes){
-            if (setShops <= noShops)
+
+        for(int i=0;i<=noShops+noEvents+noWorkshops;i++)
+        {
+            int randomNumber;
+            do
             {
-                node.GetComponent<Node>().eventType = Random.Range(1, 4);
-                node.GetComponent<Node>().DisplayNode();
-                setShops++;
-                continue;
+                randomNumber = Random.Range(0, 4);
+
+            } while (countMap[randomNumber] > maxOccurrences[randomNumber]);
+
+            nodes[i].GetComponent<Node>().eventType = randomNumber;
+            nodes[i].GetComponent<Node>().DisplayNode();
+            Debug.Log(randomNumber);
+
+            if (countMap.ContainsKey(randomNumber)){
+                countMap[randomNumber]++;
             }
-            if (setEvents <= noEvents)
+            else
             {
-                node.GetComponent<Node>().eventType = Random.Range(3, 4);
-                node.GetComponent<Node>().DisplayNode();
-                setEvents++;
-                continue;
+                countMap[randomNumber] = 1;
             }
-            if (setEncounters <= noEncounters)
-            {
-                node.GetComponent<Node>().eventType = Random.Range(4, 4);
-                node.GetComponent<Node>().DisplayNode();
-                setEncounters++;
-                continue;
-            }
-            if (setWorkshops <= noWorkshops)
-            {
-                node.GetComponent<Node>().eventType = Random.Range(2, 4);
-                node.GetComponent<Node>().DisplayNode();
-                setWorkshops++;
-                continue;
-            }
+
         }
+
     }
 
 }
