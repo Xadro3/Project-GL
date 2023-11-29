@@ -18,4 +18,8 @@ MonoBehaviour:
   cost: 1
   durability: 0
   repair: 0
-  protectionTypes: 00000000
+  protectionTypes: 
+  effect: 0
+  ability: 0
+  duration: 0
+  cardInfo: 
