@@ -18,6 +18,7 @@ public class SO_Card : ScriptableObject
 
     public bool effect;
     public bool ability;
+    public int duration;
     public string cardInfo;
 
 
