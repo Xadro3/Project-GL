@@ -16,7 +16,11 @@ public class SO_Card : ScriptableObject
     
     public List<GameConstants.radiationTypes> protectionTypes;
 
-    public string info;
+    public bool effect;
+    public string effectInfo;
+    public string cardInfo;
+
+
 
 
 }
