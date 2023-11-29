@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: Brom
   m_EditorClassIdentifier: 
-  name: Brom
+  name: "Broml\xF6sung"
   description: "L\xF6st Aluminium auf."
   artwork: {fileID: 21300000, guid: e02a3dea9eeeef2419bdc085270f4149, type: 3}
   cost: 1
   durability: 0
   repair: 0
-  protectionTypes: 
+  protectionTypes: 00000000
