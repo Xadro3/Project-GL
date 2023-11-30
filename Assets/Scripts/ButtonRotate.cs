@@ -9,6 +9,11 @@ public class ButtonRotate : MonoBehaviour
 
     public void RotateKnopf()
     {
-        drehKnopf.transform.Rotate(0f, 0f, -42);
+        drehKnopf.transform.Rotate(0f, 0f, -84);
+    }
+
+    public void RotateKnopfBack()
+    {
+        drehKnopf.transform.Rotate(0f, 0f, 84);
     }
 }
