@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: Peltier_Generator
+  m_Name: Nachschub
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  artwork: {fileID: 21300000, guid: 6c3f7e1707f960941974a78ebddbab81, type: 3}
+  name: Nachschub
+  description: Wenn ausgespielt, ziehe 1 Karte.
+  artwork: {fileID: 0}
   cost: 0
   durability: 0
   repair: 0
   protectionTypes: 
+  effect: 1
+  effectTypes: 06000000
+  ability: 1
+  duration: 0
+  entsorgen: 0
+  cardInfo: 

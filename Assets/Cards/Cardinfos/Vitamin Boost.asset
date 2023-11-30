@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: Dampfmaschine
+  m_Name: Vitamin Boost
   m_EditorClassIdentifier: 
-  name: Dampfmaschine
-  description: Im sure it does something.
-  artwork: {fileID: 21300000, guid: 65123897a671f0a4db5f07b6580dceeb, type: 3}
-  cost: 0
+  name: Vitamin Boost
+  description: "Senkt eintreffenden Strahlenschaden f\xFCr 1 Runde um 25%"
+  artwork: {fileID: 21300000, guid: b5045c2483c63b94c91ef79eb85d41ff, type: 3}
+  cost: 1
   durability: 0
   repair: 0
-  protectionTypes: 
+  protectionTypes: 000000000100000002000000
+  effect: 1
+  effectTypes: 06000000
+  ability: 1
+  duration: 1
+  entsorgen: 0
+  cardInfo: 

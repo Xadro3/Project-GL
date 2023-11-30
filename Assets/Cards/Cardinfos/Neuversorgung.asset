@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: Shinkansen_Shuffle
+  m_Name: Neuversorgung
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  artwork: {fileID: 21300000, guid: 0c9813d925414464e9b1b79cb3f5d978, type: 3}
+  name: Neuversorgung
+  description: Wirf 2 Karten von deiner Hand ab, um 2 neue zu ziehen
+  artwork: {fileID: 21300000, guid: 1c041a2d6d69ded48bd047ca0121f62e, type: 3}
   cost: 0
   durability: 0
   repair: 0
   protectionTypes: 
+  effect: 1
+  effectTypes: 06000000
+  ability: 1
+  duration: 0
+  entsorgen: 0
+  cardInfo: 

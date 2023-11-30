@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: Wasserbad
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: Wasserbad
+  description: "Verringert die austretende Strahlung f\xFCr 2 Runden um 50%"
   artwork: {fileID: 21300000, guid: fb8c77d646289524cb0a6ee05bb101fd, type: 3}
-  cost: 0
+  cost: 2
   durability: 0
   repair: 0
-  protectionTypes: 
+  protectionTypes: 000000000100000002000000
+  effect: 1
+  effectTypes: 07000000
+  ability: 1
+  duration: 2
+  entsorgen: 0
+  cardInfo: 

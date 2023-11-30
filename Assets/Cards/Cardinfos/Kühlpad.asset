@@ -10,12 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: "Relativit\xE4t"
+  m_Name: "K\xFChlpad"
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  artwork: {fileID: 0}
-  cost: 0
+  name: "K\xFChlpad"
+  description: Senkt den Schaden bei voller Betaleiste um 50%, wird nach Benutzung
+    entsorgt
+  artwork: {fileID: 21300000, guid: c1d59abc82dabf9438ddcaba3d033af5, type: 3}
+  cost: 2
   durability: 0
   repair: 0
   protectionTypes: 
+  effect: 1
+  effectTypes: 06000000
+  ability: 1
+  duration: 100
+  entsorgen: 1
+  cardInfo: 

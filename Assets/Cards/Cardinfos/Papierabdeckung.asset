@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: Isotopenbatterie
+  m_Name: Papierabdeckung
   m_EditorClassIdentifier: 
-  name: Isotopenbatterie
-  description: Verbraucht jeweils 1 Punkt der Alpha- und Betaleiste und erzeugt 2
-    Energie
-  artwork: {fileID: 21300000, guid: be13178618924d341bf09c8696a51f6f, type: 3}
+  name: Papierabdeckung
+  description: "Verhindert Alphastrahlen austritt f\xFCr eine Runde"
+  artwork: {fileID: 21300000, guid: 1c007928813c7d9459a0f722faf9e90b, type: 3}
   cost: 1
-  durability: 0
+  durability: 1
   repair: 0
-  protectionTypes: 
+  protectionTypes: 00000000
   effect: 1
-  effectTypes: 06000000
-  ability: 1
+  effectTypes: 08000000
+  ability: 0
   duration: 0
   entsorgen: 0
   cardInfo: 
