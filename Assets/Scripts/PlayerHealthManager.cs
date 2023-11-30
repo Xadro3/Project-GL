@@ -21,8 +21,11 @@ public class PlayerHealthManager : MonoBehaviour
     public HealthBar gammaBar;
     public HealthBar healthBar;
 
+    GameManager gm;
+
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         alphaBar.SetMaxHealth(alphaResistanceMax);
         alphaBar.SetHealth(alphaResistance);
         betaBar.SetMaxHealth(betaResistanceMax);
@@ -86,12 +89,14 @@ public class PlayerHealthManager : MonoBehaviour
         if (betaResistance >= betaResistanceMax)
         {
             ApplyDamage(3, "Pure");
-            betaResistance = 0;
         }
         if (gammaResistance >= gammaResistanceMax)
         {
             Debug.Log("Rework Gamma Konsequenzes!");
-            gammaResistance = 0;
+            //gammaResistance = 0;
+            gm.SetCardCostIncrease(1);
+            gm.playerRessourceMax -= 1;
+            gm.playerHandMax -= 1;
         }
     }
 

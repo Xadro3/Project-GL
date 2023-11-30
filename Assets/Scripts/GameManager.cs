@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     [Range(2,10)]
     public float waitTimer;
 
+    private int costIncrease = 0;
+
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
     {
         if ((playerRessourceCurrent - card.cost) >= 0)
         {
-            playerRessourceCurrent -= card.cost;
+            playerRessourceCurrent -= card.cost + costIncrease;
             UpdatePlayerRessource();
             return true;
         }
@@ -191,6 +193,11 @@ public class GameManager : MonoBehaviour
     public void RemoveCardFromEncounter(Card card)
     {
         deck.RemoveCardFromPlayerDeck(card);
+    }
+
+    public void SetCardCostIncrease(int increase)
+    {
+        costIncrease += increase;
     }
 
 }
