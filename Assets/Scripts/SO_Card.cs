@@ -15,10 +15,10 @@ public class SO_Card : ScriptableObject
     public int repair;
     
     public List<GameConstants.radiationTypes> protectionTypes;
-
+    public List<GameConstants.cardTypes> cardTypes;
     public bool effect;
     public List<GameConstants.effectTypes> effectTypes;
-
+    
     public bool ability;
     public int duration;
     public bool entsorgen;

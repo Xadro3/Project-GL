@@ -20,4 +20,10 @@ public static class GameConstants
         AbilityEnemy,
         Immunity
     }
+
+    public enum cardTypes
+    {
+        Aggro,
+        Control
+    }
 }

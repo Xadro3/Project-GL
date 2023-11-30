@@ -17,11 +17,13 @@ public class Card : MonoBehaviour
     public bool ability;
     public int duration;
     public bool effect;
+    public bool entsorgen;
     public List<GameConstants.effectTypes> effectTypes;
 
     private SO_Card cardInfo;
 
     public List<GameConstants.radiationTypes> protectionTypes;
+    public List<GameConstants.cardTypes> cardTypes;
 
     public bool wasPlayed = false;
 
@@ -43,7 +45,8 @@ public class Card : MonoBehaviour
         durabilityCurrent = durability;
         repair = cardInfo.repair;
         protectionTypes = cardInfo.protectionTypes;
-        
+        entsorgen = cardInfo.entsorgen;
+        cardTypes = cardInfo.cardTypes;
 
     }
 
@@ -103,6 +106,11 @@ public class Card : MonoBehaviour
         this.durabilityCurrent += 2;
         UpdateDisplay();
         Debug.Log(gameObject.name + " got buffed, new durability: " + durabilityCurrent);
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
 }
