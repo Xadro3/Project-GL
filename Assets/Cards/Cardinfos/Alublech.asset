@@ -19,3 +19,8 @@ MonoBehaviour:
   durability: 5
   repair: 0
   protectionTypes: 0000000001000000
+  effect: 1
+  effectTypes: 01000000
+  ability: 0
+  duration: 0
+  cardInfo: 

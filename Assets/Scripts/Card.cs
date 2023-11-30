@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public event Action<Card> OnDurabilityZero;
+
 
     public string cardName;
     public int cost;
@@ -12,6 +14,12 @@ public class Card : MonoBehaviour
     public int durabilityCurrent;
     public int repair;
     public int repairCurrent;
+    public bool ability;
+    public int duration;
+    public bool effect;
+    public List<GameConstants.effectTypes> effectTypes;
+
+    private SO_Card cardInfo;
 
     public List<GameConstants.radiationTypes> protectionTypes;
 
@@ -21,35 +29,28 @@ public class Card : MonoBehaviour
     CardDisplay cardDisplay;
     CardMovementHandler CardMovementHandler;
 
-    // Constructor
-    public Card(string cardName, int cardCost, int cardDurability, int cardRepair)
-    {
-        this.cardName = cardName;
-        this.cost = cardCost;
-        this.durability = cardDurability;
-        this.repair = cardRepair;
-    }
-
-
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
-        //cardProtectionType = (ProtectionType)Random.Range(0, 3);
         cardDisplay = GetComponentInParent<CardDisplay>();
-        cost = cardDisplay.card.cost;
-        durability = cardDisplay.card.durability;
+        cardInfo = cardDisplay.card;
+        effectTypes = cardInfo.effectTypes;
+        effect = cardInfo.effect;
+        duration = cardInfo.duration;
+        cost = cardInfo.cost;
+        durability = cardInfo.durability;
         durabilityCurrent = durability;
-        repair = cardDisplay.card.repair;
-        protectionTypes = cardDisplay.card.protectionTypes;
+        repair = cardInfo.repair;
+        protectionTypes = cardInfo.protectionTypes;
+        
+
     }
 
     private void Start()
     {
 
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -69,6 +70,7 @@ public class Card : MonoBehaviour
         
         if (durabilityCurrent <= 0)
         {
+            OnDurabilityZero?.Invoke(this);
             CardMovementHandler.MoveToDiscardPile();
         }
 
@@ -82,6 +84,7 @@ public class Card : MonoBehaviour
         durabilityCurrent = durability;
         repairCurrent = repair;
         cardDisplay.UpdateDisplay();
+        OnDurabilityZero = null;
     }
 
     public void SetWasPlayed(bool b)
@@ -93,6 +96,13 @@ public class Card : MonoBehaviour
     public void SetActive(bool b)
     {
         gameObject.SetActive(b);
+    }
+
+    public void Buff()
+    {
+        this.durabilityCurrent += 2;
+        UpdateDisplay();
+        Debug.Log(gameObject.name + " got buffed, new durability: " + durabilityCurrent);
     }
 
 }

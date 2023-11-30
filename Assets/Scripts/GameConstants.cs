@@ -7,4 +7,14 @@ public static class GameConstants
         Gamma,
         Pure
     }
+
+    public enum effectTypes
+    {
+        BruchTimer,
+        BruchBuff,
+        AbwerfenPlayer,
+        AbwerfenEnemy,
+        Schichtung,
+        Robust
+    }
 }
