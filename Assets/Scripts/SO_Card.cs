@@ -21,6 +21,7 @@ public class SO_Card : ScriptableObject
 
     public bool ability;
     public int duration;
+    public bool entsorgen;
     public string cardInfo;
 
 

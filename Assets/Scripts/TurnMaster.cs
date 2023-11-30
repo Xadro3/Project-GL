@@ -112,6 +112,15 @@ public class TurnMaster : MonoBehaviour
 
                     case GameConstants.effectTypes.Robust:
                         break;
+
+                    case GameConstants.effectTypes.AbilityPlayer:
+                        break;
+
+                    case GameConstants.effectTypes.AbilityEnemy:
+                        break;
+
+                    case GameConstants.effectTypes.Immunity:
+                        break;
                 }
             }
         }
