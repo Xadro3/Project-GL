@@ -15,6 +15,9 @@ public static class GameConstants
         AbwerfenPlayer,
         AbwerfenEnemy,
         Schichtung,
-        Robust
+        Robust,
+        AbilityPlayer,
+        AbilityEnemy,
+        Immunity
     }
 }
