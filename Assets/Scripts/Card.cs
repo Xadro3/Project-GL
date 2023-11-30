@@ -110,7 +110,8 @@ public class Card : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+        Debug.Log("Destoryed!");
+        gm.discardPile.Remove(this);
     }
 
 }

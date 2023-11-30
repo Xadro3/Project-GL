@@ -36,13 +36,23 @@ public class Deck : MonoBehaviour
         return playerDeck[Random.Range(0, playerDeck.Count)];
     }
 
-    public void RemoveCard(Card card)
+    public void RemoveCardFromPlayerDeck(Card card)
     {
         playerDeck.Remove(card);
     }
 
-    public void AddCard(Card card)
+    public void RemoveCardFromDeck(Card card)
+    {
+        deck.Remove(card);
+    }
+
+    public void AddCardToPlayerDeck(Card card)
     {
         playerDeck.Add(card);
+    }
+
+    public void AddCardToDeck(Card card)
+    {
+        deck.Add(card);
     }
 }

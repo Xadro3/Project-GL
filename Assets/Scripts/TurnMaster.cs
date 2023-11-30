@@ -25,6 +25,7 @@ public class TurnMaster : MonoBehaviour
 
     public void ResolveTurn(List<Enemy> wagons, List<Slot> activeCardSlots)
     {
+        cardsInPlay.Clear();
         foreach (Slot activeCardSlot in activeCardSlots)
         {
             if (activeCardSlot.hasCard)
@@ -123,6 +124,10 @@ public class TurnMaster : MonoBehaviour
                         break;
                 }
             }
+        }
+        if (card.entsorgen)
+        {
+            Destroy(card.gameObject);
         }
     }
 

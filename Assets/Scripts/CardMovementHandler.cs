@@ -80,6 +80,11 @@ public class CardMovementHandler : MonoBehaviour
         wasPlayed = false;
     }
 
+    public void MoveToGraveyardPide()
+    {
+
+    }
+
     public void SetNewParent(Transform parent)
     {
         currentSlot = parent.transform;

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Transform discardPileParent;
 
     public List<Card> graveyardPile;
+    public Transform graveyardPileParent;
 
     public bool isGamePauseActive = false;
     public Transform interactionBlock;
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
                 Card randomCard = deck.Draw();
                 //Debug.Log("I just drew the card: " + randomCard);
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
-                deck.RemoveCard(randomCard);
+                deck.RemoveCardFromPlayerDeck(randomCard);
             }
         }
         
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (Card card in discardPile)
             {
-                deck.AddCard(card);
+                deck.AddCardToPlayerDeck(card);
                 card.BackInPlay(deck.transform);
             }
             discardPile.Clear();
@@ -185,6 +186,11 @@ public class GameManager : MonoBehaviour
     {
         int currentCards = playerHand.transform.childCount;
         return currentCards;
+    }
+
+    public void RemoveCardFromEncounter(Card card)
+    {
+        deck.RemoveCardFromPlayerDeck(card);
     }
 
 }
