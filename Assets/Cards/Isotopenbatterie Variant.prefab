@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5465537923962665041, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
+      propertyPath: cardInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: b5ca219549085324d8df78c756e5ae9e, type: 2}
     - target: {fileID: 1683418508922787866, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: card
       value: 

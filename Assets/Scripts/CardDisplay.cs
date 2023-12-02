@@ -6,7 +6,7 @@ using TMPro;
 
 public class CardDisplay : MonoBehaviour
 {
-    public SO_Card card;
+    private Card card;
 
     public TextMeshPro nameText;
     public TextMeshPro descriptionText;
@@ -20,15 +20,16 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        card = GetComponentInParent<Card>();
         UpdateDisplay();
     }
 
     public void UpdateDisplay()
     {
-        nameText.text = card.name;
-        descriptionText.text = card.description;
+        nameText.text = card.cardInfo.name;
+        descriptionText.text = card.cardInfo.description;
 
-        artworkImage.sprite = card.artwork;
+        artworkImage.sprite = card.cardInfo.artwork;
 
         costText.text = card.cost.ToString();
         durabilityText.text = card.durability.ToString();

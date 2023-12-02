@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84ebf6dc0796b348819bd6c828dc70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
+  card: {fileID: -5465537923962665041}
   nameText: {fileID: 8811165738634135150}
   descriptionText: {fileID: 5039187264195345074}
   artworkImage: {fileID: 5212602858896972159}
@@ -1172,14 +1172,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4772f6f435cea743bf7fe903fb6e144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
   cardName: 
+  cardArchetypes: 
+  protectionTypes: 
   cost: 0
   durability: 0
   durabilityCurrent: 0
   repair: 0
   repairCurrent: 0
-  protectionTypes: 
   wasPlayed: 0
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 0
+  bruch: 0
+  effectValues: 
+  effectTypes: 
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
 --- !u!114 &3170304551409798378
 MonoBehaviour:
   m_ObjectHideFlags: 0

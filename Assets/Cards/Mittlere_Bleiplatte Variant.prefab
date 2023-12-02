@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5465537923962665041, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
+      propertyPath: cardInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fc8894172e23e543943b96728e0f7d1, type: 2}
     - target: {fileID: 1683418508922787866, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: card
       value: 
@@ -94,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8729641152444665086, guid: b2c79b335e4ede24b94299c5ba9b3c53, type: 3}
       propertyPath: m_Name
-      value: Nuttkere_Bleiplatte Variant
+      value: Mittlere_Bleiplatte Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

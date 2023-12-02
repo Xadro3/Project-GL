@@ -5,45 +5,75 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public event Action<Card> OnDurabilityZero;
-    private SO_Card cardInfo;
+    public SO_Card cardInfo;
+    GameManager gm;
+    CardDisplay cardDisplay;
+    CardMovementHandler CardMovementHandler;
 
-    public string cardName;
+
+    //Events
+    public event Action<Card> OnDurabilityZero;
+
+
+    //CardInfo
+    public List<GameConstants.cardTypes> cardArchetypes;
+    public List<GameConstants.radiationTypes> protectionTypes;
     public int cost;
     public int durability;
     public int durabilityCurrent;
     public int repair;
     public int repairCurrent;
-    public bool ability;
-    public int duration;
-    public bool effect;
-    public bool entsorgen;
-    public List<GameConstants.effectTypes> effectTypes;
-    public List<GameConstants.radiationTypes> protectionTypes;
-    public List<GameConstants.cardTypes> cardTypes;
-
     public bool wasPlayed = false;
 
-    GameManager gm;
-    CardDisplay cardDisplay;
-    CardMovementHandler CardMovementHandler;
+
+    //Abilities
+    public bool ability;
+    public int duration;
+    public List<GameConstants.abilityTargets> abilityTypes;
+
+
+    //Effects
+    public bool effect;
+    public bool bruch;
+    public List<int> effectValues;
+    public List<GameConstants.effectTypes> effectTypes;
+
+
+    //Immunities
+    public bool immunity;
+    public List<GameConstants.radiationTypes> immunityTypes;
+
+
+    //Specials
+    public bool entsorgen;
+
 
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         cardDisplay = GetComponentInParent<CardDisplay>();
-        cardInfo = cardDisplay.card;
-        effectTypes = cardInfo.effectTypes;
-        effect = cardInfo.effect;
-        duration = cardInfo.duration;
+        
+        cardArchetypes = cardInfo.cardArchetypes;
+        protectionTypes = cardInfo.protectionTypes;
         cost = cardInfo.cost;
         durability = cardInfo.durability;
         durabilityCurrent = durability;
         repair = cardInfo.repair;
-        protectionTypes = cardInfo.protectionTypes;
+        repairCurrent = repair;
+
+        ability = cardInfo.ability;
+        duration = cardInfo.duration;
+        abilityTypes = cardInfo.abilityTypes;
+
+        effect = cardInfo.effect;
+        bruch = cardInfo.bruch;
+        effectValues = cardInfo.effectValues;
+        effectTypes = cardInfo.effectTypes;
+
+        immunity = cardInfo.immunity;
+        immunityTypes = cardInfo.immunityTypes;
         entsorgen = cardInfo.entsorgen;
-        cardTypes = cardInfo.cardArchetypes;
 
     }
 
