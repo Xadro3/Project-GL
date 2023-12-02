@@ -933,6 +933,7 @@ MonoBehaviour:
   discardPile: []
   discardPileParent: {fileID: 1196039485}
   graveyardPile: []
+  graveyardPileParent: {fileID: 0}
   isGamePauseActive: 0
   interactionBlock: {fileID: 2016143250}
   wait: 0

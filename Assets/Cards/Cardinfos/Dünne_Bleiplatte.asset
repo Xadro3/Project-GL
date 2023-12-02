@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: "D\xFCnne_Bleiplatte"
   m_EditorClassIdentifier: 
-  name: 
+  name: "D\xFC.Bleiplatte"
   description: 
   artwork: {fileID: 21300000, guid: 1f858db2d9c4b494b8f6078892a17b29, type: 3}
-  cost: 0
-  durability: 0
+  cost: 1
+  durability: 4
   repair: 0
-  protectionTypes: 
+  cardArchetypes: 01000000
+  protectionTypes: 000000000100000002000000
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 1
+  bruch: 0
+  effectValues: 19000000
+  effectTypes: 03000000
+  immunity: 1
+  immunityTypes: 00000000
+  entsorgen: 0
+  cardInfo: 

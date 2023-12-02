@@ -16,12 +16,19 @@ MonoBehaviour:
   description: Verhindert Alpha- und Betastrahlen austritt
   artwork: {fileID: 21300000, guid: 2b42ae82ea13c4a48a1453a1f92ee2d4, type: 3}
   cost: 1
-  durability: 1
+  durability: 0
   repair: 0
-  protectionTypes: 0000000001000000
+  cardArchetypes: 00000000
+  protectionTypes: 
+  ability: 1
+  duration: 1
+  abilityTypes: 01000000
   effect: 1
-  effectTypes: 08000000
-  ability: 0
-  duration: 0
+  bruch: 0
+  effectValue: 0
+  effectValues: 
+  effectTypes: 04000000
+  immunity: 0
+  immunityTypes: 0000000001000000
   entsorgen: 0
   cardInfo: 

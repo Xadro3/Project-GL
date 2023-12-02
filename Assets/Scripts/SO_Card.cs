@@ -17,12 +17,13 @@ public class SO_Card : ScriptableObject
 
     public List<GameConstants.cardTypes> cardArchetypes;
     public List<GameConstants.radiationTypes> protectionTypes;
-    public bool effect;
-    public List<GameConstants.effectTypes> effectTypes;
     public bool ability;
-    public int abilityValue;
     public int duration;
-    public List<GameConstants.abilityTypes> abilityTypes;
+    public List<GameConstants.abilityTargets> abilityTypes;
+    public bool effect;
+    public bool bruch;
+    public List<int> effectValues;
+    public List<GameConstants.effectTypes> effectTypes;
     public bool immunity;
     public List<GameConstants.radiationTypes> immunityTypes;
     public bool entsorgen;

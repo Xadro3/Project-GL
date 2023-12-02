@@ -10,13 +10,30 @@ public static class GameConstants
 
     public enum effectTypes
     {
-        BruchTimer,
-        BruchBuff,
-        Schichtung,
-        Robust
+        DamageReductionFlat,
+        DamageReductionPercent,
+        RadiationReductionFlat,
+        RadiationReductionPercent,
+        RadiationBlock,
+        RadiationImmunity,
+        RadiationOrderChange,
+        ShieldRepair,
+        ShieldBuff,
+        ShieldDissolve,
+        ResistanceReductionFlat,
+        ResistanceReductionPercent,
+        ResistanceEffectReduction,
+        PlayerHealFlat,
+        PlayerHealPercent,
+        TimerReductionFlat,
+        DrawCard,
+        Discard,
+        EnergyGet,
+        EnergyCostReduction
+
     }
 
-    public enum abilityTypes
+    public enum abilityTargets
     {
         AbilityPlayer,
         AbilityEnemy,

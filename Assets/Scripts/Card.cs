@@ -6,7 +6,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public event Action<Card> OnDurabilityZero;
-
+    private SO_Card cardInfo;
 
     public string cardName;
     public int cost;
@@ -19,9 +19,6 @@ public class Card : MonoBehaviour
     public bool effect;
     public bool entsorgen;
     public List<GameConstants.effectTypes> effectTypes;
-
-    private SO_Card cardInfo;
-
     public List<GameConstants.radiationTypes> protectionTypes;
     public List<GameConstants.cardTypes> cardTypes;
 

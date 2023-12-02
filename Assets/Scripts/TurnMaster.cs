@@ -95,10 +95,10 @@ public class TurnMaster : MonoBehaviour
             {
                 switch (card.effectTypes[i])
                 {
-                    case GameConstants.effectTypes.BruchTimer:
+                    case GameConstants.effectTypes.TimerReductionFlat:
                         break;
 
-                    case GameConstants.effectTypes.BruchBuff:
+                    case GameConstants.effectTypes.Discard:
                         BuffCardsBehind(card);
                         break;
                 }

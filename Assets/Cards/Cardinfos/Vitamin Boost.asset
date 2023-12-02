@@ -18,10 +18,16 @@ MonoBehaviour:
   cost: 1
   durability: 0
   repair: 0
+  cardArchetypes: 00000000
   protectionTypes: 000000000100000002000000
-  effect: 1
-  effectTypes: 06000000
   ability: 1
   duration: 1
+  abilityTypes: 00000000
+  effect: 1
+  bruch: 0
+  effectValues: 19000000
+  effectTypes: 0b000000
+  immunity: 0
+  immunityTypes: 
   entsorgen: 0
   cardInfo: 

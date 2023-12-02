@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: "Salpeters\xE4ure"
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: "Salpeters\xE4ure"
+  description: "L\xF6st eine ausgew\xE4hlte Blei Blockkarte auf"
   artwork: {fileID: 21300000, guid: 6349ef1a9943cf8458f5ba75aaed6f17, type: 3}
-  cost: 0
+  cost: 1
   durability: 0
   repair: 0
-  protectionTypes: 
+  cardArchetypes: 01000000
+  protectionTypes: 02000000
+  ability: 1
+  duration: 1
+  abilityTypes: 02000000
+  effect: 1
+  bruch: 0
+  effectValues: 
+  effectTypes: 09000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  cardInfo: 
