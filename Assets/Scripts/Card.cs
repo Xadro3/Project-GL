@@ -46,7 +46,7 @@ public class Card : MonoBehaviour
         repair = cardInfo.repair;
         protectionTypes = cardInfo.protectionTypes;
         entsorgen = cardInfo.entsorgen;
-        cardTypes = cardInfo.cardTypes;
+        cardTypes = cardInfo.cardArchetypes;
 
     }
 

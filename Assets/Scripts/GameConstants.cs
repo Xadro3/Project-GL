@@ -12,13 +12,16 @@ public static class GameConstants
     {
         BruchTimer,
         BruchBuff,
-        AbwerfenPlayer,
-        AbwerfenEnemy,
         Schichtung,
-        Robust,
+        Robust
+    }
+
+    public enum abilityTypes
+    {
         AbilityPlayer,
         AbilityEnemy,
-        Immunity
+        AbilityShield
+
     }
 
     public enum cardTypes

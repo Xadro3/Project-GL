@@ -101,28 +101,8 @@ public class TurnMaster : MonoBehaviour
                     case GameConstants.effectTypes.BruchBuff:
                         BuffCardsBehind(card);
                         break;
-
-                    case GameConstants.effectTypes.AbwerfenPlayer:
-                        break;
-
-                    case GameConstants.effectTypes.AbwerfenEnemy:
-                        break;
-
-                    case GameConstants.effectTypes.Schichtung:
-                        break;
-
-                    case GameConstants.effectTypes.Robust:
-                        break;
-
-                    case GameConstants.effectTypes.AbilityPlayer:
-                        break;
-
-                    case GameConstants.effectTypes.AbilityEnemy:
-                        break;
-
-                    case GameConstants.effectTypes.Immunity:
-                        break;
                 }
+                break;
             }
         }
         if (card.entsorgen)
