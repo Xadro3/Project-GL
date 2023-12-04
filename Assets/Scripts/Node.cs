@@ -11,7 +11,11 @@ public class Node : MonoBehaviour
     public Sprite workshopSprite;
     public Sprite encounterSprite;
     SpriteRenderer sprite;
-    
+
+    private void Update()
+    {
+        DisplayNode();
+    }
     public void DisplayNode()
     {
         sprite = this.GetComponent<SpriteRenderer>();
@@ -37,9 +41,6 @@ public class Node : MonoBehaviour
     {
         switch (eventType)
         {
-            case 3:
-                SceneManager.LoadScene("Workshop");
-                break;
             case 0:
                 SceneManager.LoadScene("Shops");
                 break;
@@ -49,7 +50,12 @@ public class Node : MonoBehaviour
             case 2:
                 SceneManager.LoadScene("Encounter");
                 break;
+            case 3:
+                SceneManager.LoadScene("Workshop");
+                break;
+
         }
+            
     }
 
 
