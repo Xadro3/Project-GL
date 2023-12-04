@@ -13,7 +13,7 @@ public class OverworldSceneChanger : MonoBehaviour
             Debug.Log("click");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 1000))
             {
                 Debug.Log(hit.transform.name);
                 hit.collider.gameObject.GetComponent<Node>().EnterNode();
