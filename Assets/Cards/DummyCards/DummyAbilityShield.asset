@@ -26,7 +26,7 @@ MonoBehaviour:
   effect: 1
   bruch: 0
   effectValues: 02000000
-  effectTypes: 08000000
+  effectTypes: 09000000
   immunity: 0
   immunityTypes: 
   entsorgen: 0
