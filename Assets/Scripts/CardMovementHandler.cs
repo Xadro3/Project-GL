@@ -200,7 +200,7 @@ public class CardMovementHandler : MonoBehaviour
                             if (card.ability)
                             {
                                 HandleAbilityCard(slot);
-                                return;
+                                break;
                             }
 
                             if (!card.ability && !slot.hasCard && slot.CompareTag("ActiveCardSlot"))
@@ -231,7 +231,7 @@ public class CardMovementHandler : MonoBehaviour
                 //transform.position = initialHandSlot.position;
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
-                gm.RefundCardCost(card);
+                //gm.RefundCardCost(card);
             }
 
             SetSortingOrder(transform.GetSiblingIndex());
