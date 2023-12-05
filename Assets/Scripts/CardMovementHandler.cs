@@ -19,8 +19,8 @@ public class CardMovementHandler : MonoBehaviour
     private GameObject placeholder = null;
     private bool hasPlaceholder = false;
 
-    public Transform currentSlot;
-    public Slot activeCardSlot;
+    public Transform currentSlot = null;
+    public Slot activeCardSlot = null;
 
     GameManager gm;
     SortingGroup sortingGroup;
@@ -55,13 +55,13 @@ public class CardMovementHandler : MonoBehaviour
         
     }
 
-    public void DrawCardSetup(int handIndex, Transform parent)
+    public void DrawCardSetup(Transform parent)
     {
-        SetHandIndex(handIndex);
+        card.SetActive(true);
         SetNewParent(parent);
         SetPosition(parent);
         SetInitialHandslot(parent);
-        card.SetActive(true);
+        Debug.Log(gameObject.name + " was drawn.");
     }
 
     private void SetInitialHandslot(Transform newInitialHandslot)
@@ -71,8 +71,12 @@ public class CardMovementHandler : MonoBehaviour
 
     public void MoveToDiscardPile()
     {
+        if (activeCardSlot != null)
+        {
+            activeCardSlot.HasCard(false);
+        }
+        
         gm.discardPile.Add(card);
-        activeCardSlot.HasCard(false);
         SetNewParent(gm.discardPileParent);
         SetPosition(gm.discardPileParent);
         card.SetWasPlayed(false);
@@ -80,9 +84,19 @@ public class CardMovementHandler : MonoBehaviour
         wasPlayed = false;
     }
 
-    public void MoveToGraveyardPide()
+    public void MoveToGraveyardPile()
     {
+        if (activeCardSlot != null)
+        {
+            activeCardSlot.HasCard(false);
+        }
 
+        gm.graveyardPile.Add(card);
+        SetNewParent(gm.graveyardPileParent);
+        SetPosition(gm.graveyardPileParent);
+        card.SetWasPlayed(false);
+        card.SetActive(false);
+        wasPlayed = false;
     }
 
     public void SetNewParent(Transform parent)
@@ -96,12 +110,6 @@ public class CardMovementHandler : MonoBehaviour
         transform.position = newPosition.position;
         transform.rotation = newPosition.rotation;
     }
-
-    private void SetHandIndex(int newHandIndex)
-    {
-        handIndex = newHandIndex;
-    }
-
 
     //Mouse movement with card
     private void OnMouseDown()
@@ -148,9 +156,7 @@ public class CardMovementHandler : MonoBehaviour
                     }
                 }
             }
-
         }
-
     }
 
     private void OnMouseOver()
@@ -169,10 +175,8 @@ public class CardMovementHandler : MonoBehaviour
                     //initialHandSlot.GetComponent<Slot>().HasCard(true);
                     Debug.Log(gameObject);
                 }
-
             }
         }
-        
     }
 
     private void OnMouseUp()
@@ -189,17 +193,27 @@ public class CardMovementHandler : MonoBehaviour
                 {
                     Slot slot = collider.GetComponent<Slot>();
 
-                    if (slot != null && slot.CompareTag("ActiveCardSlot") && !slot.hasCard)
-                    {
+                    if (slot != null)
+                    {                        
                         if (gm.PayCardCost(card))
                         {
-                            activeCardSlot = slot;
-                            activeCardSlot.HasCard(true);
-                            SetNewParent(activeCardSlot.transform);
-                            SetPosition(activeCardSlot.transform);
-                            wasPlayed = true;
-                            SetSortingOrder(transform.GetSiblingIndex());
-                            //initialHandSlot.GetComponent<Slot>().HasCard(false);
+                            if (card.ability)
+                            {
+                                HandleAbilityCard(slot);
+                                return;
+                            }
+
+                            if (!card.ability && !slot.hasCard && slot.CompareTag("ActiveCardSlot"))
+                            {
+                                activeCardSlot = slot;
+                                activeCardSlot.HasCard(true);
+                                SetNewParent(activeCardSlot.transform);
+                                SetPosition(activeCardSlot.transform);
+                                wasPlayed = true;
+                                SetSortingOrder(transform.GetSiblingIndex());
+                                //initialHandSlot.GetComponent<Slot>().HasCard(false);
+                            }
+
                         }
                         else
                         {
@@ -208,7 +222,6 @@ public class CardMovementHandler : MonoBehaviour
                             this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
                             SetSortingOrder(0);
                         }
-
                     }
                 }
             }
@@ -218,6 +231,7 @@ public class CardMovementHandler : MonoBehaviour
                 //transform.position = initialHandSlot.position;
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+                gm.RefundCardCost(card);
             }
 
             SetSortingOrder(transform.GetSiblingIndex());
@@ -228,6 +242,53 @@ public class CardMovementHandler : MonoBehaviour
             }
         }
 
+    }
+
+    private void HandleAbilityCard(Slot slot)
+    {
+        switch (card.abilityTypes[0])
+        {
+            case GameConstants.abilityTargets.AbilityEnemy when slot.CompareTag("Enemy"):
+                Debug.Log("I want to play that on an Enemy");
+                wasPlayed = true;
+                card.SetWasPlayed(true);
+                break;
+
+            case GameConstants.abilityTargets.AbilityPlayer when slot.CompareTag("Player"):
+                Debug.Log("I want to play that on an Player");
+                wasPlayed = true;
+                card.SetWasPlayed(true);
+                break;
+
+            case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
+                Debug.Log("I want to play that on a Shield");
+                wasPlayed = true;
+                card.SetWasPlayed(true);
+                slot.HandleShieldAbility(card);
+                break;
+
+            default:
+                this.transform.SetParent(placeholder.transform.parent);
+                this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+                gm.RefundCardCost(card);
+                break;
+        }
+
+        if (wasPlayed)
+        {
+            for (int i = 0; i < card.effectTypes.Count; i++)
+            {
+                Debug.Log("Card effect types: " + card.effectTypes.Count);
+                HandleEffect(card.effectTypes[i], card.effectValues[i]);
+            }
+            MoveToDiscardPile();
+        }
+
+        if (hasPlaceholder)
+        {
+            hasPlaceholder = false;
+            Destroy(placeholder);
+        }
     }
 
     private Vector3 GetMouseWorldPos()
@@ -261,6 +322,94 @@ public class CardMovementHandler : MonoBehaviour
             sortingGroup.sortingOrder = newSortingOrder;
         }
 
+    }
+
+    private void HandleEffect(GameConstants.effectTypes effectType, int value)
+    {
+        switch (effectType)
+        {
+            case GameConstants.effectTypes.DamageReductionFlat:
+                CardEffectEventHandler.TriggerDamageReductionFlat(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.DamageReductionPercent:
+                CardEffectEventHandler.TriggerDamageReductionPercent(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationReductionFlat:
+                CardEffectEventHandler.TriggerRadiationReductionFlat(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationReductionPercent:
+                CardEffectEventHandler.TriggerRadiationReductionPercent(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationBlock:
+                CardEffectEventHandler.TriggerRadiationBlock(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationImmunity:
+                CardEffectEventHandler.TriggerRadiationImmunity(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationOrderChange:
+                CardEffectEventHandler.TriggerRadiationOrderChange(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ShieldRepair:
+                CardEffectEventHandler.TriggerShieldRepair(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ShieldBuff:
+                CardEffectEventHandler.TriggerShieldBuff(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ShieldDissolve:
+                CardEffectEventHandler.TriggerShieldDissolve(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ResistanceReductionFlat:
+                CardEffectEventHandler.TriggerResistanceReductionFlat(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ResistanceReductionPercent:
+                CardEffectEventHandler.TriggerResistanceReductionPercent(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ResistanceEffectReduction:
+                CardEffectEventHandler.TriggerResistanceEffectReduction(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.PlayerHealFlat:
+                CardEffectEventHandler.TriggerPlayerHealFlat(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.PlayerHealPercent:
+                CardEffectEventHandler.TriggerPlayerHealPercent(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.TimerReductionFlat:
+                CardEffectEventHandler.TriggerTimerReductionFlat(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.DrawCard:
+                CardEffectEventHandler.TriggerDrawCard(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.Discard:
+                CardEffectEventHandler.TriggerDiscard(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.EnergyGet:
+                CardEffectEventHandler.TriggerEnergyGet(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.EnergyCostReduction:
+                CardEffectEventHandler.TriggerEnergyCostReduction(value);
+                Debug.Log("Trigger Effect: " + effectType);
+                break;
+
+        }
     }
 
 }

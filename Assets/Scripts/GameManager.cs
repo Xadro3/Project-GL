@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     PlayerHealthManager player;
     MySceneManager mySceneManager;
     Deck deck;
+    public CardEffectEventHandler cardEffectEventHandler;
 
     public bool wait;
     private float elapsedTime;
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
             {
                 Card randomCard = deck.Draw();
                 //Debug.Log("I just drew the card: " + randomCard);
-                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(i, playerHand.transform);
+                randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
                 deck.RemoveCardFromPlayerDeck(randomCard);
             }
         }
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            UpdatePlayerRessource();
             return false;
         }
     }
@@ -198,6 +200,19 @@ public class GameManager : MonoBehaviour
     public void SetCardCostIncrease(int increase)
     {
         costIncrease += increase;
+    }
+
+    public void HandleEffect(GameConstants.effectTypes effectType, int value)
+    {
+        switch (effectType)
+        {
+            case GameConstants.effectTypes.DrawCard:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.EnergyGet:
+                Debug.Log("Effect: " + effectType);
+                break;
+        }
     }
 
 }

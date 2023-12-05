@@ -47,7 +47,6 @@ public class Card : MonoBehaviour
     //Specials
     public bool entsorgen;
 
-
     private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
@@ -86,6 +85,40 @@ public class Card : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < effectTypes.Count; i++)
+        {
+            switch (effectTypes[i])
+            {
+                case GameConstants.effectTypes.DamageReductionFlat:
+                    CardEffectEventHandler.DamageReductionFlat += HandleDamageReductionFlat;
+                    //Debug.Log(gameObject.name + "- I am subscribed to: " + effectTypes[i]);
+                    break;
+
+                case GameConstants.effectTypes.DamageReductionPercent:
+                    CardEffectEventHandler.DamageReductionPercent += HandleDamageReductionPercent;
+                    break;
+
+                case GameConstants.effectTypes.EnergyCostReduction:
+                    CardEffectEventHandler.EnergyCostReduction += HandleEnergyCostReduction;
+                    break;
+
+                case GameConstants.effectTypes.Discard:
+                    CardEffectEventHandler.Discard += HandleDiscard;
+                    break;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        CardEffectEventHandler.DamageReductionFlat -= HandleDamageReductionFlat;
+        CardEffectEventHandler.DamageReductionPercent -= HandleDamageReductionPercent;
+        CardEffectEventHandler.EnergyCostReduction -= HandleEnergyCostReduction;
+        CardEffectEventHandler.Discard -= HandleDiscard;
     }
 
     public void UpdateDisplay()
@@ -128,7 +161,7 @@ public class Card : MonoBehaviour
         gameObject.SetActive(b);
     }
 
-    public void Buff()
+    public void BruchBuff()
     {
         this.durabilityCurrent += 2;
         UpdateDisplay();
@@ -139,5 +172,53 @@ public class Card : MonoBehaviour
     {
         gm.discardPile.Remove(this);
     }
+
+    public void SetImmunity(bool b, List<GameConstants.radiationTypes> radiationTypes)
+    {
+        immunity = b;
+        if (radiationTypes != null)
+        {
+            for (int i = 0; i < radiationTypes.Count; i++)
+            {
+                immunityTypes.Add(radiationTypes[i]);
+            }
+        }
+        else
+        {
+            immunityTypes.Clear();
+            immunity = b;
+        }
+    }
+    
+    //Effect handling
+    private void HandleDiscard(int value)
+    {
+        if (wasPlayed)
+        {
+            Debug.Log("Card: HandleDiscard triggered. Handle it!");
+        }
+    }
+
+    private void HandleEnergyCostReduction(int value)
+    {
+        if (wasPlayed)
+        {
+            Debug.Log("Card:  HandleEnergyCostReduction triggered. Handle it!");
+        }
+    }
+
+    private void HandleDamageReductionPercent(int value)
+    {
+        if (wasPlayed)
+        {
+            Debug.Log("Card: HandleDamageReductionPercent triggered. Handle it!");
+        }    }
+
+    private void HandleDamageReductionFlat(int value)
+    {
+        if (wasPlayed)
+        {
+            Debug.Log("Card: HandleDamageReductionFlat triggered. Handle it!");
+        }    }
 
 }

@@ -121,4 +121,29 @@ public class PlayerHealthManager : MonoBehaviour
         return health;
     }
 
+    public void HandleEffect(GameConstants.effectTypes effectType, int value)
+    {
+        switch (effectType)
+        {
+            case GameConstants.effectTypes.ResistanceReductionFlat:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ResistanceReductionPercent:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.ResistanceEffectReduction:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.PlayerHealFlat:
+                Debug.Log("Effect: " + effectType);
+                health += value;
+                break;
+            case GameConstants.effectTypes.PlayerHealPercent:
+                Debug.Log("Effect: " + effectType);
+                health += (1 + (value / 100));
+                break;
+
+        }
+    }
+
 }

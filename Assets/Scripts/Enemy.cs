@@ -27,6 +27,16 @@ public class Enemy : MonoBehaviour
 
     GameManager gm;
 
+    private void OnEnable()
+    {
+        CardEffectEventHandler.RadiationReductionFlat += HandleRadiationReductionFlat;
+    }
+
+    private void HandleRadiationReductionFlat(int obj)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Start()
     {
         roundTimerText.text = "Time left: " + roundTimer.ToString();
@@ -93,6 +103,29 @@ public class Enemy : MonoBehaviour
         {
             int damageValue = damageStats[damageType];
             actionText.text += $"{damageType}: {damageValue}\n";
+        }
+    }
+
+    public void HandleEffect(GameConstants.effectTypes effectType, int value)
+    {
+        switch (effectType)
+        {
+            case GameConstants.effectTypes.RadiationReductionFlat:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationReductionPercent:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationBlock:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.RadiationOrderChange:
+                Debug.Log("Effect: " + effectType);
+                break;
+            case GameConstants.effectTypes.TimerReductionFlat:
+                Debug.Log("Effect: " + effectType);
+                break;
+
         }
     }
 }

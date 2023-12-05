@@ -120,7 +120,7 @@ public class TurnMaster : MonoBehaviour
         // Apply buff to cards behind the sourceCard
         for (int i = sourceIndex + 1; i <= Mathf.Min(sourceIndex + 3, cardsInPlay.Count - 1); i++)
         {
-            cardsInPlay[i].Buff();
+            cardsInPlay[i].BruchBuff();
         }
     }
 }
