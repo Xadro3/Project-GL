@@ -212,13 +212,15 @@ public class Card : MonoBehaviour
         if (wasPlayed)
         {
             Debug.Log("Card: HandleDamageReductionPercent triggered. Handle it!");
-        }    }
+        }
+    }
 
     private void HandleDamageReductionFlat(int value)
     {
         if (wasPlayed)
         {
             Debug.Log("Card: HandleDamageReductionFlat triggered. Handle it!");
-        }    }
+        }
+    }
 
 }
