@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     public bool UpdateTimer(int i)
     {
         roundTimer -= i;
-        roundTimerText.text = "Time left: " + roundTimer.ToString();
+        roundTimerText.text = roundTimer.ToString();
         if (roundTimer <= 0)
         {
             return true;
