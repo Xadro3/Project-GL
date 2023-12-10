@@ -16,13 +16,11 @@ public class Card : MonoBehaviour
 
 
     //CardInfo
-    public List<GameConstants.cardTypes> cardArchetypes;
+    public List<GameConstants.cardRarity> cardRarity;
     public List<GameConstants.radiationTypes> protectionTypes;
     public int cost;
     public int durability;
     public int durabilityCurrent;
-    public int repair;
-    public int repairCurrent;
     public bool wasPlayed = false;
 
 
@@ -34,7 +32,8 @@ public class Card : MonoBehaviour
 
     //Effects
     public bool effect;
-    public bool bruch;
+    public bool onBruch;
+    public bool onPlay;
     public List<int> effectValues;
     public List<GameConstants.effectTypes> effectTypes;
 
@@ -49,24 +48,29 @@ public class Card : MonoBehaviour
 
     private void Awake()
     {
+        
+
+    }
+
+    private void Start()
+    {
         gm = FindObjectOfType<GameManager>();
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         cardDisplay = GetComponentInParent<CardDisplay>();
-        
-        cardArchetypes = cardInfo.cardArchetypes;
+
+        cardRarity = cardInfo.cardRarity;
         protectionTypes = cardInfo.protectionTypes;
         cost = cardInfo.cost;
         durability = cardInfo.durability;
         durabilityCurrent = durability;
-        repair = cardInfo.repair;
-        repairCurrent = repair;
 
         ability = cardInfo.ability;
         duration = cardInfo.duration;
         abilityTypes = cardInfo.abilityTypes;
 
         effect = cardInfo.effect;
-        bruch = cardInfo.bruch;
+        onBruch = cardInfo.onBruch;
+        onPlay = cardInfo.onPlay;
         effectValues = cardInfo.effectValues;
         effectTypes = cardInfo.effectTypes;
 
@@ -74,11 +78,7 @@ public class Card : MonoBehaviour
         immunityTypes = cardInfo.immunityTypes;
         entsorgen = cardInfo.entsorgen;
 
-    }
-
-    private void Start()
-    {
-
+        cardDisplay.UpdateDisplay();
     }
 
     // Update is called once per frame
@@ -145,7 +145,6 @@ public class Card : MonoBehaviour
     {
         CardMovementHandler.SetNewParent(newParent);
         durabilityCurrent = durability;
-        repairCurrent = repair;
         cardDisplay.UpdateDisplay();
         OnDurabilityZero = null;
     }
@@ -170,7 +169,7 @@ public class Card : MonoBehaviour
 
     private void OnDestroy()
     {
-        gm.discardPile.Remove(this);
+        //gm.discardPile.Remove(this);
     }
 
     public void SetImmunity(bool b, List<GameConstants.radiationTypes> radiationTypes)

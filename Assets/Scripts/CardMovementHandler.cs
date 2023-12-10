@@ -24,7 +24,7 @@ public class CardMovementHandler : MonoBehaviour
 
     GameManager gm;
     SortingGroup sortingGroup;
-    Card card;
+    public Card card;
 
     private SpriteRenderer[] spriteRenderers;
     private MeshRenderer[] textRenderers;
@@ -33,16 +33,16 @@ public class CardMovementHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        SetSortingOrder(99);
+        //SetSortingOrder(99);
+        gm = FindObjectOfType<GameManager>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        textRenderers = GetComponentsInChildren<MeshRenderer>();
+        sortingGroup = GetComponent<SortingGroup>();
     }
 
     private void Awake()
     {
-        gm = FindObjectOfType<GameManager>();
-        card = GetComponent<Card>();
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        textRenderers = GetComponentsInChildren<MeshRenderer>();
-        sortingGroup = GetComponent<SortingGroup>();
+        
     }
 
     // Update is called once per frame
@@ -57,10 +57,10 @@ public class CardMovementHandler : MonoBehaviour
 
     public void DrawCardSetup(Transform parent)
     {
-        card.SetActive(true);
         SetNewParent(parent);
         SetPosition(parent);
         SetInitialHandslot(parent);
+        card.SetActive(true);
         Debug.Log(gameObject.name + " was drawn.");
     }
 

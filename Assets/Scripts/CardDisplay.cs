@@ -33,7 +33,6 @@ public class CardDisplay : MonoBehaviour
 
         costText.text = card.cost.ToString();
         durabilityText.text = card.durability.ToString();
-        repairText.text = card.repair.ToString();
     }
 
     // Update is called once per frame

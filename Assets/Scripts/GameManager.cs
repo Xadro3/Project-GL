@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DrawCards();
+        //DrawCards();
         SetDamage(wagons[0].GenerateDamage());
     }
 

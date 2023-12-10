@@ -11,15 +11,15 @@ public class Deck : MonoBehaviour
 
     void Awake()
     {
-        PopulatePlayerDeck();
+        
     }
 
     void Start()
     {
-        
+        //PopulatePlayerDeck();
     }
 
-    void PopulatePlayerDeck()
+    public void PopulatePlayerDeck()
     {
         foreach (Card card in deck)
         {

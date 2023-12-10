@@ -17,8 +17,12 @@ public static class GameConstants
         RadiationBlock,
         RadiationImmunity,
         RadiationOrderChange,
+        ShieldRepairPapier,
+        ShieldRepairAlu,
+        ShieldRepairBlei,
         ShieldRepair,
         ShieldBuff,
+        ShieldMaxBuff,
         ShieldDissolve,
         ResistanceReductionFlat,
         ResistanceReductionPercent,
@@ -29,7 +33,12 @@ public static class GameConstants
         DrawCard,
         Discard,
         EnergyGet,
-        EnergyCostReduction
+        EnergyCostReduction,
+        HealthDamageReductionPercent,
+        EnergyLose,
+        SieldDissolvePapier,
+        ShieldDissolveAlu,
+        ShieldDissolveBlei
 
     }
 
@@ -41,9 +50,21 @@ public static class GameConstants
 
     }
 
-    public enum cardTypes
+    public enum cardRarity
     {
-        Aggro,
-        Control
+        Common,
+        Uncommon,
+        Rare
     }
+
+    public enum cardType
+    {
+        FähigkeitGegner,
+        Fähigkeit,
+        SchildAuflösung,
+        SchildBuff,
+        Schild,
+        SchildReparatur
+    }
+
 }

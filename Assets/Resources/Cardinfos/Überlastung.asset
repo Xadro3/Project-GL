@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: "\xDCberlastung"
+  m_EditorClassIdentifier: 
+  name: "\xDCberlastung"
+  description: "Erhalte 2 (3) Energie, verliere n\xE4chste Runde 1 Energie "
+  artwork: {fileID: 0}
+  cost: 0
+  durability: 0
+  cardType: 01000000
+  cardRarity: 01000000
+  protectionTypes: 
+  ability: 1
+  duration: 1
+  abilityTypes: 00000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 0200000001000000
+  effectTypes: 1600000019000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  cardInfo: 

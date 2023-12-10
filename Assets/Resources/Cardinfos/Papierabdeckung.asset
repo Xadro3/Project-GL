@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Papierabdeckung
+  m_EditorClassIdentifier: 
+  name: Papierabdeckung
+  description: "Reduziert den Alpha-Strahlenschaden auf 0 f\xFCr 1 (2) Runde(n) "
+  artwork: {fileID: 0}
+  cost: 1
+  durability: 0
+  cardType: 00000000
+  cardRarity: 00000000
+  protectionTypes: 00000000
+  ability: 1
+  duration: 1
+  abilityTypes: 01000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 00000000
+  effectTypes: 04000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  cardInfo: 
