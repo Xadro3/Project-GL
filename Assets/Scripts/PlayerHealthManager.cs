@@ -8,13 +8,13 @@ public class PlayerHealthManager : MonoBehaviour
     public int healthMax = 100;
     public int alphaResistance = 0;
     [Range(0, 50)]
-    public int alphaResistanceMax = 5;
+    public int alphaResistanceMax = 20;
     public int betaResistance = 0;
     [Range(0, 50)]
-    public int betaResistanceMax = 25;
+    public int betaResistanceMax = 20;
     public int gammaResistance = 0;
     [Range(0, 50)]
-    public int gammaResistanceMax = 25;
+    public int gammaResistanceMax = 30;
 
     public HealthBar alphaBar;
     public HealthBar betaBar;
