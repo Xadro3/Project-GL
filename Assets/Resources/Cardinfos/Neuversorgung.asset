@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Neuversorgung
   description: 'Wirf 2 Karten von deiner Hand ab und ziehe 2 (3) neue '
-  artwork: {fileID: 21300000, guid: 1c041a2d6d69ded48bd047ca0121f62e, type: 3}
+  artwork: {fileID: 21300000, guid: 45b6e0fb1642fb540818a78dc0cec515, type: 3}
   cost: 0
   durability: 0
   cardType: 01000000

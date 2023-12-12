@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Verbundpapier
   description: '14 (16) Block gegen Alpha '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 482784ff5f7d5f74286769e8beaef84a, type: 3}
   cost: 2
   durability: 14
   cardType: 04000000

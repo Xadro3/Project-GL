@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Recycle
   description: "L\xF6st eine ausgew\xE4hlte Schildkarte auf, um 2 Karten zu ziehen "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: e6d850d84c6aaa340aaba5bc84c1506f, type: 3}
   cost: 1
   durability: 0
   cardType: 02000000

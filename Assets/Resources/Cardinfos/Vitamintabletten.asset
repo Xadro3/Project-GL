@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Vitamintabletten
   description: "Senkt jeden Gesundheitsschaden um 10%, f\xFCr den Rest des Encounters.
     Karte kommt auf Entsorgt-Stapel "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 909ace7a39d939640874d2c4ddfcfc4e, type: 3}
   cost: 1
   durability: 0
   cardType: 01000000

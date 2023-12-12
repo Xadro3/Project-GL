@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wolframblech
   description: '15 Block gegen Beta und Gamma, immun gegen Alpha '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 16b1c9ad7941e2f4ea821593870a196a, type: 3}
   cost: 2
-  durability: 15
+  durability: 8
   cardType: 04000000
   cardRarity: 01000000
   protectionTypes: 000000000100000002000000

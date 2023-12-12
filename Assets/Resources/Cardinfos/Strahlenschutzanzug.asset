@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Strahlenschutzanzug
   description: "Senkt jeden Strahlenschaden um 1 (2), f\xFCr den Rest des Encounters.
     Karte kommt auf Entsorgt-Stapel "
-  artwork: {fileID: 21300000, guid: c41d5f1ad0054d14c965525563386fe4, type: 3}
+  artwork: {fileID: 21300000, guid: 0c51ad6300cc7514997591af25d4eff9, type: 3}
   cost: 2
   durability: 0
   cardType: 01000000

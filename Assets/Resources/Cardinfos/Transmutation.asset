@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Transmutation
   description: 'Verringert die Zeitmessung um 2 (3). Karte kommt auf Entsorgt-Stapel '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 60d691fc73646b94790a117c6cfa0b20, type: 3}
   cost: 1
   durability: 0
   cardType: 00000000

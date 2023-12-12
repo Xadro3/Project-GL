@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Papierabdeckung
   description: "Reduziert den Alpha-Strahlenschaden auf 0 f\xFCr 1 (2) Runde(n) "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: e618ab10fedfb7748a4f304491486f30, type: 3}
   cost: 1
   durability: 0
   cardType: 00000000

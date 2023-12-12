@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Aluminiumabdeckung
   description: "Reduziert den Alpha und Beta-Strahlenschaden auf 0 f\xFCr 1 (2) Runde(n) "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: f012c785c3128104e9c6d815b8fab383, type: 3}
   cost: 1
   durability: 0
   cardType: 00000000

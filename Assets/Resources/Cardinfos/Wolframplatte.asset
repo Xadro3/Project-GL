@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wolframplatte
   description: '15 Block gegen Beta und Gamma, immun gegen Alpha '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 87f7f3aac3f44114a84921f37d6daabe, type: 3}
   cost: 4
   durability: 15
   cardType: 04000000

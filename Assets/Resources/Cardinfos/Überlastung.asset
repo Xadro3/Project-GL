@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\xDCberlastung"
   description: "Erhalte 2 (3) Energie, verliere n\xE4chste Runde 1 Energie "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: d4a3967fa83f93f409b74eb9185e6969, type: 3}
   cost: 0
   durability: 0
   cardType: 01000000

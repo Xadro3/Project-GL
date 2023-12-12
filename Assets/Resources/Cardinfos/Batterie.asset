@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Batterie
   description: 'Wirf 1 Karte ab, um 1 (2) Energie zu erhalten '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 8ee60639167c0e247843dbdfdbfd6fdd, type: 3}
   cost: 0
   durability: 0
   cardType: 01000000

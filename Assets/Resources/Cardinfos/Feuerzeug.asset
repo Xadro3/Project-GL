@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Feuerzeug
   description: "L\xF6st eine ausgew\xE4hlte Papier Schildkarte auf "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: c800ebeffad211a44b6b90f49a379d77, type: 3}
   cost: 1
   durability: 0
   cardType: 02000000

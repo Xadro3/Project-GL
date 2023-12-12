@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Mittlere Bleiplatte
   description: '8 (10) Block gegen Beta und Gamma, 25% Durchlass des Gamma Schadens,
     immun gegen Alpha '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 9fc9bdb79e58ba54682fcfed6becd122, type: 3}
   cost: 1
   durability: 0
   cardType: 04000000

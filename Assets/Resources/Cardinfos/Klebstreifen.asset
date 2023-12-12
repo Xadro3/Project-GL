@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Klebstreifen
   description: "Repariert ausgew\xE4hlte Papier Schildkarte "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: d74103d4be41e4a48b13638e8e78ef68, type: 3}
   cost: 1
   durability: 0
   cardType: 05000000

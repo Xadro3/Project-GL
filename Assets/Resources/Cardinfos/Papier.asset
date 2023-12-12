@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Papier
   description: '6 (8) Block gegen Alpha '
-  artwork: {fileID: 21300000, guid: aac188f90431d38419a9567c3176e170, type: 3}
+  artwork: {fileID: 21300000, guid: df96cd57455838c46ae37ef44cd557ea, type: 3}
   cost: 1
   durability: 6
   cardType: 04000000

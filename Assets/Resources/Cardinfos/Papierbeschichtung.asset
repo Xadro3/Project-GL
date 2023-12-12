@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Papierbeschichtung
   description: "Ausgew\xE4hlte Schildkarte bekommt +2 (+3) Block "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: a19ccbeb1790e044398d7401758e7ee8, type: 3}
   cost: 1
   durability: 0
   cardType: 03000000

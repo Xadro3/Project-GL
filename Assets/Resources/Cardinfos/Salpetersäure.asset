@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Salpeters\xE4ure"
   description: "L\xF6st eine ausgew\xE4hlte Blei Schildkarte auf "
-  artwork: {fileID: 21300000, guid: 4d948703e9167e44e9e7257ffe27f10b, type: 3}
+  artwork: {fileID: 21300000, guid: be7525ba1311f14469d7f39a4b127bae, type: 3}
   cost: 1
   durability: 0
   cardType: 02000000

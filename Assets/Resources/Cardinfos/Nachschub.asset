@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Nachschub
   description: Wenn ausgespielt, ziehe 1 Karte
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: c083c776fdcd06848a32eb8a8cf54ba7, type: 3}
   cost: 1
   durability: 0
   cardType: 01000000

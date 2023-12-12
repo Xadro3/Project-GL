@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Isotopenbatterie
   description: 'Reduziert Alpha- und Betaleiste um jeweils 1 Punkt und erzeugt 2
     (3) Energie '
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 9fb862573a8345f4ab13a457920fcf46, type: 3}
   cost: 0
   durability: 0
   cardType: 01000000

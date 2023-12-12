@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Bleischwei\xDFger\xE4t"
   description: "Repariert ausgew\xE4hlte Blei Schildkarte "
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: fe2e3cdda22872f48814854acbc45432, type: 3}
   cost: 1
   durability: 0
   cardType: 05000000
