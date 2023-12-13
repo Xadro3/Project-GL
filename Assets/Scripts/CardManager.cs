@@ -10,6 +10,8 @@ public class CardManager : MonoBehaviour
     public List<GameConstants.cardType> cardType;
     public List<GameObject> prefabs;
 
+    public List<SO_Card> baseCards;
+
     public GameObject cardSafe;
     GameManager gm;
     public Dictionary<GameConstants.cardType, Dictionary<GameConstants.cardRarity, GameObject>> prefabMapping;
@@ -28,6 +30,62 @@ public class CardManager : MonoBehaviour
         
         InitializePrefabMapping();
         AssignPrefabsToCards();
+        AddBaseCardsToDeck();
+        deck.PopulatePlayerDeck();
+        gm.DrawCards();
+    }
+
+    private void AddBaseCardsToDeck()
+    {
+        foreach (SO_Card baseCard in baseCards)
+        {
+            // Ensure that cardType and cardRarity arrays are not empty
+            if (baseCard.cardType.Count > 0 && baseCard.cardRarity.Count > 0)
+            {
+                // Check if cardType[0] exists in prefabMapping
+                if (prefabMapping.TryGetValue(baseCard.cardType[0], out var rarityMapping))
+                {
+                    if (rarityMapping.TryGetValue(baseCard.cardRarity[0], out var prefab))
+                    {
+                        // Assign prefab to card
+                        Debug.Log($"Assigning prefab {prefab.name} to card {baseCard.name}");
+                        // Instantiate the prefab
+                        GameObject instantiatedCard = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+                        instantiatedCard.transform.SetParent(cardSafe.transform);
+                        instantiatedCard.transform.position = cardSafe.transform.position;
+                        // Access the Card component of the instantiated card
+                        Card cardComponent = instantiatedCard.GetComponent<Card>();
+
+                        // Assign the SO_Card to the Card component
+                        if (cardComponent != null)
+                        {
+                            cardComponent.cardInfo = baseCard;
+                            instantiatedCard.name = baseCard.name;
+                            cardComponent.SetActive(false);
+                            deck.AddCardToDeck(cardComponent);
+                            Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
+                        }
+                        else
+                        {
+                            Debug.LogError($"Card component not found on instantiated card {instantiatedCard.name}");
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Prefab not found for rarity {baseCard.cardRarity[0]} and type {baseCard.cardType[0]} in rarityMapping");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Prefab mapping not found for type {baseCard.cardType[0]} in prefabMapping");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"cardType or cardRarity array is empty for card {baseCard.name}");
+            }
+        }
     }
 
     void InitializePrefabMapping()
@@ -83,7 +141,8 @@ public class CardManager : MonoBehaviour
                             cardComponent.cardInfo = card;
                             instantiatedCard.name = card.name;
                             cardComponent.SetActive(false);
-                            deck.AddCardToDeck(cardComponent);
+                            // Remove comment if you want to add all cards to the deck
+                            //deck.AddCardToDeck(cardComponent);
                             Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
                         }
                         else
@@ -107,8 +166,6 @@ public class CardManager : MonoBehaviour
                 Debug.LogWarning($"cardType or cardRarity array is empty for card {card.name}");
             }
         }
-        deck.PopulatePlayerDeck();
-        gm.DrawCards();
     }
 
     void AddPrefabToMapping(GameConstants.cardType cardType, GameConstants.cardRarity cardRarity, GameObject prefab)

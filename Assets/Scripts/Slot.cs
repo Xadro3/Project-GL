@@ -76,27 +76,26 @@ public class Slot : MonoBehaviour
     public void HandleShieldAbility(Card abilityCard)
     {
         GetCardInSlotInfo();
-        for (int i = 0; i < abilityCard.effectTypes.Count; i++)
+        foreach (var entry in abilityCard.cardEffects)
         {
-            switch (abilityCard.effectTypes[i])
+            switch (entry.Key)
             {
                 case GameConstants.effectTypes.ShieldBuff:
-                    HandleShieldBuff(abilityCard.effectValues[i]);
+                    HandleShieldBuff(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.ShieldRepair:
-                    HandleShieldRepair(abilityCard.effectValues[i]);
+                    HandleShieldRepair(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.ShieldDissolve:
-                    HandleShieldDissolve(abilityCard.effectValues[i]);
+                    HandleShieldDissolve(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.RadiationImmunity:
                     HandleRadiationImmunity(abilityCard.immunity, abilityCard.immunityTypes);
                     break;
             }
-        }
-        
+        }        
     }
 }

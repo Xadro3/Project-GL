@@ -276,10 +276,9 @@ public class CardMovementHandler : MonoBehaviour
 
         if (wasPlayed)
         {
-            for (int i = 0; i < card.effectTypes.Count; i++)
+            foreach (var entry in card.cardEffects)
             {
-                Debug.Log("Card effect types: " + card.effectTypes.Count);
-                HandleEffect(card.effectTypes[i], card.effectValues[i]);
+                HandleEffect(entry.Key, entry.Value);
             }
             MoveToDiscardPile();
         }

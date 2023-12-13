@@ -67,4 +67,11 @@ public static class GameConstants
         SchildReparatur
     }
 
+    public enum cardUpgrades
+    {
+        EnergyCost,
+        Effect,
+        Schild,
+        Duration
+    }
 }

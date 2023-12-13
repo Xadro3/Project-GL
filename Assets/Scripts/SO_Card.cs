@@ -27,6 +27,10 @@ public class SO_Card : ScriptableObject
     public bool immunity;
     public List<GameConstants.radiationTypes> immunityTypes;
     public bool entsorgen;
+    
+    public List<GameConstants.cardUpgrades> cardUpgrades;
+    public List<int> upgradeValues;
+
 
     public string cardInfo;
 

@@ -89,20 +89,19 @@ public class TurnMaster : MonoBehaviour
     {
         // Handle the special effect when a cards durability reaches zero
 
-        if (card.effect)
+        if (card.effect && card.onBruch)
         {
-            for (int i = 0; i < card.effectTypes.Count; i++)
+            foreach (var entry in card.cardEffects)
             {
-                switch (card.effectTypes[i])
+                switch (entry.Key)
                 {
                     case GameConstants.effectTypes.TimerReductionFlat:
                         break;
 
                     case GameConstants.effectTypes.Discard:
-                        BuffCardsBehind(card);
+                        //BuffCardsBehind(card);
                         break;
                 }
-                break;
             }
         }
         if (card.entsorgen)

@@ -34,8 +34,7 @@ public class Card : MonoBehaviour
     public bool effect;
     public bool onBruch;
     public bool onPlay;
-    public List<int> effectValues;
-    public List<GameConstants.effectTypes> effectTypes;
+    public Dictionary<GameConstants.effectTypes, int> cardEffects = new Dictionary<GameConstants.effectTypes, int>();
 
 
     //Immunities
@@ -46,6 +45,9 @@ public class Card : MonoBehaviour
     //Specials
     public bool entsorgen;
 
+
+    //Upgrade
+    public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
     private void Awake()
     {
         
@@ -71,12 +73,22 @@ public class Card : MonoBehaviour
         effect = cardInfo.effect;
         onBruch = cardInfo.onBruch;
         onPlay = cardInfo.onPlay;
-        effectValues = cardInfo.effectValues;
-        effectTypes = cardInfo.effectTypes;
+        
+        //fill cardEffects Dictionary
+        for (int i = 0; i < cardInfo.effectTypes.Count; i++)
+        {
+            cardEffects.Add(cardInfo.effectTypes[i], cardInfo.effectValues[i]);
+        }
 
         immunity = cardInfo.immunity;
         immunityTypes = cardInfo.immunityTypes;
         entsorgen = cardInfo.entsorgen;
+
+        //fill cardUpgrade Dictionary
+        for (int i = 0; i < cardInfo.cardUpgrades.Count; i++)
+        {
+            cardUpgrade.Add(cardInfo.cardUpgrades[i], cardInfo.upgradeValues[i]);
+        }
 
         cardDisplay.UpdateDisplay();
     }
@@ -89,13 +101,13 @@ public class Card : MonoBehaviour
 
     private void OnEnable()
     {
-        for (int i = 0; i < effectTypes.Count; i++)
+        foreach (var entry in cardEffects)
         {
-            switch (effectTypes[i])
+            switch (entry.Key)
             {
                 case GameConstants.effectTypes.DamageReductionFlat:
                     CardEffectEventHandler.DamageReductionFlat += HandleDamageReductionFlat;
-                    //Debug.Log(gameObject.name + "- I am subscribed to: " + effectTypes[i]);
+                    
                     break;
 
                 case GameConstants.effectTypes.DamageReductionPercent:

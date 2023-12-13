@@ -31,5 +31,7 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  cardUpgrades: 01000000
+  upgradeValues: 01000000
   cardInfo: "Eine herk\xF6mmlich verf\xFCgbare Batterie, gut zur Energieversorgung
     kleiner Ger\xE4te, nicht essbar und sicher vor Kindern aufbewahren. "

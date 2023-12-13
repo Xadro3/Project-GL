@@ -31,6 +31,8 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  cardUpgrades: 00000000
+  upgradeValues: 01000000
   cardInfo: "Um zu verhindern das sich Radioaktives Jod in der Schilddr\xFCse anreichert
     k\xF6nnen Jodtabletten, als Pr\xE4ventionsmethode Verwendet werden.  Das sollte
     aber nur nach Aufforderung des Arztes gemacht werden, da \xFCber Jodierung zu

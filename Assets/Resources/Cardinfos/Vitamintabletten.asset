@@ -32,5 +32,7 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
+  cardUpgrades: 00000000
+  upgradeValues: 01000000
   cardInfo: "Vitamine Helfen dem K\xF6rper gesund zu bleiben und ein gesunder K\xF6rper
     ist generell Resilienter "

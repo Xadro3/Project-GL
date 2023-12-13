@@ -31,4 +31,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
+  cardUpgrades: 01000000
+  upgradeValues: 01000000
   cardInfo: 
