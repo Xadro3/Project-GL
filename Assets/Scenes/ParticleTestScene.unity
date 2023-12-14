@@ -23283,6 +23283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRessourceCurrent: 5
   playerRessourceMax: 5
+  playerRessourceBuffMax: 0
   playerRessourceText: {fileID: 773427114}
   activeCardSlots:
   - {fileID: 1105436443}
@@ -23374,6 +23375,9 @@ MonoBehaviour:
   roundTimer: 5
   roundTimerText: {fileID: 359893677}
   actionText: {fileID: 478278443}
+  alphaDamage: 0
+  betaDamage: 0
+  gammaDamage: 0
   alphaMax: 15
   betaMax: 10
   gammaMax: 7
@@ -50808,7 +50812,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
