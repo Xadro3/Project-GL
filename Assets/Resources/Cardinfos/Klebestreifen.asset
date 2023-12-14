@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
-  m_Name: Klebstreifen
+  m_Name: Klebestreifen
   m_EditorClassIdentifier: 
-  name: Klebstreifen
+  name: Klebestreifen
   description: "Repariert ausgew\xE4hlte Papier Schildkarte "
   artwork: {fileID: 21300000, guid: d74103d4be41e4a48b13638e8e78ef68, type: 3}
   cost: 1

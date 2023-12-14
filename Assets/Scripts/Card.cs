@@ -138,9 +138,9 @@ public class Card : MonoBehaviour
         cardDisplay.durabilityText.text = durabilityCurrent.ToString();
     }
 
-    public int AdjustDurability(int damage)
+    public int AdjustDurability(int value)
     {
-        durabilityCurrent -= damage;
+        durabilityCurrent -= value;
         UpdateDisplay();
         
         if (durabilityCurrent <= 0)
@@ -153,10 +153,15 @@ public class Card : MonoBehaviour
 
     }
 
+    public void SetCurrentDurabilityToMax()
+    {
+        durabilityCurrent = durability;
+    }
+
     public void BackInPlay(Transform newParent)
     {
         CardMovementHandler.SetNewParent(newParent);
-        durabilityCurrent = durability;
+        SetCurrentDurabilityToMax();
         cardDisplay.UpdateDisplay();
         OnDurabilityZero = null;
     }

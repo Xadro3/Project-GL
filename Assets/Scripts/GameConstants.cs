@@ -36,7 +36,7 @@ public static class GameConstants
         EnergyCostReduction,
         HealthDamageReductionPercent,
         EnergyLose,
-        SieldDissolvePapier,
+        ShieldDissolvePapier,
         ShieldDissolveAlu,
         ShieldDissolveBlei
 

@@ -6,12 +6,12 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     public bool hasCard = false;
-
+    GameManager gm;
     private Card currentCard = null;
 
     private void Start()
     {
-        
+        gm = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
@@ -51,31 +51,29 @@ public class Slot : MonoBehaviour
 
     private void HandleShieldDissolve(int value)
     {
-        currentCard.AdjustDurability(currentCard.durabilityCurrent);
+        GetCardInSlotInfo().AdjustDurability(currentCard.durabilityCurrent);
         Debug.Log("Card: HandleShieldDissolve Event triggered. Handle it!");
     }
 
     private void HandleShieldBuff(int value)
     {
-        currentCard.AdjustDurability(-value);
+        GetCardInSlotInfo().AdjustDurability(-value);
         Debug.Log("Card: HandleShieldBuff triggered. Handle it!");
     }
 
     private void HandleShieldRepair(int value)
     {
-        currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
+        //currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
+        GetCardInSlotInfo().SetCurrentDurabilityToMax();
         Debug.Log("Card: HandleShieldRepair triggered. Handle it!");
     }
-
-    private void HandleRadiationImmunity(bool b, List<GameConstants.radiationTypes> radiationTypes)
+    private void HandleDrawCard(int value)
     {
-        currentCard.SetImmunity(b, radiationTypes);
-        Debug.Log("Card: HandleRadiationImmunity triggered. Handle it!");
+        
     }
 
     public void HandleShieldAbility(Card abilityCard)
     {
-        GetCardInSlotInfo();
         foreach (var entry in abilityCard.cardEffects)
         {
             switch (entry.Key)
@@ -92,10 +90,24 @@ public class Slot : MonoBehaviour
                     HandleShieldDissolve(entry.Value);
                     break;
 
-                case GameConstants.effectTypes.RadiationImmunity:
-                    HandleRadiationImmunity(abilityCard.immunity, abilityCard.immunityTypes);
+                case GameConstants.effectTypes.DrawCard:
+                    gm.HandleEffect(entry.Key,entry.Value);
+                    break;
+
+                case GameConstants.effectTypes.ShieldDissolvePapier:
+                    HandleShieldDissolve(entry.Value);
+                    break;
+
+                case GameConstants.effectTypes.ShieldDissolveAlu:
+                    HandleShieldDissolve(entry.Value);
+                    break;
+
+                case GameConstants.effectTypes.ShieldDissolveBlei:
+                    HandleShieldDissolve(entry.Value);
                     break;
             }
         }        
     }
+
+    
 }

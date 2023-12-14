@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int playerRessourceCurrent;
     public int playerRessourceMax;
+    public int playerRessourceBuffMax;
     public TextMeshProUGUI playerRessourceText;
 
     public List<Slot> activeCardSlots;
@@ -103,9 +104,7 @@ public class GameManager : MonoBehaviour
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
                 deck.RemoveCardFromPlayerDeck(randomCard);
             }
-        }
-        
-        
+        } 
     }
 
     public void Shuffle()
@@ -121,9 +120,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddEnergy(int value)
+    {
+        playerRessourceCurrent += value;
+        if (playerRessourceCurrent > playerRessourceMax)
+        {
+            playerRessourceBuffMax = playerRessourceCurrent;
+        }
+        UpdatePlayerRessource();
+    }
     public void ResetEnergy()
     {
         playerRessourceCurrent = playerRessourceMax;
+        playerRessourceBuffMax = playerRessourceMax;
         UpdatePlayerRessource();
     }
 
@@ -144,12 +153,15 @@ public class GameManager : MonoBehaviour
 
     public void RefundCardCost(Card card)
     {
-        if (playerRessourceMax >= (playerRessourceCurrent + card.cost))
+        if ((playerRessourceMax >= (playerRessourceCurrent + card.cost)) || (playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)))
         {
             playerRessourceCurrent += card.cost;
             UpdatePlayerRessource();
         }
-
+        else
+        {
+            Debug.Log("Cannot refund card cost.");
+        }
         
     }
 
@@ -202,12 +214,30 @@ public class GameManager : MonoBehaviour
         costIncrease += increase;
     }
 
+    private void HandleCardDrawEffect(int value)
+    {
+        int cardsInHand = CountOccupiedHandSlots();
+        if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count) || deck.playerDeck.Count == 0)
+        {
+            Shuffle();
+        }
+        // drawing cards up to effect
+        for (int i = 0; i < value; i++)
+        {
+            Card randomCard = deck.Draw();
+            //Debug.Log("I just drew the card: " + randomCard);
+            randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
+            deck.RemoveCardFromPlayerDeck(randomCard);
+        }
+    }
+
     public void HandleEffect(GameConstants.effectTypes effectType, int value)
     {
         switch (effectType)
         {
             case GameConstants.effectTypes.DrawCard:
                 Debug.Log("Effect: " + effectType);
+                HandleCardDrawEffect(value);
                 break;
             case GameConstants.effectTypes.EnergyGet:
                 Debug.Log("Effect: " + effectType);

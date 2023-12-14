@@ -250,6 +250,7 @@ public class CardMovementHandler : MonoBehaviour
         {
             case GameConstants.abilityTargets.AbilityEnemy when slot.CompareTag("Enemy"):
                 Debug.Log("I want to play that on an Enemy");
+                slot.GetComponentInParent<Enemy>().HandleEffect(card);
                 wasPlayed = true;
                 card.SetWasPlayed(true);
                 break;
@@ -262,9 +263,13 @@ public class CardMovementHandler : MonoBehaviour
 
             case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
                 Debug.Log("I want to play that on a Shield");
-                wasPlayed = true;
-                card.SetWasPlayed(true);
-                slot.HandleShieldAbility(card);
+                if (CanPlayCardOnShield(card, slot))
+                {
+                    slot.HandleShieldAbility(card);
+                    wasPlayed = true;
+                    card.SetWasPlayed(true);
+                    return;
+                }
                 break;
 
             default:
@@ -287,6 +292,33 @@ public class CardMovementHandler : MonoBehaviour
         {
             hasPlaceholder = false;
             Destroy(placeholder);
+        }
+    }
+
+    private bool CanPlayCardOnShield(Card card, Slot slot)
+    {
+        string slotCardName = slot.GetCardInSlotInfo().name;
+
+        switch (card.name)
+        {
+            case "Klebestreifen":
+            case "Feuerzeug":
+                return slotCardName == "Papier" || slotCardName == "Dickes Papier" || slotCardName == "Verbundpapier";
+
+            case "Aluschweißgerät":
+            case "Bromlösung":
+                return slotCardName == "Aluminiumfolie" || slotCardName == "Aluminiumblech" || slotCardName == "Aluminiumplatte";
+
+            case "Bleischweißgerät":
+            case "Salpetersäure":
+                return slotCardName == "Dünne Bleiplatte" || slotCardName == "Mittlere Bleiplatte" || slotCardName == "Dicke Bleiplatte";
+
+            case "Recycle":
+            case "Upcycling":
+                return true;
+
+            default:
+                return false;
         }
     }
 
