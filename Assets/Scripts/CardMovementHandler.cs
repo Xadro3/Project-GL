@@ -268,7 +268,7 @@ public class CardMovementHandler : MonoBehaviour
                     slot.HandleShieldAbility(card);
                     wasPlayed = true;
                     card.SetWasPlayed(true);
-                    return;
+                    
                 }
                 break;
 
@@ -297,9 +297,10 @@ public class CardMovementHandler : MonoBehaviour
 
     private bool CanPlayCardOnShield(Card card, Slot slot)
     {
-        string slotCardName = slot.GetCardInSlotInfo().name;
+        string slotCardName = slot.GetCardInSlotInfo().cardName;
+        Debug.Log("Shield Card name: " + slotCardName);
 
-        switch (card.name)
+        switch (card.cardName)
         {
             case "Klebestreifen":
             case "Feuerzeug":

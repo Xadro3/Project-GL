@@ -16,6 +16,7 @@ public class Card : MonoBehaviour
 
 
     //CardInfo
+    public string cardName;
     public List<GameConstants.cardRarity> cardRarity;
     public List<GameConstants.radiationTypes> protectionTypes;
     public int cost;
@@ -60,6 +61,7 @@ public class Card : MonoBehaviour
         CardMovementHandler = GetComponentInParent<CardMovementHandler>();
         cardDisplay = GetComponentInParent<CardDisplay>();
 
+        cardName = cardInfo.name;
         cardRarity = cardInfo.cardRarity;
         protectionTypes = cardInfo.protectionTypes;
         cost = cardInfo.cost;

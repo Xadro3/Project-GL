@@ -52,20 +52,17 @@ public class Slot : MonoBehaviour
     private void HandleShieldDissolve(int value)
     {
         GetCardInSlotInfo().AdjustDurability(currentCard.durabilityCurrent);
-        Debug.Log("Card: HandleShieldDissolve Event triggered. Handle it!");
     }
 
     private void HandleShieldBuff(int value)
     {
         GetCardInSlotInfo().AdjustDurability(-value);
-        Debug.Log("Card: HandleShieldBuff triggered. Handle it!");
     }
 
     private void HandleShieldRepair(int value)
     {
         //currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
         GetCardInSlotInfo().SetCurrentDurabilityToMax();
-        Debug.Log("Card: HandleShieldRepair triggered. Handle it!");
     }
     private void HandleDrawCard(int value)
     {

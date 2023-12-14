@@ -552,6 +552,9 @@ MonoBehaviour:
   roundTimer: 5
   roundTimerText: {fileID: 905819283}
   actionText: {fileID: 842032667}
+  alphaDamage: 0
+  betaDamage: 0
+  gammaDamage: 0
   alphaMax: 15
   betaMax: 10
   gammaMax: 7
@@ -921,8 +924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9d29080cf04b3408c5f6d80faef05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRessourceCurrent: 5
-  playerRessourceMax: 5
+  playerRessourceCurrent: 3
+  playerRessourceMax: 3
+  playerRessourceBuffMax: 0
   playerRessourceText: {fileID: 1647992312}
   activeCardSlots:
   - {fileID: 2097054833}
@@ -5776,7 +5780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7058,7 +7062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.500305}
+  m_AnchoredPosition: {x: 0, y: -15.500366}
   m_SizeDelta: {x: 0, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016143251

@@ -25,7 +25,9 @@ public class Enemy : MonoBehaviour
     private int reductionDurationBetaPercent = 0;
     private int reductionDurationGammaPercent = 0;
 
-
+    public int alphaDamage;
+    public int betaDamage;
+    public int gammaDamage;
 
     private int alphaMin = 1;
     [Range(1, 50)]
@@ -96,6 +98,7 @@ public class Enemy : MonoBehaviour
                         reductionDurationAlphaPercent -= 1;
                     }
                     damageStats[damageTypes[i].ToString()] = damageValue;
+                    alphaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Beta:
@@ -116,6 +119,7 @@ public class Enemy : MonoBehaviour
                         reductionDurationBetaPercent -= 1;
                     }
                     damageStats[damageTypes[i].ToString()] = damageValue;
+                    betaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
@@ -136,6 +140,7 @@ public class Enemy : MonoBehaviour
                         reductionDurationGammaPercent -= 1;
                     }
                     damageStats[damageTypes[i].ToString()] = damageValue;
+                    gammaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Pure:
@@ -161,6 +166,7 @@ public class Enemy : MonoBehaviour
 
     public void HandleEffect(Card card)
     {
+        Debug.Log("Enemy Handling Effect");
         foreach (var entry in card.cardEffects)
         {
             switch (entry.Key)

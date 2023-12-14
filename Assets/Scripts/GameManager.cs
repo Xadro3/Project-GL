@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         //DrawCards();
         SetDamage(wagons[0].GenerateDamage());
+        UpdatePlayerRessource();
     }
 
     // Update is called once per frame

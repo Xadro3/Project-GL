@@ -48,7 +48,7 @@ public class CardManager : MonoBehaviour
                     if (rarityMapping.TryGetValue(baseCard.cardRarity[0], out var prefab))
                     {
                         // Assign prefab to card
-                        Debug.Log($"Assigning prefab {prefab.name} to card {baseCard.name}");
+                        //Debug.Log($"Assigning prefab {prefab.name} to card {baseCard.name}");
                         // Instantiate the prefab
                         GameObject instantiatedCard = Instantiate(prefab, Vector3.zero, Quaternion.identity);
                         instantiatedCard.transform.SetParent(cardSafe.transform);
@@ -63,7 +63,7 @@ public class CardManager : MonoBehaviour
                             instantiatedCard.name = baseCard.name;
                             cardComponent.SetActive(false);
                             deck.AddCardToDeck(cardComponent);
-                            Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
+                            //Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
                         }
                         else
                         {
@@ -127,7 +127,7 @@ public class CardManager : MonoBehaviour
                     if (rarityMapping.TryGetValue(card.cardRarity[0], out var prefab))
                     {
                         // Assign prefab to card
-                        Debug.Log($"Assigning prefab {prefab.name} to card {card.name}");
+                        //Debug.Log($"Assigning prefab {prefab.name} to card {card.name}");
                         // Instantiate the prefab
                         GameObject instantiatedCard = Instantiate(prefab, Vector3.zero, Quaternion.identity);
                         instantiatedCard.transform.SetParent(cardSafe.transform);
@@ -143,7 +143,7 @@ public class CardManager : MonoBehaviour
                             cardComponent.SetActive(false);
                             // Remove comment if you want to add all cards to the deck
                             //deck.AddCardToDeck(cardComponent);
-                            Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
+                            //Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
                         }
                         else
                         {
