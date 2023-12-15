@@ -46,6 +46,8 @@ public class Card : MonoBehaviour
     //Specials
     public bool entsorgen;
 
+    //Shop
+    public int currencyCost;
 
     //Upgrade
     public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
@@ -92,6 +94,8 @@ public class Card : MonoBehaviour
             cardUpgrade.Add(cardInfo.cardUpgrades[i], cardInfo.upgradeValues[i]);
         }
 
+        currencyCost = cardInfo.currencyCost;
+
         cardDisplay.UpdateDisplay();
     }
 
@@ -101,40 +105,16 @@ public class Card : MonoBehaviour
         
     }
 
-    private void OnEnable()
+    public void ShieldDebuff()
     {
-        foreach (var entry in cardEffects)
+        durability -= 2;
+        if (durability < durabilityCurrent)
         {
-            switch (entry.Key)
-            {
-                case GameConstants.effectTypes.DamageReductionFlat:
-                    CardEffectEventHandler.DamageReductionFlat += HandleDamageReductionFlat;
-                    
-                    break;
-
-                case GameConstants.effectTypes.DamageReductionPercent:
-                    CardEffectEventHandler.DamageReductionPercent += HandleDamageReductionPercent;
-                    break;
-
-                case GameConstants.effectTypes.EnergyCostReduction:
-                    CardEffectEventHandler.EnergyCostReduction += HandleEnergyCostReduction;
-                    break;
-
-                case GameConstants.effectTypes.Discard:
-                    CardEffectEventHandler.Discard += HandleDiscard;
-                    break;
-            }
+            durabilityCurrent = durability;
+            UpdateDisplay();
         }
     }
-
-    private void OnDisable()
-    {
-        CardEffectEventHandler.DamageReductionFlat -= HandleDamageReductionFlat;
-        CardEffectEventHandler.DamageReductionPercent -= HandleDamageReductionPercent;
-        CardEffectEventHandler.EnergyCostReduction -= HandleEnergyCostReduction;
-        CardEffectEventHandler.Discard -= HandleDiscard;
-    }
-
+    
     public void UpdateDisplay()
     {
         cardDisplay.durabilityText.text = durabilityCurrent.ToString();
@@ -158,6 +138,7 @@ public class Card : MonoBehaviour
     public void SetCurrentDurabilityToMax()
     {
         durabilityCurrent = durability;
+        UpdateDisplay();
     }
 
     public void BackInPlay(Transform newParent)
@@ -205,39 +186,6 @@ public class Card : MonoBehaviour
         {
             immunityTypes.Clear();
             immunity = b;
-        }
-    }
-    
-    //Effect handling
-    private void HandleDiscard(int value)
-    {
-        if (wasPlayed)
-        {
-            Debug.Log("Card: HandleDiscard triggered. Handle it!");
-        }
-    }
-
-    private void HandleEnergyCostReduction(int value)
-    {
-        if (wasPlayed)
-        {
-            Debug.Log("Card:  HandleEnergyCostReduction triggered. Handle it!");
-        }
-    }
-
-    private void HandleDamageReductionPercent(int value)
-    {
-        if (wasPlayed)
-        {
-            Debug.Log("Card: HandleDamageReductionPercent triggered. Handle it!");
-        }
-    }
-
-    private void HandleDamageReductionFlat(int value)
-    {
-        if (wasPlayed)
-        {
-            Debug.Log("Card: HandleDamageReductionFlat triggered. Handle it!");
         }
     }
 

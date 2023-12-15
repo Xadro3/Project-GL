@@ -9,7 +9,7 @@ public class TurnMaster : MonoBehaviour
 
     public int savedDamageValue;
     public List<string> savedDamageTypes;
-    public Dictionary<string, int> damageStats = new Dictionary<string, int>();
+    public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
     private List<Card> cardsInPlay = new List<Card>();
 
     void Start()
@@ -17,7 +17,7 @@ public class TurnMaster : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
     }
 
-    public void SetDamage(Dictionary<string, int> damageStats)
+    public void SetDamage(Dictionary<GameConstants.radiationTypes, int> damageStats)
     {
         this.damageStats = damageStats.ToDictionary(entry => entry.Key, entry => entry.Value);
     }
@@ -40,7 +40,7 @@ public class TurnMaster : MonoBehaviour
         foreach (Enemy wagon in wagons)
         {
 
-            Dictionary<string, int> wagonDamageStats = new Dictionary<string, int>(damageStats);
+            Dictionary<GameConstants.radiationTypes, int> wagonDamageStats = new Dictionary<GameConstants.radiationTypes, int>(damageStats);
 
             foreach (Card card in cardsInPlay)
             {
@@ -48,24 +48,24 @@ public class TurnMaster : MonoBehaviour
                 // Check if wagon damage type affects card protection type
                 foreach (GameConstants.radiationTypes radiationType in card.protectionTypes)
                 {
-                    if (wagonDamageStats.ContainsKey(radiationType.ToString()))
+                    if (wagonDamageStats.ContainsKey(radiationType))
                     {
                         isAffected = true;
-                        int damageValue = wagonDamageStats[radiationType.ToString()];
-                        Debug.Log(wagon.name + " will deal: " + wagonDamageStats[radiationType.ToString()] + " of " + radiationType.ToString());
-                        wagonDamageStats[radiationType.ToString()] = card.AdjustDurability(damageValue);
+                        int damageValue = wagonDamageStats[radiationType];
+                        Debug.Log(wagon.name + " will deal: " + wagonDamageStats[radiationType] + " of " + radiationType);
+                        wagonDamageStats[radiationType] = card.AdjustDurability(damageValue);
                         card.UpdateDisplay();
 
-                        if (wagonDamageStats[radiationType.ToString()] < 0)
+                        if (wagonDamageStats[radiationType] < 0)
                         {
-                            Debug.Log("I killed a card with overkill damage. " + "Damage type: " + radiationType.ToString() + " Damage left: " + wagonDamageStats[radiationType.ToString()]);
-                            wagonDamageStats[radiationType.ToString()] = Mathf.Abs(wagonDamageStats[radiationType.ToString()]);
+                            Debug.Log("I killed a card with overkill damage. " + "Damage type: " + radiationType + " Damage left: " + wagonDamageStats[radiationType]);
+                            wagonDamageStats[radiationType] = Mathf.Abs(wagonDamageStats[radiationType]);
                             break;
                         }
-                        if (wagonDamageStats[radiationType.ToString()] >= 0)
+                        if (wagonDamageStats[radiationType] >= 0)
                         {
-                            Debug.Log("No damage value left of damage type: " + radiationType.ToString());
-                            wagonDamageStats[radiationType.ToString()] = 0;
+                            Debug.Log("No damage value left of damage type: " + radiationType);
+                            wagonDamageStats[radiationType] = 0;
                         }
                     }
                 }
@@ -80,6 +80,10 @@ public class TurnMaster : MonoBehaviour
                     gm.PlayerDamage(entry.Value, entry.Key);
                 }
             }
+        }
+        if (gm.IsBetaDotActive())
+        {
+            gm.PlayerBetaDotDamage();
         }
     }
 

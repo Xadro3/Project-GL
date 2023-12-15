@@ -552,8 +552,14 @@ MonoBehaviour:
   roundTimer: 5
   roundTimerText: {fileID: 905819283}
   actionText: {fileID: 842032667}
+  alphaDamageBuff: 0
+  alphaDamageBuffValue: 2
   alphaDamage: 0
+  betaDamageBuff: 0
+  betaDamageBuffValue: 2
   betaDamage: 0
+  gammaDamageBuff: 0
+  gammaDamageBuffValue: 2
   gammaDamage: 0
   alphaMax: 15
   betaMax: 10
@@ -942,7 +948,6 @@ MonoBehaviour:
   graveyardPileParent: {fileID: 0}
   isGamePauseActive: 0
   interactionBlock: {fileID: 2016143250}
-  cardEffectEventHandler: {fileID: 415709738}
   wait: 0
   waitTimer: 4.03
 --- !u!114 &415709738
@@ -5511,6 +5516,9 @@ MonoBehaviour:
   betaBar: {fileID: 703613241}
   gammaBar: {fileID: 435270053}
   healthBar: {fileID: 1671230037}
+  betaDotActive: 0
+  betaDotDamage: 3
+  betaDotDamageSum: 0
 --- !u!1 &1551973779
 GameObject:
   m_ObjectHideFlags: 0

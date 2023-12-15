@@ -25,8 +25,16 @@ public class Enemy : MonoBehaviour
     private int reductionDurationBetaPercent = 0;
     private int reductionDurationGammaPercent = 0;
 
+    public bool alphaDamageBuff = false;
+    public int alphaDamageBuffValue = 2;
     public int alphaDamage;
+
+    public bool betaDamageBuff = false;
+    public int betaDamageBuffValue = 2;
     public int betaDamage;
+
+    public bool gammaDamageBuff = false;
+    public int gammaDamageBuffValue = 2;
     public int gammaDamage;
 
     private int alphaMin = 1;
@@ -41,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     public List<GameConstants.radiationTypes> damageTypes;
 
-    public Dictionary<string, int> damageStats = new Dictionary<string, int>();
+    public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
 
     GameManager gm;
 
@@ -55,7 +63,7 @@ public class Enemy : MonoBehaviour
     {
         foreach (GameConstants.radiationTypes damageType in damageTypes)
         {
-            damageStats.TryAdd(damageType.ToString(), 0);
+            damageStats.TryAdd(damageType, 0);
         }
     }
 
@@ -72,8 +80,24 @@ public class Enemy : MonoBehaviour
             return false;
         }
     }
+    public void ActivateDamageBuff(GameConstants.radiationTypes damageType)
+    {
+        switch (damageType)
+        {
+            case GameConstants.radiationTypes.Alpha:
+                alphaDamageBuff = true;
+                break;
 
-    public Dictionary<string, int> GenerateDamage()
+            case GameConstants.radiationTypes.Beta:
+                betaDamageBuff = true;
+                break;
+
+            case GameConstants.radiationTypes.Gamma:
+                gammaDamageBuff = true;
+                break;
+        }
+    }
+    public Dictionary<GameConstants.radiationTypes, int> GenerateDamage()
     {
 
         for (int i = 0; i < damageTypes.Count; i++)
@@ -97,7 +121,11 @@ public class Enemy : MonoBehaviour
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationAlphaPercent -= 1;
                     }
-                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    if (alphaDamageBuff)
+                    {
+                        damageValue += alphaDamageBuffValue;
+                    }
+                    damageStats[damageTypes[i]] = damageValue;
                     alphaDamage = damageValue;
                     break;
 
@@ -118,7 +146,11 @@ public class Enemy : MonoBehaviour
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationBetaPercent -= 1;
                     }
-                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    if (betaDamageBuff)
+                    {
+                        damageValue += betaDamageBuffValue;
+                    }
+                    damageStats[damageTypes[i]] = damageValue;
                     betaDamage = damageValue;
                     break;
 
@@ -139,7 +171,11 @@ public class Enemy : MonoBehaviour
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationGammaPercent -= 1;
                     }
-                    damageStats[damageTypes[i].ToString()] = damageValue;
+                    if (gammaDamageBuff)
+                    {
+                        damageValue += gammaDamageBuffValue;
+                    }
+                    damageStats[damageTypes[i]] = damageValue;
                     gammaDamage = damageValue;
                     break;
 
@@ -155,7 +191,7 @@ public class Enemy : MonoBehaviour
     public void UpdateDamageText()
     {
         actionText.text = "";
-        foreach (string damageType in damageStats.Keys)
+        foreach (GameConstants.radiationTypes damageType in damageStats.Keys)
         {
             int damageValue = damageStats[damageType];
             actionText.text += $"{damageType}: {damageValue}\n";
@@ -172,34 +208,39 @@ public class Enemy : MonoBehaviour
             switch (entry.Key)
             {
                 case GameConstants.effectTypes.RadiationReductionFlat:
-                    HandleRadiationReductionFlat(card.protectionTypes, entry.Value, card.duration);
+                    Debug.Log("Effect: " + entry.Key);
+                    TriggerRadiationReductionFlat(card.protectionTypes, entry.Value, card.duration);
                     break;
 
                 case GameConstants.effectTypes.RadiationReductionPercent:
-                    HandleRadiationReductionPercent(card.protectionTypes, entry.Value, card.duration);
+                    Debug.Log("Effect: " + entry.Key);
+                    TriggerRadiationReductionPercent(card.protectionTypes, entry.Value, card.duration);
                     break;
 
                 case GameConstants.effectTypes.RadiationBlock:
-                    HandleRadiationBlock(card.protectionTypes, card.duration);
+                    Debug.Log("Effect: " + entry.Key);
+                    TriggerRadiationBlock(card.protectionTypes, card.duration);
                     break;
 
                 case GameConstants.effectTypes.RadiationOrderChange:
+                    Debug.Log("Effect: " + entry.Key);
                     Debug.Log("There is no such card in the game at this moment");
                     break;
 
                 case GameConstants.effectTypes.TimerReductionFlat:
-                    HandleTimerReductionFlat(entry.Value);
+                    Debug.Log("Effect: " + entry.Key);
+                    TriggerTimerReductionFlat(entry.Value);
                     break;
             }
         }
     }
 
-    private void HandleTimerReductionFlat(int value)
+    private void TriggerTimerReductionFlat(int value)
     {
         UpdateTimer(value);
     }
 
-    private void HandleRadiationBlock(List<GameConstants.radiationTypes> radiations, int duration)
+    private void TriggerRadiationBlock(List<GameConstants.radiationTypes> radiations, int duration)
     {
         foreach (GameConstants.radiationTypes entry in radiations)
         {
@@ -207,22 +248,22 @@ public class Enemy : MonoBehaviour
             {
                 case GameConstants.radiationTypes.Alpha:
                     blockDurationAlpha = duration - 1;
-                    damageStats[entry.ToString()] = 0;
+                    damageStats[entry] = 0;
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     blockDurationBeta = duration - 1;
-                    damageStats[entry.ToString()] = 0;
+                    damageStats[entry] = 0;
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     blockDurationGamma = duration - 1;
-                    damageStats[entry.ToString()] = 0;
+                    damageStats[entry] = 0;
                     break;
             }
         }
     }
-    private void HandleRadiationReductionPercent(List<GameConstants.radiationTypes> radiations, int value, int duration)
+    private void TriggerRadiationReductionPercent(List<GameConstants.radiationTypes> radiations, int value, int duration)
     {
         reductionPercentValue = value;
         foreach (GameConstants.radiationTypes entry in radiations)
@@ -231,22 +272,22 @@ public class Enemy : MonoBehaviour
             {
                 case GameConstants.radiationTypes.Alpha:
                     reductionDurationAlphaPercent = duration - 1;
-                    damageStats[entry.ToString()] -= damageStats[entry.ToString()] * (value / 100);
+                    damageStats[entry] -= damageStats[entry] * (value / 100);
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     reductionDurationBetaPercent = duration - 1;
-                    damageStats[entry.ToString()] -= damageStats[entry.ToString()] * (value / 100);
+                    damageStats[entry] -= damageStats[entry] * (value / 100);
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     reductionDurationGammaPercent = duration - 1;
-                    damageStats[entry.ToString()] -= damageStats[entry.ToString()] * (value / 100);
+                    damageStats[entry] -= damageStats[entry] * (value / 100);
                     break;
             }
         }
     }
-    private void HandleRadiationReductionFlat(List<GameConstants.radiationTypes> radiations, int value, int duration)
+    private void TriggerRadiationReductionFlat(List<GameConstants.radiationTypes> radiations, int value, int duration)
     {
         reductionFlatValue = value;
         foreach (GameConstants.radiationTypes entry in radiations)
@@ -255,17 +296,17 @@ public class Enemy : MonoBehaviour
             {
                 case GameConstants.radiationTypes.Alpha:
                     reductionDurationAlphaFlat = duration - 1;
-                    damageStats[entry.ToString()] -= value;
+                    damageStats[entry] -= value;
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     reductionDurationBetaFlat = duration - 1;
-                    damageStats[entry.ToString()] -= value;
+                    damageStats[entry] -= value;
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     reductionDurationGammaFlat = duration - 1;
-                    damageStats[entry.ToString()] -= value;
+                    damageStats[entry] -= value;
                     break;
             }
         }

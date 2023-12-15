@@ -64,43 +64,38 @@ public class Slot : MonoBehaviour
         //currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
         GetCardInSlotInfo().SetCurrentDurabilityToMax();
     }
-    private void HandleDrawCard(int value)
-    {
-        
-    }
 
-    public void HandleShieldAbility(Card abilityCard)
+    public void HandleShieldAbility(Card card)
     {
-        foreach (var entry in abilityCard.cardEffects)
+        foreach (var entry in card.cardEffects)
         {
             switch (entry.Key)
             {
                 case GameConstants.effectTypes.ShieldBuff:
+                    Debug.Log("Effect: " + entry.Key);
                     HandleShieldBuff(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.ShieldRepair:
+                case GameConstants.effectTypes.ShieldRepairPapier:
+                case GameConstants.effectTypes.ShieldRepairAlu:
+                case GameConstants.effectTypes.ShieldRepairBlei:
+                    Debug.Log("Effect: " + entry.Key);
                     HandleShieldRepair(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.ShieldDissolve:
+                case GameConstants.effectTypes.ShieldDissolvePapier:
+                case GameConstants.effectTypes.ShieldDissolveAlu:
+                case GameConstants.effectTypes.ShieldDissolveBlei:
+                    Debug.Log("Effect: " + entry.Key);
                     HandleShieldDissolve(entry.Value);
                     break;
 
                 case GameConstants.effectTypes.DrawCard:
-                    gm.HandleEffect(entry.Key,entry.Value);
-                    break;
-
-                case GameConstants.effectTypes.ShieldDissolvePapier:
-                    HandleShieldDissolve(entry.Value);
-                    break;
-
-                case GameConstants.effectTypes.ShieldDissolveAlu:
-                    HandleShieldDissolve(entry.Value);
-                    break;
-
-                case GameConstants.effectTypes.ShieldDissolveBlei:
-                    HandleShieldDissolve(entry.Value);
+                case GameConstants.effectTypes.Discard:
+                    Debug.Log("Effect: " + entry.Key);
+                    gm.HandleEffect(card);
                     break;
             }
         }        

@@ -200,7 +200,12 @@ public class CardMovementHandler : MonoBehaviour
                             if (card.ability)
                             {
                                 HandleAbilityCard(slot);
-                                break;
+                                if (wasPlayed)
+                                {
+                                    MoveToDiscardPile();
+                                    return;
+                                }
+                                
                             }
 
                             if (!card.ability && !slot.hasCard && slot.CompareTag("ActiveCardSlot"))
@@ -218,6 +223,7 @@ public class CardMovementHandler : MonoBehaviour
                         else
                         {
                             //transform.position = initialHandSlot.position;
+                            Debug.Log("Slot Else is firing");
                             this.transform.SetParent(placeholder.transform.parent);
                             this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
                             SetSortingOrder(0);
@@ -225,9 +231,11 @@ public class CardMovementHandler : MonoBehaviour
                     }
                 }
             }
+            
             //put card back to playerhand when not played on an active card slot
             if (!wasPlayed)
             {
+                Debug.Log("Card was not played, back to playerhand");
                 //transform.position = initialHandSlot.position;
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
@@ -250,25 +258,25 @@ public class CardMovementHandler : MonoBehaviour
         {
             case GameConstants.abilityTargets.AbilityEnemy when slot.CompareTag("Enemy"):
                 Debug.Log("I want to play that on an Enemy");
-                slot.GetComponentInParent<Enemy>().HandleEffect(card);
                 wasPlayed = true;
                 card.SetWasPlayed(true);
+                slot.GetComponentInParent<Enemy>().HandleEffect(card);
                 break;
 
             case GameConstants.abilityTargets.AbilityPlayer when slot.CompareTag("Player"):
                 Debug.Log("I want to play that on an Player");
                 wasPlayed = true;
                 card.SetWasPlayed(true);
+                slot.GetComponentInParent<PlayerHealthManager>().HandleEffect(card);
                 break;
 
             case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
                 Debug.Log("I want to play that on a Shield");
                 if (CanPlayCardOnShield(card, slot))
                 {
-                    slot.HandleShieldAbility(card);
                     wasPlayed = true;
                     card.SetWasPlayed(true);
-                    
+                    slot.HandleShieldAbility(card);
                 }
                 break;
 
@@ -276,18 +284,10 @@ public class CardMovementHandler : MonoBehaviour
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
                 gm.RefundCardCost(card);
+                Debug.LogWarning("Default Ability Handling");
                 break;
         }
-
-        if (wasPlayed)
-        {
-            foreach (var entry in card.cardEffects)
-            {
-                HandleEffect(entry.Key, entry.Value);
-            }
-            MoveToDiscardPile();
-        }
-
+        SetSortingOrder(transform.GetSiblingIndex());
         if (hasPlaceholder)
         {
             hasPlaceholder = false;
@@ -356,92 +356,19 @@ public class CardMovementHandler : MonoBehaviour
 
     }
 
-    private void HandleEffect(GameConstants.effectTypes effectType, int value)
+    public void HandleEffect(Card card)
     {
-        switch (effectType)
+        foreach (var entry in card.cardEffects)
         {
-            case GameConstants.effectTypes.DamageReductionFlat:
-                CardEffectEventHandler.TriggerDamageReductionFlat(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.DamageReductionPercent:
-                CardEffectEventHandler.TriggerDamageReductionPercent(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.RadiationReductionFlat:
-                CardEffectEventHandler.TriggerRadiationReductionFlat(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.RadiationReductionPercent:
-                CardEffectEventHandler.TriggerRadiationReductionPercent(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.RadiationBlock:
-                CardEffectEventHandler.TriggerRadiationBlock(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.RadiationImmunity:
-                CardEffectEventHandler.TriggerRadiationImmunity(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.RadiationOrderChange:
-                CardEffectEventHandler.TriggerRadiationOrderChange(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ShieldRepair:
-                CardEffectEventHandler.TriggerShieldRepair(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ShieldBuff:
-                CardEffectEventHandler.TriggerShieldBuff(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ShieldDissolve:
-                CardEffectEventHandler.TriggerShieldDissolve(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ResistanceReductionFlat:
-                CardEffectEventHandler.TriggerResistanceReductionFlat(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ResistanceReductionPercent:
-                CardEffectEventHandler.TriggerResistanceReductionPercent(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ResistanceEffectReduction:
-                CardEffectEventHandler.TriggerResistanceEffectReduction(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.PlayerHealFlat:
-                CardEffectEventHandler.TriggerPlayerHealFlat(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.PlayerHealPercent:
-                CardEffectEventHandler.TriggerPlayerHealPercent(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.TimerReductionFlat:
-                CardEffectEventHandler.TriggerTimerReductionFlat(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.DrawCard:
-                CardEffectEventHandler.TriggerDrawCard(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.Discard:
-                CardEffectEventHandler.TriggerDiscard(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.EnergyGet:
-                CardEffectEventHandler.TriggerEnergyGet(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.EnergyCostReduction:
-                CardEffectEventHandler.TriggerEnergyCostReduction(value);
-                Debug.Log("Trigger Effect: " + effectType);
-                break;
-
+            switch (entry.Key)
+            {
+                case GameConstants.effectTypes.Discard:
+                    MoveToDiscardPile();
+                    Debug.Log("CardMovement Effect: " + entry.Key);
+                    break;
+            }
         }
+
     }
 
 }

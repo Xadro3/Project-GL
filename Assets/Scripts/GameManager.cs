@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     PlayerHealthManager player;
     MySceneManager mySceneManager;
     Deck deck;
-    public CardEffectEventHandler cardEffectEventHandler;
+    CardManager cardManager;
 
     public bool wait;
     private float elapsedTime;
@@ -46,8 +46,9 @@ public class GameManager : MonoBehaviour
         mySceneManager = FindObjectOfType<MySceneManager>();
         turnMaster = FindObjectOfType<TurnMaster>();
         player = FindObjectOfType<PlayerHealthManager>();
-        deck = FindObjectOfType<Deck>();
-        
+        cardManager = FindObjectOfType<CardManager>();
+        deck = cardManager.GetComponent<Deck>();
+
     }
 
     // Start is called before the first frame update
@@ -171,9 +172,14 @@ public class GameManager : MonoBehaviour
         playerRessourceText.text = playerRessourceCurrent.ToString();
     }
 
-    public void PlayerDamage(int damageValue, string damageType)
+    public void PlayerDamage(int damageValue, GameConstants.radiationTypes damageType)
     {
         player.ApplyDamage(damageValue, damageType);
+    }
+
+    public void PlayerBetaDotDamage()
+    {
+        player.ApplyDamage(player.betaDotDamage, GameConstants.radiationTypes.Pure);
     }
 
     public void EndTurn()
@@ -194,7 +200,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SetDamage(Dictionary<string, int> damageStats)
+    public void SetDamage(Dictionary<GameConstants.radiationTypes, int> damageStats)
     {
         turnMaster.SetDamage(damageStats);
     }
@@ -203,6 +209,23 @@ public class GameManager : MonoBehaviour
     {
         int currentCards = playerHand.transform.childCount;
         return currentCards;
+    }
+
+    public void ActivateDamageBuff(GameConstants.radiationTypes radiationType)
+    {
+        wagons[0].ActivateDamageBuff(radiationType);
+    }
+
+    public void ActivateShieldDebuff()
+    {
+        List<Card> cards = new List<Card>();
+
+        cards.AddRange(FindObjectsOfType<Card>(true));
+        foreach (Card card in cards)
+        {
+            card.ShieldDebuff();
+        }
+        
     }
 
     public void RemoveCardFromEncounter(Card card)
@@ -215,10 +238,38 @@ public class GameManager : MonoBehaviour
         costIncrease += increase;
     }
 
-    private void HandleCardDrawEffect(int value)
+    public bool IsBetaDotActive()
+    {
+        return player.betaDotActive;
+    }
+    
+    public void HandleEffect(Card card)
+    {
+        foreach (var entry in card.cardEffects)
+        {
+            switch (entry.Key)
+            {
+                case GameConstants.effectTypes.Discard:
+                    TriggerDiscardEffect(card, entry.Value);
+                    break;
+
+                case GameConstants.effectTypes.DrawCard:
+                    Debug.Log("Effect: " + entry.Key);
+                    TriggerCardDrawEffect(entry.Value);
+                    break;
+
+                case GameConstants.effectTypes.EnergyGet:
+                    TriggerEnergyGetEffect(entry.Value);
+                    Debug.Log("Effect: " + entry.Key);
+                    break;
+            }
+        }
+        
+    }
+    private void TriggerCardDrawEffect(int value)
     {
         int cardsInHand = CountOccupiedHandSlots();
-        if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count) || deck.playerDeck.Count == 0)
+        if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count + value) || deck.playerDeck.Count == 0)
         {
             Shuffle();
         }
@@ -231,19 +282,52 @@ public class GameManager : MonoBehaviour
             deck.RemoveCardFromPlayerDeck(randomCard);
         }
     }
-
-    public void HandleEffect(GameConstants.effectTypes effectType, int value)
+    private void TriggerEnergyGetEffect(int value)
     {
-        switch (effectType)
-        {
-            case GameConstants.effectTypes.DrawCard:
-                Debug.Log("Effect: " + effectType);
-                HandleCardDrawEffect(value);
-                break;
-            case GameConstants.effectTypes.EnergyGet:
-                Debug.Log("Effect: " + effectType);
-                break;
-        }
+        AddEnergy(value);
     }
 
+    private void TriggerDiscardEffect(Card triggerCard, int value)
+    {
+        List<Card> cardsInHand = new List<Card>();
+        cardsInHand.AddRange(playerHand.GetComponentsInChildren<Card>());
+
+        // Ensure that the value is within a valid range
+        value = Mathf.Clamp(value, 0, cardsInHand.Count); 
+
+        // Randomly select cards and perform the discard effect
+        for (int i = 0; i < value; i++)
+        {
+            int randomIndex = 0;
+            // Ensure there are still cards in the list
+            if (cardsInHand.Count > 0)
+            {
+                // Randomly select an index
+                randomIndex = Random.Range(0, cardsInHand.Count);
+
+                // Get the randomly selected card
+                Card randomCard = cardsInHand[randomIndex];
+
+                if (randomCard != triggerCard && randomCard != null)
+                {
+                    Debug.Log("I am getting discarded: " + randomCard.cardName);
+                    // Perform the discard effect for the selected card
+                    randomCard.GetComponentInParent<CardMovementHandler>().MoveToDiscardPile();
+
+                    // Remove the selected card from the list to avoid selecting it again
+                    cardsInHand.RemoveAt(randomIndex);
+                }
+                else
+                {
+                    Debug.Log("Discarded card would have been the same as trigger or null");
+                    i--;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+    }
 }

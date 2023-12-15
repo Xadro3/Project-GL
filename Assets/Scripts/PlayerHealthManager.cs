@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,13 @@ public class PlayerHealthManager : MonoBehaviour
     public int health = 1;
     [Range(0, 100)]
     public int healthMax = 100;
-    public int alphaResistance = 0;
+    public int alphaResistance;
     [Range(0, 50)]
     public int alphaResistanceMax = 20;
-    public int betaResistance = 0;
+    public int betaResistance;
     [Range(0, 50)]
     public int betaResistanceMax = 20;
-    public int gammaResistance = 0;
+    public int gammaResistance;
     [Range(0, 50)]
     public int gammaResistanceMax = 30;
 
@@ -21,52 +22,67 @@ public class PlayerHealthManager : MonoBehaviour
     public HealthBar gammaBar;
     public HealthBar healthBar;
 
+    private bool alphaDamageReductionFlat = false;
+    private bool alphaDamageReductionPercent = false;
+    private bool betaDamageReductionFlat = false;
+    private bool betaDamageReductionPercent = false;
+    private bool gammaDamageReductionFlat = false;
+    private bool gammaDamageReductionPercent = false;
+
+    private bool healthDamageReductionPercent = false;
+
+
+    public bool betaDotActive = false;
+    public int betaDotDamage = 3;
+    public int betaDotDamageSum = 0;
+
+    private int healthDamageReductionFlatValue = 0;
+    private int resistanceDamageReductionPercentValue = 0;
+    private int resistanceDamageReductionFlatValue = 0;
+    
+
     GameManager gm;
 
+    private void Awake()
+    {
+        alphaResistance = alphaResistanceMax;
+        betaResistance = betaResistanceMax;
+        gammaResistance = gammaResistanceMax;
+    }
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
         alphaBar.SetMaxHealth(alphaResistanceMax);
-        alphaBar.SetHealth(alphaResistance);
+        alphaBar.SetHealth(alphaResistanceMax);
         betaBar.SetMaxHealth(betaResistanceMax);
-        betaBar.SetHealth(betaResistance);
+        betaBar.SetHealth(betaResistanceMax);
         gammaBar.SetMaxHealth(gammaResistanceMax);
-        gammaBar.SetHealth(gammaResistance);
+        gammaBar.SetHealth(gammaResistanceMax);
         healthBar.SetMaxHealth(healthMax);
         healthBar.SetHealth(healthMax);
-    }
+
+}
 
     // function to apply damage -> currently only total damage no debuffs here
-    public void ApplyDamage(int damageValue, string damageType)
+    public void ApplyDamage(int damageValue, GameConstants.radiationTypes damageType)
     {
         //switch > if :)
         switch (damageType)
         {
-            case "Alpha":
-                alphaResistance += damageValue;
-                alphaBar.SetHealth(alphaResistance);
-                Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
-                CheckResistances();
+            case GameConstants.radiationTypes.Alpha:
+                HandleAlphaDamage(damageValue);
                 break;
 
-            case "Beta":
-                betaResistance += damageValue;
-                betaBar.SetHealth(betaResistance);
-                Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
-                CheckResistances();
+            case GameConstants.radiationTypes.Beta:
+                HandleBetaDamage(damageValue);
                 break;
 
-            case "Gamma":
-                gammaResistance += damageValue;
-                gammaBar.SetHealth(gammaResistance);
-                Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
-                CheckResistances();
+            case GameConstants.radiationTypes.Gamma:
+                HandleGammaDamage(damageValue);
                 break;
 
-            case "Pure":
-                health -= damageValue;
-                healthBar.SetHealth(health);
-                CheckResistances();
+            case GameConstants.radiationTypes.Pure:
+                HandlePuredamage(damageValue);
                 break;
         }
         // check if player survived damage
@@ -78,42 +94,104 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
+    private void HandlePuredamage(int damageValue)
+    {
+        if (healthDamageReductionPercent)
+        {
+            damageValue = damageValue * (1 - (healthDamageReductionFlatValue/100));
+        }
+        health -= damageValue;
+        healthBar.SetHealth(health);
+    }
+
+    private void HandleGammaDamage(int damageValue)
+    {
+        if (gammaDamageReductionFlat)
+        {
+            damageValue -= resistanceDamageReductionFlatValue;
+        }
+        if (gammaDamageReductionPercent)
+        {
+            damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue/100));
+        }
+        gammaResistance -= damageValue;
+        gammaBar.SetHealth(gammaResistance);
+        Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
+        CheckResistances();
+    }
+
+    private void HandleBetaDamage(int damageValue)
+    {
+        if (betaDamageReductionFlat)
+        {
+            damageValue -= resistanceDamageReductionFlatValue;
+        }
+        if (betaDamageReductionPercent)
+        {
+            damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue / 100));
+        }
+        betaResistance -= damageValue;
+        betaBar.SetHealth(betaResistance);
+        Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
+        CheckResistances();
+    }
+
+    private void HandleAlphaDamage(int damageValue)
+    {
+        if (alphaDamageReductionFlat)
+        {
+            damageValue -= resistanceDamageReductionFlatValue;
+        }
+        if (alphaDamageReductionPercent)
+        {
+            damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue / 100));
+        }
+        alphaResistance -= damageValue;
+        alphaBar.SetHealth(alphaResistance);
+        Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
+        CheckResistances();
+    }
+
     private void CheckResistances()
     {
-        if (alphaResistance >= alphaResistanceMax)
+        if (alphaResistance <= 0)
         {
             healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
-            alphaResistance = 0;
+            alphaResistance = alphaResistanceMax;
             Debug.Log("Aua! Ich habe schaden bekommen!");
         }
-        if (betaResistance >= betaResistanceMax)
+        if (betaResistance <= 0)
         {
-            ApplyDamage(3, "Pure");
+            betaDotActive = true;
+            betaDotDamageSum += betaDotDamage;
+            betaResistance = betaResistanceMax;
+            ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
         }
-        if (gammaResistance >= gammaResistanceMax)
+        if (gammaResistance <= 0)
         {
-            Debug.Log("Rework Gamma Konsequenzes!");
-            //gammaResistance = 0;
-            gm.SetCardCostIncrease(1);
-            gm.playerRessourceMax -= 1;
-            gm.playerHandMax -= 1;
+            gammaResistance = gammaResistanceMax;
+            TriggerRandomDebuff();
         }
     }
 
-    public int CheckResistance(string radiationType)
+    private void TriggerRandomDebuff()
     {
-        switch (radiationType)
+        // Array of actions
+        System.Action[] actions = new System.Action[]
         {
-            case "Alpha":
-                return alphaResistance;
+            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Alpha),
+            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta),
+            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma),
+            () => gm.SetCardCostIncrease(1),
+            () => gm.playerRessourceMax -= 1,
+            () => gm.playerHandMax -= 1,
+            () => gm.ActivateShieldDebuff()
+            
+        };
 
-            case "Beta":
-                return alphaResistance;
-
-            case "Gamma":
-                return alphaResistance;
-        }
-        return 0;
+        // Randomly select and invoke an action
+        int randomIndex = UnityEngine.Random.Range(0, actions.Length);
+        actions[randomIndex].Invoke();
     }
     
     public int CheckHealth()
@@ -121,29 +199,95 @@ public class PlayerHealthManager : MonoBehaviour
         return health;
     }
 
-    public void HandleEffect(GameConstants.effectTypes effectType, int value)
+    public void HandleEffect(Card card)
     {
-        switch (effectType)
+        foreach (var entry in card.cardEffects)
         {
-            case GameConstants.effectTypes.ResistanceReductionFlat:
-                Debug.Log("Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ResistanceReductionPercent:
-                Debug.Log("Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.ResistanceEffectReduction:
-                Debug.Log("Effect: " + effectType);
-                break;
-            case GameConstants.effectTypes.PlayerHealFlat:
-                Debug.Log("Effect: " + effectType);
-                health += value;
-                break;
-            case GameConstants.effectTypes.PlayerHealPercent:
-                Debug.Log("Effect: " + effectType);
-                health += (1 + (value / 100));
-                break;
+            switch (entry.Key)
+            {
+                case GameConstants.effectTypes.ResistanceReductionFlat:
+                    TriggerResistanceReductionFlat(card.protectionTypes, entry.Value);
+                    Debug.Log("Effect: " + entry);
+                    break;
 
+                case GameConstants.effectTypes.ResistanceReductionPercent:
+                    TriggerResistanceDamageReductionPercent(card.protectionTypes, entry.Value);
+                    Debug.Log("Effect: " + entry);
+                    break;
+
+                case GameConstants.effectTypes.ResistanceEffectReduction:
+                    Debug.Log("Effect: " + entry);
+                    break;
+
+                case GameConstants.effectTypes.PlayerHealFlat:
+                    Debug.Log("Effect: " + entry);
+                    //health += value;
+                    break;
+
+                case GameConstants.effectTypes.PlayerHealPercent:
+                    Debug.Log("Effect: " + entry);
+                    //health += (1 + (value / 100));
+                    break;
+
+                case GameConstants.effectTypes.DrawCard:
+                case GameConstants.effectTypes.Discard:
+                    gm.HandleEffect(card);
+                    break;
+
+                case GameConstants.effectTypes.HealthDamageReductionPercent:
+                    TriggerHealthDamageReductionPercent(entry.Value);
+                    break;
+            }
+        }
+            
+    }
+
+    private void TriggerHealthDamageReductionPercent(int value)
+    {
+        healthDamageReductionFlatValue = value;
+        healthDamageReductionPercent = true;
+    }
+
+    private void TriggerResistanceDamageReductionPercent(List<GameConstants.radiationTypes> radiations, int value)
+    {
+        resistanceDamageReductionPercentValue = value;
+        foreach (GameConstants.radiationTypes entry in radiations)
+        {
+            switch (entry)
+            {
+                case GameConstants.radiationTypes.Alpha:
+                    alphaDamageReductionPercent = true;
+                    break;
+
+                case GameConstants.radiationTypes.Beta:
+                    betaDamageReductionPercent = true;
+                    break;
+
+                case GameConstants.radiationTypes.Gamma:
+                    gammaDamageReductionPercent = true;
+                    break;
+            }
         }
     }
 
+    private void TriggerResistanceReductionFlat(List<GameConstants.radiationTypes> radiations, int value)
+    {
+        foreach (GameConstants.radiationTypes entry in radiations)
+        {
+            switch (entry)
+            {
+                case GameConstants.radiationTypes.Alpha:
+                    alphaResistance += value;
+                    break;
+
+                case GameConstants.radiationTypes.Beta:
+                    betaResistance += value;
+                    break;
+
+                case GameConstants.radiationTypes.Gamma:
+                    gammaResistance -= value;
+                    break;
+            }
+        }
+    }
 }

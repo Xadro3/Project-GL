@@ -8,6 +8,7 @@ public class Deck : MonoBehaviour
     public List<Card> deck;
     public List<Card> playerDeck;
     private float deckMin = 0;
+    GameManager gm;
 
     void Awake()
     {
@@ -16,7 +17,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        //PopulatePlayerDeck();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void PopulatePlayerDeck()
