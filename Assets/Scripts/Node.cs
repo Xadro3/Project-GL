@@ -10,12 +10,48 @@ public class Node : MonoBehaviour
     public Sprite shopSprite;
     public Sprite workshopSprite;
     public Sprite encounterSprite;
+    public GameObject nextNode;
+    public bool isUnlocked = false;
+    public bool isLastNode = false;
+    public bool isCompleted = false;
+    public string nextMap;
+    Collider collider;
     SpriteRenderer sprite;
+
+    private void Start()
+    {
+        collider = GetComponent<BoxCollider>();
+        collider.enabled = false;
+    }
 
     private void Update()
     {
+
         DisplayNode();
+
+        if (isUnlocked)
+        {
+            collider.enabled = true;
+            sprite.color = new Color(1, 1, 1, 1);
+        }
+        if (!isUnlocked)
+        {
+            sprite.color = Color.gray;
+        }
+        if (isLastNode&&isCompleted)
+        {
+            SceneManager.LoadScene(nextMap);
+        }
     }
+
+    public void UnlockNextNode(GameObject nextNode)
+    {
+        nextNode.GetComponent<Node>().isUnlocked = true;
+        
+
+    }
+
+
     public void DisplayNode()
     {
         sprite = this.GetComponent<SpriteRenderer>();
@@ -53,6 +89,8 @@ public class Node : MonoBehaviour
             case 3:
                 SceneManager.LoadScene("Workshop");
                 break;
+            
+
 
         }
             

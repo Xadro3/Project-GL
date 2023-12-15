@@ -12,6 +12,8 @@ TagManager:
   - PlayerInventory
   - Items
   - Menu
+  - Nodegenerator
+  - Nodeinstancer
   layers:
   - Default
   - TransparentFX

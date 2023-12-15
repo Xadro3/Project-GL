@@ -9,14 +9,11 @@ public class OverworldGenerator : MonoBehaviour
     public int noEvents;
     public int noEncounters;
     public int noWorkshops;
-
-    private void Start()
-    {
-        GenerateMap();
-    }
+    bool generated;
 
     public void GenerateMap()
     {
+        generated = true;
         
         Dictionary<int, int> countMap = new Dictionary<int, int>();
         countMap.Add(0, 0);

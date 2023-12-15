@@ -6,9 +6,16 @@ public class NodeInstancer : MonoBehaviour
 {
     public GameObject node;
     public OverworldGenerator overworld;
-    void Awake()
+    public NodeInstancer nextNode;
+    public GameObject instantiatedNode;
+    bool nodesInstanced;
+
+    public void InstantiateNode()
     {
-        overworld.nodes.Add(Instantiate(node, transform.position, transform.rotation));
+            instantiatedNode = Instantiate(node, transform.position, transform.rotation);
+            instantiatedNode.GetComponent<Node>().nextNode = instantiatedNode;
+            overworld.nodes.Add(instantiatedNode);
+            nodesInstanced=true;
     }
 
 
