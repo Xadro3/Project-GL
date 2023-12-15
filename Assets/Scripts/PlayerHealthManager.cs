@@ -31,7 +31,6 @@ public class PlayerHealthManager : MonoBehaviour
 
     private bool healthDamageReductionPercent = false;
 
-
     public bool betaDotActive = false;
     public int betaDotDamage = 3;
     public int betaDotDamageSum = 0;
@@ -39,7 +38,6 @@ public class PlayerHealthManager : MonoBehaviour
     private int healthDamageReductionFlatValue = 0;
     private int resistanceDamageReductionPercentValue = 0;
     private int resistanceDamageReductionFlatValue = 0;
-    
 
     GameManager gm;
 

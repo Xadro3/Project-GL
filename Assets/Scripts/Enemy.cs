@@ -8,8 +8,14 @@ public class Enemy : MonoBehaviour
 
     public int damageValue = 0;
     public int roundTimer = 0;
+    public int roundTimerMin = 2;
+    public int roundTimerMax = 5;
+
     public TextMeshProUGUI roundTimerText;
-    public TextMeshProUGUI actionText;
+
+    public TextMeshProUGUI alphaText;
+    public TextMeshProUGUI betaText;
+    public TextMeshProUGUI gammaText;
 
     private int blockDurationAlpha = 0;
     private int blockDurationBeta = 0;
@@ -55,11 +61,19 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        roundTimerText.text = roundTimer.ToString();
-        populateDamage();
+        GenerateTimerValue(); 
+        PopulateDamage();
+
     }
 
-    private void populateDamage()
+    private void GenerateTimerValue()
+    {
+        int i = Random.Range(roundTimerMin, roundTimerMax + 1);
+        roundTimer = i;
+        roundTimerText.text = roundTimer.ToString();
+    }
+
+    private void PopulateDamage()
     {
         foreach (GameConstants.radiationTypes damageType in damageTypes)
         {
@@ -99,24 +113,18 @@ public class Enemy : MonoBehaviour
     }
     public Dictionary<GameConstants.radiationTypes, int> GenerateDamage()
     {
-
         for (int i = 0; i < damageTypes.Count; i++)
         {
             switch (damageTypes[i])
             {
                 case GameConstants.radiationTypes.Alpha:
                     damageValue = Random.Range(alphaMin, alphaMax + 1);
-                    if (blockDurationAlpha > 0)
-                    {
-                        damageValue = 0;
-                        blockDurationAlpha -= 1;
-                    }
-                    else if (reductionDurationAlphaFlat > 0)
+                    if (reductionDurationAlphaFlat > 0)
                     {
                         damageValue -= reductionFlatValue;
                         reductionDurationAlphaFlat -= 1;
                     }
-                    else if (reductionDurationAlphaPercent > 0)
+                    if (reductionDurationAlphaPercent > 0)
                     {
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationAlphaPercent -= 1;
@@ -125,23 +133,23 @@ public class Enemy : MonoBehaviour
                     {
                         damageValue += alphaDamageBuffValue;
                     }
+                    if (blockDurationAlpha > 0)
+                    {
+                        damageValue = 0;
+                        blockDurationAlpha -= 1;
+                    }
                     damageStats[damageTypes[i]] = damageValue;
                     alphaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     damageValue = Random.Range(betaMin, betaMax + 1);
-                    if (blockDurationBeta > 0)
-                    {
-                        damageValue = 0;
-                        blockDurationBeta -= 1;
-                    }
-                    else if (reductionDurationBetaFlat > 0)
+                    if (reductionDurationBetaFlat > 0)
                     {
                         damageValue -= reductionFlatValue;
                         reductionDurationBetaFlat -= 1;
                     }
-                    else if (reductionDurationBetaPercent > 0)
+                    if (reductionDurationBetaPercent > 0)
                     {
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationBetaPercent -= 1;
@@ -150,23 +158,23 @@ public class Enemy : MonoBehaviour
                     {
                         damageValue += betaDamageBuffValue;
                     }
+                    if (blockDurationBeta > 0)
+                    {
+                        damageValue = 0;
+                        blockDurationBeta -= 1;
+                    }
                     damageStats[damageTypes[i]] = damageValue;
                     betaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     damageValue = Random.Range(gammaMin, gammaMax + 1);
-                    if (blockDurationGamma > 0)
-                    {
-                        damageValue = 0;
-                        blockDurationGamma -= 1;
-                    }
-                    else if (reductionDurationGammaFlat > 0)
+                    if (reductionDurationGammaFlat > 0)
                     {
                         damageValue -= reductionFlatValue;
                         reductionDurationGammaFlat -= 1;
                     }
-                    else if (reductionDurationGammaPercent > 0)
+                    if (reductionDurationGammaPercent > 0)
                     {
                         damageValue -= damageValue * (reductionPercentValue / 100);
                         reductionDurationGammaPercent -= 1;
@@ -174,6 +182,11 @@ public class Enemy : MonoBehaviour
                     if (gammaDamageBuff)
                     {
                         damageValue += gammaDamageBuffValue;
+                    }
+                    if (blockDurationGamma > 0)
+                    {
+                        damageValue = 0;
+                        blockDurationGamma -= 1;
                     }
                     damageStats[damageTypes[i]] = damageValue;
                     gammaDamage = damageValue;
@@ -190,11 +203,23 @@ public class Enemy : MonoBehaviour
 
     public void UpdateDamageText()
     {
-        actionText.text = "";
         foreach (GameConstants.radiationTypes damageType in damageStats.Keys)
         {
             int damageValue = damageStats[damageType];
-            actionText.text += $"{damageType}: {damageValue}\n";
+            switch (damageType)
+            {
+                case GameConstants.radiationTypes.Alpha:
+                    alphaText.text = $"{damageValue}";
+                    break;
+
+                case GameConstants.radiationTypes.Beta:
+                    betaText.text = $"{damageValue}";
+                    break;
+
+                case GameConstants.radiationTypes.Gamma:
+                    gammaText.text = $"{damageValue}";
+                    break;
+            }
         }
     }
 
