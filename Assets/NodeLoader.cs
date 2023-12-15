@@ -10,32 +10,7 @@ public class NodeLoader : MonoBehaviour
     public GameObject[] nodeInstancer;
     bool maptGenerated=false;
     public Scene scene;
-    void Start()
-    {
-        Debug.Log("NodeLoader Running");
-        overworldgenerator = GameObject.FindGameObjectWithTag("Nodegenerator");
-        nodeInstancer = GameObject.FindGameObjectsWithTag("Nodeinstancer");
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-            if (!maptGenerated)
-            {
-                Debug.Log("Generating Map");
-                foreach (GameObject nodeinst in nodeInstancer)
-                {
-                    nodeinst.GetComponent<NodeInstancer>().InstantiateNode();
-                }
-
-                overworldgenerator.GetComponent<OverworldGenerator>().GenerateMap();
-                nodes = overworldgenerator.GetComponent<OverworldGenerator>().nodes;
-                maptGenerated = true;
-            }
-            else
-            {
-                overworldgenerator.GetComponent<OverworldGenerator>().nodes = nodes;
-            }
-
-    }
-
+ 
     private void Awake()
     {
         // It is save to remove listeners even if they
@@ -60,12 +35,49 @@ public class NodeLoader : MonoBehaviour
     // Listener for sceneLoaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // return if not the start calling scene
-        if (!string.Equals(scene.path, this.scene.path)){
-            return;
-        } 
-        Debug.Log("Re-Initializing", this);
-        Start();
+        Debug.Log("NodeLoader Running");
+        Debug.Log(nodes.Count+" nodes.");
+        if (SceneManager.GetActiveScene().name == "Overworld")
+        {
+            overworldgenerator = GameObject.FindGameObjectWithTag("Nodegenerator");
+            nodeInstancer = GameObject.FindGameObjectsWithTag("Nodeinstancer");
+            string currentSceneName = SceneManager.GetActiveScene().name;
+
+            if (nodes.Count == 0)
+            {
+                Debug.Log("Generating Map");
+                foreach (GameObject nodeinst in nodeInstancer)
+                {
+                    nodeinst.GetComponent<NodeInstancer>().InstantiateNode();
+                }
+
+                overworldgenerator.GetComponent<OverworldGenerator>().GenerateMap();
+                nodes = overworldgenerator.GetComponent<OverworldGenerator>().nodes;
+                maptGenerated = true;
+            }
+            else
+            {
+                overworldgenerator.GetComponent<OverworldGenerator>().nodes = nodes;
+            }
+
+            foreach (GameObject gameObject in nodes)
+            {
+                gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject gameObject in nodes)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        
+
+        
+
+        Debug.Log("Scene changed.");
+        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
 }

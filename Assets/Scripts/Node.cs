@@ -22,6 +22,7 @@ public class Node : MonoBehaviour
     {
         collider = GetComponent<BoxCollider>();
         collider.enabled = false;
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
