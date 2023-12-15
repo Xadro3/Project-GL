@@ -11,6 +11,7 @@ public class TurnMaster : MonoBehaviour
     public List<string> savedDamageTypes;
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
     private List<Card> cardsInPlay = new List<Card>();
+    public ButtonRotate endTurnButton;
 
     void Start()
     {
@@ -85,6 +86,8 @@ public class TurnMaster : MonoBehaviour
         {
             gm.PlayerBetaDotDamage();
         }
+        //Add a delay
+        endTurnButton.RotateKnopfBack();
     }
 
 
