@@ -10,6 +10,7 @@ public class NodeLoader : MonoBehaviour
     public GameObject[] nodeInstancer;
     bool maptGenerated=false;
     public Scene scene;
+    public GameObject activeNode;
  
     private void Awake()
     {
@@ -35,6 +36,18 @@ public class NodeLoader : MonoBehaviour
     // Listener for sceneLoaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        foreach(GameObject node in nodes)
+        {
+            if (node.GetComponent<Node>().isActive&&!node.GetComponent<Node>().isCompleted)
+            {
+                activeNode = node;
+            }
+            else if(node.GetComponent<Node>().isCompleted && node.GetComponent<Node>().isActive)
+            {
+                node.GetComponent<Node>().isActive = false;
+            }
+        }
+
         Debug.Log("NodeLoader Running");
         Debug.Log(nodes.Count+" nodes.");
         if (SceneManager.GetActiveScene().name == "Overworld")

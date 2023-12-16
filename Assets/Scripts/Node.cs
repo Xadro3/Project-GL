@@ -14,13 +14,16 @@ public class Node : MonoBehaviour
     public bool isUnlocked = false;
     public bool isLastNode = false;
     public bool isCompleted = false;
+    public bool isFirstNode = false;
+    public bool isActive = false;
     public string nextMap;
     Collider collider;
     SpriteRenderer sprite;
 
-    private void Start()
+    public void WakeUp()
     {
         collider = GetComponent<BoxCollider>();
+        nextNode = nextNode.GetComponent<NodeInstancer>().instantiatedNode;
         collider.enabled = false;
         DontDestroyOnLoad(this);
     }
@@ -42,6 +45,14 @@ public class Node : MonoBehaviour
         if (isLastNode&&isCompleted)
         {
             SceneManager.LoadScene(nextMap);
+        }
+        if (isFirstNode)
+        {
+            eventType = 0;
+        }
+        if (isCompleted)
+        {
+            nextNode.GetComponent<Node>().isUnlocked = true;
         }
     }
 
@@ -76,6 +87,7 @@ public class Node : MonoBehaviour
     }
     public void EnterNode()
     {
+        isActive = true;
         switch (eventType)
         {
             case 0:

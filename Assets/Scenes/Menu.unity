@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 372224889}
   m_Layer: 0
   m_Name: Overworld
-  m_TagString: Untagged
+  m_TagString: NodeWallet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1292,6 +1292,7 @@ MonoBehaviour:
   nodeInstancer: []
   scene:
     m_Handle: 0
+  activeNode: {fileID: 0}
 --- !u!1 &374069845
 GameObject:
   m_ObjectHideFlags: 0

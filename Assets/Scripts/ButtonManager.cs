@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
     public void ButtonPressed(string scene)
     {
         SceneManager.LoadScene(scene);
+        GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().isCompleted = true;
     }
     public void Exitgame()
     {
