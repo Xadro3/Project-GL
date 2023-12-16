@@ -49,6 +49,11 @@ public class TurnMaster : MonoBehaviour
                 // Check if wagon damage type affects card protection type
                 foreach (GameConstants.radiationTypes radiationType in card.protectionTypes)
                 {
+                    if (card.immunityTypes.Contains(radiationType))
+                    {
+                        wagonDamageStats[radiationType] = 0;
+                        break;
+                    }
                     if (wagonDamageStats.ContainsKey(radiationType))
                     {
                         isAffected = true;
