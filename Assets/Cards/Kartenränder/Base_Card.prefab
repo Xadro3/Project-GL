@@ -488,7 +488,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1271636716422112585, guid: c695f2d353ed0ae48ae94e47b3cb57e7, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -532,8 +532,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c695f2d353ed0ae48ae94e47b3cb57e7, type: 2}
-  m_sharedMaterial: {fileID: -1271636716422112585, guid: c695f2d353ed0ae48ae94e47b3cb57e7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1133,7 +1133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1189891121251670627
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3752692469105637289
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,6 +1415,8 @@ MonoBehaviour:
   costText: {fileID: 6351501830754123577}
   durabilityText: {fileID: 2210115746894351009}
   repairText: {fileID: 522856394515449150}
+  shieldIcon: {fileID: 7730388817210345284}
+  entsorgenIcon: {fileID: 415832265303624993}
 --- !u!114 &-5465537923962665041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,6 +1430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
+  cardName: 
   cardRarity: 
   protectionTypes: 
   cost: 0
@@ -1443,6 +1446,7 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  currencyCost: 0
 --- !u!114 &3170304551409798378
 MonoBehaviour:
   m_ObjectHideFlags: 0

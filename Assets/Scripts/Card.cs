@@ -96,6 +96,16 @@ public class Card : MonoBehaviour
 
         currencyCost = cardInfo.currencyCost;
 
+        if (cardInfo.cardType.Contains(GameConstants.cardType.Schild))
+        {
+            cardDisplay.ActivateShieldIcon(true);
+        }
+        if (cardInfo.entsorgen)
+        {
+            cardDisplay.ActivateEntsorgenIcon(true);
+        }
+
+
         cardDisplay.UpdateDisplay();
     }
 
