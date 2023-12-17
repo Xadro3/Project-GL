@@ -23,7 +23,7 @@ public class Card : MonoBehaviour
     public int durability;
     public int durabilityCurrent;
     public bool wasPlayed = false;
-
+    public bool isBought;
 
     //Abilities
     public bool ability;
