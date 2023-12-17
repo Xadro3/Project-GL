@@ -16,6 +16,8 @@ public class CardManager : MonoBehaviour
     GameManager gm;
     public Dictionary<GameConstants.cardType, Dictionary<GameConstants.cardRarity, GameObject>> prefabMapping;
 
+    public List<Card> cardSafeCards;
+
     public SO_Card[] cardInfos;
     public Deck deck;
 
@@ -134,6 +136,7 @@ public class CardManager : MonoBehaviour
                         instantiatedCard.transform.position = cardSafe.transform.position;
                         // Access the Card component of the instantiated card
                         Card cardComponent = instantiatedCard.GetComponent<Card>();
+                        cardSafeCards.Add(cardComponent);
 
                         // Assign the SO_Card to the Card component
                         if (cardComponent != null)
@@ -181,6 +184,20 @@ public class CardManager : MonoBehaviour
     private void LoadCardsFromResources()
     {
         cardInfos = Resources.LoadAll("Cardinfos", typeof(SO_Card)).Cast<SO_Card>().ToArray();
+    }
+
+    public Card GetRandomCardFromCardSafe()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, cardSafeCards.Count());
+        if (randomIndex >= 0 && randomIndex < cardSafeCards.Count)
+        {
+            // Return a random card from playerDeck
+            return cardSafeCards[randomIndex];
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }
