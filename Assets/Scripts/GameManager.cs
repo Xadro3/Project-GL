@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //DrawCards();
         SetDamage(wagons[0].GenerateDamage());
         UpdatePlayerRessource();
+        DrawCards();
     }
 
     // Update is called once per frame

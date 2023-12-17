@@ -38,6 +38,7 @@ public class CardManager : MonoBehaviour
         AssignPrefabsToCards();
         AddBaseCardsToDeck();
         deck.PopulatePlayerDeck();
+        GetRandomCardFromCardSafe();
     }
 
     private void AddBaseCardsToDeck()
@@ -194,16 +195,11 @@ public class CardManager : MonoBehaviour
     public GameObject GetRandomCardFromCardSafe()
     {
         int randomIndex = UnityEngine.Random.Range(0, cardSafeCards.Count());
-        if (randomIndex >= 0 && randomIndex < cardSafeCards.Count)
-        {
-            // Return a random card from playerDeck
-            GameObject randomCard = Instantiate(cardSafeCards[randomIndex], Vector3.zero, Quaternion.identity);
-            return randomCard;
-        }
-        else
-        {
-            return null;
-        }
+        // Return a random card from playerDeck
+        GameObject randomCard = Instantiate(cardSafeCards[randomIndex], Vector3.zero, Quaternion.identity);
+        Debug.Log("Random Card From Card Safe: "+ randomCard.name);
+        return randomCard;
+
     }
 
 }
