@@ -16,7 +16,7 @@ public class CardManager : MonoBehaviour
     GameManager gm;
     public Dictionary<GameConstants.cardType, Dictionary<GameConstants.cardRarity, GameObject>> prefabMapping;
 
-    public List<Card> cardSafeCards;
+    private List<Card> cardSafeCards;
 
     public SO_Card[] cardInfos;
     public Deck deck;
@@ -24,17 +24,20 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         LoadCardsFromResources();
-        gm = FindObjectOfType<GameManager>();
+        
+    }
+
+    private void OnEnable()
+    {
+        //gm = FindObjectOfType<GameManager>();
     }
 
     private void Start()
     {
-        
         InitializePrefabMapping();
         AssignPrefabsToCards();
         AddBaseCardsToDeck();
         deck.PopulatePlayerDeck();
-        gm.DrawCards();
     }
 
     private void AddBaseCardsToDeck()

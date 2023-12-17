@@ -21796,6 +21796,7 @@ GameObject:
   - component: {fileID: 1246746837}
   - component: {fileID: 1246746838}
   - component: {fileID: 1246746839}
+  - component: {fileID: 1246746840}
   m_Layer: 0
   m_Name: Deck
   m_TagString: Untagged
@@ -21886,8 +21887,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af608f9a56c55dc4993119c139ccb12f, type: 2}
   - {fileID: 11400000, guid: 5b4bb88168dde654197b26fa066e9f5b, type: 2}
   cardSafe: {fileID: 1804150744}
+  cardSafeCards: []
   cardInfos: []
   deck: {fileID: 1246746838}
+--- !u!114 &1246746840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246746836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c001f0acd6c5f848bc5fc98b3c4bb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253636879
 GameObject:
   m_ObjectHideFlags: 0
