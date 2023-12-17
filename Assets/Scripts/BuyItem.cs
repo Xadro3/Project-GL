@@ -5,8 +5,13 @@ using UnityEngine;
 public class BuyItem : MonoBehaviour
 {
     Card card;
+    GridLayout grid;
+    private void Start()
+    {
+        grid = GetComponent<GridLayout>();
+    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision);
         if (collision.transform.tag == "Card") 
@@ -17,13 +22,16 @@ public class BuyItem : MonoBehaviour
                 if(GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().money-card.currencyCost > 0)
                 {
                     card.isBought = true;
-                    collision.transform.GetComponent<Drag>().startPos = Vector3.zero;
+                    
+                    collision.transform.GetComponent<Drag>().startPos = GameObject.FindGameObjectWithTag("PlayerInventory").transform.position;
                     collision.transform.SetParent(GameObject.FindGameObjectWithTag("PlayerInventory").transform);
                     GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(card.currencyCost);
-                    GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>().AddCardToDeck(card);
+                    GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>().AddCardToPlayerDeck(card);
+                    
                 }
               
             }
         }
+        Canvas.ForceUpdateCanvases();
     }
 }
