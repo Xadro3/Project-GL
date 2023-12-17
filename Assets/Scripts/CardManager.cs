@@ -16,7 +16,7 @@ public class CardManager : MonoBehaviour
     GameManager gm;
     public Dictionary<GameConstants.cardType, Dictionary<GameConstants.cardRarity, GameObject>> prefabMapping;
 
-    private List<Card> cardSafeCards;
+    public List<GameObject> cardSafeCards;
 
     public SO_Card[] cardInfos;
     public Deck deck;
@@ -139,14 +139,16 @@ public class CardManager : MonoBehaviour
                         instantiatedCard.transform.position = cardSafe.transform.position;
                         // Access the Card component of the instantiated card
                         Card cardComponent = instantiatedCard.GetComponent<Card>();
-                        cardSafeCards.Add(cardComponent);
+
 
                         // Assign the SO_Card to the Card component
                         if (cardComponent != null)
                         {
                             cardComponent.cardInfo = card;
                             instantiatedCard.name = card.name;
-                            cardComponent.SetActive(false);
+                            cardSafeCards.Add(instantiatedCard);
+                            instantiatedCard.SetActive(false);
+
                             // Remove comment if you want to add all cards to the deck
                             //deck.AddCardToDeck(cardComponent);
                             //Debug.Log($"Instantiated card {cardComponent.cardInfo.name} with prefab {prefab.name}");
@@ -189,13 +191,14 @@ public class CardManager : MonoBehaviour
         cardInfos = Resources.LoadAll("Cardinfos", typeof(SO_Card)).Cast<SO_Card>().ToArray();
     }
 
-    public Card GetRandomCardFromCardSafe()
+    public GameObject GetRandomCardFromCardSafe()
     {
         int randomIndex = UnityEngine.Random.Range(0, cardSafeCards.Count());
         if (randomIndex >= 0 && randomIndex < cardSafeCards.Count)
         {
             // Return a random card from playerDeck
-            return cardSafeCards[randomIndex];
+            GameObject randomCard = Instantiate(cardSafeCards[randomIndex], Vector3.zero, Quaternion.identity);
+            return randomCard;
         }
         else
         {

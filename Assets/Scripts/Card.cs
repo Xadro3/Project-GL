@@ -64,6 +64,7 @@ public class Card : MonoBehaviour
         cardDisplay = GetComponentInParent<CardDisplay>();
 
         cardName = cardInfo.name;
+        gameObject.name = cardName;
         cardRarity = cardInfo.cardRarity;
         protectionTypes = cardInfo.protectionTypes;
         cost = cardInfo.cost;
