@@ -15,6 +15,7 @@ TagManager:
   - Nodegenerator
   - Nodeinstancer
   - NodeWallet
+  - Deck
   layers:
   - Default
   - TransparentFX

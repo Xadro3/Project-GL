@@ -196,7 +196,7 @@ public class CardManager : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, cardSafeCards.Count());
         // Return a random card from playerDeck
-        GameObject randomCard = Instantiate(cardSafeCards[randomIndex], Vector3.zero, Quaternion.identity);
+        GameObject randomCard = Instantiate(cardSafeCards[randomIndex], transform.position, Quaternion.identity);
         Debug.Log("Random Card From Card Safe: "+ randomCard.name);
         return randomCard;
 
