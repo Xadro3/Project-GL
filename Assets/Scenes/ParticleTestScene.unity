@@ -16151,6 +16151,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4150377031524958, guid: c219e4dcb49b5844691b241cd5fca2f1, type: 3}
   m_PrefabInstance: {fileID: 9551201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &569159556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821448239518646944, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911422923428110949, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_Name
+      value: Ereignis_Card
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
 --- !u!1 &577059090
 GameObject:
   m_ObjectHideFlags: 0
@@ -16366,6 +16423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savedDamageValue: 0
   savedDamageTypes: []
+  endTurnButton: {fileID: 0}
 --- !u!4 &670638090
 Transform:
   m_ObjectHideFlags: 0
@@ -23299,7 +23357,6 @@ MonoBehaviour:
   graveyardPileParent: {fileID: 0}
   isGamePauseActive: 0
   interactionBlock: {fileID: 1878651914}
-  cardEffectEventHandler: {fileID: 0}
   wait: 0
   waitTimer: 4.03
 --- !u!4 &923652495
@@ -23373,10 +23430,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageValue: 0
   roundTimer: 5
+  roundTimerMin: 2
+  roundTimerMax: 5
   roundTimerText: {fileID: 359893677}
-  actionText: {fileID: 478278443}
+  alphaText: {fileID: 0}
+  betaText: {fileID: 0}
+  gammaText: {fileID: 0}
+  alphaDamageBuff: 0
+  alphaDamageBuffValue: 2
   alphaDamage: 0
+  betaDamageBuff: 0
+  betaDamageBuffValue: 2
   betaDamage: 0
+  gammaDamageBuff: 0
+  gammaDamageBuffValue: 2
   gammaDamage: 0
   alphaMax: 15
   betaMax: 10
@@ -32716,6 +32783,9 @@ MonoBehaviour:
   betaBar: {fileID: 47443312}
   gammaBar: {fileID: 1192535417}
   healthBar: {fileID: 1878446237}
+  betaDotActive: 0
+  betaDotDamage: 3
+  betaDotDamageSum: 0
 --- !u!95 &1533739090
 Animator:
   serializedVersion: 5
@@ -56282,3 +56352,4 @@ SceneRoots:
   - {fileID: 1798077347}
   - {fileID: 1078787816}
   - {fileID: 703845617}
+  - {fileID: 569159556}
