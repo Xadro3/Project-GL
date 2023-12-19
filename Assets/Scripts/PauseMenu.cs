@@ -13,9 +13,12 @@ public class PauseMenu : MonoBehaviour
     public Vector3 currentPosition;
     private GameManager gm;
 
+    AudioManager audioManager;
+
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
 
@@ -44,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void BackToGame()
     {
+        audioManager.PlaySFX(audioManager.pauseDeactivate);
         StopAllCoroutines();
         StartCoroutine(moveBack());
         latch = false;
@@ -55,6 +59,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void OpenPause()
     {
+        audioManager.PlaySFX(audioManager.pauseActivate);
         StopAllCoroutines();
         StartCoroutine(move());
         latch = true;
