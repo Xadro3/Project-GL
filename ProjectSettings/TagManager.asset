@@ -16,6 +16,7 @@ TagManager:
   - Nodeinstancer
   - NodeWallet
   - Deck
+  - Audio
   layers:
   - Default
   - TransparentFX
