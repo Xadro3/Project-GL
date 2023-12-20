@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5267674582176140592, guid: cc0468365d2be8b4ba909d39ed99508c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -174,16 +174,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e2ffc7f102ff3439ecec3eef31c2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicDuration: 0
+  goalTime: 0.001
   musicSource: {fileID: 1138410936695281813}
   sfxSource: {fileID: 5431329805987271638}
+  pauseActivate: {fileID: 8300000, guid: f9c2ab8bd4261e94a9edbdd27f598052, type: 3}
+  pauseDeactivate: {fileID: 8300000, guid: 8ea14d65c9529104bbdeee1d7e21cc22, type: 3}
   breachStartingInterlude: {fileID: 8300000, guid: 5e867240c50edaa4fa031be0349f11e0, type: 3}
   breachBackgroundLoop: {fileID: 8300000, guid: e50d6f0b3a9e0334bb9834a644a457e4, type: 3}
   endTurn: {fileID: 8300000, guid: f12150ee6e920e3419f47263977fa498, type: 3}
-  pauseActivate: {fileID: 8300000, guid: f9c2ab8bd4261e94a9edbdd27f598052, type: 3}
-  pauseDeactivate: {fileID: 8300000, guid: 8ea14d65c9529104bbdeee1d7e21cc22, type: 3}
   breachLost: {fileID: 8300000, guid: 1c55453e015405847a119bc662510d26, type: 3}
   breachWon: {fileID: 0}
-  sceneStart: {fileID: 8300000, guid: 2d92428fab413824fa455caa4c76a413, type: 3}
+  breachStart: {fileID: 8300000, guid: 2d92428fab413824fa455caa4c76a413, type: 3}
+  slotSnap: {fileID: 8300000, guid: 13cf014313598244d8e7d067e69fb3fa, type: 3}
+  backgroundmusicMenu: {fileID: 8300000, guid: 6b2b17dbd99be934babd6df9e93c2475, type: 3}
 --- !u!1 &8581237013446940325
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +231,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4359121456788387923, guid: cc0468365d2be8b4ba909d39ed99508c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

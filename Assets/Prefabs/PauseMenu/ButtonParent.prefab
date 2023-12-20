@@ -657,9 +657,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8233648343989124125}
+  - component: {fileID: 1714471508463643275}
   m_Layer: 5
   m_Name: AudioEinstellungen
-  m_TagString: Untagged
+  m_TagString: AudioEinstellungen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,9 +685,21 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: 0.87152}
+  m_AnchoredPosition: {x: -60, y: 0.87152}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1714471508463643275
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718930266004161962}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2782861558605242013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,3 +3215,4 @@ MonoBehaviour:
   masterSlider: {fileID: 6361335936243272409}
   musicSlider: {fileID: 3957749660658176768}
   sfxSlider: {fileID: 6795064297379656008}
+  audioEinstellungen: {fileID: 0}
