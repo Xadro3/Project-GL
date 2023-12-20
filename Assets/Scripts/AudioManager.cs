@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,7 +44,7 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = breachStartingInterlude;
             musicSource.Play();
             musicDuration = (double)breachStartingInterlude.samples / breachStartingInterlude.frequency;
-            //goalTime = goalTime + musicDuration;
+            goalTime = goalTime + musicDuration;
 
             /*
             goalTime = AudioSettings.dspTime + 0.5;
@@ -69,27 +71,32 @@ public class AudioManager : MonoBehaviour
         //Sobald man in der "Encounter" Scene ankommt Startet Entsprechende Musik und der Soundeffeckt
         if (isPlaying == false && SceneManager.GetActiveScene().name == "Encounter")
         {
-
+            
             musicSource.clip = breachStartingInterlude;
             musicSource.Play();
             isPlaying = true;
             musicDuration = (double)breachStartingInterlude.samples / breachStartingInterlude.frequency;
+            goalTime = goalTime + musicDuration;
+            
+
+            //StartCoroutine(PlayBackgroundMusic());
 
             sfxSource.clip = breachStart;
             sfxSource.Play();
         }
         
         //noch nicht funktional. Soll den Loop Starten sobald der Interlude des Encounters abgeschlossen wurde
-        if (isPlaying == true && musicDuration == 0)
+        
+        if (isPlaying == true && SceneManager.GetActiveScene().name == "Encounter" && goalTime == 0)
         {
             musicSource.clip = breachBackgroundLoop;
-            musicSource.Play();
+            musicSource.PlayScheduled(goalTime);
         }
+        
 
         //Es wird wieder die Musik abgespielt die bei der Overworld abgespielt werden soll
         if (isPlaying == true && SceneManager.GetActiveScene().name == "Overworld")
         {
-            yield return new WaitForSeconds(34);
             musicSource.clip = backgroundmusicMenu;
             musicSource.Play();
             isPlaying = false;
@@ -102,29 +109,22 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
             isPlaying = false;
         }
-
-
-
-
-        /* if (musicDuration <= goalTime)
-        {
+    
+    }
+    //Weiß nicht wie ich das wirklich richtig zum laufen bringe
+    /*IEnumerator PlayBackgroundMusic()
+    {
+            musicSource.clip = breachStartingInterlude;
+            musicSource.Play();
+            yield return new WaitForSeconds(musicSource.clip.length);
             musicSource.clip = breachBackgroundLoop;
             musicSource.Play();
+    }*/
 
-        }
-
-        
-        if (AudioSettings.dspTime > goalTime)
-        {
-            musicSource.clip = breachBackgroundLoop;
-            musicSource.PlayScheduled(goalTime);
-        }
-        */
-
-    }
+   
 
 
-    // Wird benötigt um Sound effekte zu spielen, es kann jeweils nur 1er gespielt werden, ansonsten müssen wir das noch anpassen, damit wir mehr AudioSources haben, die mit den Einstellungen auch verändert werden können
+    // Wird benötigt um Sound effekte zu spielen, es kann jeweils nur 1er gespielt werden, ansonsten müssen wir das noch anpassen, damit wir mehr AudioSources haben, die mit den Einstellungen auch verändert werden k
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
