@@ -17,6 +17,7 @@ TagManager:
   - NodeWallet
   - Deck
   - Audio
+  - AudioEinstellungen
   layers:
   - Default
   - TransparentFX

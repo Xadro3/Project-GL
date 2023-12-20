@@ -1,5 +1,5 @@
-
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -19,9 +19,12 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = breachStartingInterlude;
-        musicSource.Play();
-        
+        if (SceneManager.GetActiveScene().name == "Encounter")
+        {
+            musicSource.clip = breachStartingInterlude;
+            musicSource.Play();      
+        }
+
     }
 
     public void PlaySFX(AudioClip clip)

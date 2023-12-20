@@ -9,8 +9,12 @@ public class AudioVolumeSettings : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
+    public GameObject audioEinstellungen;
+
     private void Start()
     {
+        audioEinstellungen = GameObject.FindGameObjectWithTag("AudioEinstellungen");
+
         if(PlayerPrefs.HasKey("masterVolume"))
         {
             LoadVolume();
@@ -21,6 +25,8 @@ public class AudioVolumeSettings : MonoBehaviour
             SetMusicVolume();    
             SetSFXVolume();      
         }
+
+        audioEinstellungen.SetActive(false);
 
     }
 
@@ -48,8 +54,8 @@ public class AudioVolumeSettings : MonoBehaviour
     private void LoadVolume()
     {
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume");
-        masterSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        masterSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
 
         SetMasterVolume();
         SetMusicVolume();

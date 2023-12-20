@@ -15978,6 +15978,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &516693478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2718930266004161962, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+  m_PrefabInstance: {fileID: 1829901552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &516693480
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516693478}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &527324863
 GameObject:
   m_ObjectHideFlags: 0
@@ -44867,6 +44884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonParent
       objectReference: {fileID: 0}
+    - target: {fileID: 2718930266004161962, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+      propertyPath: m_TagString
+      value: AudioEinstellungen
+      objectReference: {fileID: 0}
     - target: {fileID: 3403963462805729088, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -44975,10 +44996,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8233648343989124125, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2718930266004161962, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 516693480}
   m_SourcePrefab: {fileID: 100100000, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
 --- !u!1 &1878446235
 GameObject:
