@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [Header("------- Pause und Menü Sound -------")]
     public AudioClip pauseActivate;
     public AudioClip pauseDeactivate;
+    public AudioClip sceneTransition;
 
     [Header("---------- Breach Audio Clip ----------")]
     public AudioClip breachStartingInterlude;
