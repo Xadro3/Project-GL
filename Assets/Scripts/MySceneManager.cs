@@ -7,6 +7,8 @@ public class MySceneManager : MonoBehaviour
 {
     // List to store the names of all available scenes
     private List<string> sceneNames = new List<string>();
+    
+    [SerializeField] Animator transitionAnim;
 
     void Start()
     {
@@ -40,7 +42,16 @@ public class MySceneManager : MonoBehaviour
 
     public void ChangeScene(string targetScene)
     {
-            SceneManager.LoadScene(targetScene);
+        StartCoroutine(LoadLevel(targetScene));
+           // SceneManager.LoadScene(targetScene);
+    }
+
+    IEnumerator LoadLevel(string targetScene)
+    {
+        transitionAnim.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(targetScene);
+        transitionAnim.SetTrigger("Start");
     }
 
 }
