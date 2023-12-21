@@ -6,19 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public double musicDuration;
-    public double goalTime;
     bool inEncounter = false;
 
     [Header("------------ Audio Source ------------")]
-    //[SerializeField] AudioSource startingLoopSource;
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
 
     [Header("------- Pause und Menü Sound -------")]
+    public AudioClip buttonPress;
     public AudioClip pauseActivate;
     public AudioClip pauseDeactivate;
-    public AudioClip sceneTransition;
+    public AudioClip sceneTransitionOpen;
+    public AudioClip sceneTransitionClose;
 
     [Header("---------- Breach Audio Clip ----------")]
     public AudioClip breachStartingInterlude;
@@ -29,13 +28,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip breachStart;
     public AudioClip slotSnap;
 
-    [Header("------------- Hauptmenü -------------")]
+    [Header("-------------- Hauptmenü -------------")]
     public AudioClip backgroundmusicMenu;
+
+    [Header("----------------- Map -----------------")]
+    public AudioClip nodeClick;
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
     }
 
     private void OnEnable()
@@ -45,7 +47,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoad(Scene scene, LoadSceneMode arg1)
     {
-        PlaySFX(sceneTransition);
+        PlaySFX(sceneTransitionOpen);
 
         switch (scene.name)
         {
@@ -71,20 +73,7 @@ public class AudioManager : MonoBehaviour
         CardMovementHandler.CardDropped += HandleCardDropped;
         PauseMenu.OpenPauseEvent += HandleOpenPause;
         PauseMenu.ClosePauseEvent += HandleClosePause;
-        //SceneManager.sceneUnloaded += HandleEndTransition;
 
-        // Wenn die Aktive Scene der Encounter sit Startet Entsprechend die Musik, sollte obsolet sein, da der AudioManager nicht destroyed wird, ist noch zu testzwecken da
-        if (SceneManager.GetActiveScene().name == "Encounter" | SceneManager.GetActiveScene().name == "ParticleTestScene")
-        {
-            musicSource.clip = breachStartingInterlude;
-            musicSource.Play();
-            musicDuration = (double)breachStartingInterlude.samples / breachStartingInterlude.frequency;
-            goalTime = goalTime + musicDuration;
-
-
-            sfxSource.clip = breachStart;
-            sfxSource.Play();   
-        }
 
         //Clip Starten wenn man das Spiel gestartet hat
         if (SceneManager.GetActiveScene().name == "Menu")
@@ -94,7 +83,6 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-
 
     private void Update()
     {
@@ -106,7 +94,6 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-
 
     // Wird benötigt um Sound effekte zu spielen, es kann jeweils nur 1er gespielt werden, ansonsten müssen wir das noch anpassen, damit wir mehr AudioSources haben, die mit den Einstellungen auch verändert werden k
     public void PlaySFX(AudioClip clip)
@@ -128,9 +115,14 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX(pauseDeactivate);
     }
-        private void HandleEndTransition(Scene arg0)
+
+    private void HandleEndTurn()
     {
-        PlaySFX(sceneTransition);
+        PlaySFX(endTurn);
     }
 
+    private void HandleNoteClick()
+    {
+        PlaySFX(nodeClick);
+    }
 }
