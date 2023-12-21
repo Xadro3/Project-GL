@@ -180,6 +180,7 @@ MonoBehaviour:
   sfxSource: {fileID: 5431329805987271638}
   pauseActivate: {fileID: 8300000, guid: f9c2ab8bd4261e94a9edbdd27f598052, type: 3}
   pauseDeactivate: {fileID: 8300000, guid: 8ea14d65c9529104bbdeee1d7e21cc22, type: 3}
+  sceneTransition: {fileID: 8300000, guid: 0f3c9f0f9e53cd84f927d15fe5c87b14, type: 3}
   breachStartingInterlude: {fileID: 8300000, guid: 5e867240c50edaa4fa031be0349f11e0, type: 3}
   breachBackgroundLoop: {fileID: 8300000, guid: e50d6f0b3a9e0334bb9834a644a457e4, type: 3}
   endTurn: {fileID: 8300000, guid: f12150ee6e920e3419f47263977fa498, type: 3}

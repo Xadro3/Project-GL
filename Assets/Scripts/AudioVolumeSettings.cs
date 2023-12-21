@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioVolumeSettings : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class AudioVolumeSettings : MonoBehaviour
 
     public GameObject audioEinstellungen;
 
-    private void Start()
+
+    private void Awake()
     {
         audioEinstellungen = GameObject.FindGameObjectWithTag("AudioEinstellungen");
 
@@ -26,8 +28,16 @@ public class AudioVolumeSettings : MonoBehaviour
             SetSFXVolume();      
         }
 
-        audioEinstellungen.SetActive(false);
-
+        if(SceneManager.GetActiveScene().name != "Menu")
+        {
+            audioEinstellungen.SetActive(false);
+        } 
+    }
+    private void OnEnable()
+    {
+        SetMasterVolume();
+        SetMusicVolume();
+        SetSFXVolume();
     }
 
     public void SetMasterVolume()
