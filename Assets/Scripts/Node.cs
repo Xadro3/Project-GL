@@ -48,7 +48,7 @@ public class Node : MonoBehaviour
         }
         if (isFirstNode)
         {
-            eventType = 0;
+            eventType = 2;
         }
         if (isCompleted)
         {
