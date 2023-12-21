@@ -76,7 +76,10 @@ public class AudioManager : MonoBehaviour
                 musicSource.clip = backgroundmusicMenu;
                 musicSource.Play();
                 break;
-            case "Shops":
+            case "Shops" when inEncounter == false:
+            case "Event" when inEncounter == false:
+            case "Workshop" when inEncounter == false:
+                inEncounter = true;
                 musicSource.clip=backgroundmusicShop;
                 musicSource.Play();
                 break;
