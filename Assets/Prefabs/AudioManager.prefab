@@ -190,6 +190,9 @@ MonoBehaviour:
   slotSnap: {fileID: 8300000, guid: 13cf014313598244d8e7d067e69fb3fa, type: 3}
   backgroundmusicMenu: {fileID: 8300000, guid: 6b2b17dbd99be934babd6df9e93c2475, type: 3}
   nodeClick: {fileID: 8300000, guid: 99feb0493dd9b82428725896cf36550f, type: 3}
+  backgroundmusicShop: {fileID: 8300000, guid: 29ffd304e0e26cf4588493f5cddba2ca, type: 3}
+  backgroundmusicWorkshop: {fileID: 0}
+  backgroundmusicEreignis: {fileID: 0}
 --- !u!1 &8581237013446940325
 GameObject:
   m_ObjectHideFlags: 0

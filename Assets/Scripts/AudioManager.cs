@@ -34,6 +34,14 @@ public class AudioManager : MonoBehaviour
     [Header("----------------- Map -----------------")]
     public AudioClip nodeClick;
 
+    [Header("---------------- Shop ----------------")]
+    public AudioClip backgroundmusicShop;
+
+    [Header("---------------- Workshop ----------------")]
+    public AudioClip backgroundmusicWorkshop;
+   
+    [Header("---------------- Ereignis ----------------")]
+    public AudioClip backgroundmusicEreignis;
 
     private void Awake()
     {
@@ -66,6 +74,10 @@ public class AudioManager : MonoBehaviour
                 musicSource.loop = true;
                 inEncounter = false;
                 musicSource.clip = backgroundmusicMenu;
+                musicSource.Play();
+                break;
+            case "Shops":
+                musicSource.clip=backgroundmusicShop;
                 musicSource.Play();
                 break;
         }
