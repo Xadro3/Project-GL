@@ -8046,7 +8046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bf4c1e98529ed4cbd7022a008be07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 34462506}
 --- !u!4 &149376394
 Transform:
   m_ObjectHideFlags: 0
@@ -56549,10 +56548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
-      propertyPath: sceneTransition
-      value: 
-      objectReference: {fileID: 8300000, guid: d4b4945cfd7f8d74dbba3ed850ec873d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
