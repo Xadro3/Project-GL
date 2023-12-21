@@ -63,24 +63,24 @@ public class AudioManager : MonoBehaviour
         //Nach checken in welcher scene man sich befindet startet entsprechende Musik
         switch (scene.name)
         {
-            case "Encounter" when inEncounter == false:
+            case "Encounter" when inEncounter == false: //start der Musik die im Breach spielt, wir in Update fortgesetzt
                 musicSource.loop = false;
                 inEncounter = true;
                 musicSource.clip = breachStartingInterlude;
                 musicSource.Play();
                 break;
-            case "Overworld" when inEncounter != false:
-            case "Menu" when inEncounter != false:
+            case "Overworld" when inEncounter != false: //Musik die auf der Map spielt
+            case "Menu" when inEncounter != false: //Musik die im Haupmenü spielt
                 musicSource.loop = true;
                 inEncounter = false;
                 musicSource.clip = backgroundmusicMenu;
                 musicSource.Play();
                 break;
-            case "Shops" when inEncounter == false:
-            case "Event" when inEncounter == false:
-            case "Workshop" when inEncounter == false:
+            case "Shops" when inEncounter == false: //Musik die im Laden spielt
+            case "Event" when inEncounter == false: //Musik die im Ereignis spielt
+            case "Workshop" when inEncounter == false: //Musik die in der Werkstadt spielt
                 inEncounter = true;
-                musicSource.clip=backgroundmusicShop;
+                musicSource.clip = backgroundmusicShop;
                 musicSource.Play();
                 break;
         }
@@ -122,16 +122,16 @@ public class AudioManager : MonoBehaviour
     }
 
     //Pause und Button Handler
-    private void HandleButtonPress()
+    void HandleButtonPress()
     {
-
+        PlaySFX(buttonPress);
     }
     void HandleOpenPause()
     {
         PlaySFX(pauseActivate);
     }
 
-    private void HandleClosePause()
+    void HandleClosePause()
     {
         PlaySFX(pauseDeactivate);
     }
@@ -142,14 +142,15 @@ public class AudioManager : MonoBehaviour
         PlaySFX(slotSnap); // Do something when this event is triggered
     }
 
-    private void HandleEndTurn()
+    void HandleEndTurn()
     {
         PlaySFX(endTurn);
     }
 
     //Map Sound Handler
-    private void HandleNoteClick()
+    void HandleNodeClick()
     {
         PlaySFX(nodeClick);
     }
+
 }
