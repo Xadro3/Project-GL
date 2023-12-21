@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        //GameObject wird ab dem Menu mitgegeben, damit Musik kontinuiirlich durchlaufen kann
         DontDestroyOnLoad(gameObject);
     }
 
@@ -44,11 +45,14 @@ public class AudioManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoad;
     }
-
+    
+    //Sobald eine Scene Geladen wurde Passiert das:
     private void OnSceneLoad(Scene scene, LoadSceneMode arg1)
     {
+        //Sobald Scene gestartet ist spielt der sceneTransitionOpen Sound ab
         PlaySFX(sceneTransitionOpen);
 
+        //Nach checken in welcher scene man sich befindet startet entsprechende Musik
         switch (scene.name)
         {
             case "Encounter" when inEncounter == false:
@@ -69,7 +73,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Listen to event CardDropped
+        // Listen to events
         CardMovementHandler.CardDropped += HandleCardDropped;
         PauseMenu.OpenPauseEvent += HandleOpenPause;
         PauseMenu.ClosePauseEvent += HandleClosePause;
@@ -86,6 +90,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
+        //Zum Abspielen des BreachBackgroundLoops, nachdem der Anfangs Interlude durchgelaufen ist
         if (!musicSource.isPlaying)
         {
             musicSource.clip = breachBackgroundLoop;
@@ -95,17 +100,17 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    // Wird benötigt um Sound effekte zu spielen, es kann jeweils nur 1er gespielt werden, ansonsten müssen wir das noch anpassen, damit wir mehr AudioSources haben, die mit den Einstellungen auch verändert werden k
+    // Wird benötigt um Sound effekte zu spielen
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
     }
 
-    void HandleCardDropped()
+    //Pause und Button Handler
+    private void HandleButtonPress()
     {
-        PlaySFX(slotSnap); // Do something when this event is triggered
-    }
 
+    }
     void HandleOpenPause()
     {
         PlaySFX(pauseActivate);
@@ -116,11 +121,18 @@ public class AudioManager : MonoBehaviour
         PlaySFX(pauseDeactivate);
     }
 
+    //Breach Sound Handler
+    void HandleCardDropped()
+    {
+        PlaySFX(slotSnap); // Do something when this event is triggered
+    }
+
     private void HandleEndTurn()
     {
         PlaySFX(endTurn);
     }
 
+    //Map Sound Handler
     private void HandleNoteClick()
     {
         PlaySFX(nodeClick);
