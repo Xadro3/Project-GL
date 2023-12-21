@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static event System.Action OpenPauseEvent;
+    public static event System.Action ClosePauseEvent;
+
     public GameObject pauseScreen;
     public GameObject targetPosition;
     public Vector3 velocity = Vector3.zero;
@@ -47,7 +50,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void BackToGame()
     {
-        audioManager.PlaySFX(audioManager.pauseDeactivate);
+        ClosePauseEvent();
         StopAllCoroutines();
         StartCoroutine(moveBack());
         latch = false;
@@ -59,7 +62,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void OpenPause()
     {
-        audioManager.PlaySFX(audioManager.pauseActivate);
+        OpenPauseEvent();
         StopAllCoroutines();
         StartCoroutine(move());
         latch = true;

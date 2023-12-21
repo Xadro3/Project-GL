@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,13 +35,21 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
+    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
+    {
+        PlaySFX(sceneTransition);
+    }
 
     private void Start()
     {
         // Listen to event CardDropped
         CardMovementHandler.CardDropped += HandleCardDropped;
+        PauseMenu.OpenPauseEvent += HandleOpenPause;
+        PauseMenu.ClosePauseEvent += HandleClosePause;
+        //SceneManager.sceneUnloaded += HandleEndTransition;
 
         // Wenn die Aktive Scene der Encounter sit Startet Entsprechend die Musik, sollte obsolet sein, da der AudioManager nicht destroyed wird, ist noch zu testzwecken da
         if (SceneManager.GetActiveScene().name == "Encounter" | SceneManager.GetActiveScene().name == "ParticleTestScene")
@@ -68,6 +77,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+
 
     private void Update()
     {
@@ -136,6 +146,21 @@ public class AudioManager : MonoBehaviour
 
     void HandleCardDropped()
     {
-        // Do something when this event is triggered
+        PlaySFX(slotSnap); // Do something when this event is triggered
     }
+
+    void HandleOpenPause()
+    {
+        PlaySFX(pauseActivate);
+    }
+
+    private void HandleClosePause()
+    {
+        PlaySFX(pauseDeactivate);
+    }
+        private void HandleEndTransition(Scene arg0)
+    {
+        PlaySFX(sceneTransition);
+    }
+
 }
