@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class CardMovementHandler : MonoBehaviour
 {
+    public static event System.Action CardDropped;
 
     private int handIndex;
 
@@ -216,6 +217,7 @@ public class CardMovementHandler : MonoBehaviour
                                 SetPosition(activeCardSlot.transform);
                                 wasPlayed = true;
                                 SetSortingOrder(transform.GetSiblingIndex());
+                                CardDropped();
                                 //initialHandSlot.GetComponent<Slot>().HasCard(false);
                             }
 
@@ -293,6 +295,7 @@ public class CardMovementHandler : MonoBehaviour
             hasPlaceholder = false;
             Destroy(placeholder);
         }
+        CardDropped();
     }
 
     private bool CanPlayCardOnShield(Card card, Slot slot)

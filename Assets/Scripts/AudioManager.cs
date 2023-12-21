@@ -39,6 +39,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        // Listen to event CardDropped
+        CardMovementHandler.CardDropped += HandleCardDropped;
+
         // Wenn die Aktive Scene der Encounter sit Startet Entsprechend die Musik, sollte obsolet sein, da der AudioManager nicht destroyed wird, ist noch zu testzwecken da
         if (SceneManager.GetActiveScene().name == "Encounter" | SceneManager.GetActiveScene().name == "ParticleTestScene")
         {
@@ -129,5 +132,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    void HandleCardDropped()
+    {
+        // Do something when this event is triggered
     }
 }
