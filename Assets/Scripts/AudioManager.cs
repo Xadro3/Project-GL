@@ -106,7 +106,7 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         //Zum Abspielen des BreachBackgroundLoops, nachdem der Anfangs Interlude durchgelaufen ist
-        if (!musicSource.isPlaying)
+        if (!musicSource.isPlaying && inEncounter == true)
         {
             musicSource.clip = breachBackgroundLoop;
             musicSource.Play();
