@@ -141,8 +141,8 @@ public class Card : MonoBehaviour
             OnDurabilityZero?.Invoke(this);
             CardMovementHandler.MoveToDiscardPile();
         }
-
-        return durabilityCurrent;
+        
+        return Mathf.Abs(durabilityCurrent);
 
     }
 

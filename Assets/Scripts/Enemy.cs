@@ -201,6 +201,12 @@ public class Enemy : MonoBehaviour
         return damageStats;
     }
 
+    public void UpdateDamageDuringRound(GameConstants.radiationTypes damageType, int value)
+    {
+        damageStats[damageType] = value;
+        UpdateDamageText();
+    }
+
     public void UpdateDamageText()
     {
         foreach (GameConstants.radiationTypes damageType in damageStats.Keys)

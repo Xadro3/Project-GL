@@ -217,7 +217,7 @@ public class CardMovementHandler : MonoBehaviour
                                 SetPosition(activeCardSlot.transform);
                                 wasPlayed = true;
                                 SetSortingOrder(transform.GetSiblingIndex());
-                                CardDropped();
+                                //CardDropped();
                                 //initialHandSlot.GetComponent<Slot>().HasCard(false);
                             }
 
