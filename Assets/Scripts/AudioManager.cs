@@ -27,6 +27,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip breachWon;
     public AudioClip breachStart;
     public AudioClip slotSnap;
+    public AudioClip cardRepair;
+    public AudioClip cardBuff;
+    public AudioClip cardDestroy;
+    public AudioClip infoOpen;
+    public AudioClip takeReward;
+    public AudioClip attackStart;
+    public AudioClip alphaRadiation;
+    public AudioClip betaRadiation;
+    public AudioClip gammaRadiation;
 
     [Header("-------------- Hauptmenü -------------")]
     public AudioClip backgroundmusicMenu;
@@ -36,12 +45,19 @@ public class AudioManager : MonoBehaviour
 
     [Header("---------------- Shop ----------------")]
     public AudioClip backgroundmusicShop;
+    public AudioClip cardBuy;
 
     [Header("---------------- Workshop ----------------")]
     public AudioClip backgroundmusicWorkshop;
+    public AudioClip cardUpgrade;
+    public AudioClip cardOutOfDeck;
+    public AudioClip heal;
    
     [Header("---------------- Ereignis ----------------")]
     public AudioClip backgroundmusicEreignis;
+    public AudioClip ARIAProcessing;
+    public AudioClip correctAnswer;
+    public AudioClip incorrectAnswer;
 
     private void Awake()
     {
@@ -147,10 +163,69 @@ public class AudioManager : MonoBehaviour
         PlaySFX(endTurn);
     }
 
+    void HandleCardRepair()
+    {
+        PlaySFX(cardRepair);
+    }
+
+    void HandleCardBuff()
+    {
+        PlaySFX(cardBuff);
+    }
+
+    void HandleCardDestroy()
+    {
+        PlaySFX(cardDestroy);
+    }
+
+    void HandleCardInfo()
+    {
+        PlaySFX(infoOpen);
+    }
+
+    void HandleReward()
+    {
+        PlaySFX(takeReward);
+    }
+    void HandleAttackStart()
+    {
+        PlaySFX(attackStart);
+    }
+
+    void HandleAlphaRadiation()
+    {
+        PlaySFX(alphaRadiation);
+    }
+
+    void HandleBetaRadiation()
+    {
+        PlaySFX(betaRadiation);
+    }
+    void HandleGammaRadiation()
+    {
+        PlaySFX(gammaRadiation);
+    }
+
     //Map Sound Handler
     void HandleNodeClick()
     {
         PlaySFX(nodeClick);
+    }
+
+    //Workshop Sound Handler
+    void HandleCardUpgrade()
+    {
+        PlaySFX(cardUpgrade);
+    }
+    void HandleCardOutOfDeck()
+    {
+        PlaySFX(cardOutOfDeck);
+    }
+
+    //Shop Sound Handler
+    void HandleCardBuy()
+    {
+        PlaySFX(cardBuy);
     }
 
 }

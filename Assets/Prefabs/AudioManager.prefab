@@ -188,11 +188,27 @@ MonoBehaviour:
   breachWon: {fileID: 0}
   breachStart: {fileID: 8300000, guid: 2d92428fab413824fa455caa4c76a413, type: 3}
   slotSnap: {fileID: 8300000, guid: 13cf014313598244d8e7d067e69fb3fa, type: 3}
+  cardRepair: {fileID: 8300000, guid: 6bd76192573ba024ca068be6ee959f1d, type: 3}
+  cardBuff: {fileID: 8300000, guid: 6bd76192573ba024ca068be6ee959f1d, type: 3}
+  cardDestroy: {fileID: 8300000, guid: 77cee822d8f920e458b41743be44011d, type: 3}
+  infoOpen: {fileID: 8300000, guid: d3f9a94671e096d49ba8997692f2754f, type: 3}
+  takeReward: {fileID: 8300000, guid: 44d8d0010e8b9c54eb371473bbb04523, type: 3}
+  attackStart: {fileID: 8300000, guid: fd43f7d0c0424c84f82632a76caaf6b1, type: 3}
+  alphaRadiation: {fileID: 8300000, guid: 6688a2bbfb50de64f958d1cf5ab946a5, type: 3}
+  betaRadiation: {fileID: 8300000, guid: 1720ca9d0c6415e4e977a50670e310be, type: 3}
+  gammaRadiation: {fileID: 8300000, guid: ebe26da2dd35a2244accc786e0226c75, type: 3}
   backgroundmusicMenu: {fileID: 8300000, guid: 6b2b17dbd99be934babd6df9e93c2475, type: 3}
   nodeClick: {fileID: 8300000, guid: 99feb0493dd9b82428725896cf36550f, type: 3}
   backgroundmusicShop: {fileID: 8300000, guid: 29ffd304e0e26cf4588493f5cddba2ca, type: 3}
+  cardBuy: {fileID: 8300000, guid: f1c47a95803b72c40b7dddd092a00407, type: 3}
   backgroundmusicWorkshop: {fileID: 0}
+  cardUpgrade: {fileID: 8300000, guid: 6bd76192573ba024ca068be6ee959f1d, type: 3}
+  cardOutOfDeck: {fileID: 8300000, guid: 171bcb9cec37dcf41be3a28af332d358, type: 3}
+  heal: {fileID: 0}
   backgroundmusicEreignis: {fileID: 0}
+  ARIAProcessing: {fileID: 0}
+  correctAnswer: {fileID: 0}
+  incorrectAnswer: {fileID: 0}
 --- !u!1 &8581237013446940325
 GameObject:
   m_ObjectHideFlags: 0

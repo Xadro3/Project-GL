@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Bleiabdeckung
   m_EditorClassIdentifier: 
   name: Bleiabdeckung
-  description: "Reduziert den Alpha und Beta-Strahlenschaden auf 0, Gamma-Strahlenschaden
-    wird um 50% verringert f\xFCr 1 (2) Runde(n) "
+  description: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
+    auf <color=#719148>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
+    um <color=#719148>50%</color> verringert f\xFCr <color=#719148>1</color> Runde"
   artwork: {fileID: 21300000, guid: 776cf84bd97ed7d42be4b39706335592, type: 3}
+  currencyCost: 0
   cost: 3
   durability: 0
   cardType: 00000000

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: "D\xFCnne Bleiplatte"
   m_EditorClassIdentifier: 
   name: "D\xFCnne Bleiplatte"
-  description: '4 (6) Block gegen Beta und Gamma, 25% Durchlass des Gamma Schadens,
-    immun gegen Alpha '
+  description: '<color=#719148>4</color> Block gegen Beta und Gamma, 25% Durchlass
+    des Gamma Schadens, immun gegen Alpha '
   artwork: {fileID: 21300000, guid: fe42344f39446b74994cacf33a7cf090, type: 3}
+  currencyCost: 0
   cost: 1
   durability: 4
   cardType: 04000000

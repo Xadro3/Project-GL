@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Jodtablette
   m_EditorClassIdentifier: 
   name: Jodtablette
-  description: Reduziert Alpha- und Betaleiste um jeweils 2 Punkte
+  description: Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
+    um jeweils <color=#61300d>2</color> Punkte
   artwork: {fileID: 21300000, guid: c097630ee758f4e4a9d7bfe6215198ba, type: 3}
+  currencyCost: 0
   cost: 1
   durability: 0
   cardType: 01000000
