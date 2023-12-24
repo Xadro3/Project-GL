@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class CardManager : MonoBehaviour
     public List<SO_Card> baseCards;
 
     public GameObject cardSafe;
-    GameManager gm;
     public Dictionary<GameConstants.cardType, Dictionary<GameConstants.cardRarity, GameObject>> prefabMapping;
 
     public List<GameObject> cardSafeCards;
@@ -24,21 +24,34 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         LoadCardsFromResources();
-        
-    }
-
-    private void OnEnable()
-    {
-        //gm = FindObjectOfType<GameManager>();
-    }
-
-    private void Start()
-    {
         InitializePrefabMapping();
         AssignPrefabsToCards();
         AddBaseCardsToDeck();
         deck.PopulatePlayerDeck();
-        GetRandomCardFromCardSafe();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+
+        }
+    }
+
+    private void Start()
+    {
+
+        //GetRandomCardFromCardSafe();
     }
 
     private void AddBaseCardsToDeck()

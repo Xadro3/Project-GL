@@ -5,18 +5,31 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    
+    
     public bool hasCard = false;
     GameManager gm;
     private Card currentCard = null;
 
+    private void OnEnable()
+    {
+        // Subscribe to the sceneLoaded event
+        CardMovementHandler.OnEnemyEffect += HandleShieldEffect;
+    }
+    private void OnDisable()
+    {
+        // Unsubscribe from the sceneLoaded event
+        CardMovementHandler.OnEnemyEffect -= HandleShieldEffect;
+    }
+
+    private void HandleShieldEffect(Card card)
+    {
+        HandleShieldAbility(card);
+    }
+
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
-    }
-
-    private void OnEnable()
-    {
-
     }
 
     private void OnDestroy()

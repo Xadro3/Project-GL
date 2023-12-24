@@ -159,7 +159,6 @@ public class Card : MonoBehaviour
         return durabilityCurrent;
 
     }
-
     public int GammaReduction(int percentReduction)
     {
         int throughPut = Mathf.FloorToInt((tankedRadiation * percentReduction) / 100);

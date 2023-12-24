@@ -3,21 +3,24 @@ using System.Collections;
 using System.Timers;
 using UnityEngine;
 using UnityEngine.Timeline;
-using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static event Action<int> UpdateDeckDisplay;
+    public static event Action<int> UpdateDiscardDisplay;
+
     public int playerRessourceCurrent;
     public int playerRessourceMax;
     public int playerRessourceBuffMax;
-    public TextMeshProUGUI playerRessourceText;
 
+    private ActiveCardSlots activeCardSlotsParent;
     public List<Slot> activeCardSlots;
-    private Transform activeCardSlot;
 
-    public RectTransform playerHand;
+    public PlayerEnergy playerEnergy;
+    public PlayerHand playerHand;
     public int playerHandMax;
 
     public List<Enemy> wagons;
@@ -31,11 +34,11 @@ public class GameManager : MonoBehaviour
     public bool isGamePauseActive = false;
     public Transform interactionBlock;
 
-    TurnMaster turnMaster;
-    PlayerHealthManager player;
+    public TurnMaster turnMaster;
+    public PlayerHealthManager player;
     MySceneManager mySceneManager;
-    Deck deck;
-    CardManager cardManager;
+    public Deck deck;
+    public CardManager cardManager;
 
     public bool wait;
     private float elapsedTime;
@@ -50,19 +53,43 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
-        turnMaster = FindObjectOfType<TurnMaster>();
-        player = FindObjectOfType<PlayerHealthManager>();
-        cardManager = FindObjectOfType<CardManager>();
-        deck = cardManager.GetComponent<Deck>();
+        turnMaster = GetComponentInChildren<TurnMaster>();
+        player = GetComponentInChildren<PlayerHealthManager>();
+        cardManager = GetComponentInChildren<CardManager>();
+        deck = GetComponentInChildren<Deck>();
+    }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+            playerHand = FindObjectOfType<PlayerHand>();
+            playerEnergy = FindObjectOfType<PlayerEnergy>();
+            discardPileParent = FindObjectOfType<DiscardPile>().transform;
+            activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>();
+            activeCardSlots = activeCardSlotsParent.activeCardSlots;
+            wagons[0].GenerateDamage();
+            UpdatePlayerRessource();
+            DrawCards();
+            UpdateDiscard();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        SetDamage(wagons[0].GenerateDamage());
-        UpdatePlayerRessource();
-        DrawCards();
+
+
     }
 
     // Update is called once per frame
@@ -111,8 +138,10 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("I just drew the card: " + randomCard);
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
                 deck.RemoveCardFromPlayerDeck(randomCard);
+                UpdateDeckDisplay?.Invoke(deck.playerDeck.Count);
             }
-        } 
+        }
+        UpdateDeckDisplay?.Invoke(deck.playerDeck.Count);
     }
 
     public void Shuffle()
@@ -126,7 +155,8 @@ public class GameManager : MonoBehaviour
             }
             discardPile.Clear();
         }
-    }
+        UpdateDeckDisplay(deck.playerDeck.Count);
+}
 
     public void AddEnergy(int value)
     {
@@ -170,12 +200,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Cannot refund card cost.");
         }
-        
     }
 
     public void UpdatePlayerRessource()
     {
-        playerRessourceText.text = playerRessourceCurrent.ToString();
+        playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
     }
 
     public void PlayerDamage(int damageValue, GameConstants.radiationTypes damageType)
@@ -190,6 +219,7 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        SetDamage(wagons[0].damageStats);
         turnMaster.ResolveTurn(wagons, activeCardSlots);
         Debug.Log("Resolving the turn!");
         //SetDamage(wagons[0].GenerateDamage());
@@ -216,7 +246,10 @@ public class GameManager : MonoBehaviour
         int currentCards = playerHand.transform.childCount;
         return currentCards;
     }
-
+    public void UpdateDiscard()
+    {
+        UpdateDiscardDisplay?.Invoke(discardPile.Count);
+    }
     public void ActivateDamageBuff(GameConstants.radiationTypes radiationType)
     {
         wagons[0].ActivateDamageBuff(radiationType);
@@ -231,7 +264,6 @@ public class GameManager : MonoBehaviour
         {
             card.ShieldDebuff();
         }
-        
     }
 
     public void RemoveCardFromEncounter(Card card)
@@ -270,7 +302,6 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
-        
     }
     private void TriggerCardDrawEffect(int value)
     {
@@ -296,45 +327,6 @@ public class GameManager : MonoBehaviour
     private void TriggerDiscardEffect(Card triggerCard, int value)
     {
         StartCoroutine(PlayerSelectCardsToDiscard(triggerCard, value));
-        
-        /*
-        // Ensure that the value is within a valid range
-        value = Mathf.Clamp(value, 0, cardsInHand.Count); 
-
-        // Randomly select cards and perform the discard effect
-        for (int i = 0; i < value; i++)
-        {
-            int randomIndex = 0;
-            // Ensure there are still cards in the list
-            if (cardsInHand.Count > 0)
-            {
-                // Randomly select an index
-                randomIndex = Random.Range(0, cardsInHand.Count);
-
-                // Get the randomly selected card
-                Card randomCard = cardsInHand[randomIndex];
-
-                if (randomCard != triggerCard && randomCard != null)
-                {
-                    Debug.Log("I am getting discarded: " + randomCard.cardName);
-                    // Perform the discard effect for the selected card
-                    randomCard.GetComponentInParent<CardMovementHandler>().MoveToDiscardPile();
-
-                    // Remove the selected card from the list to avoid selecting it again
-                    cardsInHand.RemoveAt(randomIndex);
-                }
-                else
-                {
-                    Debug.Log("Discarded card would have been the same as trigger or null");
-                    i--;
-                }
-            }
-            else
-            {
-                return;
-            }
-        }
-        */
     }
 
     private void HandleCardClicked(CardMovementHandler cardMovementHandler)
@@ -351,9 +343,7 @@ public class GameManager : MonoBehaviour
     {
         List<Card> cardsInHand = new List<Card>();
         cardsInHand.AddRange(playerHand.GetComponentsInChildren<Card>());
-
         
-
         foreach (Card card in cardsInHand)
         {
             CardMovementHandler movementHandler = card.GetComponent<CardMovementHandler>();
@@ -369,39 +359,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        /*while (cardsToDiscardCount < value)
-        {
-            // Wait for player input (e.g., clicking on a card)
-            // Implement card selection logic here...
-
-            // For example, let's assume you have a method IsCardClicked(Card card) to check if a card is clicked
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit[] hits = Physics.RaycastAll(ray);
-
-                foreach (RaycastHit hit in hits)
-                {
-                    Debug.Log("Hit stuff");
-                    if (hit.collider.TryGetComponent<Card>(out Card selectedCard))
-                    {
-                        Debug.Log("Hit card " + selectedCard);
-                        if (selectedCard != null && cardsInHand.Contains(selectedCard))
-                        {
-                            if (!cardsToDiscard.Contains(selectedCard))
-                            {
-                                cardsToDiscard.Add(selectedCard);
-                                cardsToDiscardCount++;
-                                Debug.Log("Added card: " + selectedCard);
-                            }
-                        }
-                    }
-                }
-            }
-            
-            yield return null; // Wait for the next frame
-        }
-        */
         foreach (Card card in cardsInHand)
         {
             CardMovementHandler movementHandler = card.GetComponent<CardMovementHandler>();

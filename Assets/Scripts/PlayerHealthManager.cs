@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerHealthManager : MonoBehaviour
 {
-    public int health = 1;
+    public int health;
     [Range(0, 100)]
     public int healthMax = 100;
     public int alphaResistance;
@@ -17,10 +18,7 @@ public class PlayerHealthManager : MonoBehaviour
     [Range(0, 50)]
     public int gammaResistanceMax = 30;
 
-    public HealthBar alphaBar;
-    public HealthBar betaBar;
-    public HealthBar gammaBar;
-    public HealthBar healthBar;
+    private PlayerModel playerModel;
 
     private bool alphaDamageReductionFlat = false;
     private bool alphaDamageReductionPercent = false;
@@ -47,19 +45,44 @@ public class PlayerHealthManager : MonoBehaviour
         betaResistance = betaResistanceMax;
         gammaResistance = gammaResistanceMax;
     }
+    private void OnEnable()
+    {
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        CardMovementHandler.OnPlayerEffect += HandlePlayerEffect;
+    }
+    private void OnDisable()
+    {
+        // Unsubscribe from the sceneLoaded event
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        CardMovementHandler.OnPlayerEffect -= HandlePlayerEffect;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+            playerModel = FindObjectOfType<PlayerModel>();
+            playerModel.alphaBar.SetMaxHealth(alphaResistanceMax);
+            playerModel.alphaBar.SetHealth(alphaResistanceMax);
+            playerModel.betaBar.SetMaxHealth(betaResistanceMax);
+            playerModel.betaBar.SetHealth(betaResistanceMax);
+            playerModel.gammaBar.SetMaxHealth(gammaResistanceMax);
+            playerModel.gammaBar.SetHealth(gammaResistance);
+            playerModel.healthBar.SetMaxHealth(healthMax);
+            playerModel.healthBar.SetHealth(health);
+        }
+    }
+
+    private void HandlePlayerEffect(Card card)
+    {
+        HandleEffect(card);
+    }
+
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        alphaBar.SetMaxHealth(alphaResistanceMax);
-        alphaBar.SetHealth(alphaResistanceMax);
-        betaBar.SetMaxHealth(betaResistanceMax);
-        betaBar.SetHealth(betaResistanceMax);
-        gammaBar.SetMaxHealth(gammaResistanceMax);
-        gammaBar.SetHealth(gammaResistanceMax);
-        healthBar.SetMaxHealth(healthMax);
-        healthBar.SetHealth(healthMax);
-
-}
+    }
 
     // function to apply damage -> currently only total damage no debuffs here
     public void ApplyDamage(int damageValue, GameConstants.radiationTypes damageType)
@@ -99,7 +122,7 @@ public class PlayerHealthManager : MonoBehaviour
             damageValue = damageValue * (1 - (healthDamageReductionFlatValue/100));
         }
         health -= damageValue;
-        healthBar.SetHealth(health);
+        playerModel.alphaBar.SetHealth(health);
     }
 
     private void HandleGammaDamage(int damageValue)
@@ -113,7 +136,7 @@ public class PlayerHealthManager : MonoBehaviour
             damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue/100));
         }
         gammaResistance -= damageValue;
-        gammaBar.SetHealth(gammaResistance);
+        playerModel.gammaBar.SetHealth(gammaResistance);
         Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
         CheckResistances();
     }
@@ -129,7 +152,7 @@ public class PlayerHealthManager : MonoBehaviour
             damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue / 100));
         }
         betaResistance -= damageValue;
-        betaBar.SetHealth(betaResistance);
+        playerModel.betaBar.SetHealth(betaResistance);
         Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
         CheckResistances();
     }
@@ -145,7 +168,7 @@ public class PlayerHealthManager : MonoBehaviour
             damageValue = damageValue * (1 - (resistanceDamageReductionPercentValue / 100));
         }
         alphaResistance -= damageValue;
-        alphaBar.SetHealth(alphaResistance);
+        playerModel.alphaBar.SetHealth(alphaResistance);
         Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
         CheckResistances();
     }
@@ -154,7 +177,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (alphaResistance <= 0)
         {
-            healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
+            playerModel.healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
             alphaResistance = alphaResistanceMax;
             Debug.Log("Aua! Ich habe schaden bekommen!");
         }

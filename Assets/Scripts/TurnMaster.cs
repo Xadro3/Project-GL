@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnMaster : MonoBehaviour
 {
@@ -12,7 +13,26 @@ public class TurnMaster : MonoBehaviour
     public List<string> savedDamageTypes;
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
     private List<Card> cardsInPlay = new List<Card>();
-    public ButtonRotate endTurnButton;
+    private ButtonRotate endTurnButton = null;
+
+    private void OnEnable()
+    {
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        // Unsubscribe from the sceneLoaded event
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+            endTurnButton = FindObjectOfType<ButtonRotate>();
+        }
+    }
 
     void Start()
     {

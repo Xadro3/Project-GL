@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+
+    private EnemyModel enemyModel;
 
     public int damageValue = 0;
     public int roundTimer = 0;
     public int roundTimerMin = 2;
     public int roundTimerMax = 5;
-
-    public TextMeshProUGUI roundTimerText;
-
-    public TextMeshProUGUI alphaText;
-    public TextMeshProUGUI betaText;
-    public TextMeshProUGUI gammaText;
 
     private int blockDurationAlpha = 0;
     private int blockDurationBeta = 0;
@@ -58,11 +54,36 @@ public class Enemy : MonoBehaviour
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
 
     GameManager gm;
+    private void OnEnable()
+    {
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        CardMovementHandler.OnEnemyEffect += HandleEnemyEffect;
+    }
+    private void OnDisable()
+    {
+        // Unsubscribe from the sceneLoaded event
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        CardMovementHandler.OnEnemyEffect -= HandleEnemyEffect;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+            enemyModel = FindObjectOfType<EnemyModel>();
+            GenerateTimerValue();
+            PopulateDamage();
+        }
+    }
+
+    private void HandleEnemyEffect(Card card)
+    {
+        HandleEffect(card);
+    }
 
     private void Start()
     {
-        GenerateTimerValue(); 
-        PopulateDamage();
 
     }
 
@@ -70,7 +91,7 @@ public class Enemy : MonoBehaviour
     {
         int i = Random.Range(roundTimerMin, roundTimerMax + 1);
         roundTimer = i;
-        roundTimerText.text = roundTimer.ToString();
+        enemyModel.roundTimerText.text = roundTimer.ToString();
     }
 
     private void PopulateDamage()
@@ -84,7 +105,7 @@ public class Enemy : MonoBehaviour
     public bool UpdateTimer(int i)
     {
         roundTimer -= i;
-        roundTimerText.text = roundTimer.ToString();
+        enemyModel.roundTimerText.text = roundTimer.ToString();
         if (roundTimer <= 0)
         {
             return true;
@@ -215,15 +236,15 @@ public class Enemy : MonoBehaviour
             switch (damageType)
             {
                 case GameConstants.radiationTypes.Alpha:
-                    alphaText.text = $"{damageValue}";
+                    enemyModel.alphaText.text = $"{damageValue}";
                     break;
 
                 case GameConstants.radiationTypes.Beta:
-                    betaText.text = $"{damageValue}";
+                    enemyModel.betaText.text = $"{damageValue}";
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
-                    gammaText.text = $"{damageValue}";
+                    enemyModel.gammaText.text = $"{damageValue}";
                     break;
             }
         }
@@ -293,6 +314,7 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        UpdateDamageText();
     }
     private void TriggerRadiationReductionPercent(List<GameConstants.radiationTypes> radiations, int value, int duration)
     {
@@ -317,6 +339,7 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        UpdateDamageText();
     }
     private void TriggerRadiationReductionFlat(List<GameConstants.radiationTypes> radiations, int value, int duration)
     {
@@ -341,5 +364,6 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        UpdateDamageText();
     }
 }

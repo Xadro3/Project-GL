@@ -7,7 +7,6 @@ public class Deck : MonoBehaviour
 {
     public List<Card> deck;
     public List<Card> playerDeck;
-    private float deckMin = 0;
 
     void Awake()
     {
@@ -48,7 +47,9 @@ public class Deck : MonoBehaviour
             if (randomIndex >= 0 && randomIndex < playerDeck.Count)
             {
                 // Return a random card from playerDeck
-                return playerDeck[randomIndex];
+                Card randomCard = playerDeck[randomIndex];
+                //Debug.Log("Deck gave: " + randomCard);
+                return randomCard;
             }
             else
             {

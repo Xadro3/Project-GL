@@ -8,6 +8,9 @@ public class CardMovementHandler : MonoBehaviour
 {
     public static event System.Action CardDropped;
     public event Action<CardMovementHandler> OnCardClicked;
+    public static event Action<Card> OnPlayerEffect;
+    public static event Action<Card> OnEnemyEffect;
+    public static event Action<Card> OnShieldEffect;
 
     private int handIndex;
 
@@ -79,6 +82,7 @@ public class CardMovementHandler : MonoBehaviour
         }
         
         gm.discardPile.Add(card);
+        gm.UpdateDiscard();
         SetNewParent(gm.discardPileParent);
         SetPosition(gm.discardPileParent);
         card.SetWasPlayed(false);
@@ -263,14 +267,14 @@ public class CardMovementHandler : MonoBehaviour
                 Debug.Log("I want to play that on an Enemy");
                 wasPlayed = true;
                 card.SetWasPlayed(true);
-                slot.GetComponentInParent<Enemy>().HandleEffect(card);
+                OnEnemyEffect?.Invoke(card);
                 break;
 
             case GameConstants.abilityTargets.AbilityPlayer when slot.CompareTag("Player"):
                 Debug.Log("I want to play that on an Player");
                 wasPlayed = true;
                 card.SetWasPlayed(true);
-                slot.GetComponentInParent<PlayerHealthManager>().HandleEffect(card);
+                OnPlayerEffect?.Invoke(card);
                 break;
 
             case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
@@ -279,7 +283,7 @@ public class CardMovementHandler : MonoBehaviour
                 {
                     wasPlayed = true;
                     card.SetWasPlayed(true);
-                    slot.HandleShieldAbility(card);
+                    OnShieldEffect?.Invoke(card);
                 }
                 break;
 
