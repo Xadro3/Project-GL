@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     CardDisplay cardDisplay;
     CardMovementHandler CardMovementHandler;
 
+    private int tankedRadiation;
 
     //Events
     public event Action<Card> OnDurabilityZero;
@@ -50,7 +51,11 @@ public class Card : MonoBehaviour
     public int currencyCost;
 
     //Upgrade
+    public bool upgraded;
     public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
+
+    //Additional Card Info
+    public string sienceInfo;
     private void Awake()
     {
         
@@ -90,9 +95,14 @@ public class Card : MonoBehaviour
         entsorgen = cardInfo.entsorgen;
 
         //fill cardUpgrade Dictionary
+        upgraded = cardInfo.upgraded;
         for (int i = 0; i < cardInfo.cardUpgrades.Count; i++)
         {
             cardUpgrade.Add(cardInfo.cardUpgrades[i], cardInfo.upgradeValues[i]);
+        }
+        if (upgraded)
+        {
+            UpgradeCard();
         }
 
         currencyCost = cardInfo.currencyCost;
@@ -106,6 +116,8 @@ public class Card : MonoBehaviour
             cardDisplay.ActivateEntsorgenIcon(true);
         }
 
+
+        sienceInfo = cardInfo.cardInfo;
 
         cardDisplay.UpdateDisplay();
     }
@@ -133,6 +145,8 @@ public class Card : MonoBehaviour
 
     public int AdjustDurability(int value)
     {
+        tankedRadiation = Math.Min(value, durabilityCurrent);
+        
         durabilityCurrent -= value;
         UpdateDisplay();
         
@@ -142,8 +156,15 @@ public class Card : MonoBehaviour
             CardMovementHandler.MoveToDiscardPile();
         }
         
-        return Mathf.Abs(durabilityCurrent);
+        return durabilityCurrent;
 
+    }
+
+    public int GammaReduction(int percentReduction)
+    {
+        int throughPut = Mathf.FloorToInt((tankedRadiation * percentReduction) / 100);
+        Debug.Log("Gamma Reduction triggered. 25% of Gamma goes through: " + throughPut);
+        return throughPut;
     }
 
     public void SetCurrentDurabilityToMax()
@@ -198,6 +219,77 @@ public class Card : MonoBehaviour
             immunityTypes.Clear();
             immunity = b;
         }
+    }
+
+    public void UpgradeCard()
+    {
+        foreach (var entry in cardUpgrade)
+        {
+            switch (entry.Key)
+            {
+                case GameConstants.cardUpgrades.EnergyCost:
+                    cost -= entry.Value;
+                    break;
+
+                case GameConstants.cardUpgrades.Schild:
+                    durability += entry.Value;
+                    break;
+
+                case GameConstants.cardUpgrades.Duration:
+                    duration += entry.Value;
+                    break;
+
+                case GameConstants.cardUpgrades.Effect:
+                    HandleCardEffectUpgrade(entry.Value);
+                    break;
+
+                default:
+                    Debug.LogWarning(gameObject.name + " has an upgrade we do not handle");
+                    break;
+
+            }
+            UpdateDisplay();
+        }
+        
+    }
+
+    private void HandleCardEffectUpgrade(int value)
+    {
+        foreach (var entry in cardEffects)
+        {
+            switch (entry.Key)
+            {
+                case GameConstants.effectTypes.EnergyGet:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                case GameConstants.effectTypes.DrawCard:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                case GameConstants.effectTypes.HealthDamageReductionPercent:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                case GameConstants.effectTypes.RadiationReductionFlat:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                case GameConstants.effectTypes.TimerReductionFlat:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                case GameConstants.effectTypes.ShieldBuff:
+                    cardEffects[entry.Key] += value;
+                    break;
+
+                default:
+                    Debug.LogWarning(gameObject.name + " has an effect we do not handle");
+                    break;
+
+            }
+        }
+        UpdateDisplay();
     }
 
 }

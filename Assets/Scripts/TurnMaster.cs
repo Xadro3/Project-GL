@@ -63,14 +63,17 @@ public class TurnMaster : MonoBehaviour
                         Debug.Log(wagons[0].name + " will deal: " + wagonDamageStats[radiationType] + " of " + radiationType);
                         wagonDamageStats[radiationType] = card.AdjustDurability(damageValue);
                         card.UpdateDisplay();
-
+                        if (card.effect && radiationType == GameConstants.radiationTypes.Gamma)
+                        {
+                            wagonDamageStats[radiationType] += card.GammaReduction(card.cardEffects[GameConstants.effectTypes.DamageReductionPercent]);
+                        }
                         if (wagonDamageStats[radiationType] < 0)
                         {
                             Debug.Log("I killed a card with overkill damage. " + "Damage type: " + radiationType + " Damage left: " + wagonDamageStats[radiationType]);
                             wagonDamageStats[radiationType] = Mathf.Abs(wagonDamageStats[radiationType]);
                             wagons[0].UpdateDamageDuringRound(radiationType, 0);
                         }
-                        if (wagonDamageStats[radiationType] >= 0)
+                        else if (wagonDamageStats[radiationType] >= 0)
                         {
                             Debug.Log("No damage value left of damage type: " + radiationType);
                             wagonDamageStats[radiationType] = 0;
@@ -78,7 +81,7 @@ public class TurnMaster : MonoBehaviour
                         }
                     }
                     wagons[0].UpdateDamageDuringRound(radiationType, wagonDamageStats[radiationType]);
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(1f);
                 }
             }
             card.OnDurabilityZero -= HandleCardDurabilityZero;

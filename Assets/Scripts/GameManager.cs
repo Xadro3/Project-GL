@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Timers;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     public float waitTimer;
 
     private int costIncrease = 0;
+
+    private List<Card> cardsToDiscard = new List<Card>();
+    private int cardsToDiscardCount = 0;
 
     private void Awake()
     {
@@ -291,9 +295,9 @@ public class GameManager : MonoBehaviour
 
     private void TriggerDiscardEffect(Card triggerCard, int value)
     {
-        List<Card> cardsInHand = new List<Card>();
-        cardsInHand.AddRange(playerHand.GetComponentsInChildren<Card>());
-
+        StartCoroutine(PlayerSelectCardsToDiscard(triggerCard, value));
+        
+        /*
         // Ensure that the value is within a valid range
         value = Mathf.Clamp(value, 0, cardsInHand.Count); 
 
@@ -330,6 +334,92 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+        */
+    }
 
+    private void HandleCardClicked(CardMovementHandler cardMovementHandler)
+    {
+        Debug.Log("Card Clicked: " + cardMovementHandler.gameObject.name);
+
+        Card clickedCard = cardMovementHandler.GetComponent<Card>();
+
+        cardsToDiscard.Add(clickedCard);
+        cardsToDiscardCount++;
+    }
+
+    private IEnumerator PlayerSelectCardsToDiscard(Card triggerCard, int value)
+    {
+        List<Card> cardsInHand = new List<Card>();
+        cardsInHand.AddRange(playerHand.GetComponentsInChildren<Card>());
+
+        
+
+        foreach (Card card in cardsInHand)
+        {
+            CardMovementHandler movementHandler = card.GetComponent<CardMovementHandler>();
+            if (movementHandler != null)
+            {
+                movementHandler.OnCardClicked += HandleCardClicked;
+            }
+        }
+        // Wait for the player to select cards
+        while (cardsToDiscardCount < value)
+        {
+            // You can add some logic to wait for player input or other conditions
+            yield return null;
+        }
+
+        /*while (cardsToDiscardCount < value)
+        {
+            // Wait for player input (e.g., clicking on a card)
+            // Implement card selection logic here...
+
+            // For example, let's assume you have a method IsCardClicked(Card card) to check if a card is clicked
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit[] hits = Physics.RaycastAll(ray);
+
+                foreach (RaycastHit hit in hits)
+                {
+                    Debug.Log("Hit stuff");
+                    if (hit.collider.TryGetComponent<Card>(out Card selectedCard))
+                    {
+                        Debug.Log("Hit card " + selectedCard);
+                        if (selectedCard != null && cardsInHand.Contains(selectedCard))
+                        {
+                            if (!cardsToDiscard.Contains(selectedCard))
+                            {
+                                cardsToDiscard.Add(selectedCard);
+                                cardsToDiscardCount++;
+                                Debug.Log("Added card: " + selectedCard);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            yield return null; // Wait for the next frame
+        }
+        */
+        foreach (Card card in cardsInHand)
+        {
+            CardMovementHandler movementHandler = card.GetComponent<CardMovementHandler>();
+            if (movementHandler != null)
+            {
+                movementHandler.OnCardClicked -= HandleCardClicked;
+            }
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        foreach (Card card in cardsToDiscard)
+        {
+            card.GetComponent<CardMovementHandler>().MoveToDiscardPile();
+        }
+
+        cardsToDiscard.Clear();
+        cardsToDiscardCount = 0;
+        yield break;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class CardMovementHandler : MonoBehaviour
 {
     public static event System.Action CardDropped;
+    public event Action<CardMovementHandler> OnCardClicked;
 
     private int handIndex;
 
@@ -123,7 +124,7 @@ public class CardMovementHandler : MonoBehaviour
                 //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 isDragging = true;
             }
-
+            OnCardClicked?.Invoke(this);
             SetSortingOrder(transform.GetSiblingIndex());
         }
         
@@ -295,7 +296,7 @@ public class CardMovementHandler : MonoBehaviour
             hasPlaceholder = false;
             Destroy(placeholder);
         }
-        CardDropped();
+        //CardDropped();
     }
 
     private bool CanPlayCardOnShield(Card card, Slot slot)

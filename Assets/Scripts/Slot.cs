@@ -65,12 +65,22 @@ public class Slot : MonoBehaviour
         GetCardInSlotInfo().SetCurrentDurabilityToMax();
     }
 
+    private void HandleShieldMaxBuff(int value)
+    {
+        GetCardInSlotInfo().AdjustDurability(-(GetCardInSlotInfo().durability));
+        
+    }
+
     public void HandleShieldAbility(Card card)
     {
         foreach (var entry in card.cardEffects)
         {
             switch (entry.Key)
             {
+                case GameConstants.effectTypes.ShieldMaxBuff:
+                    HandleShieldMaxBuff(entry.Value);
+                    break;
+                
                 case GameConstants.effectTypes.ShieldBuff:
                     Debug.Log("Effect: " + entry.Key);
                     HandleShieldBuff(entry.Value);
