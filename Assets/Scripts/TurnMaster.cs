@@ -57,7 +57,7 @@ public class TurnMaster : MonoBehaviour
                 card.OnDurabilityZero += HandleCardDurabilityZero;
             }
         }
-
+        Debug.Log(wagons[0]);
         StartCoroutine(ProcessCardsWithDelay(wagons));
     }
 

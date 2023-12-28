@@ -55,10 +55,10 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            throw null;
-        }
+        //else
+        //{
+        //    throw null;
+        //}
     }
 
 }

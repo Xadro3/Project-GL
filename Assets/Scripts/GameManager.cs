@@ -62,6 +62,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        EndTurnButtonEventScript.EndTurnEvent += EndTurnEvent;
+    }
+
+    private void OnSceneUnloaded(Scene arg0)
+    {
+        
     }
 
     private void OnDisable()
@@ -73,11 +80,12 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Encounter")
         {
-            playerHand = FindObjectOfType<PlayerHand>();
-            playerEnergy = FindObjectOfType<PlayerEnergy>();
-            discardPileParent = FindObjectOfType<DiscardPile>().transform;
-            activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>();
+            playerHand = FindObjectOfType<PlayerHand>(true);
+            playerEnergy = FindObjectOfType<PlayerEnergy>(true);
+            discardPileParent = FindObjectOfType<DiscardPile>(true).transform;
+            activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>(true);
             activeCardSlots = activeCardSlotsParent.activeCardSlots;
+            interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
             wagons[0].GenerateDamage();
             UpdatePlayerRessource();
             DrawCards();
@@ -219,9 +227,15 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        SetDamage(wagons[0].damageStats);
-        turnMaster.ResolveTurn(wagons, activeCardSlots);
         Debug.Log("Resolving the turn!");
+        Debug.Log("Enemies: " + wagons.Count);
+        for (int i = 0; i < wagons.Count; i++)
+        {
+            Debug.Log(wagons[i].damageStats);
+            SetDamage(wagons[i].damageStats);
+        }
+        turnMaster.ResolveTurn(wagons, activeCardSlots);
+        
         //SetDamage(wagons[0].GenerateDamage());
         //ResetEnergy();
         //DrawCards();
@@ -378,5 +392,10 @@ public class GameManager : MonoBehaviour
         cardsToDiscard.Clear();
         cardsToDiscardCount = 0;
         yield break;
+    }
+
+    private void EndTurnEvent()
+    {
+        EndTurn();
     }
 }
