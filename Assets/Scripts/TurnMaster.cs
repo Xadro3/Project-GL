@@ -9,6 +9,10 @@ public class TurnMaster : MonoBehaviour
 {
     GameManager gm;
 
+    public static event System.Action AlphaDamageEvent;
+    public static event System.Action BetaDamageEvent;
+    public static event System.Action GammaDamageEvent;
+
     public int savedDamageValue;
     public List<string> savedDamageTypes;
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
@@ -72,6 +76,21 @@ public class TurnMaster : MonoBehaviour
             {
                 if (card.durabilityCurrent > 0)
                 {
+                    switch (radiationType)
+                    {
+                        case GameConstants.radiationTypes.Alpha:
+                            AlphaDamageEvent();
+                            break;
+
+                        case GameConstants.radiationTypes.Beta:
+                            BetaDamageEvent();
+                            break;
+
+                        case GameConstants.radiationTypes.Gamma:
+                            GammaDamageEvent();
+                            break;
+                    }
+
                     if (card.immunityTypes.Contains(radiationType))
                     {
                         Debug.Log("Card is immun to " + radiationType + ". Set damage of " + wagonDamageStats[radiationType] + " to 0.");
