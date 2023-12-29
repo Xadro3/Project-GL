@@ -7,6 +7,7 @@ public class NodeInstancer : MonoBehaviour
     public GameObject node;
     public OverworldGenerator overworld;
     public GameObject nextNode;
+    public GameObject nextNode2;
     public GameObject instantiatedNode;
     public bool isStartNode;
     public bool isEndNode;
@@ -19,6 +20,10 @@ public class NodeInstancer : MonoBehaviour
         instantiatedNode.GetComponent<Node>().isUnlocked = isStartNode;
         instantiatedNode.GetComponent<Node>().isFirstNode = isStartNode;
         instantiatedNode.GetComponent<Node>().nextNode = nextNode;
+        if(nextNode2 != null)
+        {
+            instantiatedNode.GetComponent<Node>().nextNode2 = nextNode2;
+        }
         instantiatedNode.GetComponent<Node>().WakeUp();
         overworld.nodes.Add(instantiatedNode);
     }

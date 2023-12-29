@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class Drag : MonoBehaviour
 {
 
@@ -24,11 +25,23 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        if (!bought)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        }
+        
     }
     private void OnMouseUp()
     {
-        transform.position = startPos;
+        if (!bought)
+        {
+            transform.position = startPos;
+        }
+        else
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
+        }
+       
         
     }
 

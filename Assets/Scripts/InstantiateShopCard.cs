@@ -15,20 +15,14 @@ public class InstantiateShopCard : MonoBehaviour
             Debug.Log(deck.name);
             instantiatedCard = deck.GetRandomCardFromCardSafe();
             Debug.Log(instantiatedCard.name);
-
             instantiatedCard.SetActive(true);
             instantiatedCard.transform.SetParent(transform);
             instantiatedCard.GetComponent<CardMovementHandler>().enabled = false;
             instantiatedCard.AddComponent<Drag>();
+            instantiatedCard.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+            instantiatedCard.transform.localScale = new Vector3(30f, 30f, 30f);
             instantiatedCard.layer = 0;
         }
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

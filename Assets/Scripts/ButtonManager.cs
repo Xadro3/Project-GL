@@ -11,6 +11,10 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene(scene);
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().isCompleted = true;
     }
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
     public void Exitgame()
     {
         Application.Quit();

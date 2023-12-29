@@ -18,6 +18,7 @@ TagManager:
   - Deck
   - Audio
   - AudioEinstellungen
+  - Deck2
   layers:
   - Default
   - TransparentFX

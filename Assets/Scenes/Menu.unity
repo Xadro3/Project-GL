@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39831355, g: 0.3780928, b: 0.3712264, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.39826283, g: 0.3780294, b: 0.37112665, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6320,7 +6320,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 88341336}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: ButtonPressed
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

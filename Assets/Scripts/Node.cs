@@ -11,6 +11,7 @@ public class Node : MonoBehaviour
     public Sprite workshopSprite;
     public Sprite encounterSprite;
     public GameObject nextNode;
+    public GameObject nextNode2;
     public bool isUnlocked = false;
     public bool isLastNode = false;
     public bool isCompleted = false;
@@ -24,6 +25,11 @@ public class Node : MonoBehaviour
     {
         collider = GetComponent<BoxCollider>();
         nextNode = nextNode.GetComponent<NodeInstancer>().instantiatedNode;
+        if(nextNode2 != null)
+        {
+            nextNode2 = nextNode2.GetComponent<NodeInstancer>().instantiatedNode;
+        }
+      
         collider.enabled = false;
         DontDestroyOnLoad(this);
     }
@@ -53,13 +59,14 @@ public class Node : MonoBehaviour
         if (isCompleted)
         {
             nextNode.GetComponent<Node>().isUnlocked = true;
+            nextNode2.GetComponent<Node>().isUnlocked = true;
         }
     }
 
     public void UnlockNextNode(GameObject nextNode)
     {
         nextNode.GetComponent<Node>().isUnlocked = true;
-        
+        nextNode2.GetComponent<Node>().isUnlocked = true;
 
     }
 

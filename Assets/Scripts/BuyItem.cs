@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BuyItem : MonoBehaviour
 {
     Card card;
@@ -23,15 +23,18 @@ public class BuyItem : MonoBehaviour
                 {
                     card.isBought = true;
                     
-                    collision.transform.GetComponent<Drag>().startPos = GameObject.FindGameObjectWithTag("PlayerInventory").transform.position;
+                    //collision.transform.GetComponent<Drag>().startPos = GameObject.FindGameObjectWithTag("PlayerInventory").transform.position;
                     collision.transform.SetParent(GameObject.FindGameObjectWithTag("PlayerInventory").transform);
+                    collision.transform.SetAsFirstSibling();
+                    card.GetComponent<Drag>().bought = true;
                     GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(card.currencyCost);
-                    GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>().AddCardToPlayerDeck(card);
-                    
+                    GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>().AddCardToPlayerDeck(card);
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
                 }
               
             }
         }
         Canvas.ForceUpdateCanvases();
     }
+
 }
