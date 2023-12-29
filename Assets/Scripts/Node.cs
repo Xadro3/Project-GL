@@ -20,7 +20,7 @@ public class Node : MonoBehaviour
     public string nextMap;
     Collider collider;
     SpriteRenderer sprite;
-
+    
     public void WakeUp()
     {
         collider = GetComponent<BoxCollider>();
@@ -94,6 +94,13 @@ public class Node : MonoBehaviour
     }
     public void EnterNode()
     {
+        
+        Invoke("LoadNode", 1f);
+            
+    }
+
+    public void LoadNode()
+    {
         isActive = true;
         switch (eventType)
         {
@@ -109,12 +116,9 @@ public class Node : MonoBehaviour
             case 3:
                 SceneManager.LoadScene("Workshop");
                 break;
-            
+
 
 
         }
-            
     }
-
-
 }
