@@ -171,6 +171,7 @@ Transform:
   - {fileID: 1714269940932508763}
   - {fileID: 3587516528925377553}
   - {fileID: 9204989635562378427}
+  - {fileID: 6077686003893616268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6536086209867896437
@@ -185,6 +186,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c001f0acd6c5f848bc5fc98b3c4bb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6687195159539156120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6077686003893616268}
+  - component: {fileID: 543046507562185286}
+  m_Layer: 0
+  m_Name: Overworld
+  m_TagString: NodeWallet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6077686003893616268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687195159539156120}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.0612144, y: 1.1940656, z: 6.137141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4225666654361541015}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543046507562185286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687195159539156120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96a30fa7e615a4dba2d9283a340ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes: []
+  nodeInstancer: []
+  scene:
+    m_Handle: 0
+  activeNode: {fileID: 0}
 --- !u!1 &8528194789214237438
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +317,14 @@ PrefabInstance:
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: alphaResistanceMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: gammaResistanceMax
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

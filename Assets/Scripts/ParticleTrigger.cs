@@ -8,22 +8,30 @@ public class ParticleTrigger : MonoBehaviour
     public ParticleSystem beta;
     public ParticleSystem gamma;
 
+    private void Start()
+    {
+       TurnMaster.AlphaDamageEvent += HandleAlphaRadiation;
+       TurnMaster.BetaDamageEvent += HandleBetaRadiation;
+       TurnMaster.GammaDamageEvent += HandleGammaRadiation;   
+    }
+
+
     private void Update()//Ganze update ist nur für Testzwecke drin, kann also deleted werden wenn die Eventtrigger implementiert wurden.
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            alpha.Play();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            beta.Play();
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            gamma.Play();
-        }
+//       if (Input.GetKeyDown(KeyCode.A))
+//       {
+//           alpha.Play();
+//       }
+//
+//       if (Input.GetKeyDown(KeyCode.B))
+//       {
+//           beta.Play();
+//       }
+//
+//       if (Input.GetKeyDown(KeyCode.G))
+//       {
+//           gamma.Play();
+//       }
     }
 
     void HandleAlphaRadiation()

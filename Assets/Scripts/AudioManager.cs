@@ -108,6 +108,10 @@ public class AudioManager : MonoBehaviour
         CardMovementHandler.CardDropped += HandleCardDropped;
         PauseMenu.OpenPauseEvent += HandleOpenPause;
         PauseMenu.ClosePauseEvent += HandleClosePause;
+        EndTurnButtonEventScript.EndTurnEvent += HandleEndTurn;
+        TurnMaster.AlphaDamageEvent += HandleAlphaRadiation;
+        TurnMaster.BetaDamageEvent += HandleBetaRadiation;
+        TurnMaster.GammaDamageEvent += HandleGammaRadiation;
 
 
         //Clip Starten wenn man das Spiel gestartet hat
@@ -206,17 +210,13 @@ public class AudioManager : MonoBehaviour
         PlaySFX(gammaRadiation);
     }
 
-    //Map Sound Handler
-    void HandleNodeClick()
-    {
-        PlaySFX(nodeClick);
-    }
 
     //Workshop Sound Handler
     void HandleCardUpgrade()
     {
         PlaySFX(cardUpgrade);
     }
+
     void HandleCardOutOfDeck()
     {
         PlaySFX(cardOutOfDeck);
