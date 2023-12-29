@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39826283, g: 0.3780294, b: 0.37112665, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4056,7 +4056,7 @@ MonoBehaviour:
   text: {fileID: 1827952156}
   creditsFile: {fileID: 4900000, guid: 16c69a8b3c7c34c4fa4a27e386081963, type: 3}
   lineHeight: 16
-  yDistance: 16
+  yDistance: 31
   scrollSpeed: 40
   maxLinesOnScreen: 30
 --- !u!4 &900356898
