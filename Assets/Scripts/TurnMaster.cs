@@ -76,21 +76,6 @@ public class TurnMaster : MonoBehaviour
             {
                 if (card.durabilityCurrent > 0)
                 {
-                    switch (radiationType)
-                    {
-                        case GameConstants.radiationTypes.Alpha:
-                            AlphaDamageEvent();
-                            break;
-
-                        case GameConstants.radiationTypes.Beta:
-                            BetaDamageEvent();
-                            break;
-
-                        case GameConstants.radiationTypes.Gamma:
-                            GammaDamageEvent();
-                            break;
-                    }
-
                     if (card.immunityTypes.Contains(radiationType))
                     {
                         Debug.Log("Card is immun to " + radiationType + ". Set damage of " + wagonDamageStats[radiationType] + " to 0.");
@@ -131,6 +116,7 @@ public class TurnMaster : MonoBehaviour
             if (entry.Value != 0)
             {
                 gm.PlayerDamage(entry.Value, entry.Key);
+                yield return new WaitForSeconds(1f);
             }
         }
 

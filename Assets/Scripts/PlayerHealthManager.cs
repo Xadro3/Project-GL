@@ -267,6 +267,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         healthDamageReductionFlatValue = value;
         healthDamageReductionPercent = true;
+        playerModel.healthBar.SetHealth(health);
     }
 
     private void TriggerResistanceDamageReductionPercent(List<GameConstants.radiationTypes> radiations, int value)
@@ -299,14 +300,17 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 case GameConstants.radiationTypes.Alpha:
                     alphaResistance += value;
+                    playerModel.alphaBar.SetHealth(alphaResistance);
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     betaResistance += value;
+                    playerModel.betaBar.SetHealth(betaResistance);
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
-                    gammaResistance -= value;
+                    gammaResistance += value;
+                    playerModel.gammaBar.SetHealth(gammaResistance);
                     break;
             }
         }

@@ -6,25 +6,24 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
     
-    
     public bool hasCard = false;
     GameManager gm;
-    private Card currentCard = null;
+    public Card currentCard = null;
 
     private void OnEnable()
     {
         // Subscribe to the sceneLoaded event
-        CardMovementHandler.OnEnemyEffect += HandleShieldEffect;
+        CardMovementHandler.OnShieldEffect += HandleShieldEffect;
     }
     private void OnDisable()
     {
         // Unsubscribe from the sceneLoaded event
-        CardMovementHandler.OnEnemyEffect -= HandleShieldEffect;
+        CardMovementHandler.OnShieldEffect -= HandleShieldEffect;
     }
 
-    private void HandleShieldEffect(Card card)
+    private void HandleShieldEffect(Card card, Slot slot)
     {
-        HandleShieldAbility(card);
+        HandleShieldAbility(card, slot);
     }
 
     private void Start()
@@ -46,6 +45,12 @@ public class Slot : MonoBehaviour
     {
         currentCard = GetComponentInChildren<Card>();
         return currentCard;
+    }
+
+    public bool IsCurrentCardAffected(Card card)
+    {
+        Card cardInSlot = GetCardInSlotInfo();
+        return false;
     }
 
     private void HandleCardDropped(Card card, Slot slot)
@@ -72,10 +77,16 @@ public class Slot : MonoBehaviour
         GetCardInSlotInfo().AdjustDurability(-value);
     }
 
-    private void HandleShieldRepair(int value)
+    private void HandleShieldRepair()
     {
         //currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
-        GetCardInSlotInfo().SetCurrentDurabilityToMax();
+        Card cardToRepair = GetCardInSlotInfo();
+        if (cardToRepair != null)
+        {
+            Debug.Log(cardToRepair.gameObject + " will get healed");
+            cardToRepair.SetCurrentDurabilityToMax();
+        }
+        
     }
 
     private void HandleShieldMaxBuff(int value)
@@ -84,44 +95,48 @@ public class Slot : MonoBehaviour
         
     }
 
-    public void HandleShieldAbility(Card card)
+    public void HandleShieldAbility(Card card, Slot slot)
     {
-        foreach (var entry in card.cardEffects)
+        if (slot == GetComponent<Slot>())
         {
-            switch (entry.Key)
+            foreach (var entry in card.cardEffects)
             {
-                case GameConstants.effectTypes.ShieldMaxBuff:
-                    HandleShieldMaxBuff(entry.Value);
-                    break;
-                
-                case GameConstants.effectTypes.ShieldBuff:
-                    Debug.Log("Effect: " + entry.Key);
-                    HandleShieldBuff(entry.Value);
-                    break;
+                switch (entry.Key)
+                {
+                    case GameConstants.effectTypes.ShieldMaxBuff:
+                        HandleShieldMaxBuff(entry.Value);
+                        break;
 
-                case GameConstants.effectTypes.ShieldRepair:
-                case GameConstants.effectTypes.ShieldRepairPapier:
-                case GameConstants.effectTypes.ShieldRepairAlu:
-                case GameConstants.effectTypes.ShieldRepairBlei:
-                    Debug.Log("Effect: " + entry.Key);
-                    HandleShieldRepair(entry.Value);
-                    break;
+                    case GameConstants.effectTypes.ShieldBuff:
+                        Debug.Log("Effect: " + entry.Key);
+                        HandleShieldBuff(entry.Value);
+                        break;
 
-                case GameConstants.effectTypes.ShieldDissolve:
-                case GameConstants.effectTypes.ShieldDissolvePapier:
-                case GameConstants.effectTypes.ShieldDissolveAlu:
-                case GameConstants.effectTypes.ShieldDissolveBlei:
-                    Debug.Log("Effect: " + entry.Key);
-                    HandleShieldDissolve(entry.Value);
-                    break;
+                    case GameConstants.effectTypes.ShieldRepair:
+                    case GameConstants.effectTypes.ShieldRepairPapier:
+                    case GameConstants.effectTypes.ShieldRepairAlu:
+                    case GameConstants.effectTypes.ShieldRepairBlei:
+                        Debug.Log("Effect: " + entry.Key);
+                        HandleShieldRepair();
+                        break;
 
-                case GameConstants.effectTypes.DrawCard:
-                case GameConstants.effectTypes.Discard:
-                    Debug.Log("Effect: " + entry.Key);
-                    gm.HandleEffect(card);
-                    break;
+                    case GameConstants.effectTypes.ShieldDissolve:
+                    case GameConstants.effectTypes.ShieldDissolvePapier:
+                    case GameConstants.effectTypes.ShieldDissolveAlu:
+                    case GameConstants.effectTypes.ShieldDissolveBlei:
+                        Debug.Log("Effect: " + entry.Key);
+                        HandleShieldDissolve(entry.Value);
+                        break;
+
+                    case GameConstants.effectTypes.DrawCard:
+                    case GameConstants.effectTypes.Discard:
+                        Debug.Log("Effect: " + entry.Key);
+                        gm.HandleEffect(card);
+                        break;
+                }
             }
-        }        
+        }
+        
     }
 
     
