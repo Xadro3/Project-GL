@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class OverworldSceneChanger : MonoBehaviour
 {
+    public Animator animator;
     private void Update()
     {
         
@@ -19,7 +20,8 @@ public class OverworldSceneChanger : MonoBehaviour
                 
                 Debug.Log(hit.transform.name);
                 hit.collider.gameObject.GetComponent<Node>().EnterNode();
-            }
+                animator.Play("TransitionClose");
+}
         }
        
     }
