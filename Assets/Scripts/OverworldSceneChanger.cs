@@ -24,6 +24,7 @@ public class OverworldSceneChanger : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000))
             {
                 audio.PlaySFX(clip);
+                audio.PlaySFX(audio.nodeClick);
                 Debug.Log(hit.transform.name);
                 hit.collider.gameObject.GetComponent<Node>().EnterNode();
                 animator.Play("TransitionClose");
