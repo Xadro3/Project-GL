@@ -11737,6 +11737,10 @@ PrefabInstance:
       value: Nodegenerator
       objectReference: {fileID: 0}
     - target: {fileID: 6122908468812343711, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17e66ae4ffe87454f837c2e24b0d285d, type: 3}
+    - target: {fileID: 6122908468812343711, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 589872881}
