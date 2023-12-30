@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Neuversorgung
   m_EditorClassIdentifier: 
   name: Neuversorgung
-  description: 'Wirf 2 Karten von deiner Hand ab und ziehe 2 (3) neue '
+  description: Wirf <color=#61300d>2</color> Karten von deiner Hand ab und ziehe
+    <color=#61300d>2</color> neue
   artwork: {fileID: 21300000, guid: 45b6e0fb1642fb540818a78dc0cec515, type: 3}
-  cost: 0
+  currencyCost: 75
+  cost: 1
   durability: 0
   cardType: 01000000
   cardRarity: 01000000
@@ -31,6 +33,8 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: Um neue Werkzeuge und Materialien zu bekommen, liefert S.H.I.E.L.D bei
+    Gelegenheit mit einem LKW die Sachen direkt zum Einsatzort.

@@ -16,11 +16,12 @@ MonoBehaviour:
   description: "Senkt Gamma Strahlenschaden um 20%, f\xFCr den Rest des Encounters.
     Karte kommt auf Entsorgt-Stapel "
   artwork: {fileID: 21300000, guid: bdf38932df816424d8394b92c866dcd5, type: 3}
+  currencyCost: 0
   cost: 1
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
-  protectionTypes: 02000000
+  protectionTypes: 0000000001000000
   ability: 1
   duration: 100
   abilityTypes: 
@@ -32,6 +33,7 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
+  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: 

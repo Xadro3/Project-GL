@@ -29401,6 +29401,7 @@ MonoBehaviour:
   - {fileID: 9132448458690091314, guid: 7a6b0d14c7d0e8640b1d4d26c229a727, type: 3}
   - {fileID: 9132448458690091314, guid: 7a6b0d14c7d0e8640b1d4d26c229a727, type: 3}
   playerDeck: []
+  playerDeckObjects: []
 --- !u!4 &1105436440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1476380448842253577, guid: e648bd54d3bc85346b728f8212d5f291, type: 3}
@@ -54579,6 +54580,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1259608607}
+    - target: {fileID: 6361335936243272409, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1122419863}
     - target: {fileID: 6815337018738030619, guid: 80f6058ea4b617647a4a664cfea27184, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -54770,7 +54775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.500061}
+  m_AnchoredPosition: {x: 0, y: -15.499756}
   m_SizeDelta: {x: 0, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &1878651915
