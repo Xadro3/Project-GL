@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Event.unity
     guid: 728c71b83109cab44b4b4b5163408fc8
+  - enabled: 1
+    path: Assets/Scenes/DesertMap.unity
+    guid: ff6717cf0ea50e444862085379e191e9
   m_configObjects: {}

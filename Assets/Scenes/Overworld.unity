@@ -270,6 +270,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &88630797
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -373,6 +374,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &139683857
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -919,6 +921,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &209245673
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1156,6 +1159,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 1
+  nextMap: DesertMap
 --- !u!33 &300260777
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1259,6 +1263,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &352350050
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1679,6 +1684,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &455661446
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2086,6 +2092,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &579632467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2334,6 +2341,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &631122686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2781,6 +2789,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &747554143
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2884,6 +2893,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 1
+  nextMap: DesertMap
 --- !u!33 &883091619
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2987,6 +2997,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &898430186
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8231,6 +8242,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &995421662
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8818,6 +8830,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1146048549
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8921,6 +8934,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1152760592
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9041,6 +9055,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1160323513
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9309,6 +9324,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1310256094
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9412,6 +9428,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1328936303
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9945,6 +9962,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1402449592
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10048,6 +10066,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1404971799
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10151,6 +10170,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1405474014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10348,6 +10368,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 1
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1452368902
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10707,6 +10728,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1616074438
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10821,6 +10843,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 1
+  nextMap: DesertMap
 --- !u!33 &1660166365
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11084,6 +11107,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1702655898
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11187,6 +11211,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1735213255
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11290,6 +11315,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1828450289
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11393,6 +11419,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1832210628
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11667,6 +11694,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 1310256091}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1902213842
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11775,6 +11803,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1909051876
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11945,6 +11974,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1957388770
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12048,6 +12078,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 1
+  nextMap: DesertMap
 --- !u!33 &1984604537
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12151,6 +12182,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1996255841
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12254,6 +12286,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 1
   isEndNode: 0
+  nextMap: 
 --- !u!33 &1997525083
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12357,6 +12390,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &2028333214
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12797,6 +12831,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &2139472753
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12900,6 +12935,7 @@ MonoBehaviour:
   instantiatedNode: {fileID: 0}
   isStartNode: 0
   isEndNode: 0
+  nextMap: 
 --- !u!33 &2145432705
 MeshFilter:
   m_ObjectHideFlags: 0

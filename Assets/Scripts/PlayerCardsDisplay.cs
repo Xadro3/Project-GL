@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerCardsDisplay : MonoBehaviour
 {
     // Start is called before the first frame update
-    CardManager deck;
-    GameObject instantiatedCard;
+    Deck deck;
+    List<GameObject> instantiatedCards;
     void Start()
     {
-        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<CardManager>();
-        for (int i = 0; i <= deck.deck.playerDeck.Count;i++)
-        {
-            
-            //Debug.Log(deck.name);
-            instantiatedCard = deck.GetRandomCardFromCardSafe();
-            //Debug.Log(instantiatedCard.name);
+        deck = GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>();
 
+
+        //Debug.Log(deck.name);
+            instantiatedCards = deck.GetPlayerDeck();
+            //Debug.Log(instantiatedCard.name);
+        foreach(GameObject instantiatedCard in instantiatedCards)
+        {
             instantiatedCard.SetActive(true);
             instantiatedCard.transform.SetParent(transform);
             instantiatedCard.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
@@ -25,6 +25,8 @@ public class PlayerCardsDisplay : MonoBehaviour
             instantiatedCard.AddComponent<Drag>();
             instantiatedCard.layer = 0;
         }
+            
+        
     }
 
 }

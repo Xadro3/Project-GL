@@ -16,7 +16,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        GetPlayerDeck();
+
     }
 
     private void OnEnable()
@@ -89,6 +89,7 @@ public class Deck : MonoBehaviour
 
     public List<GameObject> GetPlayerDeck()
     {
+        playerDeckObjects.Clear();
         foreach (Card card in deck)
         {
             playerDeckObjects.Add(card.gameObject);
