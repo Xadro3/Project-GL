@@ -12,6 +12,8 @@ public class CardMovementHandler : MonoBehaviour
     public static event Action<Card> OnEnemyEffect;
     public static event Action<Card, Slot> OnShieldEffect;
 
+    public GameObject cardPopupPrefab;
+
     private int handIndex;
 
     public bool wasPlayed = false;
@@ -181,7 +183,25 @@ public class CardMovementHandler : MonoBehaviour
                     //initialHandSlot.GetComponent<Slot>().HasCard(true);
                     Debug.Log(gameObject);
                 }
+
+                if (!wasPlayed && !card.wasPlayed)
+                {
+                    ShowCardPopup();
+                }
             }
+        }
+    }
+
+    private void ShowCardPopup()
+    {
+        // Instantiate the card popup prefab
+        GameObject cardPopup = Instantiate(cardPopupPrefab, transform.position, Quaternion.identity);
+
+        // Set the card popup content (you can customize this based on your card's data)
+        CardPopup popupScript = cardPopup.GetComponent<CardPopup>();
+        if (popupScript != null)
+        {
+            popupScript.SetCardInfo(card.sienceInfo);
         }
     }
 

@@ -1437,6 +1437,8 @@ MonoBehaviour:
   durability: 0
   durabilityCurrent: 0
   wasPlayed: 0
+  isBought: 0
+  cardDescription: 
   ability: 0
   duration: 0
   abilityTypes: 
@@ -1447,6 +1449,9 @@ MonoBehaviour:
   immunityTypes: 
   entsorgen: 0
   currencyCost: 0
+  upgraded: 0
+  upgradedCardDescription: 
+  sienceInfo: 
 --- !u!114 &3170304551409798378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,6 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081c3e38e0e0e3e47b82f1d70388f9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPopupPrefab: {fileID: 7439457798396698724, guid: 6003321ead1e52c4bbf211d3620d9135, type: 3}
   wasPlayed: 0
   isDragging: 0
   initialHandSlot: {fileID: 0}

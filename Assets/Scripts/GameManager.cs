@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         EndTurnButtonEventScript.EndTurnEvent += EndTurnEvent;
+        CardPopup.PauseGame += PauseGame;
     }
 
     private void OnSceneUnloaded(Scene arg0)

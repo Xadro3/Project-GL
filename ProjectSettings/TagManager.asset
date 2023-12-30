@@ -19,6 +19,7 @@ TagManager:
   - Audio
   - AudioEinstellungen
   - Deck2
+  - CardPopup
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Menu
   - Post Processing Main Menu
   - Post Processing Encounter
-  - 
+  - CardPopups
   - 
   - 
   - 
@@ -61,6 +62,9 @@ TagManager:
     locked: 0
   - name: Cards
     uniqueID: 1235164073
+    locked: 0
+  - name: CardPopups
+    uniqueID: 3561941281
     locked: 0
   - name: Menu
     uniqueID: 251113207

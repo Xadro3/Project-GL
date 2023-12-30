@@ -148,14 +148,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4772f6f435cea743bf7fe903fb6e144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInfo: {fileID: 0}
+  cardName: 
+  cardRarity: 
+  protectionTypes: 
   cost: 0
   durability: 0
-  repair: 0
+  durabilityCurrent: 0
   wasPlayed: 0
-  handIndex: 0
-  cardCost: 1
-  isDragging: 0
-  initialDaddy: {fileID: 0}
+  isBought: 0
+  cardDescription: 
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 0
+  onBruch: 0
+  onPlay: 0
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  currencyCost: 0
+  upgraded: 0
+  upgradedCardDescription: 
+  sienceInfo: 
 --- !u!114 &8007988563169288539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081c3e38e0e0e3e47b82f1d70388f9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPopupPrefab: {fileID: 7439457798396698724, guid: 6003321ead1e52c4bbf211d3620d9135, type: 3}
+  wasPlayed: 0
+  isDragging: 0
+  initialHandSlot: {fileID: 0}
+  currentSlot: {fileID: 0}
+  activeCardSlot: {fileID: 0}
+  card: {fileID: 0}
