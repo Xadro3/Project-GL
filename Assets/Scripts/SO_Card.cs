@@ -9,6 +9,8 @@ public class SO_Card : ScriptableObject
     public new string name;
     [TextAreaAttribute]
     public string description;
+    [TextAreaAttribute]
+    public string upgradedDescription;
     public Sprite artwork;
 
     [Header("Shop Info")]
@@ -45,8 +47,6 @@ public class SO_Card : ScriptableObject
     public bool upgraded;
     public List<GameConstants.cardUpgrades> cardUpgrades;
     public List<int> upgradeValues;
-    [TextAreaAttribute]
-    public string upgradedDescription;
 
 
     [Header("Wissenschaftliche Info")]

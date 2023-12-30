@@ -55,6 +55,7 @@ public class Card : MonoBehaviour
     public bool upgraded;
     public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
     public string upgradedCardDescription;
+    private bool fml;
 
     //Additional Card Info
     public string sienceInfo;
@@ -130,7 +131,11 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (upgraded && !fml)
+        {
+            UpgradeCard();
+            fml = true;
+        }
     }
 
     public void ShieldDebuff()
