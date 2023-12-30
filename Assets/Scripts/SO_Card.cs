@@ -7,6 +7,7 @@ public class SO_Card : ScriptableObject
 {
     [Header("General Info")]
     public new string name;
+    [TextAreaAttribute]
     public string description;
     public Sprite artwork;
 
@@ -47,6 +48,7 @@ public class SO_Card : ScriptableObject
 
 
     [Header("Wissenschaftliche Info")]
+    [TextAreaAttribute]
     public string cardInfo;
 
 
