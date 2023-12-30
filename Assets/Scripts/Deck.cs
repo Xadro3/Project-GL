@@ -16,7 +16,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        GetPlayerDeck();
+
     }
 
     private void OnEnable()
