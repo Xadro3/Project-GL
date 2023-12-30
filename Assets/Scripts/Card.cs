@@ -131,11 +131,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (upgraded && !fml)
-        {
-            UpgradeCard();
-            fml = true;
-        }
+
     }
 
     public void ShieldDebuff()
@@ -151,6 +147,7 @@ public class Card : MonoBehaviour
     public void UpdateDisplay()
     {
         cardDisplay.durabilityText.text = durabilityCurrent.ToString();
+        cardDisplay.UpdateDisplay();
     }
 
     public int AdjustDurability(int value)

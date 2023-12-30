@@ -7,6 +7,7 @@ public class Deck : MonoBehaviour
 {
     public List<Card> deck;
     public List<Card> playerDeck;
+    public List<GameObject> playerDeckObjects;
 
     void Awake()
     {
@@ -15,7 +16,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        
+        GetPlayerDeck();
     }
 
     private void OnEnable()
@@ -84,5 +85,15 @@ public class Deck : MonoBehaviour
     public void AddCardToDeck(Card card)
     {
         deck.Add(card);
+    }
+
+    public List<GameObject> GetPlayerDeck()
+    {
+        foreach (Card card in deck)
+        {
+            playerDeckObjects.Add(card.gameObject);
+        }
+
+        return playerDeckObjects;
     }
 }
