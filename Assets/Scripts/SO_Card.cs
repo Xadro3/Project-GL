@@ -45,6 +45,8 @@ public class SO_Card : ScriptableObject
     public bool upgraded;
     public List<GameConstants.cardUpgrades> cardUpgrades;
     public List<int> upgradeValues;
+    [TextAreaAttribute]
+    public string upgradedDescription;
 
 
     [Header("Wissenschaftliche Info")]

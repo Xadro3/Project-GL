@@ -25,6 +25,7 @@ public class Card : MonoBehaviour
     public int durabilityCurrent;
     public bool wasPlayed = false;
     public bool isBought;
+    public string cardDescription;
 
     //Abilities
     public bool ability;
@@ -53,6 +54,7 @@ public class Card : MonoBehaviour
     //Upgrade
     public bool upgraded;
     public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
+    public string upgradedCardDescription;
 
     //Additional Card Info
     public string sienceInfo;
@@ -75,6 +77,7 @@ public class Card : MonoBehaviour
         cost = cardInfo.cost;
         durability = cardInfo.durability;
         durabilityCurrent = durability;
+        cardDescription = cardInfo.description;
 
         ability = cardInfo.ability;
         duration = cardInfo.duration;
@@ -104,6 +107,8 @@ public class Card : MonoBehaviour
         {
             UpgradeCard();
         }
+
+        upgradedCardDescription = cardInfo.upgradedDescription;
 
         currencyCost = cardInfo.currencyCost;
 
@@ -222,6 +227,8 @@ public class Card : MonoBehaviour
 
     public void UpgradeCard()
     {
+        upgraded = true;
+        cardDescription = upgradedCardDescription;
         foreach (var entry in cardUpgrade)
         {
             switch (entry.Key)

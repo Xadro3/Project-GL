@@ -31,7 +31,7 @@ public class CardDisplay : MonoBehaviour
     public void UpdateDisplay()
     {
         nameText.text = card.cardInfo.name;
-        descriptionText.text = card.cardInfo.description;
+        descriptionText.text = card.cardDescription;
 
         artworkImage.sprite = card.cardInfo.artwork;
 
