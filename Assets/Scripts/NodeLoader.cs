@@ -8,6 +8,7 @@ public class NodeLoader : MonoBehaviour
     GameObject overworldgenerator;
     public List<GameObject> nodes;
     public GameObject[] nodeInstancer;
+    public GameObject[] visitednodes;
     bool maptGenerated=false;
     public Scene scene;
     public GameObject activeNode;

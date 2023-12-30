@@ -11,7 +11,7 @@ public class NodeInstancer : MonoBehaviour
     public GameObject instantiatedNode;
     public bool isStartNode;
     public bool isEndNode;
-    
+    public string nextMap;
 
     public void InstantiateNode()
     {
@@ -20,6 +20,7 @@ public class NodeInstancer : MonoBehaviour
         instantiatedNode.GetComponent<Node>().isUnlocked = isStartNode;
         instantiatedNode.GetComponent<Node>().isFirstNode = isStartNode;
         instantiatedNode.GetComponent<Node>().nextNode = nextNode;
+        instantiatedNode.GetComponent<Node>().nextMap = nextMap;
         if(nextNode2 != null)
         {
             instantiatedNode.GetComponent<Node>().nextNode2 = nextNode2;

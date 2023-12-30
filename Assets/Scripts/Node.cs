@@ -24,7 +24,11 @@ public class Node : MonoBehaviour
     public void WakeUp()
     {
         collider = GetComponent<BoxCollider>();
-        nextNode = nextNode.GetComponent<NodeInstancer>().instantiatedNode;
+        if(nextNode != null)
+        {
+            nextNode = nextNode.GetComponent<NodeInstancer>().instantiatedNode;
+        }
+    
         if(nextNode2 != null)
         {
             nextNode2 = nextNode2.GetComponent<NodeInstancer>().instantiatedNode;
@@ -54,19 +58,35 @@ public class Node : MonoBehaviour
         }
         if (isFirstNode)
         {
-            eventType = 2;
+            eventType = 0;
         }
         if (isCompleted)
         {
-            nextNode.GetComponent<Node>().isUnlocked = true;
-            nextNode2.GetComponent<Node>().isUnlocked = true;
+            if (nextNode != null)
+            {
+                nextNode.GetComponent<Node>().isUnlocked = true;
+            }
+            if(nextNode != null)
+            {
+                nextNode2.GetComponent<Node>().isUnlocked = true;
+            }
+            
         }
     }
 
     public void UnlockNextNode(GameObject nextNode)
     {
-        nextNode.GetComponent<Node>().isUnlocked = true;
-        nextNode2.GetComponent<Node>().isUnlocked = true;
+        if (nextNode != null)
+        {
+            nextNode.GetComponent<Node>().isUnlocked = true;
+        }
+       
+
+        if(nextNode2 != null)
+        {
+            nextNode2.GetComponent<Node>().isUnlocked = true;
+        }
+        
 
     }
 

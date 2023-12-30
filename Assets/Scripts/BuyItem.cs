@@ -28,7 +28,7 @@ public class BuyItem : MonoBehaviour
                     collision.transform.SetAsFirstSibling();
                     card.GetComponent<Drag>().bought = true;
                     GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(card.currencyCost);
-                    GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>().AddCardToPlayerDeck(card);
+                    GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>().AddCardToDeck(card);
                     LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
                 }
               

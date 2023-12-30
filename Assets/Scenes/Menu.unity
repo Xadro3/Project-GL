@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.39826283, g: 0.3780294, b: 0.37112665, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -288,19 +288,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wallet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6749381980519431224, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: m_TagString
+      value: Deck2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253847577561368531, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: m_TagString
+      value: Deck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4225666654361541015, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 372224888}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
---- !u!4 &27518043 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4225666654361541015, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-  m_PrefabInstance: {fileID: 27518042}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &48175782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,55 +1449,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360037908}
   m_CullTransparentMesh: 1
---- !u!1 &372224887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 372224888}
-  - component: {fileID: 372224889}
-  m_Layer: 0
-  m_Name: Overworld
-  m_TagString: NodeWallet
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &372224888
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372224887}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0612144, y: 1.1940656, z: 6.137141}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 27518043}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &372224889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372224887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc96a30fa7e615a4dba2d9283a340ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodes: []
-  nodeInstancer: []
-  scene:
-    m_Handle: 0
-  activeNode: {fileID: 0}
 --- !u!1 &374069845
 GameObject:
   m_ObjectHideFlags: 0
