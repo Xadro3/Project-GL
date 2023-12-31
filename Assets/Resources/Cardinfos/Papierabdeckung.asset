@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Papierabdeckung
   m_EditorClassIdentifier: 
   name: Papierabdeckung
-  description: "Reduziert den Alpha-Strahlenschaden auf 0 f\xFCr 1 (2) Runde(n) "
+  description: "Reduziert den <color=#931111>Alpha-</color> Strahlenschaden auf <color=#61300d>0</color>
+    f\xFCr <color=#61300d>1</color> Runde"
+  upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> Strahlenschaden
+    auf <color=#61300d>0</color> f\xFCr <color=#61300d>2</color> Runden"
   artwork: {fileID: 21300000, guid: e618ab10fedfb7748a4f304491486f30, type: 3}
+  currencyCost: 45
   cost: 1
   durability: 0
   cardType: 00000000
@@ -31,6 +35,11 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 03000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Eine Papierabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter
+    der im Normalfall Radioaktives Material sicher f\xFCr den Transport aufbewahrt.
+    Herk\xF6mmliches Drucker Papier reicht vollkommen aus um Alphastrahlung aufzuhalten.
+    Alpha Strahlung hat zwar viel Energie da es aus Protonen und Neutronen besteht,
+    damit aber auch eine gro\xDFe Masse, die Leicht aufzuhalten ist."

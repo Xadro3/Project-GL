@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Isotopenbatterie
   m_EditorClassIdentifier: 
   name: Isotopenbatterie
-  description: 'Reduziert Alpha- und Betaleiste um jeweils 1 Punkt und erzeugt 2
-    (3) Energie '
+  description: Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
+    um jeweils <color=#61300d>1</color> Punkt und erzeugt <color=#61300d>2</color>
+    Energie
+  upgradedDescription: 'Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
+    um jeweils <color=#61300d>1</color> Punkt und erzeugt <color=#61300d>3</color>
+    Energie
+
+'
   artwork: {fileID: 21300000, guid: 9fb862573a8345f4ab13a457920fcf46, type: 3}
+  currencyCost: 120
   cost: 0
   durability: 0
   cardType: 01000000
@@ -32,6 +39,10 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "In einer Isotopenbatterie, auch Radionuklidbatterie genannt, wird Kernstrahlung
+    zun\xE4chst in eine Zwischenenergie, also chemische Energie, W\xE4rme oder Licht
+    umgesetzt, welche dann in einem zweiten Schritt in elektrische Energie umgewandelt
+    wird.\r"

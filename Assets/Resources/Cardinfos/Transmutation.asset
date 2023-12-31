@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Transmutation
   m_EditorClassIdentifier: 
   name: Transmutation
-  description: 'Verringert die Zeitmessung um 2 (3). Karte kommt auf Entsorgt-Stapel '
+  description: Verringert die Zeitmessung um <color=#61300d>2</color>. Karte kommt
+    auf Entsorgt-Stapel
+  upgradedDescription: Verringert die Zeitmessung um <color=#61300d>3</color>. Karte
+    kommt auf Entsorgt-Stapel
   artwork: {fileID: 21300000, guid: 60d691fc73646b94790a117c6cfa0b20, type: 3}
+  currencyCost: 130
   cost: 1
   durability: 0
   cardType: 00000000
@@ -31,6 +35,14 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
+  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Beim Verfahren der Transmutation werden radioaktive Isotope zun\xE4chst,
+    etwa durch chemische Reaktionen, aus den Radioaktiven-Brennst\xE4ben herausgel\xF6st.
+    Die abgetrennten Isotope werden zu neuen Transmutationselementen umgewandelt
+    und in einer Transmutationsanlage mit sehr energiereichen Neutronen bestrahlt.
+    Dadurch kommt es zur Kernumwandlung und zur Spaltung der Isotope. Es entstehen
+    Isotope mit geringeren Halbwertszeiten und damit geringer Radioaktiver Ausstrahlung.
+    \r\nDie Halbwertszeit ist die Zeit bis die H\xE4lfte des Radioaktiven Zerfalles
+    vom Material abgelaufen ist.\r\n"

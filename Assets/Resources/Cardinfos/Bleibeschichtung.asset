@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Bleibeschichtung
   m_EditorClassIdentifier: 
   name: Bleibeschichtung
-  description: "Ausgew\xE4hlte Schildkarte Bekommt +6 (+7) Block "
+  description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+6</color> Block"
+  upgradedDescription: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+7</color>
+    Block"
   artwork: {fileID: 21300000, guid: f6fc738b3f901054aaae3466cda8b500, type: 3}
+  currencyCost: 120
   cost: 2
   durability: 0
   cardType: 03000000
@@ -31,6 +34,11 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Eine d\xFCnne Bleibeschichtung die auf alle m\xF6glichen Oberfl\xE4chen
+    aufgetragen werden k\xF6nnte und sie somit die Abschirmwirkung ein wenig verst\xE4rkt.
+    Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen alle Strahlungsarten
+    effektiv zu sein. Die \xFCbliche Dicke f\xFCr so eine Abschirmplatte aus Blei
+    betr\xE4gt 5cm."

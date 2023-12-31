@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Strahlenschutzanzug
   m_EditorClassIdentifier: 
   name: Strahlenschutzanzug
-  description: "Senkt jeden Strahlenschaden um 1 (2), f\xFCr den Rest des Encounters.
-    Karte kommt auf Entsorgt-Stapel "
+  description: "Senkt jeden Strahlenschaden um <color=#61300d>1</color>, f\xFCr den
+    Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
+  upgradedDescription: "Senkt jeden Strahlenschaden um <color=#61300d>2</color>,
+    f\xFCr den Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: 0c51ad6300cc7514997591af25d4eff9, type: 3}
+  currencyCost: 130
   cost: 2
   durability: 0
   cardType: 01000000
@@ -32,6 +35,12 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
+  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Strahlenschutzanz\xFCge sorgen daf\xFCr, dass Radionuklide nicht die
+    Haut erreichen. Au\xDFerdem wird normalerweise zus\xE4tzlich eine Atemmaske getragen,
+    wodurch keine kontaminierten Partikel aus der Umgebung eingeatmet werden. Einen
+    vollumf\xE4nglichen Schutz bietet der Strahlenschutzanzug jedoch durch die sehr
+    geringe Atomare Dichte des Materials nicht. Weshalb unserer bei S.H.I.E.L.D mit
+    Bleielementen verst\xE4rkt wurde."

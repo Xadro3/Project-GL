@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: "Bleischwei\xDFger\xE4t"
   m_EditorClassIdentifier: 
-  name: "Bleischwei\xDFger\xE4t"
-  description: "Repariert ausgew\xE4hlte Blei Schildkarte "
+  name: "L\xF6tlampe"
+  description: "Repariert ausgew\xE4hlte <color=#123493>Blei</color> Schildkarte"
+  upgradedDescription: "Repariert ausgew\xE4hlte <color=#123493>Blei</color> Schildkarte"
   artwork: {fileID: 21300000, guid: fe2e3cdda22872f48814854acbc45432, type: 3}
+  currencyCost: 120
   cost: 1
   durability: 0
   cardType: 05000000
@@ -31,6 +33,8 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Wegen des Niedrigen Schmelzpunktes von Blei ist es nicht zum Schwei\xDFen
+    geeignet. Blei wird also am besten mit der Zugabe eines Lots aneinander gel\xF6tet."

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Wolframplatte
   m_EditorClassIdentifier: 
   name: Wolframplatte
-  description: '15 Block gegen Beta und Gamma, immun gegen Alpha '
+  description: <color=#61300d>15</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>15</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
   artwork: {fileID: 21300000, guid: 87f7f3aac3f44114a84921f37d6daabe, type: 3}
+  currencyCost: 130
   cost: 4
   durability: 15
   cardType: 04000000
@@ -31,6 +35,11 @@ MonoBehaviour:
   immunity: 1
   immunityTypes: 00000000
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Wolfram hat die H\xF6chste Atomare dichte von allen Metallen, was es
+    effektiver zum Abschirmen der Strahlungen macht. Wolfram wird deshalb H\xE4ufig
+    f\xFCr Ger\xE4te in der Strahlungsmedizin verwendet. Selbst Wolfram kann Gamma
+    Strahlung nicht zu 100% Aufhalten. Generell bei allen Abschirmmaterialien gilt:
+    je dicker das Abschirmmaterial desto besser die Abschirmwirkung."

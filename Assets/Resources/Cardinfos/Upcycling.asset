@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Upcycling
   description: "L\xF6st eine ausgew\xE4hlte Schildkarte auf, um den maximalen Blockwert
-    einer anderen zu verdoppeln "
+    einer anderen zu verdoppeln"
+  upgradedDescription: "L\xF6st eine ausgew\xE4hlte Schildkarte auf, um den maximalen
+    Blockwert einer anderen zu verdoppeln"
   artwork: {fileID: 21300000, guid: 4c976e48322d1814b8702d768cb61dee, type: 3}
+  currencyCost: 120
   cost: 3
   durability: 0
   cardType: 02000000
@@ -32,6 +35,10 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Beim Upcycling wird h\xE4ufig aus scheinbar nutzlosen oder abgenutzten
+    Gegenst\xE4nden etwas Neues und Wertvolles geschaffen. Dieser kreative Ansatz
+    tr\xE4gt zur Reduzierung von Abfall bei, f\xF6rdert die Nachhaltigkeit und regt
+    zu innovativem Denken \xFCber den Lebenszyklus von Produkten an. "

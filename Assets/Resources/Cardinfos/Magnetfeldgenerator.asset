@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Magnetfeldgenerator
   m_EditorClassIdentifier: 
   name: Magnetfeldgenerator
-  description: "Senkt Gamma Strahlenschaden um 20%, f\xFCr den Rest des Encounters.
-    Karte kommt auf Entsorgt-Stapel "
+  description: "Senkt <color=#931111>Alpha</color> und <color=#dbdb18>Beta</color>
+    Strahlenschaden um <color=#61300d>20%</color>, f\xFCr den Rest des Breaches.
+    Karte kommt auf Entsorgt-Stapel"
+  upgradedDescription: "Senkt <color=#931111>Alpha</color> und <color=#dbdb18>Beta</color>
+    Strahlenschaden um <color=#61300d>20%</color>, f\xFCr den Rest des Breaches.
+    Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: bdf38932df816424d8394b92c866dcd5, type: 3}
-  currencyCost: 0
+  currencyCost: 130
   cost: 1
   durability: 0
   cardType: 01000000
@@ -36,4 +40,5 @@ MonoBehaviour:
   upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: 'Magnetfelder lenken Teilchenstrahlung, also Alpha- und Betastrahlung,
+    ab und haben auf Energiestrahlung, also Gammastrahlung, keine Auswirkung. '

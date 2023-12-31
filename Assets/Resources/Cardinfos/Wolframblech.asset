@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Wolframblech
   m_EditorClassIdentifier: 
   name: Wolframblech
-  description: '15 Block gegen Beta und Gamma, immun gegen Alpha '
+  description: <color=#61300d>8</color> Block gegen <color=#dbdb18>Beta</color> und
+    <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>10</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
   artwork: {fileID: 21300000, guid: 16b1c9ad7941e2f4ea821593870a196a, type: 3}
+  currencyCost: 85
   cost: 2
   durability: 8
   cardType: 04000000
@@ -31,6 +35,10 @@ MonoBehaviour:
   immunity: 1
   immunityTypes: 00000000
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 02000000
   upgradeValues: 02000000
-  cardInfo: 
+  cardInfo: "Wolfram hat die H\xF6chste Atomare dichte von allen Metallen, was es
+    effektiver zum Abschirmen der Strahlungen macht. Wolfram wird deshalb H\xE4ufig
+    f\xFCr Ger\xE4te in der Strahlungsmedizin verwendet. Selbst Wolfram kann Gamma
+    Strahlung nicht zu 100% Aufhalten."

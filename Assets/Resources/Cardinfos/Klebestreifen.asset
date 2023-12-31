@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Klebestreifen
   m_EditorClassIdentifier: 
   name: Klebestreifen
-  description: "Repariert ausgew\xE4hlte Papier Schildkarte "
+  description: "Repariert ausgew\xE4hlte <color=#931111>Papier</color> Schildkarte"
+  upgradedDescription: "Repariert ausgew\xE4hlte <color=#931111>Papier</color> Schildkarte"
   artwork: {fileID: 21300000, guid: d74103d4be41e4a48b13638e8e78ef68, type: 3}
+  currencyCost: 50
   cost: 1
   durability: 0
   cardType: 05000000
@@ -31,6 +33,9 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
-  cardInfo: 
+  cardInfo: "Ein Handels\xFCbliches Klebeband, welches sowohl L\xF6cher abdichten
+    als auch gebrochene Sachen wieder verbinden kann. Die rote Seite ist die nicht
+    klebende und die wei\xDFe die klebende Seite."

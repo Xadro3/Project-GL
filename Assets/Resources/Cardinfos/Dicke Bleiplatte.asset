@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Dicke Bleiplatte
   m_EditorClassIdentifier: 
   name: Dicke Bleiplatte
-  description: '12 (14) Block gegen Beta und Gamma, 25% Durchlass des Gamma Schadens,
-    immun gegen Alpha '
+  description: <color=#61300d>12</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, <color=#61300d>25%</color> Durchlass des <color=#123493>Gamma</color>
+    Schadens, immun gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>14</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, <color=#61300d>25%</color> Durchlass des <color=#123493>Gamma</color>
+    Schadens, immun gegen <color=#931111>Alpha</color>
   artwork: {fileID: 21300000, guid: f79078173467a2f408b0b27062655682, type: 3}
+  currencyCost: 130
   cost: 2
   durability: 12
   cardType: 04000000
@@ -32,6 +37,12 @@ MonoBehaviour:
   immunity: 1
   immunityTypes: 00000000
   entsorgen: 0
+  upgraded: 0
   cardUpgrades: 02000000
   upgradeValues: 02000000
-  cardInfo: 
+  cardInfo: "Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen
+    alle Strahlungsarten effektiv zu sein. Die \xFCbliche Dicke f\xFCr so eine Abschirmplatte
+    aus Blei betr\xE4gt 5cm. Mit Blei muss generell vorsichtig umgegangen werden,
+    da es schon bei niedrigen Aufnahmemengen Gesundheitsgef\xE4hrdend ist, also nicht
+    Essen. Generell bei allen Abschirmmaterialien gilt: je dicker das Abschirmmaterial
+    desto besser die Abschirmwirkung."
