@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39831355, g: 0.3780928, b: 0.3712264, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6078,7 +6078,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.69900316, g: 0.7924528, b: 0.72611773, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -7369,8 +7369,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     chained: 1
-  - position: {x: -0.41717255, y: 40.545654, z: -11.380184}
-    rotation: {x: -0.47398242, y: -0.00041005822, z: 0.00076177967, w: -0.88053393}
+  - position: {x: -0.41726208, y: 40.51716, z: -11.423381}
+    rotation: {x: -0.45916724, y: -0.00042276026, z: 0.0007548044, w: -0.8883495}
     handleprev: {x: -0.29959488, y: 0.1880951, z: -1.015924}
     handlenext: {x: 0.29959488, y: -0.1880951, z: 1.015924}
     curveTypeRotation: 2
