@@ -20,6 +20,7 @@ TagManager:
   - AudioEinstellungen
   - Deck2
   - CardPopup
+  - RewardArea
   layers:
   - Default
   - TransparentFX

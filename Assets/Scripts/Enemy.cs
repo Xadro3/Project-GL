@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public static event System.Action EncounterEnd;
 
     private EnemyModel enemyModel;
 
@@ -102,17 +103,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public bool UpdateTimer(int i)
+    public void UpdateTimer(int i)
     {
         roundTimer -= i;
         enemyModel.roundTimerText.text = roundTimer.ToString();
         if (roundTimer <= 0)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            EncounterEnd?.Invoke();
         }
     }
     public void ActivateDamageBuff(GameConstants.radiationTypes damageType)

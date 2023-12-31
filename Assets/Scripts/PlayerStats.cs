@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,9 @@ public class PlayerStats : MonoBehaviour
     {
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
+        GameManager.UpdateUI += UpdateUIElements;
     }
+
     private void OnDisable()
     {
         // Unsubscribe from the sceneLoaded event

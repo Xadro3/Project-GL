@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ActiveCardSlots : MonoBehaviour
 {
@@ -9,12 +10,32 @@ public class ActiveCardSlots : MonoBehaviour
 
     private void Awake()
     {
-        activeCardSlots.AddRange(GetComponentsInChildren<Slot>());
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        activeCardSlots.AddRange(GetComponentsInChildren<Slot>(true));
     }
-    // Start is called before the first frame update
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Encounter")
+        {
+            foreach (var entry in activeCardSlots)
+            {
+                entry.gameObject.SetActive(true);
+            }
+        }
+        
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+
+    }
     void Start()
     {
-        
+        foreach (var entry in activeCardSlots)
+        {
+            entry.gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame

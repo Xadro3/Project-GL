@@ -6,11 +6,13 @@ using UnityEngine.Timeline;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     public static event Action<int> UpdateDeckDisplay;
     public static event Action<int> UpdateDiscardDisplay;
+    public static event Action UpdateUI;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -40,15 +42,19 @@ public class GameManager : MonoBehaviour
     public Deck deck;
     public CardManager cardManager;
 
-    public bool wait;
-    private float elapsedTime;
-    [Range(2,10)]
-    public float waitTimer;
-
     private int costIncrease = 0;
 
     private List<Card> cardsToDiscard = new List<Card>();
     private int cardsToDiscardCount = 0;
+
+    public bool encounterEndScreenActive;
+    public int tokenRewardAmount;
+    public bool cardRewardScreenActive;
+    public int cardRewardAmount;
+    public bool encounterWon;
+
+    public GameObject endScreenPrefab;
+    public GameObject cardRewardScreenPrefab;
 
     private void Awake()
     {
@@ -65,6 +71,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         EndTurnButtonEventScript.EndTurnEvent += EndTurnEvent;
         CardPopup.PauseGame += PauseGame;
+        Enemy.EncounterEnd += HandleEncounterEnd;
+        EncounterEndScript.CardRewardScreenEvent += HandleCardRewardEvent;
+        CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
     }
 
     private void OnSceneUnloaded(Scene arg0)
@@ -104,18 +113,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (wait)
-        {
-            PauseGame(wait);
-            elapsedTime += Time.deltaTime;
 
-            if (elapsedTime >= waitTimer)
-            {
-                wait = false;
-                PauseGame(wait);
-                mySceneManager.ChangeScene("Overworld");
-            }
-        }
     }
 
     public void PauseGame(bool b)
@@ -236,19 +234,6 @@ public class GameManager : MonoBehaviour
             SetDamage(wagons[i].damageStats);
         }
         turnMaster.ResolveTurn(wagons, activeCardSlots);
-        
-        //SetDamage(wagons[0].GenerateDamage());
-        //ResetEnergy();
-        //DrawCards();
-        if (wagons[0].UpdateTimer(1))
-        {
-            wait = true;
-        }
-    }
-
-    public void WaitTimer(float timerDuration, float elapsedTime)
-    {
-
     }
 
     public void SetDamage(Dictionary<GameConstants.radiationTypes, int> damageStats)
@@ -398,5 +383,80 @@ public class GameManager : MonoBehaviour
     private void EndTurnEvent()
     {
         EndTurn();
+    }
+
+    private void HandleEncounterEnd()
+    {
+        if (wagons[0].roundTimer <= 0 && player.health > 0)
+        {
+            encounterWon = true;
+        }
+        else
+        {
+            encounterWon = false;
+        }
+        foreach (Slot activeCardSlot in activeCardSlots)
+        {
+            activeCardSlot.gameObject.SetActive(false);
+        }
+        
+        StartCoroutine(EndingEncounter());
+    }
+
+    private IEnumerator EndingEncounter()
+    {
+        encounterEndScreenActive = true;
+        PauseGame(true);
+        UpdateUI?.Invoke();
+        yield return new WaitForSeconds(1f);
+        GameObject endingScreen = Instantiate(endScreenPrefab, Vector3.zero, Quaternion.identity);
+        endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount);
+        //Falls wir zeit brauchen um animationen abzuspielen o.ä.
+        while (encounterEndScreenActive)
+        {
+            yield return null;
+        }
+        yield break;
+    }
+
+    private void HandleCardRewardEvent()
+    {
+        Debug.Log("What is going on?");
+        StartCoroutine(CardReward());
+    }
+
+    private IEnumerator CardReward()
+    {
+        cardRewardScreenActive = true;
+        List<GameObject> cardRewards = new List<GameObject>();
+        GameObject cardRewardScreen = Instantiate(cardRewardScreenPrefab, Vector3.zero, Quaternion.identity);
+        for (int i = 0; i < cardRewardAmount; i++)
+        {
+            cardRewards.Add(cardManager.GetRandomCardFromCardSafe());
+        }
+        foreach (GameObject randomCard in cardRewards)
+        {
+            randomCard.transform.SetParent(cardRewardScreen.GetComponent<CardRewardScript>().rewardArea.transform);
+            randomCard.SetActive(true);
+            randomCard.GetComponent<SortingGroup>().sortingLayerName = "Menu";
+            randomCard.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            randomCard.GetComponent<CardMovementHandler>().inRewardScreen = true;
+        }
+        while (cardRewardScreenActive)
+        {
+            yield return null;
+        }
+        foreach (GameObject randomCard in cardRewards)
+        {
+            randomCard.GetComponent<CardMovementHandler>().inRewardScreen = false;
+            randomCard.GetComponent<SortingGroup>().sortingLayerName = "Card";
+            randomCard.SetActive(false);
+        }
+        yield break;
+    }
+
+    private void HandleCardRewardChosenEvent(Card obj)
+    {
+        cardRewardScreenActive = false;
     }
 }

@@ -11,7 +11,12 @@ public class Deck : MonoBehaviour
 
     void Awake()
     {
-        
+        CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosen;
+    }
+
+    private void HandleCardRewardChosen(Card chosenCard)
+    {
+        AddCardToDeck(chosenCard);
     }
 
     void Start()

@@ -11,6 +11,7 @@ public class CardMovementHandler : MonoBehaviour
     public static event Action<Card> OnPlayerEffect;
     public static event Action<Card> OnEnemyEffect;
     public static event Action<Card, Slot> OnShieldEffect;
+    public static event Action<Card> CardRewardChosenEvent;
 
     public GameObject cardPopupPrefab;
 
@@ -18,6 +19,7 @@ public class CardMovementHandler : MonoBehaviour
 
     public bool wasPlayed = false;
     public bool isDragging = false;
+    public bool inRewardScreen = false;
 
     private Vector3 offset;
     private Vector3 mousePosition;
@@ -133,7 +135,6 @@ public class CardMovementHandler : MonoBehaviour
             OnCardClicked?.Invoke(this);
             SetSortingOrder(transform.GetSiblingIndex());
         }
-        
     }
     private void OnMouseDrag()
     {
@@ -169,6 +170,17 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (inRewardScreen)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                ShowCardPopup();
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                CardRewardChosenEvent?.Invoke(card);
+            }
+        }
         if (!gm.isGamePauseActive)
         {
             if (Input.GetMouseButtonDown(1))

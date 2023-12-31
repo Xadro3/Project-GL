@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Slot : MonoBehaviour
 {
@@ -10,15 +11,32 @@ public class Slot : MonoBehaviour
     GameManager gm;
     public Card currentCard = null;
 
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
     private void OnEnable()
     {
-        // Subscribe to the sceneLoaded event
         CardMovementHandler.OnShieldEffect += HandleShieldEffect;
+        
     }
     private void OnDisable()
     {
-        // Unsubscribe from the sceneLoaded event
         CardMovementHandler.OnShieldEffect -= HandleShieldEffect;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneUnloaded(Scene arg0)
+    {
+
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
     }
 
     private void HandleShieldEffect(Card card, Slot slot)

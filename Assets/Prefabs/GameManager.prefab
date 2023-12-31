@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: []
   playerDeck: []
+  playerDeckObjects: []
 --- !u!1 &3667615858606613352
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,8 +317,8 @@ MonoBehaviour:
   player: {fileID: 0}
   deck: {fileID: 0}
   cardManager: {fileID: 0}
-  wait: 0
-  waitTimer: 4.03
+  endScreenPrefab: {fileID: 3894339038319365057, guid: f6d5025ac24d7764c925a677e3ada9d3, type: 3}
+  cardRewardScreenPrefab: {fileID: 8343364946072515666, guid: 5af8849e673c5284f8fabd8ce1aa87ff, type: 3}
 --- !u!1 &6315868828182914236
 GameObject:
   m_ObjectHideFlags: 0

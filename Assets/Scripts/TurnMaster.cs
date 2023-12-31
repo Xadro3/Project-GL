@@ -128,6 +128,7 @@ public class TurnMaster : MonoBehaviour
         endTurnButton.RotateKnopfBack();
         gm.ResetEnergy();
         gm.DrawCards();
+        wagons[0].UpdateTimer(1);
         wagons[0].GenerateDamage();
     }
     private void HandleCardDurabilityZero(Card card)
