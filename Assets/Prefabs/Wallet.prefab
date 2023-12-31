@@ -167,7 +167,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3184779286270857966}
-  - {fileID: 3534318559227649012}
   - {fileID: 1714269940932508763}
   - {fileID: 3587516528925377553}
   - {fileID: 9204989635562378427}
@@ -232,40 +231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes: []
   nodeInstancer: []
+  visitednodes: []
   scene:
     m_Handle: 0
   activeNode: {fileID: 0}
---- !u!1 &8528194789214237438
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3534318559227649012}
-  m_Layer: 0
-  m_Name: Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3534318559227649012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528194789214237438}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4225666654361541015}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8525974962028231267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,17 +283,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: shopCurrency
+      value: 
+      objectReference: {fileID: 4440220774125489240}
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: alphaResistanceMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: gammaResistanceMax
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

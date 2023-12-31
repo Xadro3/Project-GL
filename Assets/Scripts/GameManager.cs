@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
-using System.Timers;
 using UnityEngine;
-using UnityEngine.Timeline;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
@@ -13,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> UpdateDeckDisplay;
     public static event Action<int> UpdateDiscardDisplay;
     public static event Action UpdateUI;
+    public static event Action<int> CurrencyUpdateEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -41,6 +40,7 @@ public class GameManager : MonoBehaviour
     MySceneManager mySceneManager;
     public Deck deck;
     public CardManager cardManager;
+    public ShopCurrency shopCurrency;
 
     private int costIncrease = 0;
 
@@ -59,10 +59,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
-        turnMaster = GetComponentInChildren<TurnMaster>();
-        player = GetComponentInChildren<PlayerHealthManager>();
-        cardManager = GetComponentInChildren<CardManager>();
-        deck = GetComponentInChildren<Deck>();
     }
 
     private void OnEnable()
@@ -411,6 +407,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject endingScreen = Instantiate(endScreenPrefab, Vector3.zero, Quaternion.identity);
         endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount);
+        shopCurrency.AddMoney(tokenRewardAmount);
         //Falls wir zeit brauchen um animationen abzuspielen o.ä.
         while (encounterEndScreenActive)
         {
@@ -421,7 +418,6 @@ public class GameManager : MonoBehaviour
 
     private void HandleCardRewardEvent()
     {
-        Debug.Log("What is going on?");
         StartCoroutine(CardReward());
     }
 
@@ -440,18 +436,23 @@ public class GameManager : MonoBehaviour
             randomCard.SetActive(true);
             randomCard.GetComponent<SortingGroup>().sortingLayerName = "Menu";
             randomCard.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            randomCard.transform.localPosition = new Vector3(randomCard.transform.localPosition.x, randomCard.transform.localPosition.y, 0f);
             randomCard.GetComponent<CardMovementHandler>().inRewardScreen = true;
+            randomCard.GetComponent<SortingGroup>().sortingOrder = 1;
         }
         while (cardRewardScreenActive)
         {
             yield return null;
         }
+        cardRewardScreen.GetComponent<CardRewardScript>().ToggleButton(true);
         foreach (GameObject randomCard in cardRewards)
         {
             randomCard.GetComponent<CardMovementHandler>().inRewardScreen = false;
             randomCard.GetComponent<SortingGroup>().sortingLayerName = "Card";
             randomCard.SetActive(false);
         }
+        Debug.Log("Not waiting for shit!");
+        PauseGame(false);
         yield break;
     }
 

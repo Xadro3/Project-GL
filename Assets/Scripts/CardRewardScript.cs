@@ -12,6 +12,7 @@ public class CardRewardScript : MonoBehaviour
     public GameObject rewardArea;
     public Camera cam;
     public Canvas canvas;
+    public Button btn_endEncounter;
 
     private void Awake()
     {
@@ -31,6 +32,11 @@ public class CardRewardScript : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void ToggleButton(bool b)
+    {
+        btn_endEncounter.gameObject.SetActive(b);
     }
 
     public void ChangeScene(string scene)

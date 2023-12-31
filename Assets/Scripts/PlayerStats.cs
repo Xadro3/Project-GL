@@ -14,7 +14,13 @@ public class PlayerStats : MonoBehaviour
     {
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
-        GameManager.UpdateUI += UpdateUIElements;
+        GameManager.UpdateUI += OnUpdateUI;
+    }
+
+    private void OnUpdateUI()
+    {
+        UpdatePlayerStats();
+        UpdateUIElements();
     }
 
     private void OnDisable()
@@ -24,13 +30,18 @@ public class PlayerStats : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        UpdatePlayerStats();
+        UpdateUIElements();
+    }
+
+    private void UpdatePlayerStats()
+    {
         playerInfo = FindAnyObjectByType<PlayerHealthManager>();
         if (playerInfo != null)
         {
             Debug.Log("Found PlayerHealthManager");
             health = playerInfo.health;
             gammaResistance = playerInfo.gammaResistance;
-            UpdateUIElements();
         }
     }
 

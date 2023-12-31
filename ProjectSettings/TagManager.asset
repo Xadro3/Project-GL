@@ -21,6 +21,7 @@ TagManager:
   - Deck2
   - CardPopup
   - RewardArea
+  - TokenDisplayAmount
   layers:
   - Default
   - TransparentFX

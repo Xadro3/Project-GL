@@ -47,11 +47,11 @@ MonoBehaviour:
   health: 100
   healthMax: 100
   alphaResistance: 0
-  alphaResistanceMax: 20
+  alphaResistanceMax: 10
   betaResistance: 0
   betaResistanceMax: 20
   gammaResistance: 0
-  gammaResistanceMax: 30
+  gammaResistanceMax: 50
   betaDotActive: 0
   betaDotDamage: 3
   betaDotDamageSum: 0
@@ -313,10 +313,16 @@ MonoBehaviour:
   graveyardPileParent: {fileID: 0}
   isGamePauseActive: 0
   interactionBlock: {fileID: 0}
-  turnMaster: {fileID: 0}
-  player: {fileID: 0}
-  deck: {fileID: 0}
-  cardManager: {fileID: 0}
+  turnMaster: {fileID: 3091456029364621464}
+  player: {fileID: 5978955686827921507}
+  deck: {fileID: 1662629947016396295}
+  cardManager: {fileID: 497335996542417445}
+  shopCurrency: {fileID: 0}
+  encounterEndScreenActive: 0
+  tokenRewardAmount: 50
+  cardRewardScreenActive: 0
+  cardRewardAmount: 3
+  encounterWon: 0
   endScreenPrefab: {fileID: 3894339038319365057, guid: f6d5025ac24d7764c925a677e3ada9d3, type: 3}
   cardRewardScreenPrefab: {fileID: 8343364946072515666, guid: 5af8849e673c5284f8fabd8ce1aa87ff, type: 3}
 --- !u!1 &6315868828182914236
