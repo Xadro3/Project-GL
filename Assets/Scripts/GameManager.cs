@@ -156,6 +156,18 @@ public class GameManager : MonoBehaviour
         }
         return encounterCompleted;
     }
+
+    public bool IsCurrentEncounterBoss()
+    {
+        if (nodeLoader.activeNode.GetComponent<Node>().isLastNode)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void PauseGame(bool b)
     {
         isGamePauseActive = b;

@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
 
+    public int bossBonus = 1;
     public int encounterPhase = 0;
     public int phaseOneLimit = 5;
     public int phaseTwoLimit = 10;
@@ -91,6 +92,7 @@ public class Enemy : MonoBehaviour
         GenerateTimerValue();
         PopulateDamage();
     }
+
     private void SetEncounterPhase()
     {
         int timerMin, timerMax, damageMin, damageMax;
@@ -169,6 +171,19 @@ public class Enemy : MonoBehaviour
             SetBetaDamage(damageMin, damageMax);
             SetGammaDamage(damageMin, damageMax);
         }
+        if (GetComponentInParent<GameManager>().IsCurrentEncounterBoss())
+        {
+            MakeEncounterBoss();
+        }
+    }
+    private void MakeEncounterBoss()
+    {
+        alphaMin += bossBonus;
+        alphaMax += bossBonus;
+        betaMin += bossBonus;
+        betaMax += bossBonus;
+        gammaMin += bossBonus;
+        gammaMax += bossBonus;
     }
 
     private void HandleEnemyEffect(Card card)
