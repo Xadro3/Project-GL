@@ -76,9 +76,9 @@ public class GameManager : MonoBehaviour
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
     }
 
-    private void OnSceneUnloaded(Scene arg0)
+    private void OnSceneUnloaded(Scene scene)
     {
-        
+
     }
 
     private void OnDisable()
@@ -507,8 +507,9 @@ public class GameManager : MonoBehaviour
             randomCard.GetComponent<CardMovementHandler>().inRewardScreen = false;
             randomCard.GetComponent<SortingGroup>().sortingLayerName = "Card";
             randomCard.SetActive(false);
+            randomCard.transform.SetParent(cardManager.cardSafe.transform);
         }
-        Debug.Log("Not waiting for shit!");
+        Shuffle();
         PauseGame(false);
         yield break;
     }
