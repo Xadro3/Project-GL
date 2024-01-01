@@ -410,7 +410,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Spawning Ending Screen at: " + pauseMenu.offscreenPosition.transform.position);
         GameObject endingScreen = Instantiate(endScreenPrefab, pauseMenu.offscreenPosition.transform.position, Quaternion.identity);
         endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount, pauseMenu.offscreenPosition);
-        shopCurrency.AddMoney(tokenRewardAmount);
+        if (encounterWon)
+        {
+            shopCurrency.AddMoney(tokenRewardAmount);
+        }
         //Falls wir zeit brauchen um animationen abzuspielen o.ä.
         while (encounterEndScreenActive)
         {
