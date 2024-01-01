@@ -155,7 +155,7 @@ public class Slot : MonoBehaviour
                     case GameConstants.effectTypes.DrawCard:
                     case GameConstants.effectTypes.Discard:
                         Debug.Log("Effect: " + entry.Key);
-                        gm.HandleEffect(card);
+                        gm.HandleEffect(entry.Key, entry.Value);
                         break;
                 }
             }

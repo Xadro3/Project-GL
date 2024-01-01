@@ -256,7 +256,7 @@ public class PlayerHealthManager : MonoBehaviour
 
                 case GameConstants.effectTypes.DrawCard:
                 case GameConstants.effectTypes.Discard:
-                    gm.HandleEffect(card);
+                    gm.HandleEffect(entry.Key, entry.Value);
                     break;
 
                 case GameConstants.effectTypes.HealthDamageReductionPercent:
