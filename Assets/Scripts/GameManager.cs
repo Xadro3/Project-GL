@@ -406,8 +406,9 @@ public class GameManager : MonoBehaviour
         encounterEndScreenActive = true;
         PauseGame(true);
         UpdateUI?.Invoke();
+
         yield return new WaitForSeconds(1f);
-        Debug.Log("Spawning Ending Screen at: " + pauseMenu.offscreenPosition.transform.position);
+       
         GameObject endingScreen = Instantiate(endScreenPrefab, pauseMenu.offscreenPosition.transform.position, Quaternion.identity);
         endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount, pauseMenu.offscreenPosition);
         if (encounterWon)
