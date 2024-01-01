@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasCard: 0
+  currentCard: {fileID: 0}
+  cardSlotSprite: {fileID: 6810657944431602884}

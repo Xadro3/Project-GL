@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using System.Collections.Generic;
 
 public class CardMovementHandler : MonoBehaviour
 {
@@ -185,6 +186,10 @@ public class CardMovementHandler : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
+                if (!wasPlayed && !card.wasPlayed)
+                {
+                    ShowCardPopup();
+                }
                 if (wasPlayed && !card.wasPlayed)
                 {
                     activeCardSlot.HasCard(false);
@@ -194,11 +199,6 @@ public class CardMovementHandler : MonoBehaviour
                     wasPlayed = false;
                     //initialHandSlot.GetComponent<Slot>().HasCard(true);
                     Debug.Log(gameObject);
-                }
-
-                if (!wasPlayed && !card.wasPlayed)
-                {
-                    ShowCardPopup();
                 }
             }
         }
@@ -303,10 +303,31 @@ public class CardMovementHandler : MonoBehaviour
 
             case GameConstants.abilityTargets.AbilityPlayer when slot.CompareTag("Player"):
                 Debug.Log("I want to play that on an Player");
-                wasPlayed = true;
-                card.SetWasPlayed(true);
-                OnPlayerEffect?.Invoke(card);
+
+                //Check if enough cards are in hand for Discard Effects
+                
+                
+                if (card.cardEffects.ContainsKey(GameConstants.effectTypes.Discard))
+                {
+                    if (CheckCardsInHandForEffect())
+                    {
+                        wasPlayed = true;
+                        card.SetWasPlayed(true);
+                        OnPlayerEffect?.Invoke(card);
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough cards in hand to play this card");
+                    }
+                }
+                else
+                {
+                    wasPlayed = true;
+                    card.SetWasPlayed(true);
+                    OnPlayerEffect?.Invoke(card);
+                }
                 break;
+
 
             case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
                 Debug.Log("I want to play that on a Shield");
@@ -331,6 +352,13 @@ public class CardMovementHandler : MonoBehaviour
             hasPlaceholder = false;
             Destroy(placeholder);
         }
+    }
+
+    private bool CheckCardsInHandForEffect()
+    {
+        List<Card> cardsInHand = new List<Card>();
+        cardsInHand.AddRange(gm.playerHand.GetComponentsInChildren<Card>());
+        return true;
     }
 
     private bool CanPlayCardOnShield(Card card, Slot slot)

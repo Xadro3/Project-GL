@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public GameObject cardRewardScreenPrefab;
     public PauseMenu pauseMenu;
 
+    private bool discardActive = false;
+    private bool haveToShuffle = false;
+
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
@@ -161,7 +164,8 @@ public class GameManager : MonoBehaviour
             discardPile.Clear();
         }
         UpdateDeckDisplay(deck.playerDeck.Count);
-}
+        haveToShuffle = false;
+    }
 
     public void AddEnergy(int value)
     {
@@ -303,12 +307,28 @@ public class GameManager : MonoBehaviour
     }
     private void TriggerCardDrawEffect(int value)
     {
+        StartCoroutine(CardDrawEffect(value));
+    }
+
+    private IEnumerator CardDrawEffect(int value)
+    {
+        while (discardActive)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
         int cardsInHand = CountOccupiedHandSlots();
         if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count + value) || deck.playerDeck.Count == 0)
         {
+            haveToShuffle = true;
             Shuffle();
         }
-        // drawing cards up to effect
+
+        while (haveToShuffle)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
         for (int i = 0; i < value; i++)
         {
             Card randomCard = deck.Draw();
@@ -316,7 +336,9 @@ public class GameManager : MonoBehaviour
             randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
             deck.RemoveCardFromPlayerDeck(randomCard);
         }
+        yield break;
     }
+
     private void TriggerEnergyGetEffect(int value)
     {
         AddEnergy(value);
@@ -324,7 +346,10 @@ public class GameManager : MonoBehaviour
 
     private void TriggerDiscardEffect(Card triggerCard, int value)
     {
-        StartCoroutine(PlayerSelectCardsToDiscard(triggerCard, value));
+        discardActive = true;
+        StartCoroutine(DiscardRandomCardFromHand(triggerCard, value));
+        //Coroutine to have players select a card to discard - not in use
+        //StartCoroutine(PlayerSelectCardsToDiscard(triggerCard, value));
     }
 
     private void HandleCardClicked(CardMovementHandler cardMovementHandler)
@@ -337,6 +362,32 @@ public class GameManager : MonoBehaviour
         cardsToDiscardCount++;
     }
 
+    private IEnumerator DiscardRandomCardFromHand(Card triggerCard, int value)
+    {
+        List<Card> cardsInHand = new List<Card>();
+        cardsInHand.AddRange(playerHand.GetComponentsInChildren<Card>());
+
+        // Ensure that the value is within a valid range
+        value = Mathf.Clamp(value, 0, cardsInHand.Count);
+
+        // Randomly select cards and perform the discard effect
+        for (int i = 0; i < value; i++)
+        {
+            // Ensure there are still cards in the list
+            if (cardsInHand.Count > 0)
+            {
+                int randomIndex = Random.Range(0, cardsInHand.Count);
+
+                Card randomCard = cardsInHand[randomIndex];
+
+                randomCard.cardMovementHandler.MoveToDiscardPile();
+
+                cardsInHand.RemoveAt(randomIndex);
+            }
+            yield return new WaitForSeconds(1f);
+        }
+        yield break;
+    }
     private IEnumerator PlayerSelectCardsToDiscard(Card triggerCard, int value)
     {
         List<Card> cardsInHand = new List<Card>();

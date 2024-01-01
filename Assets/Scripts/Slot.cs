@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour
     public bool hasCard = false;
     GameManager gm;
     public Card currentCard = null;
+    public SpriteRenderer cardSlotSprite;
 
     private void Awake()
     {
@@ -20,7 +21,6 @@ public class Slot : MonoBehaviour
     private void OnEnable()
     {
         CardMovementHandler.OnShieldEffect += HandleShieldEffect;
-        
     }
     private void OnDisable()
     {
@@ -79,9 +79,15 @@ public class Slot : MonoBehaviour
     public void HasCard(bool hasCard)
     {
         this.hasCard = hasCard;
-        if (!hasCard)
+        if (hasCard)
+        {
+            currentCard = GetCardInSlotInfo();
+            cardSlotSprite.enabled = false;
+        }
+        else
         {
             currentCard = null;
+            cardSlotSprite.enabled = true;
         }
     }
 

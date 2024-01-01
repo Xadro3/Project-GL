@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
     public SO_Card cardInfo;
     GameManager gm;
     CardDisplay cardDisplay;
-    CardMovementHandler CardMovementHandler;
+    public CardMovementHandler cardMovementHandler;
 
     private int tankedRadiation;
 
@@ -68,8 +68,8 @@ public class Card : MonoBehaviour
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        CardMovementHandler = GetComponentInParent<CardMovementHandler>();
-        cardDisplay = GetComponentInParent<CardDisplay>();
+        cardMovementHandler = GetComponent<CardMovementHandler>();
+        cardDisplay = GetComponent<CardDisplay>();
 
         cardName = cardInfo.name;
         gameObject.name = cardName;
@@ -160,7 +160,7 @@ public class Card : MonoBehaviour
         if (durabilityCurrent <= 0)
         {
             OnDurabilityZero?.Invoke(this);
-            CardMovementHandler.MoveToDiscardPile();
+            cardMovementHandler.MoveToDiscardPile();
         }
         
         return durabilityCurrent;
@@ -181,7 +181,7 @@ public class Card : MonoBehaviour
 
     public void BackInPlay(Transform newParent)
     {
-        CardMovementHandler.SetNewParent(newParent);
+        cardMovementHandler.SetNewParent(newParent);
         SetCurrentDurabilityToMax();
         cardDisplay.UpdateDisplay();
         OnDurabilityZero = null;
@@ -190,7 +190,7 @@ public class Card : MonoBehaviour
     public void SetWasPlayed(bool b)
     {
         wasPlayed = b;
-        CardMovementHandler.wasPlayed = b;
+        cardMovementHandler.wasPlayed = b;
     }
 
     public void SetActive(bool b)
