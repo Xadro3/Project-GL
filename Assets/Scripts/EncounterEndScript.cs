@@ -15,6 +15,10 @@ public class EncounterEndScript : MonoBehaviour
     public TextMeshProUGUI shieldTokenAmount;
     public Camera cam;
     public Canvas canvas;
+    public GameObject tablet;
+    public Vector3 velocity = Vector3.zero;
+    public float smoothTime;
+    public GameObject targetPosition;
 
     private void Awake()
     {
@@ -24,8 +28,10 @@ public class EncounterEndScript : MonoBehaviour
         canvas.sortingLayerName = "Menu";
     }
 
-    public void SetupScreen(bool encounterWon, int rewardAmount)
+    public void SetupScreen(bool encounterWon, int rewardAmount, GameObject offscreenPosition)
     {
+        tablet.transform.position = offscreenPosition.transform.position;
+        tablet.SetActive(true);
         switch (encounterWon)
         {
             case true:
@@ -36,6 +42,7 @@ public class EncounterEndScript : MonoBehaviour
                 defeatText.gameObject.SetActive(true);
                 break;
         }
+        StartCoroutine(move());
         UpdateRewardAmount(rewardAmount);
     }
     
@@ -55,8 +62,23 @@ public class EncounterEndScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnDestroy()
+    {
+        
+    }
+
     public void ChangeScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator move()
+    {
+        while (tablet.transform.position != targetPosition.transform.position)
+        {
+            //Debug.Log("moving");
+            tablet.transform.position = Vector3.SmoothDamp(tablet.transform.position, targetPosition.transform.position, ref velocity, smoothTime);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

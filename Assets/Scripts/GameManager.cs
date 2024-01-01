@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject endScreenPrefab;
     public GameObject cardRewardScreenPrefab;
+    public PauseMenu pauseMenu;
 
     private void Awake()
     {
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
             UpdatePlayerRessource();
             DrawCards();
             UpdateDiscard();
+            pauseMenu = FindObjectOfType<PauseMenu>(true);
         }
     }
 
@@ -405,8 +407,9 @@ public class GameManager : MonoBehaviour
         PauseGame(true);
         UpdateUI?.Invoke();
         yield return new WaitForSeconds(1f);
-        GameObject endingScreen = Instantiate(endScreenPrefab, Vector3.zero, Quaternion.identity);
-        endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount);
+        Debug.Log("Spawning Ending Screen at: " + pauseMenu.offscreenPosition.transform.position);
+        GameObject endingScreen = Instantiate(endScreenPrefab, pauseMenu.offscreenPosition.transform.position, Quaternion.identity);
+        endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount, pauseMenu.offscreenPosition);
         shopCurrency.AddMoney(tokenRewardAmount);
         //Falls wir zeit brauchen um animationen abzuspielen o.ä.
         while (encounterEndScreenActive)
@@ -425,7 +428,7 @@ public class GameManager : MonoBehaviour
     {
         cardRewardScreenActive = true;
         List<GameObject> cardRewards = new List<GameObject>();
-        GameObject cardRewardScreen = Instantiate(cardRewardScreenPrefab, Vector3.zero, Quaternion.identity);
+        GameObject cardRewardScreen = Instantiate(cardRewardScreenPrefab, pauseMenu.targetPosition.transform.position, Quaternion.identity);
         for (int i = 0; i < cardRewardAmount; i++)
         {
             cardRewards.Add(cardManager.GetRandomCardFromCardSafe());
