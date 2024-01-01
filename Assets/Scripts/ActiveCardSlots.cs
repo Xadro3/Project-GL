@@ -30,6 +30,14 @@ public class ActiveCardSlots : MonoBehaviour
     {
 
     }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+
     void Start()
     {
         foreach (var entry in activeCardSlots)

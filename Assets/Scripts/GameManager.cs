@@ -232,7 +232,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Enemies: " + wagons.Count);
         for (int i = 0; i < wagons.Count; i++)
         {
-            Debug.Log(wagons[i].damageStats);
             SetDamage(wagons[i].damageStats);
         }
         turnMaster.ResolveTurn(wagons, activeCardSlots);

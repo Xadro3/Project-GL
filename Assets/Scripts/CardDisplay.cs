@@ -24,7 +24,7 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        card = GetComponentInParent<Card>();
+        card = GetComponent<Card>();
         UpdateDisplay();
     }
 
@@ -37,6 +37,11 @@ public class CardDisplay : MonoBehaviour
 
         costText.text = card.cost.ToString();
         durabilityText.text = card.durability.ToString();
+    }
+
+    public void UpdateDurability(int value)
+    {
+        durabilityText.text = value.ToString();
     }
 
 

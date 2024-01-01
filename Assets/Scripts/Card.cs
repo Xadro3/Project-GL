@@ -146,8 +146,7 @@ public class Card : MonoBehaviour
     
     public void UpdateDisplay()
     {
-        cardDisplay.durabilityText.text = durabilityCurrent.ToString();
-        cardDisplay.UpdateDisplay();
+        cardDisplay.UpdateDurability(durabilityCurrent);
     }
 
     public int AdjustDurability(int value)

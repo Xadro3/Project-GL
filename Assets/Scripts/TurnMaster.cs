@@ -63,9 +63,100 @@ public class TurnMaster : MonoBehaviour
         }
         Debug.Log(wagons[0]);
         StartCoroutine(ProcessCardsWithDelay(wagons));
+        
+        
     }
 
     private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)
+    {
+        Dictionary<GameConstants.radiationTypes, int> wagonDamageStats = new Dictionary<GameConstants.radiationTypes, int>(damageStats);
+        
+        // Create a copy of the keys before iterating
+        var damageTypes = new List<GameConstants.radiationTypes>(wagonDamageStats.Keys);
+
+        // Iterate over damage types
+        foreach (GameConstants.radiationTypes radiationType in damageTypes)
+        {
+            Debug.Log("Dictionary Entry: " + radiationType.ToString() + " with value of: " + wagonDamageStats[radiationType]);
+            switch (radiationType)
+            {
+                case GameConstants.radiationTypes.Alpha:
+                    AlphaDamageEvent?.Invoke();
+                    break;
+
+                case GameConstants.radiationTypes.Beta:
+                    BetaDamageEvent?.Invoke();
+                    break;
+
+                case GameConstants.radiationTypes.Gamma:
+                    GammaDamageEvent?.Invoke();
+                    break;
+
+                default:
+                    break;
+            }
+            // Iterate over cards
+            foreach (Card card in cardsInPlay)
+            {
+                if (card.durabilityCurrent > 0 && wagonDamageStats[radiationType] > 0)
+                {
+                    // Check if wagon damage type affects card protection type
+                    if (card.immunityTypes.Contains(radiationType))
+                    {
+                        Debug.Log("Card is immune to " + radiationType + ". Set damage of " + wagonDamageStats[radiationType] + " to 0.");
+                        wagonDamageStats[radiationType] = 0;
+                    }
+                    else if (card.protectionTypes.Contains(radiationType))
+                    {
+                        int damageValue = wagonDamageStats[radiationType];
+                        Debug.Log(wagons[0].name + " will deal: " + wagonDamageStats[radiationType] + " of " + radiationType + " to: " + card.cardName);
+                        wagonDamageStats[radiationType] = card.AdjustDurability(damageValue);
+                        if (card.effect && radiationType == GameConstants.radiationTypes.Gamma)
+                        {
+                            wagonDamageStats[radiationType] += card.GammaReduction(card.cardEffects[GameConstants.effectTypes.DamageReductionPercent]);
+                        }
+                        if (wagonDamageStats[radiationType] < 0)
+                        {
+                            Debug.Log("I killed " + card.cardName + " with overkill damage. " + "Damage type: " + radiationType + " Damage left: " + wagonDamageStats[radiationType]);
+                            wagonDamageStats[radiationType] = Mathf.Abs(wagonDamageStats[radiationType]);
+                            wagons[0].UpdateDamageDuringRound(radiationType, 0);
+                        }
+                        else if (wagonDamageStats[radiationType] >= 0)
+                        {
+                            Debug.Log("No damage value left of damage type: " + radiationType);
+                            wagonDamageStats[radiationType] = 0;
+                            wagons[0].UpdateDamageDuringRound(radiationType, 0);
+                        }
+                    }
+                    card.UpdateDisplay();
+                    wagons[0].UpdateDamageDuringRound(radiationType, wagonDamageStats[radiationType]);
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+        }
+
+        foreach (var entry in wagonDamageStats)
+        {
+            if (entry.Value != 0)
+            {
+                gm.PlayerDamage(entry.Value, entry.Key);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        if (gm.IsBetaDotActive())
+        {
+            gm.PlayerBetaDotDamage();
+        }
+        yield return new WaitForSeconds(3f);
+        endTurnButton.RotateKnopfBack();
+        gm.ResetEnergy();
+        gm.DrawCards();
+        wagons[0].UpdateTimer(1);
+        wagons[0].GenerateDamage();
+    }
+
+    /*private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)
     {
         Dictionary<GameConstants.radiationTypes, int> wagonDamageStats = new Dictionary<GameConstants.radiationTypes, int>(damageStats);
         
@@ -131,6 +222,7 @@ public class TurnMaster : MonoBehaviour
         wagons[0].UpdateTimer(1);
         wagons[0].GenerateDamage();
     }
+    */
     private void HandleCardDurabilityZero(Card card)
     {
         // Handle the special effect when a cards durability reaches zero
