@@ -63,8 +63,6 @@ public class TurnMaster : MonoBehaviour
         }
         Debug.Log(wagons[0]);
         StartCoroutine(ProcessCardsWithDelay(wagons));
-        
-        
     }
 
     private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)
@@ -154,6 +152,7 @@ public class TurnMaster : MonoBehaviour
         gm.DrawCards();
         wagons[0].UpdateTimer(1);
         wagons[0].GenerateDamage();
+        gm.PauseGame(false);
     }
 
     /*private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)

@@ -228,6 +228,7 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
+        PauseGame(true);
         Debug.Log("Resolving the turn!");
         Debug.Log("Enemies: " + wagons.Count);
         for (int i = 0; i < wagons.Count; i++)
