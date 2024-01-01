@@ -266,6 +266,7 @@ public class CardMovementHandler : MonoBehaviour
                             this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
                             SetSortingOrder(0);
                         }
+                        CardDropped?.Invoke();
                     }
                 }
             }
@@ -347,6 +348,7 @@ public class CardMovementHandler : MonoBehaviour
                 break;
         }
         SetSortingOrder(transform.GetSiblingIndex());
+        CardDropped?.Invoke();
         if (hasPlaceholder)
         {
             hasPlaceholder = false;
