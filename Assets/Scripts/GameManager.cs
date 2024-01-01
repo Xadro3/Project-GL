@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     private int cardsToDiscardCount = 0;
 
     public bool encounterEndScreenActive;
-    public int tokenRewardAmount;
+    
     public bool cardRewardScreenActive;
     public int cardRewardAmount;
     public bool encounterWon;
@@ -56,13 +56,21 @@ public class GameManager : MonoBehaviour
     public GameObject endScreenPrefab;
     public GameObject cardRewardScreenPrefab;
     public PauseMenu pauseMenu;
+    public NodeLoader nodeLoader;
 
     private bool discardActive = false;
     private bool haveToShuffle = false;
 
+    public int encounterCompleted = 0;
+    public int tokenRewardAmount;
+    public int tokenRewardChapterOne = 30;
+    public int tokenRewardChapterTwo = 50;
+    public int tokenRewardChapterThree = 70;
+
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
+        nodeLoader = FindObjectOfType<NodeLoader>();
     }
 
     private void OnEnable()
@@ -72,6 +80,7 @@ public class GameManager : MonoBehaviour
         EndTurnButtonEventScript.EndTurnEvent += EndTurnEvent;
         CardPopup.PauseGame += PauseGame;
         Enemy.EncounterEnd += HandleEncounterEnd;
+        PlayerHealthManager.EncounterEnd += HandleEncounterEnd;
         EncounterEndScript.CardRewardScreenEvent += HandleCardRewardEvent;
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
     }
@@ -96,10 +105,12 @@ public class GameManager : MonoBehaviour
             activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>(true);
             activeCardSlots = activeCardSlotsParent.activeCardSlots;
             interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
-            wagons[0].GenerateDamage();
+            wagons[0].StartEncounter();
             UpdatePlayerRessource();
             DrawCards();
             UpdateDiscard();
+            wagons[0].GenerateDamage();
+            SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
         }
     }
@@ -116,7 +127,35 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    private void SetTokenReward()
+    {
+        int completedEncounter = GetCompletedEncounter();
+        if (completedEncounter < 12)
+        {
+            tokenRewardAmount = tokenRewardChapterOne;
+        }
+        else if (completedEncounter < 24)
+        {
+            tokenRewardAmount = tokenRewardChapterTwo;
+        }
+        else if (completedEncounter >= 24)
+        {
+            tokenRewardAmount = tokenRewardChapterThree;
+        }
 
+    }
+    public int GetCompletedEncounter()
+    {
+        
+        foreach (GameObject node in nodeLoader.nodes)
+        {
+            if (node.GetComponent<Node>().isCompleted)
+            {
+                encounterCompleted++;
+            }
+        }
+        return encounterCompleted;
+    }
     public void PauseGame(bool b)
     {
         isGamePauseActive = b;

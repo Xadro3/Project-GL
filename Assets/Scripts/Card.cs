@@ -88,19 +88,23 @@ public class Card : MonoBehaviour
         effect = cardInfo.effect;
         onBruch = cardInfo.onBruch;
         onPlay = cardInfo.onPlay;
-        
+
+        sienceInfo = cardInfo.cardInfo;
+        currencyCost = cardInfo.currencyCost;
+
+        immunity = cardInfo.immunity;
+        immunityTypes = cardInfo.immunityTypes;
+        entsorgen = cardInfo.entsorgen;
+
+        upgraded = cardInfo.upgraded;
+
         //fill cardEffects Dictionary
         for (int i = 0; i < cardInfo.effectTypes.Count; i++)
         {
             cardEffects.Add(cardInfo.effectTypes[i], cardInfo.effectValues[i]);
         }
 
-        immunity = cardInfo.immunity;
-        immunityTypes = cardInfo.immunityTypes;
-        entsorgen = cardInfo.entsorgen;
-
         //fill cardUpgrade Dictionary
-        upgraded = cardInfo.upgraded;
         for (int i = 0; i < cardInfo.cardUpgrades.Count; i++)
         {
             cardUpgrade.Add(cardInfo.cardUpgrades[i], cardInfo.upgradeValues[i]);
@@ -110,8 +114,6 @@ public class Card : MonoBehaviour
             UpgradeCard();
         }
 
-        currencyCost = cardInfo.currencyCost;
-
         if (cardInfo.cardType.Contains(GameConstants.cardType.Schild))
         {
             cardDisplay.ActivateShieldIcon(true);
@@ -120,9 +122,6 @@ public class Card : MonoBehaviour
         {
             cardDisplay.ActivateEntsorgenIcon(true);
         }
-
-
-        sienceInfo = cardInfo.cardInfo;
 
         cardDisplay.SetupDisplay();
     }

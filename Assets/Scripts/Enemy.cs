@@ -50,11 +50,19 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
 
+    public int encounterPhase = 0;
+    public int phaseOneLimit = 5;
+    public int phaseTwoLimit = 10;
+    public int phaseThreeLimit = 15;
+    public int phaseFourLimit = 20;
+    public int phaseFiveLimit = 25;
+    public int phaseSixLimit = 30;
+
     public List<GameConstants.radiationTypes> damageTypes;
 
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
 
-    GameManager gm;
+    private GameManager gm;
     private void OnEnable()
     {
         // Subscribe to the sceneLoaded event
@@ -73,19 +81,99 @@ public class Enemy : MonoBehaviour
         if (scene.name == "Encounter")
         {
             enemyModel = FindObjectOfType<EnemyModel>();
-            GenerateTimerValue();
-            PopulateDamage();
+
+        }
+    }
+
+    public void StartEncounter()
+    {
+        SetEncounterPhase();
+        GenerateTimerValue();
+        PopulateDamage();
+    }
+    private void SetEncounterPhase()
+    {
+        int timerMin, timerMax, damageMin, damageMax;
+        
+        int encounterCompleted = GetComponentInParent<GameManager>().GetCompletedEncounter();
+
+        if (encounterCompleted < phaseOneLimit)
+        {
+            encounterPhase = 1;
+            timerMin = 2;
+            timerMax = 5;
+            damageMin = 2;
+            damageMax = 5;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
+        }
+        else if (encounterCompleted < phaseTwoLimit)
+        {
+            encounterPhase = 2;
+            timerMin = 3;
+            timerMax = 6;
+            damageMin = 4;
+            damageMax = 7;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
+        }
+        else if (encounterCompleted < phaseThreeLimit)
+        {
+            encounterPhase = 3;
+            timerMin = 4;
+            timerMax = 7;
+            damageMin = 6;
+            damageMax = 8;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
+        }
+        else if (encounterCompleted < phaseFourLimit)
+        {
+            encounterPhase = 4;
+            timerMin = 5;
+            timerMax = 8;
+            damageMin = 8;
+            damageMax = 10;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
+        }
+        else if (encounterCompleted < phaseFiveLimit)
+        {
+            encounterPhase = 5;
+            timerMin = 6;
+            timerMax = 9;
+            damageMin = 10;
+            damageMax = 12;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
+        }
+        else if (encounterCompleted >= phaseSixLimit)
+        {
+            encounterPhase = 6;
+            timerMin = 7;
+            timerMax = 10;
+            damageMin = 12;
+            damageMax = 14;
+            SetTimer(timerMin, timerMax);
+            SetAlphaDamage(damageMin, damageMax);
+            SetBetaDamage(damageMin, damageMax);
+            SetGammaDamage(damageMin, damageMax);
         }
     }
 
     private void HandleEnemyEffect(Card card)
     {
         HandleEffect(card);
-    }
-
-    private void Start()
-    {
-
     }
 
     private void GenerateTimerValue()
@@ -362,5 +450,26 @@ public class Enemy : MonoBehaviour
             }
         }
         UpdateDamageText();
+    }
+
+    private void SetTimer(int min, int max)
+    {
+        roundTimerMin = min;
+        roundTimerMax = max;
+    }
+    private void SetAlphaDamage(int min, int max)
+    {
+        alphaMin = min;
+        alphaMax = max;
+    }
+    private void SetBetaDamage(int min, int max)
+    {
+        betaMin = min;
+        betaMax = max;
+    }
+    private void SetGammaDamage(int min, int max)
+    {
+        gammaMin = min;
+        gammaMax = max;
     }
 }

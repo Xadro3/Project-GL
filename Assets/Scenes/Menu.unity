@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.39831355, g: 0.3780928, b: 0.3712264, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,6 +295,14 @@ PrefabInstance:
     - target: {fileID: 7253847577561368531, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: m_TagString
       value: Deck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1576160721}
+    - target: {fileID: 8824834930937650924, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: tokenRewardAmount
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6702,6 +6710,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549300783}
   m_CullTransparentMesh: 1
+--- !u!114 &1576160721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8824834930937650924, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+  m_PrefabInstance: {fileID: 27518042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9d29080cf04b3408c5f6d80faef05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1576914840
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerHealthManager : MonoBehaviour
 {
+    public static event System.Action EncounterEnd;
+
+
     public int health;
     [Range(0, 100)]
     public int healthMax = 100;
@@ -112,6 +115,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             // trigger Game Over
             Debug.Log("Game Over!");
+            EncounterEnd?.Invoke();
         }
     }
 
