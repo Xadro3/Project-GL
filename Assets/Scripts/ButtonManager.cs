@@ -12,6 +12,11 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().isCompleted = true;
+        GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode.GetComponent<Node>().isNextNode = true;
+        if(GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode.GetComponent<Node>().nextNode2 != null)
+        {
+            GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2.GetComponent<Node>().isNextNode = true;
+        }
     }
     public void ChangeScene(string scene)
     {

@@ -17,6 +17,8 @@ public class Node : MonoBehaviour
     public bool isCompleted = false;
     public bool isFirstNode = false;
     public bool isActive = false;
+    public bool isNextNode = false;
+    public bool isPastNode = false;
     public string nextMap;
     Collider collider;
     SpriteRenderer sprite;
@@ -55,6 +57,7 @@ public class Node : MonoBehaviour
         if (isLastNode&&isCompleted)
         {
             SceneManager.LoadScene(nextMap);
+            isCompleted = false;
         }
         if (isFirstNode)
         {
@@ -66,11 +69,15 @@ public class Node : MonoBehaviour
             {
                 nextNode.GetComponent<Node>().isUnlocked = true;
             }
-            if(nextNode != null)
+            if(nextNode2 != null)
             {
                 nextNode2.GetComponent<Node>().isUnlocked = true;
             }
             
+        }
+        if (isPastNode)
+        {
+
         }
     }
 

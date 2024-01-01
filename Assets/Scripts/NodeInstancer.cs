@@ -25,7 +25,6 @@ public class NodeInstancer : MonoBehaviour
         {
             instantiatedNode.GetComponent<Node>().nextNode2 = nextNode2;
         }
-        instantiatedNode.GetComponent<Node>().WakeUp();
         overworld.nodes.Add(instantiatedNode);
     }
 
