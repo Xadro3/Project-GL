@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437871552554636101, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9181596245567922422, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18258,6 +18258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasCard: 0
   currentCard: {fileID: 0}
+  cardSlotSprite: {fileID: 0}
 --- !u!1 &643883786
 GameObject:
   m_ObjectHideFlags: 0
@@ -33077,6 +33078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drehKnopf: {fileID: 1097234304}
+  PlayerTurn: {fileID: 1760921905}
+  EnemyTurn: {fileID: 1588456327}
 --- !u!1 &1305731758
 GameObject:
   m_ObjectHideFlags: 0
@@ -41867,6 +41870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasCard: 0
   currentCard: {fileID: 0}
+  cardSlotSprite: {fileID: 0}
 --- !u!1 &1760921905
 GameObject:
   m_ObjectHideFlags: 0
@@ -43488,7 +43492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.50061}
+  m_AnchoredPosition: {x: 0, y: -15.500671}
   m_SizeDelta: {x: 0, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016143251
