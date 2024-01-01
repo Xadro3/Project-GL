@@ -141,7 +141,7 @@ public class CardMovementHandler : MonoBehaviour
     {
         if (!gm.isGamePauseActive)
         {
-            if (!hasPlaceholder)
+            if (!hasPlaceholder && !wasPlayed)
             {
                 hasPlaceholder = true;
                 GeneratePlaceholder();
