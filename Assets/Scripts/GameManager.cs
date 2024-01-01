@@ -234,18 +234,29 @@ public class GameManager : MonoBehaviour
         UpdatePlayerRessource();
     }
 
-    public bool PayCardCost(Card card)
+    public bool EnoughEnergy(Card card)
     {
         if ((playerRessourceCurrent - card.cost) >= 0)
         {
-            playerRessourceCurrent -= card.cost + costIncrease;
-            UpdatePlayerRessource();
             return true;
         }
         else
         {
-            UpdatePlayerRessource();
             return false;
+        }
+    }
+
+    public void PayCardCost(Card card)
+    {
+        if (EnoughEnergy(card))
+        {
+            playerRessourceCurrent -= card.cost + costIncrease;
+            UpdatePlayerRessource();
+            
+        }
+        else
+        {
+            UpdatePlayerRessource();
         }
     }
 

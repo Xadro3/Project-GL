@@ -233,7 +233,7 @@ public class CardMovementHandler : MonoBehaviour
 
                     if (slot != null)
                     {                        
-                        if (gm.PayCardCost(card))
+                        if (gm.EnoughEnergy(card))
                         {
                             if (card.ability)
                             {
@@ -241,6 +241,7 @@ public class CardMovementHandler : MonoBehaviour
                                 if (wasPlayed)
                                 {
                                     MoveToDiscardPile();
+                                    gm.PayCardCost(card);
                                     return;
                                 }
                                 
@@ -254,6 +255,7 @@ public class CardMovementHandler : MonoBehaviour
                                 SetPosition(activeCardSlot.transform);
                                 wasPlayed = true;
                                 SetSortingOrder(transform.GetSiblingIndex());
+                                gm.PayCardCost(card);
                                 //initialHandSlot.GetComponent<Slot>().HasCard(false);
                             }
 
@@ -334,6 +336,21 @@ public class CardMovementHandler : MonoBehaviour
                 Debug.Log("I want to play that on a Shield");
                 if (CanPlayCardOnShield(card, slot))
                 {
+                    if (card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepair) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairPapier) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairBlei) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairAlu))
+                    {
+                        if(CanShieldRepair(card, slot))
+                        {
+                            wasPlayed = true;
+                            card.SetWasPlayed(true);
+                            OnShieldEffect?.Invoke(card, slot);
+                        }
+                        else
+                        {
+                            Debug.Log("Shield is not repairable!");
+                            break;
+                        }
+                        
+                    }
                     wasPlayed = true;
                     card.SetWasPlayed(true);
                     OnShieldEffect?.Invoke(card, slot);
@@ -343,7 +360,6 @@ public class CardMovementHandler : MonoBehaviour
             default:
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
-                gm.RefundCardCost(card);
                 Debug.LogWarning("Default Ability Handling");
                 break;
         }
@@ -353,6 +369,17 @@ public class CardMovementHandler : MonoBehaviour
         {
             hasPlaceholder = false;
             Destroy(placeholder);
+        }
+    }
+    private bool CanShieldRepair(Card card, Slot slot)
+    {
+        if (slot.GetCardInSlotInfo().durabilityCurrent < slot.GetCardInSlotInfo().durability)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -374,11 +401,11 @@ public class CardMovementHandler : MonoBehaviour
             case "Feuerzeug":
                 return slotCardName == "Papier" || slotCardName == "Dickes Papier" || slotCardName == "Verbundpapier";
 
-            case "Aluschweißgerät":
+            case "Schweißgerät":
             case "Bromlösung":
                 return slotCardName == "Aluminiumfolie" || slotCardName == "Aluminiumblech" || slotCardName == "Aluminiumplatte";
 
-            case "Bleischweißgerät":
+            case "Lötlampe":
             case "Salpetersäure":
                 return slotCardName == "Dünne Bleiplatte" || slotCardName == "Mittlere Bleiplatte" || slotCardName == "Dicke Bleiplatte";
 
