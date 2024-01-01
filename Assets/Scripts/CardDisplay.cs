@@ -28,7 +28,7 @@ public class CardDisplay : MonoBehaviour
         UpdateDisplay();
     }
 
-    public void UpdateDisplay()
+    public void SetupDisplay()
     {
         nameText.text = card.cardInfo.name;
         descriptionText.text = card.cardDescription;
@@ -36,7 +36,15 @@ public class CardDisplay : MonoBehaviour
         artworkImage.sprite = card.cardInfo.artwork;
 
         costText.text = card.cost.ToString();
-        durabilityText.text = card.durability.ToString();
+        durabilityText.text = card.durabilityCurrent.ToString();
+    }
+
+    public void UpdateDisplay()
+    {
+        descriptionText.text = card.cardDescription;
+
+        costText.text = card.cost.ToString();
+        durabilityText.text = card.durabilityCurrent.ToString();
     }
 
     public void UpdateDurability(int value)

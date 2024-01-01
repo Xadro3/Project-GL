@@ -79,6 +79,7 @@ public class Card : MonoBehaviour
         durability = cardInfo.durability;
         durabilityCurrent = durability;
         cardDescription = cardInfo.description;
+        upgradedCardDescription = cardInfo.upgradedDescription;
 
         ability = cardInfo.ability;
         duration = cardInfo.duration;
@@ -109,8 +110,6 @@ public class Card : MonoBehaviour
             UpgradeCard();
         }
 
-        upgradedCardDescription = cardInfo.upgradedDescription;
-
         currencyCost = cardInfo.currencyCost;
 
         if (cardInfo.cardType.Contains(GameConstants.cardType.Schild))
@@ -125,13 +124,17 @@ public class Card : MonoBehaviour
 
         sienceInfo = cardInfo.cardInfo;
 
-        cardDisplay.UpdateDisplay();
+        cardDisplay.SetupDisplay();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    private void OnEnable()
+    {
+        
     }
 
     public void ShieldDebuff()
@@ -146,7 +149,7 @@ public class Card : MonoBehaviour
     
     public void UpdateDisplay()
     {
-        cardDisplay.UpdateDurability(durabilityCurrent);
+        cardDisplay.UpdateDisplay();
     }
 
     public int AdjustDurability(int value)
@@ -229,6 +232,8 @@ public class Card : MonoBehaviour
     public void UpgradeCard()
     {
         upgraded = true;
+        Debug.Log("Original Text: " + cardDescription);
+        Debug.Log("Upgraded Text: " + upgradedCardDescription);
         cardDescription = upgradedCardDescription;
         foreach (var entry in cardUpgrade)
         {
@@ -255,9 +260,10 @@ public class Card : MonoBehaviour
                     break;
 
             }
-            UpdateDisplay();
+            
         }
-        
+        SetCurrentDurabilityToMax();
+        UpdateDisplay();
     }
 
     private void HandleCardEffectUpgrade(int value)
