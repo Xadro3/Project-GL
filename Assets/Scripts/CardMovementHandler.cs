@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CardMovementHandler : MonoBehaviour
 {
@@ -32,26 +33,47 @@ public class CardMovementHandler : MonoBehaviour
     public Transform currentSlot = null;
     public Slot activeCardSlot = null;
 
-    GameManager gm;
+    public GameManager gm;
     SortingGroup sortingGroup;
     public Card card;
 
     private SpriteRenderer[] spriteRenderers;
     private MeshRenderer[] textRenderers;
 
-
-    // Use this for initialization
-    void Start()
+    private void Awake()
     {
-        //SetSortingOrder(99);
         gm = FindObjectOfType<GameManager>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         textRenderers = GetComponentsInChildren<MeshRenderer>();
         sortingGroup = GetComponent<SortingGroup>();
     }
 
-    private void Awake()
+    private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnSceneUnloaded(Scene arg0)
+    {
+        
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
+    {
+        if (scene.name == "Shops")
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            this.enabled = true;
+        }
+    }
+
+    void Start()
+    {
+        //SetSortingOrder(99);
         
     }
 
@@ -125,7 +147,7 @@ public class CardMovementHandler : MonoBehaviour
     //Mouse movement with card
     private void OnMouseDown()
     {
-        if (!gm.isGamePauseActive)
+        if (!gm.isGamePauseActive && enabled)
         {
             mousePosition = Input.mousePosition - GetMouseWorldPos();
             if (!wasPlayed)
@@ -139,7 +161,7 @@ public class CardMovementHandler : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        if (!gm.isGamePauseActive)
+        if (!gm.isGamePauseActive && enabled)
         {
             if (!hasPlaceholder && !wasPlayed)
             {
@@ -171,37 +193,42 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inRewardScreen)
+        if (enabled)
         {
-            if (Input.GetMouseButtonDown(1))
+            Debug.Log("I am over: " + gameObject.name);
+            if (inRewardScreen)
             {
-                ShowCardPopup();
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                CardRewardChosenEvent?.Invoke(card);
-            }
-        }
-        if (!gm.isGamePauseActive)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (!wasPlayed && !card.wasPlayed)
+                if (Input.GetMouseButtonDown(1))
                 {
                     ShowCardPopup();
                 }
-                if (wasPlayed && !card.wasPlayed)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    activeCardSlot.HasCard(false);
-                    SetNewParent(initialHandSlot);
-                    //SetPosition(initialHandSlot);
-                    gm.RefundCardCost(card);
-                    wasPlayed = false;
-                    //initialHandSlot.GetComponent<Slot>().HasCard(true);
-                    Debug.Log(gameObject);
+                    CardRewardChosenEvent?.Invoke(card);
+                }
+            }
+            if (!gm.isGamePauseActive)
+            {
+                if (Input.GetMouseButtonDown(1))
+                {
+                    if (!wasPlayed && !card.wasPlayed)
+                    {
+                        ShowCardPopup();
+                    }
+                    if (wasPlayed && !card.wasPlayed)
+                    {
+                        activeCardSlot.HasCard(false);
+                        SetNewParent(initialHandSlot);
+                        //SetPosition(initialHandSlot);
+                        gm.RefundCardCost(card);
+                        wasPlayed = false;
+                        //initialHandSlot.GetComponent<Slot>().HasCard(true);
+                        Debug.Log(gameObject);
+                    }
                 }
             }
         }
+        
     }
 
     private void ShowCardPopup()
@@ -219,7 +246,7 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!gm.isGamePauseActive)
+        if (!gm.isGamePauseActive && enabled)
         {
             if (isDragging)
             {

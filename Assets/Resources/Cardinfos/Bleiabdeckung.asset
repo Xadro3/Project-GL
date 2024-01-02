@@ -32,7 +32,7 @@ MonoBehaviour:
   effect: 1
   onBruch: 0
   onPlay: 0
-  effectValues: 32000000
+  effectValues: 3200000000000000
   effectTypes: 0300000004000000
   immunity: 0
   immunityTypes: 

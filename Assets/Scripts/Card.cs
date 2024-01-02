@@ -6,7 +6,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public SO_Card cardInfo;
-    GameManager gm;
+    public GameManager gm;
     CardDisplay cardDisplay;
     public CardMovementHandler cardMovementHandler;
 
