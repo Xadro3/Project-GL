@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
   m_Name: Aluminiumbeschichtung
   m_EditorClassIdentifier: 
-  name: Aluminiumbeschichtung
+  name: Alubeschichtung
   description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+4</color> Block"
   upgradedDescription: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+5</color>
     Block"
