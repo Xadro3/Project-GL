@@ -15,6 +15,13 @@ public class ParticleTrigger : MonoBehaviour
        TurnMaster.GammaDamageEvent += HandleGammaRadiation;   
     }
 
+    private void OnDisable()
+    {
+        TurnMaster.AlphaDamageEvent -= HandleAlphaRadiation;
+        TurnMaster.BetaDamageEvent -= HandleBetaRadiation;
+        TurnMaster.GammaDamageEvent -= HandleGammaRadiation;
+    }
+
 
     private void Update()//Ganze update ist nur für Testzwecke drin, kann also deleted werden wenn die Eventtrigger implementiert wurden.
     {
