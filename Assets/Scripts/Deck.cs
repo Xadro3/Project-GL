@@ -9,6 +9,8 @@ public class Deck : MonoBehaviour
     public List<Card> playerDeck;
     public List<GameObject> playerDeckObjects;
 
+    public CardManager cardManager;
+
     void Awake()
     {
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosen;
@@ -16,7 +18,7 @@ public class Deck : MonoBehaviour
 
     private void HandleCardRewardChosen(Card chosenCard)
     {
-        AddCardToDeck(chosenCard);
+        AddCardToBaseDeck(chosenCard);
     }
 
     void Start()
@@ -91,6 +93,16 @@ public class Deck : MonoBehaviour
     {
         Debug.Log("Added " + card.cardName + " to the deck.");
         deck.Add(card);
+    }
+
+    public void AddCardToBaseDeck(Card card)
+    {
+        cardManager.AddCardToBaseDeck(card);
+    }
+
+    public void RemoveCardFromBaseDeck(Card card)
+    {
+        cardManager.RemoveCardFromBaseDeck(card);
     }
 
     public List<GameObject> GetPlayerDeck()
