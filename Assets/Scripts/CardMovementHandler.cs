@@ -46,6 +46,7 @@ public class CardMovementHandler : MonoBehaviour
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         textRenderers = GetComponentsInChildren<MeshRenderer>();
         sortingGroup = GetComponent<SortingGroup>();
+        enabled = true;
     }
 
     private void OnEnable()
@@ -64,10 +65,6 @@ public class CardMovementHandler : MonoBehaviour
         if (scene.name == "Shops")
         {
             this.enabled = false;
-        }
-        else
-        {
-            this.enabled = true;
         }
     }
 
@@ -195,7 +192,7 @@ public class CardMovementHandler : MonoBehaviour
     {
         if (enabled)
         {
-            Debug.Log("I am over: " + gameObject.name);
+            
             if (inRewardScreen)
             {
                 if (Input.GetMouseButtonDown(1))

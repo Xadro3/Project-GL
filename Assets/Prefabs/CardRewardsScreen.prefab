@@ -423,9 +423,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9017186398226620733}
-        m_TargetAssemblyTypeName: CardRewardScript, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 2760931637294252137}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ButtonPressed
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 1209671088
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 1209671088
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -791,6 +791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4052391291201528820}
   - component: {fileID: 9017186398226620733}
+  - component: {fileID: 2760931637294252137}
   m_Layer: 0
   m_Name: CardRewardsScreen
   m_TagString: Untagged
@@ -831,3 +832,17 @@ MonoBehaviour:
   cam: {fileID: 0}
   canvas: {fileID: 8703205155842613862}
   btn_endEncounter: {fileID: 2068767167018021729}
+--- !u!114 &2760931637294252137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343364946072515666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2847d1f559e31f4eb6a975d9cf0a7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene2: 
+  timer: 1

@@ -37,10 +37,5 @@ public class CardRewardScript : MonoBehaviour
     public void ToggleButton(bool b)
     {
         btn_endEncounter.gameObject.SetActive(b);
-    }
-
-    public void ChangeScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
-    }
+    }    
 }
