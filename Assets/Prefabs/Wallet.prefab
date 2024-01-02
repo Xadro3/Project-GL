@@ -326,13 +326,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Deck
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
-    - target: {fileID: 1662629947016396295, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: cardManager
-      value: 
-      objectReference: {fileID: 8121324359747747910}
->>>>>>> Stashed changes
     - target: {fileID: 3168500216812357211, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_TagString
       value: Deck2
@@ -346,17 +339,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
---- !u!114 &8121324359747747910 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-  m_PrefabInstance: {fileID: 8525974962028231267}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676ec6692f9361a42a2399f53a9a6f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9204989635562378427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
