@@ -54,8 +54,24 @@ public class CardManager : MonoBehaviour
         //GetRandomCardFromCardSafe();
     }
 
+    public void AddCardToBaseDeck(Card card)
+    {
+        baseCards.Add(card.cardInfo);
+    }
+
+    public void RemoveCardFromBaseDeck(Card card)
+    {
+        baseCards.Remove(card.cardInfo);
+    }
+
+    public void BuildDeck()
+    {
+        AddBaseCardsToDeck();
+    }
+
     private void AddBaseCardsToDeck()
     {
+        deck.deck.Clear();
         foreach (SO_Card baseCard in baseCards)
         {
             // Ensure that cardType and cardRarity arrays are not empty

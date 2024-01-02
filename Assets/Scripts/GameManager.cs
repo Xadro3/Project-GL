@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
             activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>(true);
             activeCardSlots = activeCardSlotsParent.activeCardSlots;
             interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
+            cardManager.BuildDeck();
             wagons[0].StartEncounter();
             UpdatePlayerRessource();
             DrawCards();
