@@ -7,16 +7,24 @@ public class PlayerHealthManager : MonoBehaviour
 {
     public static event System.Action EncounterEnd;
 
-
+    [Header("----- Health -----")]
     public int health;
     [Range(0, 100)]
     public int healthMax = 100;
+    public int hpThresholdLvOne;
+    public int hpThresholdLvTwo;
+
+    [Header("----- Alpha Resistance -----")]
     public int alphaResistance;
     [Range(0, 50)]
     public int alphaResistanceMax = 20;
+
+    [Header("----- Beta Resistance -----")]
     public int betaResistance;
     [Range(0, 50)]
     public int betaResistanceMax = 20;
+
+    [Header("----- Gamma Resistance -----")]
     public int gammaResistance;
     [Range(0, 50)]
     public int gammaResistanceMax = 30;
@@ -74,6 +82,7 @@ public class PlayerHealthManager : MonoBehaviour
             playerModel.gammaBar.SetHealth(gammaResistance);
             playerModel.healthBar.SetMaxHealth(healthMax);
             playerModel.healthBar.SetHealth(health);
+            CheckHealth();
         }
     }
 
@@ -141,6 +150,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         gammaResistance -= damageValue;
         playerModel.gammaBar.SetHealth(gammaResistance);
+        playerModel.gammaText.text = gammaResistance.ToString();
         Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
         CheckResistances();
     }
@@ -157,6 +167,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         betaResistance -= damageValue;
         playerModel.betaBar.SetHealth(betaResistance);
+        playerModel.betaText.text = betaResistance.ToString();
         Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
         CheckResistances();
     }
@@ -173,6 +184,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         alphaResistance -= damageValue;
         playerModel.alphaBar.SetHealth(alphaResistance);
+        playerModel.alphaText.text = alphaResistance.ToString();
         Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
         CheckResistances();
     }
@@ -221,6 +233,22 @@ public class PlayerHealthManager : MonoBehaviour
     
     public int CheckHealth()
     {
+        if (health > hpThresholdLvOne)
+        {
+            playerModel.characterOne.SetActive(true);
+            playerModel.characterTwo.SetActive(false);
+            playerModel.characterThree.SetActive(false);
+        }else if(health >= hpThresholdLvTwo)
+        {
+            playerModel.characterOne.SetActive(false);
+            playerModel.characterTwo.SetActive(true);
+            playerModel.characterThree.SetActive(false);
+        }else if (health < hpThresholdLvTwo)
+        {
+            playerModel.characterOne.SetActive(false);
+            playerModel.characterTwo.SetActive(false);
+            playerModel.characterThree.SetActive(true);
+        }
         return health;
     }
 
