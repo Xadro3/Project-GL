@@ -17,6 +17,8 @@ public class PlayerModel : MonoBehaviour
     public GameObject characterTwo;
     public GameObject characterThree;
 
+    public Animator playerModelAnimator;
+
     // Start is called before the first frame update
     void Start()
     {

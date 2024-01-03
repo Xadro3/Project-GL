@@ -14,7 +14,7 @@ public class EnemyModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        armDisplayAnimator.SetTrigger("StartBreach");
+        
     }
 
     // Update is called once per frame

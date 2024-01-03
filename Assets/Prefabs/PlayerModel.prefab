@@ -6141,6 +6141,7 @@ MonoBehaviour:
   characterOne: {fileID: 2396612191124437003}
   characterTwo: {fileID: 5329959686122359429}
   characterThree: {fileID: 4650009019835164572}
+  playerModelAnimator: {fileID: 6031140711081204804}
 --- !u!1 &2396612191124437003
 GameObject:
   m_ObjectHideFlags: 0

@@ -347,4 +347,8 @@ public class PlayerHealthManager : MonoBehaviour
             }
         }
     }
+    public void TriggerEncounterEndAnimation()
+    {
+        playerModel.playerModelAnimator.SetTrigger("BreachEnd");
+    }
 }

@@ -500,6 +500,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleEncounterEnd()
     {
+        wagons[0].TriggerEncounterEndAnimation();
+        player.TriggerEncounterEndAnimation();
         if (wagons[0].roundTimer <= 0 && player.health > 0)
         {
             encounterWon = true;
