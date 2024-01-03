@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437871552554636101, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9181596245567922422, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1991,6 +1991,9 @@ MonoBehaviour:
   alphaText: {fileID: 170854830}
   betaText: {fileID: 1267883546}
   gammaText: {fileID: 2091555504}
+  armDisplayAnimator: {fileID: 1116703908}
+  A_armIn: {fileID: 7400000, guid: 4046faaa73cd4d544a0b77b862097265, type: 2}
+  A_armOut: {fileID: 7400000, guid: 022e0a92a2942f14abf04a25b72c79fb, type: 2}
 --- !u!1001 &430982130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27314,7 +27317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.500305}
+  m_AnchoredPosition: {x: 0, y: -15.500244}
   m_SizeDelta: {x: 0, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016143251
