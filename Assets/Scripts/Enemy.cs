@@ -212,8 +212,15 @@ public class Enemy : MonoBehaviour
         enemyModel.roundTimerText.text = roundTimer.ToString();
         if (roundTimer <= 0)
         {
-            EncounterEnd?.Invoke();
+            EncounterEndTrigger();
         }
+    }
+
+    private void EncounterEndTrigger()
+    {
+        enemyModel.armDisplayAnimator.SetTrigger("BreachEnd");
+        EncounterEnd?.Invoke();
+
     }
     public void ActivateDamageBuff(GameConstants.radiationTypes damageType)
     {
