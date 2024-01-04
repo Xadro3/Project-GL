@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39831355, g: 0.3780928, b: 0.3712264, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1876,6 +1876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
+      propertyPath: correctAnswer
+      value: 
+      objectReference: {fileID: 8300000, guid: 49dce4f3d33589242aa308ea10a6a305, type: 3}
+    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
+      propertyPath: incorrectAnswer
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b2cf94b8c7c8f64b9ed5f7d77a32e6f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

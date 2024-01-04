@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip breachStartingInterlude;
     public AudioClip breachBackgroundLoop;
     public AudioClip endTurn;
+    public AudioClip enemyTurn;
+    public AudioClip playerTurn;
     public AudioClip breachLost;
     public AudioClip breachWon;
     public AudioClip breachStart;
@@ -50,12 +52,11 @@ public class AudioManager : MonoBehaviour
     [Header("---------------- Workshop ----------------")]
     public AudioClip backgroundmusicWorkshop;
     public AudioClip cardUpgrade;
-    public AudioClip cardOutOfDeck;
+    public AudioClip workshopCardEntfern;
     public AudioClip heal;
    
     [Header("---------------- Ereignis ----------------")]
     public AudioClip backgroundmusicEreignis;
-    public AudioClip ARIAProcessing;
     public AudioClip correctAnswer;
     public AudioClip incorrectAnswer;
 
@@ -165,6 +166,13 @@ public class AudioManager : MonoBehaviour
     void HandleEndTurn()
     {
         PlaySFX(endTurn);
+        PlaySFX(enemyTurn);
+    }
+
+    void HandleStartTurn()
+    {
+        PlaySFX(endTurn);
+        PlaySFX(playerTurn);
     }
 
     void HandleCardRepair()
@@ -217,9 +225,9 @@ public class AudioManager : MonoBehaviour
         PlaySFX(cardUpgrade);
     }
 
-    void HandleCardOutOfDeck()
+    void HandleWorkshopCardEntfern()
     {
-        PlaySFX(cardOutOfDeck);
+        PlaySFX(workshopCardEntfern);
     }
 
     //Shop Sound Handler
