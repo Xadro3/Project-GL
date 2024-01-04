@@ -48,14 +48,14 @@ public class PendantManager : MonoBehaviour
                 if (pendant.GetComponent<PendantScript>().isActive)
                 {
                     pendant.transform.SetParent(pendantContainer.transform);
-                    pendant.GetComponent<PendantScript>().spriteRenderer.enabled = true;
+                    pendant.GetComponent<PendantScript>().SetSpriteRendererActive(true);
                     pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
                     pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f,0f,0f), Quaternion.identity);
                 }
                 else
                 {
                     pendant.transform.SetParent(this.gameObject.transform);
-                    pendant.GetComponent<PendantScript>().spriteRenderer.enabled = false;
+                    pendant.GetComponent<PendantScript>().SetSpriteRendererActive(false);
                 }
             }
         }        

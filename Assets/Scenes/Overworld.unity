@@ -2735,6 +2735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PendantContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 6444201159145724830, guid: db220185200320742b38eb1c5bab243e, type: 3}
+      propertyPath: m_Spacing
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2761,23 +2765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1160.94
+      value: 602.7611
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 54.902954
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 54.903
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2789,7 +2781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.026999673
+      value: 0.1386
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2809,11 +2801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00002527237
+      value: -3.2635
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0289917
+      value: -0.1624
       objectReference: {fileID: 0}
     - target: {fileID: 7746680844546875898, guid: db220185200320742b38eb1c5bab243e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11363,7 +11355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.53465, y: 669.17755}
+  m_AnchoredPosition: {x: -253.53467, y: 669.17755}
   m_SizeDelta: {x: 0, y: 30.348389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719408158

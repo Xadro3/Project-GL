@@ -10,7 +10,8 @@ public class PendantScript : MonoBehaviour
     public new string name;
     [TextAreaAttribute]
     public string description;
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer bandRenderer;
+    public SpriteRenderer anhaengerRenderer;
     public PendantManager homeBase;
     public GameObject infoPopup;
     
@@ -20,6 +21,11 @@ public class PendantScript : MonoBehaviour
     public bool isActive = false;
     public bool isInEffect = false;
 
+    public void SetSpriteRendererActive(bool b)
+    {
+        anhaengerRenderer.enabled = b;
+        bandRenderer.enabled = b;
+    }
 
     private void Awake()
     {

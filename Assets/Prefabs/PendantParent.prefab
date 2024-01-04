@@ -139,7 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   description: 
-  spriteRenderer: {fileID: 9157236156560341469}
+  bandRenderer: {fileID: 9157236156560341469}
+  anhaengerRenderer: {fileID: 3350698441146206330}
   homeBase: {fileID: 0}
   infoPopup: {fileID: 7439457798396698724, guid: 6003321ead1e52c4bbf211d3620d9135, type: 3}
   pendantEffectValue: 0
@@ -159,12 +160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
+  m_MinWidth: 200
+  m_MinHeight: 200
   m_PreferredWidth: -1
   m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_FlexibleWidth: 0
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!212 &9157236156560341469
 SpriteRenderer:
