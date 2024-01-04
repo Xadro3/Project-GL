@@ -62,7 +62,7 @@ public class CardMovementHandler : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if (scene.name == "Shops")
+        if (scene.name == "Shops" && this != null)
         {
             this.enabled = false;
         }
@@ -151,6 +151,11 @@ public class CardMovementHandler : MonoBehaviour
             {
                 //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 isDragging = true;
+                if (!gm.isFirstCardPlayed && gm.firstCardPendantActive)
+                {
+                    card.cost -= 1;
+                    card.UpdateDisplay();
+                }
             }
             OnCardClicked?.Invoke(this);
             SetSortingOrder(transform.GetSiblingIndex());
@@ -218,9 +223,12 @@ public class CardMovementHandler : MonoBehaviour
                         SetNewParent(initialHandSlot);
                         //SetPosition(initialHandSlot);
                         gm.RefundCardCost(card);
+                        card.cost = card.cardInfo.cost;
+                        card.UpdateDisplay();
                         wasPlayed = false;
                         //initialHandSlot.GetComponent<Slot>().HasCard(true);
                         Debug.Log(gameObject);
+                        CardDropped?.Invoke();
                     }
                 }
             }
@@ -304,6 +312,8 @@ public class CardMovementHandler : MonoBehaviour
                 //transform.position = initialHandSlot.position;
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+                card.cost = card.cardInfo.cost;
+                card.UpdateDisplay();
                 //gm.RefundCardCost(card);
             }
 
@@ -312,6 +322,10 @@ public class CardMovementHandler : MonoBehaviour
             {
                 hasPlaceholder = false;
                 Destroy(placeholder);
+            }
+            if (wasPlayed)
+            {
+                gm.isFirstCardPlayed = true;
             }
         }
 

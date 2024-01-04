@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> UpdateDiscardDisplay;
     public static event Action UpdateUI;
     public static event Action<int> CurrencyUpdateEvent;
+    public static event Action<int> CardEnergyCostEffect;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private ActiveCardSlots activeCardSlotsParent;
     public List<Slot> activeCardSlots;
+    public List<Card> playedCards;
 
     public PlayerEnergy playerEnergy;
     public PlayerHand playerHand;
@@ -67,12 +69,20 @@ public class GameManager : MonoBehaviour
     public int tokenRewardChapterTwo = 50;
     public int tokenRewardChapterThree = 70;
 
+    public bool isFirstTurn = true;
+    public bool isFirstCardPlayed = false;
+    public bool firstCardPendantActive = false;
+
+    public bool aluBuffPendantActive;
+    public bool bleiBuffPendantActive;
+    public bool paperBuffPendantActive;
+    public int pendantBuffValue = 0;
+
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
         nodeLoader = FindObjectOfType<NodeLoader>();
     }
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -83,18 +93,88 @@ public class GameManager : MonoBehaviour
         PlayerHealthManager.EncounterEnd += HandleEncounterEnd;
         EncounterEndScript.CardRewardScreenEvent += HandleCardRewardEvent;
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
+        CardMovementHandler.CardDropped += HandleCardDroppedEvent;
     }
 
+    private void HandleCardDroppedEvent()
+    {
+        if (isFirstTurn)
+        {
+            playedCards.Clear();
+            int cardsPlayed = 0;
+            foreach (Slot slot in activeCardSlots)
+            {
+                if (slot.GetCardInSlotInfo() != null)
+                {
+                    playedCards.Add(slot.GetCardInSlotInfo());
+                    cardsPlayed++;
+                }
+            }
+            if (cardsPlayed > 0)
+            {
+                isFirstCardPlayed = true;
+            }
+            else
+            {
+                isFirstCardPlayed = false;
+            }
+        }
+    }
+
+    public void HandlePendantBuffActiavtion(GameConstants.pendantEffect effect, int effectValue)
+    {
+        switch (effect)
+        {
+            case GameConstants.pendantEffect.encounterEndMoreToken:
+                tokenRewardAmount += effectValue;
+                break;
+
+            case GameConstants.pendantEffect.firstCardLessCost:
+                firstCardPendantActive = true;
+                if (!isFirstCardPlayed)
+                {
+                    costIncrease = -effectValue;
+                }
+                break;
+
+            case GameConstants.pendantEffect.buffAlu:
+                aluBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.buffPaper:
+                paperBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.buffBlei:
+                bleiBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.firstTurnMoreEnergy:
+                if (isFirstTurn)
+                {
+                    playerRessourceCurrent += effectValue;
+                    playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
+                }
+                break;
+
+            case GameConstants.pendantEffect.firstTurnMoreCards:
+                if (isFirstTurn)
+                {
+                    playerHandMax += effectValue;
+                    DrawCards();
+                    playerHandMax -= effectValue;
+                }
+                break;
+        }
+    }
     private void OnSceneUnloaded(Scene scene)
     {
-
+        isFirstCardPlayed = false;
     }
-
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Encounter")
@@ -113,20 +193,16 @@ public class GameManager : MonoBehaviour
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
+
+            //HandlePendantBuffActiavtion(GameConstants.pendantEffect.buffAlu, 1);
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SetCardCostIncrease(1);
+        }
     }
     private void SetTokenReward()
     {
@@ -157,7 +233,6 @@ public class GameManager : MonoBehaviour
         }
         return encounterCompleted;
     }
-
     public bool IsCurrentEncounterBoss()
     {
         if (nodeLoader.activeNode.GetComponent<Node>().isLastNode)
@@ -174,12 +249,10 @@ public class GameManager : MonoBehaviour
         isGamePauseActive = b;
         BlockInteraction(b);
     }
-
     public void BlockInteraction(bool b)
     {
         interactionBlock.gameObject.SetActive(b);
     }
-
     public void DrawCards()
     {
         int cardsInHand = CountOccupiedHandSlots();
@@ -203,7 +276,6 @@ public class GameManager : MonoBehaviour
         }
         UpdateDeckDisplay?.Invoke(deck.playerDeck.Count);
     }
-
     public void Shuffle()
     {
         if (discardPile.Count >= 1)
@@ -218,7 +290,6 @@ public class GameManager : MonoBehaviour
         UpdateDeckDisplay(deck.playerDeck.Count);
         haveToShuffle = false;
     }
-
     public void AddEnergy(int value)
     {
         playerRessourceCurrent += value;
@@ -234,10 +305,9 @@ public class GameManager : MonoBehaviour
         playerRessourceBuffMax = playerRessourceMax;
         UpdatePlayerRessource();
     }
-
     public bool EnoughEnergy(Card card)
     {
-        if ((playerRessourceCurrent - card.cost) >= 0)
+        if ((playerRessourceCurrent - card.cost + costIncrease) >= 0)
         {
             return true;
         }
@@ -246,7 +316,6 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-
     public void PayCardCost(Card card)
     {
         if (EnoughEnergy(card))
@@ -260,7 +329,6 @@ public class GameManager : MonoBehaviour
             UpdatePlayerRessource();
         }
     }
-
     public void RefundCardCost(Card card)
     {
         if ((playerRessourceMax >= (playerRessourceCurrent + card.cost)) || (playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)))
@@ -273,22 +341,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("Cannot refund card cost.");
         }
     }
-
     public void UpdatePlayerRessource()
     {
         playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
     }
-
     public void PlayerDamage(int damageValue, GameConstants.radiationTypes damageType)
     {
         player.ApplyDamage(damageValue, damageType);
     }
-
     public void PlayerBetaDotDamage()
     {
         player.ApplyDamage(player.betaDotDamage, GameConstants.radiationTypes.Pure);
     }
-
     public void EndTurn()
     {
         PauseGame(true);
@@ -300,13 +364,11 @@ public class GameManager : MonoBehaviour
         }
         turnMaster.ResolveTurn(wagons, activeCardSlots);
     }
-
     public void SetDamage(Dictionary<GameConstants.radiationTypes, int> damageStats)
     {
         turnMaster.SetDamage(damageStats);
     }
-
-    int CountOccupiedHandSlots()
+    private int CountOccupiedHandSlots()
     {
         int currentCards = playerHand.transform.childCount;
         return currentCards;
@@ -319,7 +381,6 @@ public class GameManager : MonoBehaviour
     {
         wagons[0].ActivateDamageBuff(radiationType);
     }
-
     public void ActivateShieldDebuff()
     {
         List<Card> cards = new List<Card>();
@@ -330,22 +391,21 @@ public class GameManager : MonoBehaviour
             card.ShieldDebuff();
         }
     }
-
     public void RemoveCardFromEncounter(Card card)
     {
         deck.RemoveCardFromPlayerDeck(card);
     }
-
     public void SetCardCostIncrease(int increase)
     {
-        costIncrease += increase;
+        //costIncrease += increase;
+        cardManager.CardEnergyCostEffect(increase);
+        CardEnergyCostEffect?.Invoke(increase);
+        Debug.Log("Fire");
     }
-
     public bool IsBetaDotActive()
     {
         return player.betaDotActive;
-    }
-    
+    }    
     public void HandleEffect(GameConstants.effectTypes effectType, int effectValue)
     {
         switch (effectType)
@@ -370,7 +430,6 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(CardDrawEffect(value));
     }
-
     private IEnumerator CardDrawEffect(int value)
     {
         while (discardActive)
@@ -399,12 +458,10 @@ public class GameManager : MonoBehaviour
         }
         yield break;
     }
-
     private void TriggerEnergyGetEffect(int value)
     {
         AddEnergy(value);
     }
-
     private void TriggerDiscardEffect(int value)
     {
         discardActive = true;
@@ -412,7 +469,6 @@ public class GameManager : MonoBehaviour
         //Coroutine to have players select a card to discard - not in use
         //StartCoroutine(PlayerSelectCardsToDiscard(triggerCard, value));
     }
-
     private void HandleCardClicked(CardMovementHandler cardMovementHandler)
     {
         Debug.Log("Card Clicked: " + cardMovementHandler.gameObject.name);
@@ -422,7 +478,6 @@ public class GameManager : MonoBehaviour
         cardsToDiscard.Add(clickedCard);
         cardsToDiscardCount++;
     }
-
     private IEnumerator DiscardRandomCardFromHand(int value)
     {
         List<Card> cardsInHand = new List<Card>();
@@ -492,12 +547,10 @@ public class GameManager : MonoBehaviour
         cardsToDiscardCount = 0;
         yield break;
     }
-
     private void EndTurnEvent()
     {
         EndTurn();
     }
-
     private void HandleEncounterEnd()
     {
         wagons[0].TriggerEncounterEndAnimation();
@@ -517,7 +570,6 @@ public class GameManager : MonoBehaviour
         
         StartCoroutine(EndingEncounter());
     }
-
     private IEnumerator EndingEncounter()
     {
         encounterEndScreenActive = true;
@@ -539,12 +591,10 @@ public class GameManager : MonoBehaviour
         }
         yield break;
     }
-
     private void HandleCardRewardEvent()
     {
         StartCoroutine(CardReward());
     }
-
     private IEnumerator CardReward()
     {
         cardRewardScreenActive = true;
@@ -580,7 +630,6 @@ public class GameManager : MonoBehaviour
         PauseGame(false);
         yield break;
     }
-
     private void HandleCardRewardChosenEvent(Card obj)
     {
         cardRewardScreenActive = false;

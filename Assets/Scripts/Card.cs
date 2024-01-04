@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
 
     //Events
     public event Action<Card> OnDurabilityZero;
+    public static event Action FirstCardPlayedEvent;
 
 
     //CardInfo
@@ -23,9 +24,12 @@ public class Card : MonoBehaviour
     public int cost;
     public int durability;
     public int durabilityCurrent;
+    public int durabilityPendantBuff = 0;
     public bool wasPlayed = false;
     public bool isBought;
     public string cardDescription;
+    public bool energyCostAffected;
+    public int energyCostIncrease;
 
     //Abilities
     public bool ability;
@@ -61,7 +65,6 @@ public class Card : MonoBehaviour
     public string sienceInfo;
     private void Awake()
     {
-        
 
     }
 
@@ -75,8 +78,12 @@ public class Card : MonoBehaviour
         gameObject.name = cardName;
         cardRarity = cardInfo.cardRarity;
         protectionTypes = cardInfo.protectionTypes;
-        cost = cardInfo.cost;
-        durability = cardInfo.durability;
+        cost = cardInfo.cost + energyCostIncrease;
+        energyCostAffected = cardInfo.energyCostAffected;
+        energyCostIncrease = cardInfo.energyCostIncrease;
+
+
+        durability = cardInfo.durability + durabilityPendantBuff;
         durabilityCurrent = durability;
         cardDescription = cardInfo.description;
         upgradedCardDescription = cardInfo.upgradedDescription;
@@ -122,7 +129,11 @@ public class Card : MonoBehaviour
         {
             cardDisplay.ActivateEntsorgenIcon(true);
         }
-
+        if (energyCostAffected)
+        {
+            HandleCardEnergyCostEffect(energyCostIncrease);
+        }
+        SetPendantDurabilityBuff(1);
         cardDisplay.SetupDisplay();
     }
 
@@ -133,9 +144,34 @@ public class Card : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+        GameManager.CardEnergyCostEffect += HandleCardEnergyCostEffect;
     }
 
+    private void OnDisable()
+    {
+        GameManager.CardEnergyCostEffect -= HandleCardEnergyCostEffect;
+    }
+
+    public void HandleCardEnergyCostEffect(int value)
+    {
+        energyCostIncrease = value;
+        UpdateEnergyCost();
+    }
+
+    private void UpdateEnergyCost()
+    {
+        cost = cardInfo.cost;
+        energyCostIncrease = cardInfo.energyCostIncrease;
+        if (cost + energyCostIncrease < 0)
+        {
+            cost = 0;
+        }
+        else
+        {
+            cost = cost + energyCostIncrease;
+        }
+        UpdateDisplay();
+    }
     public void ShieldDebuff()
     {
         durability -= 2;
@@ -204,11 +240,6 @@ public class Card : MonoBehaviour
         this.durabilityCurrent += 2;
         UpdateDisplay();
         Debug.Log(gameObject.name + " got buffed, new durability: " + durabilityCurrent);
-    }
-
-    private void OnDestroy()
-    {
-        //gm.discardPile.Remove(this);
     }
 
     public void SetImmunity(bool b, List<GameConstants.radiationTypes> radiationTypes)
@@ -302,6 +333,32 @@ public class Card : MonoBehaviour
             }
         }
         UpdateDisplay();
+    }
+
+    public void SetPendantDurabilityBuff(int value)
+    {
+        if (!ability)
+        {
+            if (gm.bleiBuffPendantActive && protectionTypes.Contains(GameConstants.radiationTypes.Gamma) && protectionTypes.Contains(GameConstants.radiationTypes.Beta) && protectionTypes.Contains(GameConstants.radiationTypes.Alpha))
+            {
+                durabilityPendantBuff = value;
+                durability = durability + durabilityPendantBuff;
+                durabilityCurrent = durability;
+            }
+            else if (gm.aluBuffPendantActive && !protectionTypes.Contains(GameConstants.radiationTypes.Gamma) && protectionTypes.Contains(GameConstants.radiationTypes.Beta) && protectionTypes.Contains(GameConstants.radiationTypes.Alpha))
+            {
+                durabilityPendantBuff = value;
+                durability = durability + durabilityPendantBuff;
+                durabilityCurrent = durability;
+            }
+            else if (gm.paperBuffPendantActive && !protectionTypes.Contains(GameConstants.radiationTypes.Gamma) && !protectionTypes.Contains(GameConstants.radiationTypes.Beta) && protectionTypes.Contains(GameConstants.radiationTypes.Alpha))
+            {
+                durabilityPendantBuff = value;
+                durability = durability + durabilityPendantBuff;
+                durabilityCurrent = durability;
+            }
+        }
+
     }
 
 }

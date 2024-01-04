@@ -11,6 +11,8 @@ public class Deck : MonoBehaviour
 
     public CardManager cardManager;
 
+    public GameManager gameManager;
+
     void Awake()
     {
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosen;
@@ -25,6 +27,8 @@ public class Deck : MonoBehaviour
     {
 
     }
+
+    
 
     private void OnEnable()
     {
@@ -91,7 +95,6 @@ public class Deck : MonoBehaviour
 
     public void AddCardToDeck(Card card)
     {
-        Debug.Log("Added " + card.cardName + " to the deck.");
         deck.Add(card);
     }
 

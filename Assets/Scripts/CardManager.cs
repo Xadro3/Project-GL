@@ -20,6 +20,7 @@ public class CardManager : MonoBehaviour
 
     public SO_Card[] cardInfos;
     public Deck deck;
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -50,9 +51,23 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-
+        foreach (SO_Card cardInfo in baseCards)
+        {
+            cardInfo.energyCostAffected = false;
+            cardInfo.energyCostIncrease = 0;
+        }
         //GetRandomCardFromCardSafe();
     }
+
+    public void CardEnergyCostEffect(int value)
+    {
+        foreach (SO_Card cardInfo in baseCards)
+        {
+            cardInfo.energyCostAffected = true;
+            cardInfo.energyCostIncrease = 0 + value;
+        }
+    }
+
     public void AddCardToBaseDeck(Card card)
     {
         baseCards.Add(card.cardInfo);
@@ -82,7 +97,7 @@ public class CardManager : MonoBehaviour
                     if (rarityMapping.TryGetValue(baseCard.cardRarity[0], out var prefab))
                     {
                         // Assign prefab to card
-                        //Debug.Log($"Assigning prefab {prefab.name} to card {baseCard.name}");
+                        // Debug.Log($"Assigning prefab {prefab.name} to card {baseCard.name}");
                         // Instantiate the prefab
                         GameObject instantiatedCard = Instantiate(prefab, Vector3.zero, Quaternion.identity);
                         instantiatedCard.transform.SetParent(cardSafe.transform);

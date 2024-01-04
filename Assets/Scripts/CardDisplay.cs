@@ -43,7 +43,15 @@ public class CardDisplay : MonoBehaviour
     {
         descriptionText.text = card.cardDescription;
 
-        costText.text = card.cost.ToString();
+        if (card.cost < 0)
+        {
+            costText.text = "0";
+        }
+        else
+        {
+            costText.text = card.cost.ToString();
+        }
+        
         durabilityText.text = card.durabilityCurrent.ToString();
     }
 

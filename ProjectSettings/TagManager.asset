@@ -22,6 +22,8 @@ TagManager:
   - CardPopup
   - RewardArea
   - TokenDisplayAmount
+  - PendantContainer
+  - Pendant
   layers:
   - Default
   - TransparentFX

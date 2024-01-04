@@ -150,7 +150,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         gammaResistance -= damageValue;
         playerModel.gammaBar.SetHealth(gammaResistance);
-        playerModel.gammaText.text = gammaResistance.ToString();
+        UpdateTexts();
         Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
         CheckResistances();
     }
@@ -167,11 +167,16 @@ public class PlayerHealthManager : MonoBehaviour
         }
         betaResistance -= damageValue;
         playerModel.betaBar.SetHealth(betaResistance);
-        playerModel.betaText.text = betaResistance.ToString();
+        UpdateTexts();
         Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
         CheckResistances();
     }
-
+    public void UpdateTexts()
+    {
+        playerModel.alphaText.text = alphaResistance.ToString();
+        playerModel.betaText.text = betaResistance.ToString();
+        playerModel.gammaText.text = gammaResistance.ToString();
+    }
     private void HandleAlphaDamage(int damageValue)
     {
         if (alphaDamageReductionFlat)
@@ -184,7 +189,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         alphaResistance -= damageValue;
         playerModel.alphaBar.SetHealth(alphaResistance);
-        playerModel.alphaText.text = alphaResistance.ToString();
+        UpdateTexts();
         Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
         CheckResistances();
     }
@@ -260,11 +265,13 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 case GameConstants.effectTypes.ResistanceReductionFlat:
                     TriggerResistanceReductionFlat(card.protectionTypes, entry.Value);
+                    UpdateTexts();
                     Debug.Log("Effect: " + entry);
                     break;
 
                 case GameConstants.effectTypes.ResistanceReductionPercent:
                     TriggerResistanceDamageReductionPercent(card.protectionTypes, entry.Value);
+                    UpdateTexts();
                     Debug.Log("Effect: " + entry);
                     break;
 
@@ -289,6 +296,7 @@ public class PlayerHealthManager : MonoBehaviour
 
                 case GameConstants.effectTypes.HealthDamageReductionPercent:
                     TriggerHealthDamageReductionPercent(entry.Value);
+                    UpdateTexts();
                     break;
             }
         }
@@ -346,9 +354,36 @@ public class PlayerHealthManager : MonoBehaviour
                     break;
             }
         }
+        
     }
     public void TriggerEncounterEndAnimation()
     {
         playerModel.playerModelAnimator.SetTrigger("BreachEnd");
+    }
+
+    public void HandlePendantBuffActivation(GameConstants.pendantEffect effect, int effectValue)
+    {
+        switch (effect)
+        {
+            case GameConstants.pendantEffect.buffResistanceAlpha:
+                alphaResistanceMax += effectValue;
+                alphaResistance += effectValue;
+                break;
+
+            case GameConstants.pendantEffect.buffResistanceBeta:
+                betaResistanceMax += effectValue;
+                betaResistance += effectValue;
+                break;
+
+            case GameConstants.pendantEffect.buffResistanceGamma:
+                gammaResistanceMax += effectValue;
+                gammaResistance += effectValue;
+                break;
+
+            case GameConstants.pendantEffect.buffHealth:
+                healthMax += effectValue;
+                health += effectValue;
+                break;
+        }
     }
 }

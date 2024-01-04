@@ -74,4 +74,24 @@ public static class GameConstants
         Schild,
         Duration
     }
+
+    public enum pendantEffect
+    {
+        shopCostReduction,
+        firstCardLessCost,
+        buffAlu,
+        buffPaper,
+        buffBlei,
+        moreChanceBetterCards,
+        firstTurnMoreEnergy,
+        firstTurnMoreCards,
+        buffResistanceAlpha,
+        buffResistanceBeta,
+        buffResistanceGamma,
+        buffHealth,
+        encounterEndMoreToken,
+        moreHealing,
+        lessCostRemovingCards,
+        lessCostUpgradingCards
+    }
 }

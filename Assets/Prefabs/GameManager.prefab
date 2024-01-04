@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthMax: 100
+  hpThresholdLvOne: 70
+  hpThresholdLvTwo: 30
   alphaResistance: 0
   alphaResistanceMax: 10
   betaResistance: 0
@@ -55,6 +57,54 @@ MonoBehaviour:
   betaDotActive: 0
   betaDotDamage: 3
   betaDotDamageSum: 0
+--- !u!1 &1294866672478412063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4452993596496051425}
+  - component: {fileID: 1244283829204245278}
+  m_Layer: 0
+  m_Name: PendantManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4452993596496051425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294866672478412063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 715201817508064984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1244283829204245278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294866672478412063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9974a1192548404cb25b0c8ed186b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pendantContainer: {fileID: 0}
+  gameManager: {fileID: 876589576019141775}
+  player: {fileID: 5978955686827921507}
+  pendants: []
 --- !u!1 &1366999710036835760
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +117,7 @@ GameObject:
   - component: {fileID: 497335996542417445}
   m_Layer: 0
   m_Name: CardManager
-  m_TagString: Untagged
+  m_TagString: Deck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,17 +180,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e006f6fa34d76c4fa48a337730b6547, type: 2}
   - {fileID: 11400000, guid: bb8f5ceddb14cbd4ab2ab5492954d8df, type: 2}
   - {fileID: 11400000, guid: bb8f5ceddb14cbd4ab2ab5492954d8df, type: 2}
-  - {fileID: 11400000, guid: bb8f5ceddb14cbd4ab2ab5492954d8df, type: 2}
   - {fileID: 11400000, guid: 4a51ac872b6d9a040b064429ab59d368, type: 2}
   - {fileID: 11400000, guid: 240e0fb499fdf05459abf3407ca943a6, type: 2}
   - {fileID: 11400000, guid: 805035b0a97cec74ea21e78fbc7a1907, type: 2}
   - {fileID: 11400000, guid: 98555a2e09e253c4ab0c60b31c7dac10, type: 2}
   - {fileID: 11400000, guid: af608f9a56c55dc4993119c139ccb12f, type: 2}
   - {fileID: 11400000, guid: 5b4bb88168dde654197b26fa066e9f5b, type: 2}
+  - {fileID: 11400000, guid: e836448961a5bc2459ace06b8808909a, type: 2}
   cardSafe: {fileID: 6315868828182914236}
   cardSafeCards: []
   cardInfos: []
   deck: {fileID: 1662629947016396295}
+  gameManager: {fileID: 876589576019141775}
+  aluBuffPendantActive: 0
+  bleiBuffPendantActive: 0
+  paperBuffPendantActive: 0
+  pendantBuffValue: 0
 --- !u!1 &3168500216812357211
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +208,7 @@ GameObject:
   - component: {fileID: 1662629947016396295}
   m_Layer: 0
   m_Name: Deck
-  m_TagString: Untagged
+  m_TagString: Deck2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,6 +243,7 @@ MonoBehaviour:
   deck: []
   playerDeck: []
   playerDeckObjects: []
+  cardManager: {fileID: 497335996542417445}
 --- !u!1 &3667615858606613352
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +304,14 @@ MonoBehaviour:
   alphaMax: 8
   betaMax: 6
   gammaMax: 4
+  bossBonus: 1
+  encounterPhase: 0
+  phaseOneLimit: 5
+  phaseTwoLimit: 10
+  phaseThreeLimit: 15
+  phaseFourLimit: 20
+  phaseFiveLimit: 25
+  phaseSixLimit: 30
   damageTypes: 000000000100000002000000
 --- !u!1 &5645322283587892421
 GameObject:
@@ -284,6 +348,7 @@ Transform:
   - {fileID: 1632999798506019430}
   - {fileID: 8870441725650704840}
   - {fileID: 6707184551854022643}
+  - {fileID: 4452993596496051425}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &876589576019141775
@@ -302,6 +367,7 @@ MonoBehaviour:
   playerRessourceMax: 3
   playerRessourceBuffMax: 0
   activeCardSlots: []
+  playedCards: []
   playerEnergy: {fileID: 0}
   playerHand: {fileID: 0}
   playerHandMax: 5
@@ -319,12 +385,24 @@ MonoBehaviour:
   cardManager: {fileID: 497335996542417445}
   shopCurrency: {fileID: 0}
   encounterEndScreenActive: 0
-  tokenRewardAmount: 50
   cardRewardScreenActive: 0
   cardRewardAmount: 3
   encounterWon: 0
   endScreenPrefab: {fileID: 3894339038319365057, guid: f6d5025ac24d7764c925a677e3ada9d3, type: 3}
   cardRewardScreenPrefab: {fileID: 8343364946072515666, guid: 5af8849e673c5284f8fabd8ce1aa87ff, type: 3}
+  pauseMenu: {fileID: 0}
+  nodeLoader: {fileID: 0}
+  encounterCompleted: 0
+  tokenRewardAmount: 30
+  tokenRewardChapterOne: 30
+  tokenRewardChapterTwo: 50
+  tokenRewardChapterThree: 70
+  isFirstTurn: 1
+  isFirstCardPlayed: 0
+  firstCardPendantActive: 0
+  aluBuffPendantActive: 0
+  bleiBuffPendantActive: 0
+  paperBuffPendantActive: 0
 --- !u!1 &6315868828182914236
 GameObject:
   m_ObjectHideFlags: 0

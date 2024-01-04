@@ -246,34 +246,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4225666654361541015}
     m_Modifications:
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a51ac872b6d9a040b064429ab59d368, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 240e0fb499fdf05459abf3407ca943a6, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 805035b0a97cec74ea21e78fbc7a1907, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: 98555a2e09e253c4ab0c60b31c7dac10, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: af608f9a56c55dc4993119c139ccb12f, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5b4bb88168dde654197b26fa066e9f5b, type: 2}
-    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: baseCards.Array.data[14]
-      value: 
-      objectReference: {fileID: 11400000, guid: e836448961a5bc2459ace06b8808909a, type: 2}
     - target: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -318,48 +290,28 @@ PrefabInstance:
       propertyPath: shopCurrency
       value: 
       objectReference: {fileID: 4440220774125489240}
-    - target: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: tokenRewardAmount
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1366999710036835760, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: m_TagString
-      value: Deck
-      objectReference: {fileID: 0}
     - target: {fileID: 1662629947016396295, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: cardManager
+      propertyPath: gameManager
       value: 
-      objectReference: {fileID: 8121324359747747910}
-    - target: {fileID: 3168500216812357211, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: m_TagString
-      value: Deck2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8824834930937650924}
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: hpThresholdLvOne
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: hpThresholdLvTwo
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
---- !u!114 &8121324359747747910 stripped
+--- !u!114 &8824834930937650924 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+  m_CorrespondingSourceObject: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
   m_PrefabInstance: {fileID: 8525974962028231267}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676ec6692f9361a42a2399f53a9a6f18, type: 3}
+  m_Script: {fileID: 11500000, guid: de9d29080cf04b3408c5f6d80faef05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &9204989635562378427 stripped

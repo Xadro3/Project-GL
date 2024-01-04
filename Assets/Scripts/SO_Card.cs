@@ -18,6 +18,8 @@ public class SO_Card : ScriptableObject
 
     [Header("Card Stats")]
     public int cost;
+    public bool energyCostAffected = false;
+    public int energyCostIncrease = 0;
     public int durability;
 
     public List<GameConstants.cardType> cardType;

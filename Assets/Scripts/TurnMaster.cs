@@ -96,6 +96,7 @@ public class TurnMaster : MonoBehaviour
             // Iterate over cards
             foreach (Card card in cardsInPlay)
             {
+                card.cost = card.cardInfo.cost;
                 if (card.durabilityCurrent > 0 && wagonDamageStats[radiationType] > 0)
                 {
                     // Check if wagon damage type affects card protection type
@@ -152,6 +153,7 @@ public class TurnMaster : MonoBehaviour
         gm.DrawCards();
         wagons[0].UpdateTimer(1);
         wagons[0].GenerateDamage();
+        gm.isFirstTurn = false;
         gm.PauseGame(false);
     }
 
