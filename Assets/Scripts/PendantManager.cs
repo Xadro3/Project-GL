@@ -13,127 +13,100 @@ public class PendantManager : MonoBehaviour
     public GameObject pendantContainer;
     public GameManager gameManager;
     public PlayerHealthManager player;
-
-
-    public List<GameObject> pendants;
-
-
-    Dictionary<GameConstants.pendantEffect, Dictionary<int, bool>> pendantEffects = new Dictionary<GameConstants.pendantEffect, Dictionary<int, bool>>();
+    public List<GameObject> pendantPrefabs;
+    public List<GameObject> pendantInstances;
 
     private void Awake()
     {
-
+        
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if (scene.name != "Menu")
+        if (scene.name == "Encounter" || scene.name == "Overworld" || scene.name == "Shops")
         {
             pendantContainer = GameObject.FindGameObjectWithTag("PendantContainer");
-            foreach (GameObject pendant in pendants)
+            pendantInstances.Clear();
+            foreach (GameObject pendantPrefab in pendantPrefabs)
+            {
+                GameObject newPendantObject = Instantiate(pendantPrefab, Vector3.zero, Quaternion.identity);
+                pendantInstances.Add(newPendantObject);
+                newPendantObject.transform.SetParent(transform);
+            }
+            foreach (GameObject pendant in pendantInstances)
             {
                 if (pendant.GetComponent<PendantScript>().isActive)
                 {
                     pendant.transform.SetParent(pendantContainer.transform);
-                    pendant.SetActive(true);
-                    pendant.GetComponent<PendantScript>().SendPendantInfoToManager(this);
+                    pendant.GetComponent<PendantScript>().spriteRenderer.enabled = true;
+                    pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
+                    pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f,0f,0f), Quaternion.identity);
+                }
+                else
+                {
+                    pendant.transform.SetParent(this.gameObject.transform);
+                    pendant.GetComponent<PendantScript>().spriteRenderer.enabled = false;
                 }
             }
         }
-
     }
-    private void OnSceneUnloaded(Scene scene)
-    {
-        foreach (GameObject pendant in pendants)
-        {
-            pendant.transform.SetParent(this.gameObject.transform);
-            pendant.SetActive(false);
-        }
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void AddPendantInfo(GameConstants.pendantEffect type, int value, bool active)
-    {
-        pendantEffects[type] = new Dictionary<int, bool>();
-
-        pendantEffects[type][value] = active;
-    }
-
+    
     public void TriggerPendantEffects()
     {
-        foreach (var effectEntry in pendantEffects)
+        foreach (GameObject pendantObject in pendantInstances)
         {
-            GameConstants.pendantEffect effect = effectEntry.Key;
-            Dictionary<int, bool> effectData = effectEntry.Value;
+            PendantScript pendantScript = pendantObject.GetComponent<PendantScript>();
 
-            // Iterate through all values in the nested dictionary
-            foreach (var valueEntry in effectData)
+            if (pendantScript != null && pendantScript.isActive)
             {
-                int value = valueEntry.Key;
-                bool isActive = valueEntry.Value;
+                GameConstants.pendantEffect effect = pendantScript.pendantEffectType;
+                int value = pendantScript.pendantEffectValue;
 
-                // Check if the effect is active for the current value
-                if (isActive)
+                switch (effect)
                 {
-                    // Switch based on the effect
-                    switch (effect)
-                    {
-                        case GameConstants.pendantEffect.encounterEndMoreToken:
-                        case GameConstants.pendantEffect.firstCardLessCost:
-                        case GameConstants.pendantEffect.buffAlu:
-                        case GameConstants.pendantEffect.buffPaper:
-                        case GameConstants.pendantEffect.buffBlei:
-                        case GameConstants.pendantEffect.firstTurnMoreEnergy:
-                        case GameConstants.pendantEffect.firstTurnMoreCards:
-                            Debug.Log($"{effect} is active for value {value}");
-                            gameManager.HandlePendantBuffActiavtion(effect, value);
-                            break;
+                    case GameConstants.pendantEffect.encounterEndMoreToken:
+                    case GameConstants.pendantEffect.firstCardLessCost:
+                    case GameConstants.pendantEffect.buffAlu:
+                    case GameConstants.pendantEffect.buffPaper:
+                    case GameConstants.pendantEffect.buffBlei:
+                    case GameConstants.pendantEffect.firstTurnMoreEnergy:
+                    case GameConstants.pendantEffect.firstTurnMoreCards:
+                        Debug.Log($"{effect} is active for value {value}");
+                        gameManager.HandlePendantBuffActiavtion(effect, value);
+                        break;
 
-                        case GameConstants.pendantEffect.buffResistanceAlpha:
-                        case GameConstants.pendantEffect.buffResistanceBeta:
-                        case GameConstants.pendantEffect.buffResistanceGamma:
-                        case GameConstants.pendantEffect.buffHealth:
-                            Debug.Log($"{effect} is active for value {value}");
-                            player.HandlePendantBuffActivation(effect, value);
-                            break;
+                    case GameConstants.pendantEffect.buffResistanceAlpha:
+                    case GameConstants.pendantEffect.buffResistanceBeta:
+                    case GameConstants.pendantEffect.buffResistanceGamma:
+                    case GameConstants.pendantEffect.buffHealth:
+                        Debug.Log($"{effect} is active for value {value}");
+                        player.HandlePendantBuffActivation(effect, value);
+                        break;
 
-                        case GameConstants.pendantEffect.moreChanceBetterCards:
-                        case GameConstants.pendantEffect.moreHealing:
-                        case GameConstants.pendantEffect.shopCostReduction:
-                        case GameConstants.pendantEffect.lessCostRemovingCards:
-                        case GameConstants.pendantEffect.lessCostUpgradingCards:
-                            Debug.Log($"{effect} is active for value {value}");
-                            ActivateShopBuff?.Invoke(effect, value);
-                            break;
+                    case GameConstants.pendantEffect.moreChanceBetterCards:
+                    case GameConstants.pendantEffect.moreHealing:
+                    case GameConstants.pendantEffect.shopCostReduction:
+                    case GameConstants.pendantEffect.lessCostRemovingCards:
+                    case GameConstants.pendantEffect.lessCostUpgradingCards:
+                        Debug.Log($"{effect} is active for value {value}");
+                        ActivateShopBuff?.Invoke(effect, value);
+                        break;
 
-                        default:
-                            // Handle unknown effects
-                            Debug.Log($"Unknown effect: {effect}");
-                            break;
-                    }
+                    default:
+                        // Handle unknown effects
+                        Debug.Log($"Unknown effect: {effect}");
+                        break;
                 }
             }
         }
     }
-
-
 }

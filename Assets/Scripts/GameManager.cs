@@ -121,52 +121,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void HandlePendantBuffActiavtion(GameConstants.pendantEffect effect, int effectValue)
-    {
-        switch (effect)
-        {
-            case GameConstants.pendantEffect.encounterEndMoreToken:
-                tokenRewardAmount += effectValue;
-                break;
-
-            case GameConstants.pendantEffect.firstCardLessCost:
-                firstCardPendantActive = true;
-                if (!isFirstCardPlayed)
-                {
-                    costIncrease = -effectValue;
-                }
-                break;
-
-            case GameConstants.pendantEffect.buffAlu:
-                aluBuffPendantActive = true;
-                break;
-
-            case GameConstants.pendantEffect.buffPaper:
-                paperBuffPendantActive = true;
-                break;
-
-            case GameConstants.pendantEffect.buffBlei:
-                bleiBuffPendantActive = true;
-                break;
-
-            case GameConstants.pendantEffect.firstTurnMoreEnergy:
-                if (isFirstTurn)
-                {
-                    playerRessourceCurrent += effectValue;
-                    playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
-                }
-                break;
-
-            case GameConstants.pendantEffect.firstTurnMoreCards:
-                if (isFirstTurn)
-                {
-                    playerHandMax += effectValue;
-                    DrawCards();
-                    playerHandMax -= effectValue;
-                }
-                break;
-        }
-    }
     private void OnSceneUnloaded(Scene scene)
     {
         isFirstCardPlayed = false;
@@ -634,4 +588,51 @@ public class GameManager : MonoBehaviour
     {
         cardRewardScreenActive = false;
     }
+    public void HandlePendantBuffActiavtion(GameConstants.pendantEffect effect, int effectValue)
+    {
+        switch (effect)
+        {
+            case GameConstants.pendantEffect.encounterEndMoreToken:
+                tokenRewardAmount += effectValue;
+                break;
+
+            case GameConstants.pendantEffect.firstCardLessCost:
+                firstCardPendantActive = true;
+                if (!isFirstCardPlayed)
+                {
+                    costIncrease = -effectValue;
+                }
+                break;
+
+            case GameConstants.pendantEffect.buffAlu:
+                aluBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.buffPaper:
+                paperBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.buffBlei:
+                bleiBuffPendantActive = true;
+                break;
+
+            case GameConstants.pendantEffect.firstTurnMoreEnergy:
+                if (isFirstTurn)
+                {
+                    playerRessourceCurrent += effectValue;
+                    playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
+                }
+                break;
+
+            case GameConstants.pendantEffect.firstTurnMoreCards:
+                if (isFirstTurn)
+                {
+                    playerHandMax += effectValue;
+                    DrawCards();
+                    playerHandMax -= effectValue;
+                }
+                break;
+        }
+    }
+
 }

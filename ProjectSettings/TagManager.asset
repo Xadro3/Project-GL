@@ -70,6 +70,9 @@ TagManager:
   - name: CardPopups
     uniqueID: 3561941281
     locked: 0
+  - name: Pendants
+    uniqueID: 2800784221
+    locked: 0
   - name: Menu
     uniqueID: 251113207
     locked: 0
