@@ -226,7 +226,7 @@ public class CardMovementHandler : MonoBehaviour
                         SetNewParent(initialHandSlot);
                         //SetPosition(initialHandSlot);
                         gm.RefundCardCost(card);
-                        card.cost = card.cardInfo.cost;
+                        card.UpdateEnergyCost();
                         card.UpdateDisplay();
                         wasPlayed = false;
                         //initialHandSlot.GetComponent<Slot>().HasCard(true);
@@ -316,7 +316,8 @@ public class CardMovementHandler : MonoBehaviour
                 //transform.position = initialHandSlot.position;
                 this.transform.SetParent(placeholder.transform.parent);
                 this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
-                card.cost = card.cardInfo.cost;
+                //card.cost = card.cardInfo.cost;
+                card.UpdateEnergyCost();
                 card.UpdateDisplay();
                 //gm.RefundCardCost(card);
             }

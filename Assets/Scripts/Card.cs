@@ -42,7 +42,10 @@ public class Card : MonoBehaviour
     public bool onBruch;
     public bool onPlay;
     public Dictionary<GameConstants.effectTypes, int> cardEffects = new Dictionary<GameConstants.effectTypes, int>();
-
+    
+    //Debuff
+    public bool cardDurabilityDebuffActive = false;
+    public int cardDurabilityDebuffValue = 0;
 
     //Immunities
     public bool immunity;
@@ -83,7 +86,7 @@ public class Card : MonoBehaviour
         energyCostIncrease = cardInfo.energyCostIncrease;
 
 
-        durability = cardInfo.durability + durabilityPendantBuff;
+        durability = cardInfo.durability + durabilityPendantBuff + cardDurabilityDebuffValue;
         durabilityCurrent = durability;
         cardDescription = cardInfo.description;
         upgradedCardDescription = cardInfo.upgradedDescription;
@@ -158,7 +161,7 @@ public class Card : MonoBehaviour
         UpdateEnergyCost();
     }
 
-    private void UpdateEnergyCost()
+    public void UpdateEnergyCost()
     {
         cost = cardInfo.cost;
         energyCostIncrease = cardInfo.energyCostIncrease;
@@ -174,17 +177,28 @@ public class Card : MonoBehaviour
     }
     public void ShieldDebuff()
     {
-        durability -= 2;
-        if (durability < durabilityCurrent)
+        if (!cardDurabilityDebuffActive)
         {
-            durabilityCurrent = durability;
-            UpdateDisplay();
+            cardDurabilityDebuffActive = true;
+            cardDurabilityDebuffValue = 2;
+            durabilityCurrent -= 2;
+            durability -= 2;
+            if (durability < durabilityCurrent)
+            {
+                durabilityCurrent = durability;
+            }
         }
+        
+        UpdateDisplay();
     }
     
     public void UpdateDisplay()
     {
-        cardDisplay.UpdateDisplay();
+        if (cardDisplay != null)
+        {
+            cardDisplay.UpdateDisplay();
+        }
+        
     }
 
     public int AdjustDurability(int value)

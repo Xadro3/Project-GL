@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
     {
         if ((playerRessourceMax >= (playerRessourceCurrent + card.cost)) || (playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)))
         {
-            playerRessourceCurrent += card.cost;
+            playerRessourceCurrent += card.cost + costIncrease;
             UpdatePlayerRessource();
         }
         else
@@ -345,10 +345,14 @@ public class GameManager : MonoBehaviour
         List<Card> cards = new List<Card>();
 
         cards.AddRange(FindObjectsOfType<Card>(true));
-        foreach (Card card in cards)
+        if (cards != null && cards.Count > 0)
         {
-            card.ShieldDebuff();
+            foreach (Card card in cards)
+            {
+                card.ShieldDebuff();
+            }
         }
+        
     }
     public void RemoveCardFromEncounter(Card card)
     {

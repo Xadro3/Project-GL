@@ -109,6 +109,10 @@ PrefabInstance:
       value: "Kartenkosten-Anh\xE4nger"
       objectReference: {fileID: 0}
     - target: {fileID: 7342672154576950794, guid: 8fea3ee127fa293468067a111ad65f8d, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342672154576950794, guid: 8fea3ee127fa293468067a111ad65f8d, type: 3}
       propertyPath: description
       value: "+1 Energie kosten f\xFCr die Karten"
       objectReference: {fileID: 0}
