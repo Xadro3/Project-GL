@@ -108,6 +108,7 @@ public class PendantManager : MonoBehaviour
                         break;
                 }
                 pendantScript.SetPendantInEffect(true);
+                //pendantObject.GetComponent<PendantScript>().SetPendantInEffect(true);
             }
         }
     }

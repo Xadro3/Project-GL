@@ -84,7 +84,10 @@ public class PlayerHealthManager : MonoBehaviour
             playerModel.gammaBar.SetHealth(gammaResistance);
             playerModel.healthBar.SetMaxHealth(healthMax);
             playerModel.healthBar.SetHealth(health);
+            alphaResistance = alphaResistanceMax;
+            betaResistance = betaResistanceMax;
             CheckHealth();
+            UpdateTexts();
         }
     }
 

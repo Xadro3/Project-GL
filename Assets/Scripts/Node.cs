@@ -121,7 +121,7 @@ public class Node : MonoBehaviour
     }
     public void EnterNode()
     {
-        
+
         Invoke("LoadNode", 1f);
             
     }
