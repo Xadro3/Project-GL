@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
     }
     public int GetCompletedEncounter()
     {
-        
+        encounterCompleted = 0;
         foreach (GameObject node in nodeLoader.nodes)
         {
             if (node.GetComponent<Node>().isCompleted)
