@@ -3,9 +3,44 @@ guid: 339c60eda4caa2742bc25cd29af5e461
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Bl\xE4tter.001"
+    second: {fileID: 2100000, guid: f5119e7be27615942b9e8de227fc37e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fenster.001
+    second: {fileID: 2100000, guid: 8f7a7fe339ef6f541a41aec202eb5f82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heli
+    second: {fileID: 2100000, guid: 0081690de6b61ad46aad3445dc12c7e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heli.001
+    second: {fileID: 2100000, guid: c10afbb2250090b4180cbf8ffeb296f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light.001
+    second: {fileID: 2100000, guid: 682a69e6002751048a6db6cced1d7694, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheels.001
+    second: {fileID: 2100000, guid: 8345b95bc2ababa4a803131fd321431e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheels_inner.001
+    second: {fileID: 2100000, guid: ebf853470f81eee44ba4452e23c58778, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
