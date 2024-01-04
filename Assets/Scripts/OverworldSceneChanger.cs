@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class OverworldSceneChanger : MonoBehaviour
 {
+    public static event System.Action SceneChangeEvent;
+
     public Animator animator;
     public AudioManager audio;
     public AudioClip clip;
@@ -23,6 +25,7 @@ public class OverworldSceneChanger : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000))
             {
+                SceneChangeEvent?.Invoke();
                 audio.PlaySFX(clip);
                 audio.PlaySFX(audio.nodeClick);
                 Debug.Log(hit.transform.name);

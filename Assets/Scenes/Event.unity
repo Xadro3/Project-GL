@@ -408,6 +408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 4437871552554636101, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9181596245567922422, guid: d3709cfd0f14a3d4bb250627ff9e673e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1621,6 +1625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2847d1f559e31f4eb6a975d9cf0a7b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene2: 
+  timer: 0
 --- !u!4 &560845745
 Transform:
   m_ObjectHideFlags: 0

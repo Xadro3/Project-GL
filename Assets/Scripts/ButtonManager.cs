@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public static event System.Action SceneChangeEvent;
+    
     public string scene2;
     public float timer;
     // Start is called before the first frame update
     public void ButtonPressed(string scene)
     {
+        SceneChangeEvent?.Invoke();
         SceneManager.LoadScene(scene);
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().isCompleted = true;
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode.GetComponent<Node>().isNextNode = true;

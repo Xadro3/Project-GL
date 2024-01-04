@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public int encounterCompleted = 0;
     public int tokenRewardAmount;
+    public int tokenRewardPendantBuffAmount = 0;
     public int tokenRewardChapterOne = 30;
     public int tokenRewardChapterTwo = 50;
     public int tokenRewardChapterThree = 70;
@@ -147,8 +148,6 @@ public class GameManager : MonoBehaviour
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
-
-            //HandlePendantBuffActiavtion(GameConstants.pendantEffect.buffAlu, 1);
         }
     }
     private void Update()
@@ -536,7 +535,7 @@ public class GameManager : MonoBehaviour
         endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount, pauseMenu.offscreenPosition);
         if (encounterWon)
         {
-            shopCurrency.AddMoney(tokenRewardAmount);
+            shopCurrency.AddMoney(tokenRewardAmount + tokenRewardPendantBuffAmount);
         }
         //Falls wir zeit brauchen um animationen abzuspielen o.ä.
         while (encounterEndScreenActive)
@@ -593,7 +592,7 @@ public class GameManager : MonoBehaviour
         switch (effect)
         {
             case GameConstants.pendantEffect.encounterEndMoreToken:
-                tokenRewardAmount += effectValue;
+                tokenRewardPendantBuffAmount = effectValue;
                 break;
 
             case GameConstants.pendantEffect.firstCardLessCost:

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class PendantManager : MonoBehaviour
 {
@@ -18,7 +19,13 @@ public class PendantManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        foreach (GameObject pendantPrefab in pendantPrefabs)
+        {
+            GameObject newPendantObject = Instantiate(pendantPrefab, Vector3.zero, Quaternion.identity);
+            pendantInstances.Add(newPendantObject);
+            newPendantObject.transform.SetParent(transform);
+
+        }
     }
 
     private void OnEnable()
@@ -35,13 +42,7 @@ public class PendantManager : MonoBehaviour
         if (scene.name == "Encounter" || scene.name == "Overworld" || scene.name == "Shops")
         {
             pendantContainer = GameObject.FindGameObjectWithTag("PendantContainer");
-            pendantInstances.Clear();
-            foreach (GameObject pendantPrefab in pendantPrefabs)
-            {
-                GameObject newPendantObject = Instantiate(pendantPrefab, Vector3.zero, Quaternion.identity);
-                pendantInstances.Add(newPendantObject);
-                newPendantObject.transform.SetParent(transform);
-            }
+            
             foreach (GameObject pendant in pendantInstances)
             {
                 if (pendant.GetComponent<PendantScript>().isActive)
@@ -57,7 +58,9 @@ public class PendantManager : MonoBehaviour
                     pendant.GetComponent<PendantScript>().spriteRenderer.enabled = false;
                 }
             }
+            TriggerPendantEffects();
         }
+        
     }
     
     public void TriggerPendantEffects()
@@ -66,7 +69,7 @@ public class PendantManager : MonoBehaviour
         {
             PendantScript pendantScript = pendantObject.GetComponent<PendantScript>();
 
-            if (pendantScript != null && pendantScript.isActive)
+            if (pendantScript != null && pendantScript.isActive && !pendantScript.isInEffect)
             {
                 GameConstants.pendantEffect effect = pendantScript.pendantEffectType;
                 int value = pendantScript.pendantEffectValue;
@@ -106,7 +109,29 @@ public class PendantManager : MonoBehaviour
                         Debug.Log($"Unknown effect: {effect}");
                         break;
                 }
+                pendantScript.SetPendantInEffect(true);
             }
+        }
+    }
+
+    public void AwardRandomPendant()
+    {
+        // Filter the list to include only inactive pendants
+        List<GameObject> inactivePendants = pendantInstances.FindAll(pendant => !pendant.GetComponent<PendantScript>().isActive);
+
+        // Check if there are any inactive pendants
+        if (inactivePendants.Count > 0)
+        {
+            // Pick a random index from the list of inactive pendants
+            int randomIndex = Random.Range(0, inactivePendants.Count);
+
+            // Return the randomly chosen inactive pendant
+            inactivePendants[randomIndex].GetComponent<PendantScript>().SetPendantActive(true);
+        }
+        else
+        {
+            // No inactive pendants found
+            Debug.LogWarning("No inactive pendants available.");
         }
     }
 }
