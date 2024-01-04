@@ -14,6 +14,8 @@ public class CardMovementHandler : MonoBehaviour
     public static event Action<Card> OnEnemyEffect;
     public static event Action<Card, Slot> OnShieldEffect;
     public static event Action<Card> CardRewardChosenEvent;
+    public static event System.Action CardMoveToDiscardPileEvent;
+    public static event System.Action ShowCardPopupEvent;
 
     public GameObject cardPopupPrefab;
 
@@ -100,6 +102,7 @@ public class CardMovementHandler : MonoBehaviour
 
     public void MoveToDiscardPile()
     {
+        CardMoveToDiscardPileEvent?.Invoke();
         if (activeCardSlot != null)
         {
             activeCardSlot.HasCard(false);
@@ -238,6 +241,7 @@ public class CardMovementHandler : MonoBehaviour
 
     private void ShowCardPopup()
     {
+        ShowCardPopupEvent?.Invoke();
         // Instantiate the card popup prefab
         GameObject cardPopup = Instantiate(cardPopupPrefab, transform.position, Quaternion.identity);
 

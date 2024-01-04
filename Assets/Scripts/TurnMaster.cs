@@ -9,6 +9,8 @@ public class TurnMaster : MonoBehaviour
 {
     GameManager gm;
 
+    public static event System.Action StartTurnEvent;
+    public static event System.Action AttackStartEvent;
     public static event System.Action AlphaDamageEvent;
     public static event System.Action BetaDamageEvent;
     public static event System.Action GammaDamageEvent;
@@ -67,6 +69,7 @@ public class TurnMaster : MonoBehaviour
 
     private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)
     {
+        AttackStartEvent?.Invoke();
         Dictionary<GameConstants.radiationTypes, int> wagonDamageStats = new Dictionary<GameConstants.radiationTypes, int>(damageStats);
         
         // Create a copy of the keys before iterating
@@ -75,19 +78,23 @@ public class TurnMaster : MonoBehaviour
         // Iterate over damage types
         foreach (GameConstants.radiationTypes radiationType in damageTypes)
         {
+            
             Debug.Log("Dictionary Entry: " + radiationType.ToString() + " with value of: " + wagonDamageStats[radiationType]);
             switch (radiationType)
             {
                 case GameConstants.radiationTypes.Alpha:
                     AlphaDamageEvent?.Invoke();
+                    yield return new WaitForSeconds(2f);
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     BetaDamageEvent?.Invoke();
+                    yield return new WaitForSeconds(2f);
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     GammaDamageEvent?.Invoke();
+                    yield return new WaitForSeconds(2f);
                     break;
 
                 default:
@@ -147,7 +154,8 @@ public class TurnMaster : MonoBehaviour
         {
             gm.PlayerBetaDotDamage();
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+        StartTurnEvent?.Invoke();
         endTurnButton.RotateKnopfBack();
         gm.ResetEnergy();
         gm.DrawCards();

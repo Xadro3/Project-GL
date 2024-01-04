@@ -113,6 +113,13 @@ public class AudioManager : MonoBehaviour
         TurnMaster.AlphaDamageEvent += HandleAlphaRadiation;
         TurnMaster.BetaDamageEvent += HandleBetaRadiation;
         TurnMaster.GammaDamageEvent += HandleGammaRadiation;
+        TurnMaster.AttackStartEvent += HandleAttackStart;
+        GameManager.CardRewardChosenSoundEvent += HandleReward;
+        CardMovementHandler.ShowCardPopupEvent += HandleCardInfo;
+        CardMovementHandler.CardMoveToDiscardPileEvent += HandleCardDestroy;
+        Slot.ShieldRepairEvent += HandleCardRepair;
+        Slot.ShieldBuffEvent += HandleCardBuff;
+        TurnMaster.StartTurnEvent += HandleStartTurn;
 
 
         //Clip Starten wenn man das Spiel gestartet hat

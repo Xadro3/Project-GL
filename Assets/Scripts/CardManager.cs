@@ -81,6 +81,7 @@ public class CardManager : MonoBehaviour
     public void BuildDeck()
     {
         AddBaseCardsToDeck();
+        deck.PopulatePlayerDeck();
     }
 
     private void AddBaseCardsToDeck()

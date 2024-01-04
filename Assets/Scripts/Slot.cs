@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Slot : MonoBehaviour
 {
-    
+    public static event System.Action ShieldRepairEvent;
+    public static event System.Action ShieldBuffEvent;
+
+
     public bool hasCard = false;
     GameManager gm;
     public Card currentCard = null;
@@ -98,12 +101,14 @@ public class Slot : MonoBehaviour
 
     private void HandleShieldBuff(int value)
     {
+        ShieldBuffEvent?.Invoke();
         GetCardInSlotInfo().AdjustDurability(-value);
     }
 
     private void HandleShieldRepair()
     {
         //currentCard.AdjustDurability(-(currentCard.durabilityCurrent/2));
+        ShieldRepairEvent?.Invoke();
         Card cardToRepair = GetCardInSlotInfo();
         if (cardToRepair != null)
         {

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static event Action UpdateUI;
     public static event Action<int> CurrencyUpdateEvent;
     public static event Action<int> CardEnergyCostEffect;
+    public static event Action CardRewardChosenSoundEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -573,6 +574,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        CardRewardChosenSoundEvent?.Invoke();
         cardRewardScreen.GetComponent<CardRewardScript>().ToggleButton(true);
         foreach (GameObject randomCard in cardRewards)
         {
