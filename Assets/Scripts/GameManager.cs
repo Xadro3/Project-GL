@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SetCardCostIncrease(1);
+            player.TriggerRandomDebuff();
         }
     }
     private void SetTokenReward()

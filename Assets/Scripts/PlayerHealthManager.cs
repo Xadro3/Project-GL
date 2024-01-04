@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerHealthManager : MonoBehaviour
 {
     public static event System.Action EncounterEnd;
+    public static event Action<String> ActivatePendantDebuff;
 
     [Header("----- Health -----")]
     public int health;
@@ -48,7 +50,7 @@ public class PlayerHealthManager : MonoBehaviour
     private int resistanceDamageReductionPercentValue = 0;
     private int resistanceDamageReductionFlatValue = 0;
 
-
+    private List<Tuple<System.Action, string>> triggeredActions = new List<Tuple<System.Action, string>>();
 
     GameManager gm;
 
@@ -224,24 +226,44 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
-    private void TriggerRandomDebuff()
+    public void TriggerRandomDebuff()
     {
-        // Array of actions
-        System.Action[] actions = new System.Action[]
+        // Array of actions with names
+        Tuple<System.Action, string>[] actions = new Tuple<System.Action, string>[]
         {
-            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Alpha),
-            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta),
-            () => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma),
-            () => gm.SetCardCostIncrease(1),
-            () => gm.playerRessourceMax -= 1,
-            () => gm.playerHandMax -= 1,
-            () => gm.ActivateShieldDebuff()
-            
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Alpha)), "ActivateDamageBuffAlpha"),
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta)), "ActivateDamageBuffBeta"),
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma)), "ActivateDamageBuffGamma"),
+        Tuple.Create((System.Action)(() => gm.SetCardCostIncrease(1)), "SetCardCostIncrease"),
+        Tuple.Create((System.Action)(() => gm.playerRessourceMax -= 1), "DecreasePlayerResourceMax"),
+        Tuple.Create((System.Action)(() => gm.playerHandMax -= 1), "DecreasePlayerHandMax"),
+        Tuple.Create((System.Action)(() => gm.ActivateShieldDebuff()), "ActivateShieldDebuff")
         };
 
-        // Randomly select and invoke an action
-        int randomIndex = UnityEngine.Random.Range(0, actions.Length);
-        actions[randomIndex].Invoke();
+        // Filter out actions that have already been triggered
+        List<Tuple<System.Action, string>> availableActions = actions.Except(triggeredActions).ToList();
+
+        // Check if there are available actions
+        if (availableActions.Count > 0)
+        {
+            // Randomly select and invoke an action
+            int randomIndex = UnityEngine.Random.Range(0, availableActions.Count);
+            Tuple<System.Action, string> selectedAction = availableActions[randomIndex];
+            selectedAction.Item1.Invoke();
+
+            // Add the triggered action to the list
+            triggeredActions.Add(selectedAction);
+
+            // Get the name of the triggered action
+            string actionName = selectedAction.Item2;
+
+            ActivatePendantDebuff?.Invoke(actionName);
+            Debug.Log("Triggered Debuff: " + actionName);
+        }
+        else
+        {
+            Debug.Log("All actions have been triggered.");
+        }
     }
     
     public int CheckHealth()

@@ -290,84 +290,15 @@ PrefabInstance:
       propertyPath: shopCurrency
       value: 
       objectReference: {fileID: 4440220774125489240}
-    - target: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantManager
-      value: 
-      objectReference: {fileID: 7428349498288136573}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 5358902402923120703, guid: 97a17eeabf6c7af43910118b003d6b75, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 5138304774280868635, guid: ff211f7ae5ea894408826c8e437bda69, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 7489786940851083401, guid: ff925d5494051cf48828e765856541ee, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 5718906516684988921, guid: 1587f067b29b37043af6cfe4ae8bdca7, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 3456270947699620085, guid: 2966984727885494ab454d2b52e591c0, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1922880675925276498, guid: 8dfe2a7dd53eb794c960eac4c59c4042, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 2484791817413496306, guid: 31e3b6f8a23d48c45b908239f766eda1, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[7]
-      value: 
-      objectReference: {fileID: 5526151307923670510, guid: 3bb38035abdd9a147a685b343473ebd8, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[8]
-      value: 
-      objectReference: {fileID: 2448480094191859486, guid: a90dccd1eb519f74a982401c5f237c8b, type: 3}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantPrefabs.Array.data[9]
-      value: 
-      objectReference: {fileID: 2267807934303529888, guid: 5e1df216502e0154ca9d086f096790a4, type: 3}
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8399225831497441765, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 5683454397308182495, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 1365429074940902165, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 1850676640438170292, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 8353600463946146068, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 7665972843497045074, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 1806394321987701984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 6273093340238050056, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 6143602382319208885, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-    - {fileID: 6069984135555867503, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
---- !u!114 &7428349498288136573 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-  m_PrefabInstance: {fileID: 8525974962028231267}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9974a1192548404cb25b0c8ed186b5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9204989635562378427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}

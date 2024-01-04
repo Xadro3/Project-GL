@@ -24,6 +24,7 @@ TagManager:
   - TokenDisplayAmount
   - PendantContainer
   - Pendant
+  - CursedPendantContainer
   layers:
   - Default
   - TransparentFX

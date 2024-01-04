@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3337444959866984801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3586737965159920589}
+  - component: {fileID: 3536430354970372937}
+  m_Layer: 0
+  m_Name: CrusedPendantManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3586737965159920589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337444959866984801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3536430354970372937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337444959866984801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bfd38d717991548b3289d8d9b8e634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pendantContainer: {fileID: 0}
+  gameManager: {fileID: 0}
+  player: {fileID: 0}
+  pendantPrefabs:
+  - {fileID: 1588551520328135646, guid: 399abf84da6377f41b0eabebf6888df2, type: 3}
+  - {fileID: 730009589692212887, guid: 056da367ec410e14b9b709157fcea70e, type: 3}
+  - {fileID: 2517657020637830640, guid: d68b243d5722f4c40ac6f06d72f5b3cf, type: 3}
+  - {fileID: 1813668784272647259, guid: f55866643cee43341bc220ddc34fed21, type: 3}
+  - {fileID: 2150184847693068756, guid: be6b4fd9fd0cb474ba6571b11aaab16e, type: 3}
+  - {fileID: 7137843249085473824, guid: e97f8a54fe8a89f4fa1834be3061677b, type: 3}
+  - {fileID: 8374060236935804609, guid: 08c1a740b47c86c4eb0c92c6780197ab, type: 3}
+  pendantInstances: []
