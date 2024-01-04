@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public Deck deck;
     public CardManager cardManager;
     public ShopCurrency shopCurrency;
+    public PendantManager pendantManager;
 
     private int costIncrease = 0;
 
@@ -148,6 +149,7 @@ public class GameManager : MonoBehaviour
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
+            pendantManager.TriggerPendantEffects();
         }
     }
     private void Update()
@@ -597,10 +599,10 @@ public class GameManager : MonoBehaviour
 
             case GameConstants.pendantEffect.firstCardLessCost:
                 firstCardPendantActive = true;
-                if (!isFirstCardPlayed)
-                {
-                    costIncrease = -effectValue;
-                }
+                //if (!isFirstCardPlayed)
+                //{
+                //    costIncrease = -effectValue;
+                //}
                 break;
 
             case GameConstants.pendantEffect.buffAlu:

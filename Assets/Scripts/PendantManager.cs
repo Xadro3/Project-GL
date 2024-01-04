@@ -58,9 +58,7 @@ public class PendantManager : MonoBehaviour
                     pendant.GetComponent<PendantScript>().spriteRenderer.enabled = false;
                 }
             }
-            TriggerPendantEffects();
-        }
-        
+        }        
     }
     
     public void TriggerPendantEffects()

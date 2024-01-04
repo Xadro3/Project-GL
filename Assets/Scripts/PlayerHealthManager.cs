@@ -48,6 +48,8 @@ public class PlayerHealthManager : MonoBehaviour
     private int resistanceDamageReductionPercentValue = 0;
     private int resistanceDamageReductionFlatValue = 0;
 
+
+
     GameManager gm;
 
     private void Awake()
@@ -265,13 +267,11 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 case GameConstants.effectTypes.ResistanceReductionFlat:
                     TriggerResistanceReductionFlat(card.protectionTypes, entry.Value);
-                    UpdateTexts();
                     Debug.Log("Effect: " + entry);
                     break;
 
                 case GameConstants.effectTypes.ResistanceReductionPercent:
                     TriggerResistanceDamageReductionPercent(card.protectionTypes, entry.Value);
-                    UpdateTexts();
                     Debug.Log("Effect: " + entry);
                     break;
 
@@ -296,9 +296,9 @@ public class PlayerHealthManager : MonoBehaviour
 
                 case GameConstants.effectTypes.HealthDamageReductionPercent:
                     TriggerHealthDamageReductionPercent(entry.Value);
-                    UpdateTexts();
                     break;
             }
+            UpdateTexts();
         }
             
     }
@@ -353,6 +353,7 @@ public class PlayerHealthManager : MonoBehaviour
                     playerModel.gammaBar.SetHealth(gammaResistance);
                     break;
             }
+            UpdateTexts();
         }
         
     }
@@ -385,5 +386,6 @@ public class PlayerHealthManager : MonoBehaviour
                 health += effectValue;
                 break;
         }
+        UpdateTexts();
     }
 }

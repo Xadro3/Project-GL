@@ -106,11 +106,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a386beae68402484eb16c5df34f45210, type: 3}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: isActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: description
       value: Die erste Karte eines Breaches kostet 1 Energie weniger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: pendantEffectType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: pendantEffectValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9157236156560341469, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: m_Size.x
