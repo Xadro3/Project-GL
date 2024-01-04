@@ -28,7 +28,6 @@ public class CardManager : MonoBehaviour
         InitializePrefabMapping();
         AssignPrefabsToCards();
         AddBaseCardsToDeck();
-        deck.PopulatePlayerDeck();
     }
 
     private void OnEnable()
