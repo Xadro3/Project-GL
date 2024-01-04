@@ -88,6 +88,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3350698441146206330, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350698441146206330, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350698441146206330, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d8660f079b930045aa37573b98e25ab, type: 3}
+    - target: {fileID: 3350698441146206330, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350698441146206330, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4852629082324099262, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: m_Name
       value: "Batterie-Anh\xE4nger  Variant"
@@ -159,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 9157236156560341469, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7d8660f079b930045aa37573b98e25ab, type: 3}
+      objectReference: {fileID: 21300000, guid: 62f98c2fd9d894e4ab0bdc283cee948d, type: 3}
     - target: {fileID: 9157236156560341469, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: m_Enabled
       value: 0
