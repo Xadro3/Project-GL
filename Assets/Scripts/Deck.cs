@@ -37,6 +37,7 @@ public class Deck : MonoBehaviour
 
     public void PopulatePlayerDeck()
     {
+        playerDeck.Clear();
         foreach (Card card in deck)
         {
             Card addedCard = Instantiate(card, gameObject.transform.position, Quaternion.identity, gameObject.transform);

@@ -127,9 +127,12 @@ public class PlayerHealthManager : MonoBehaviour
         CheckResistances();
         if (CheckHealth() <= 0)
         {
-            // trigger Game Over
-            Debug.Log("Game Over!");
-            EncounterEnd?.Invoke();
+            if (!gm.encounterEndScreenActive)
+            {
+                // trigger Game Over
+                Debug.Log("Game Over!");
+                EncounterEnd?.Invoke();
+            }
         }
     }
 
@@ -363,6 +366,7 @@ public class PlayerHealthManager : MonoBehaviour
     public void TriggerEncounterEndAnimation()
     {
         playerModel.playerModelAnimator.SetTrigger("BreachEnd");
+        playerModel.playerAbilitySlotAnimator.SetTrigger("BreachEnd");
     }
 
     public void HandlePendantBuffActivation(GameConstants.pendantEffect effect, int effectValue)

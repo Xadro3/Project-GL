@@ -155,14 +155,18 @@ public class TurnMaster : MonoBehaviour
             gm.PlayerBetaDotDamage();
         }
         yield return new WaitForSeconds(1f);
-        StartTurnEvent?.Invoke();
-        endTurnButton.RotateKnopfBack();
-        gm.ResetEnergy();
-        gm.DrawCards();
-        wagons[0].UpdateTimer(1);
-        wagons[0].GenerateDamage();
+        if (!gm.encounterEnd)
+        {
+            endTurnButton.RotateKnopfBack();
+            gm.ResetEnergy();
+            gm.DrawCards();
+            wagons[0].UpdateTimer(1);
+            wagons[0].GenerateDamage();
+            gm.PauseGame(false);
+        }
         gm.isFirstTurn = false;
-        gm.PauseGame(false);
+        StartTurnEvent?.Invoke();
+
     }
 
     /*private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)

@@ -51,11 +51,12 @@ public class GameManager : MonoBehaviour
     private List<Card> cardsToDiscard = new List<Card>();
     private int cardsToDiscardCount = 0;
 
-    public bool encounterEndScreenActive;
+    public bool encounterEndScreenActive = false;
     
     public bool cardRewardScreenActive;
     public int cardRewardAmount;
-    public bool encounterWon;
+    public bool encounterWon = false;
+    public bool encounterEnd = false;
 
     public GameObject endScreenPrefab;
     public GameObject cardRewardScreenPrefab;
@@ -134,6 +135,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
         if (scene.name == "Encounter")
         {
             playerHand = FindObjectOfType<PlayerHand>(true);
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
             activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>(true);
             activeCardSlots = activeCardSlotsParent.activeCardSlots;
             interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
+            encounterEnd = false;
             cardManager.BuildDeck();
             wagons[0].StartEncounter();
             UpdatePlayerRessource();
@@ -528,6 +531,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator EndingEncounter()
     {
+        encounterEnd = true;
         encounterEndScreenActive = true;
         PauseGame(true);
         UpdateUI?.Invoke();
@@ -545,6 +549,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        encounterEndScreenActive = false;
         yield break;
     }
     private void HandleCardRewardEvent()

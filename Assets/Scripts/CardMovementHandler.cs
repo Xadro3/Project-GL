@@ -453,6 +453,9 @@ public class CardMovementHandler : MonoBehaviour
 
             case "Recycle":
             case "Upcycling":
+            case "Bleibeschichtung":
+            case "Alubeschichtung":
+            case "Papierbeschichtung":
                 return true;
 
             default:

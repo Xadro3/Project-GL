@@ -19,6 +19,8 @@ public class EncounterEndScript : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public float smoothTime;
     public GameObject targetPosition;
+    public Button btn_weiter;
+    public Button btn_beenden;
 
     private void Awake()
     {
@@ -36,14 +38,18 @@ public class EncounterEndScript : MonoBehaviour
         {
             case true:
                 victoryText.gameObject.SetActive(true);
+                defeatText.gameObject.SetActive(false);
+                UpdateRewardAmount(rewardAmount);
                 break;
 
             case false:
                 defeatText.gameObject.SetActive(true);
+                victoryText.gameObject.SetActive(false);
+                btn_weiter.gameObject.SetActive(false);
                 break;
         }
         StartCoroutine(move());
-        UpdateRewardAmount(rewardAmount);
+        
     }
     
     public void UpdateRewardAmount(int value)
