@@ -282,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.size
-      value: 18
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.data[15]

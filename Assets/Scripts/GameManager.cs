@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
         if (cardsInHand < playerHandMax)
         {
             //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
-            if (deck.deck.Count <= (discardPile.Count + cardsInHand + graveyardPile.Count) || deck.playerDeck.Count == 0)
+            if (deck.deck.Count <= (discardPile.Count + playerHandMax + graveyardPile.Count) || deck.playerDeck.Count <= 0)
             {
                 Shuffle();
             }
