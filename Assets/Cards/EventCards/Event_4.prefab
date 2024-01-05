@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6989378317360235584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 566915166656887527, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_Name
+      value: Event_4 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439197518661726024, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: text
+      value: "Ja, sie sind eine wesentliche zus\xE4tzliche Quelle von Strahlenexposition."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728454961071466813, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: text
+      value: "Sie sind nur bei h\xE4ufigem Gebrauch gef\xE4hrlich."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728454961071466813, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: answerText
+      value: "Richtig! Diese Scanner verursachen nur 0.00001 bis 0.002 mSv pro Scan,
+        was deutlich niedriger ist als die nat\xFCrliche Hintergrundstrahlung von
+        etwa 0.01 mSv."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: questionText
+      value: "Die neuartigen Ganzk\xF6rperscanner in Flugh\xE4fen erh\xF6hen deine
+        Strahlenbelastung erheblich!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: wrongAnswerText
+      value: "Das ist ein Missverst\xE4ndnis. Die Strahlenbelastung durch Ganzk\xF6rperscanner
+        ist sehr gering und liegt weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511895976367087310, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: text
+      value: "Nein, die Strahlenbelastung durch diese Scanner ist minimal und liegt
+        weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511895976367087310, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.8698435
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6741526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.755444
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}

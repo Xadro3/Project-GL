@@ -25,6 +25,12 @@ TagManager:
   - PendantContainer
   - Pendant
   - CursedPendantContainer
+  - EventSafe
+  - Eventslot
+  - Question
+  - Answer
+  - WrongAnswer
+  - Eventcard
   layers:
   - Default
   - TransparentFX

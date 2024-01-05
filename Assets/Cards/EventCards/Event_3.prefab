@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8779325384013300446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.8698435
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6741526
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.755444
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616252533303614156, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866443376222870544, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: text
+      value: "Richtig, wir sollten uns nur um k\xFCnstliche Strahlung sorgen."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: answerText
+      value: "Korrekt! Nat\xFCrliche Strahlung, insbesondere in der N\xE4he von radioaktiven
+        Materialien, kann bei l\xE4ngerer Exposition genauso gef\xE4hrlich sein wie
+        k\xFCnstliche Strahlung."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: questionText
+      value: "Nat\xFCrliche ionisierende Strahlung ist ungef\xE4hrlich. Nur menschengemachte
+        ionisierende Strahlung ist gef\xE4hrlich!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: wrongAnswerText
+      value: "Das ist ein Trugschluss. Nat\xFCrliche Strahlung kann unter bestimmten
+        Umst\xE4nden genauso gef\xE4hrlich sein wie k\xFCnstliche Strahlung."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: text
+      value: "Es h\xE4ngt von der Dosis ab. Jedoch kommt nat\xFCrliche Stahlung meist
+        in deutlich geringerer Intensit\xE4t vor als k\xFCnstliche."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632402266898820067, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: text
+      value: "Falsch, nat\xFCrliche Strahlung, besonders in der N\xE4he von radioaktivem
+        Material, kann genauso gef\xE4hrlich sein."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632402266898820067, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081644692351989817, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_Name
+      value: Event_2 Variant 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}

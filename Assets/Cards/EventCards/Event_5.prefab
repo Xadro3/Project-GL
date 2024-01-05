@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3520232211703167724
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.8698435
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6741526
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.755444
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100912946694773842, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: answerText
+      value: "Genau! Der spezielle Reaktortyp von Tschernobyl ist in westlichen L\xE4ndern
+        nicht in Gebrauch, was das Risiko eines \xE4hnlichen Vorfalls reduziert."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: questionText
+      value: "Ein Chernobyl-artiger Supergau k\xF6nnte jederzeit auch im Westen passieren!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: wrongAnswerText
+      value: "Das ist nicht korrekt. Der Reaktortyp, der zum Ungl\xFCck in Tschernobyl
+        f\xFChrte, ist in westlichen L\xE4ndern nicht verbreitet, was das Risiko
+        eines \xE4hnlichen Vorfalls erheblich verringert."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: text
+      value: Das stimmt. Wir sind jederzeit einem solchen Risiko ausgesetzt.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: text
+      value: "Unwahrscheinlich, da der Reaktortyp, der zum Unfall in Tschernobyl
+        f\xFChrte, nur in der Sowjetunion verwendet wurde."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: text
+      value: "Es h\xE4ngt von der Sicherheit und Wartung der einzelnen Reaktoren
+        ab."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: m_Name
+      value: Event_5 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}

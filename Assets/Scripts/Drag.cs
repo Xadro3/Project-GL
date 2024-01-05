@@ -41,8 +41,7 @@ public class Drag : MonoBehaviour
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
         }
-       
-        
+
     }
 
 }

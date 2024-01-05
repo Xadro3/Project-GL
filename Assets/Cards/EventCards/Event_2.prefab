@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8142447935477565935
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1078527425202319830, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_Name
+      value: Event_2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949965052686804089, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: text
+      value: "Nein, das ist ein Irrtum. Tats\xE4chlich sind Kohlekraftwerke und Langstreckenfl\xFCge
+        f\xFCr viel mehr Strahlung verantwortlich."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239442702382604812, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: text
+      value: "Nicht ganz. Die meiste Strahlung erhalten wir von nat\xFCrlichen Quellen
+        wie Radon."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996625599061415423, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: text
+      value: Das stimmt. Atomkraftwerke sind eine bedeutende Quelle der Strahlenbelastung.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: answerText
+      value: "Genau! Atomkraftwerke tragen nur etwa 0,05% zur j\xE4hrlichen Strahlenbelastung
+        bei. Kohlekraftwerke und Langstreckenfl\xFCge verursachen ein Vielfaches
+        davon"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: questionText
+      value: "Ein Gro\xDFteil der j\xE4hrlichen Strahlenbelastung kommt von Atomkraftreaktoren!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: wrongAnswerText
+      value: "Das ist ein h\xE4ufiges Missverst\xE4ndnis. In Wirklichkeit ist der
+        Beitrag von Atomkraftwerken zur j\xE4hrlichen Strahlenbelastung minimal im
+        Vergleich zu anderen Quellen."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.8698435
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6741526
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.755444
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
