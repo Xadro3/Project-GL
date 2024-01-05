@@ -15,7 +15,8 @@ public class EventManager : MonoBehaviour
     void Start()
     {
         eventSafe = GameObject.FindGameObjectWithTag("EventSafe").GetComponent<EventSafe>();
-        currentEvent =eventSafe.GetRandomEvenWithFalseValue();
+        eventSafe.PopulateDict();
+        currentEvent =eventSafe.GetRandomEventWithFalseValue();
         PopulateScene(currentEvent);
     }
 

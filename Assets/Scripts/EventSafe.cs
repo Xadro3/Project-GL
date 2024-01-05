@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EventSafe : MonoBehaviour
 {
     public int eventCounter;
-    public Dictionary<int, bool> events = new Dictionary<int, bool>();
+    public Dictionary<int, bool> events = new();
 
-    private void Start()
+    void Start()
+    {
+
+    }
+
+    public void PopulateDict()
     {
         events.Add(1, false);
         events.Add(2, false);
@@ -16,19 +20,29 @@ public class EventSafe : MonoBehaviour
         events.Add(4, false);
         events.Add(5, false);
     }
-
-    public int GetRandomEvenWithFalseValue()
+    public int GetRandomEventWithFalseValue()
     {
-        var eventFalseEvents = events.Where(entry => entry.Key % 2 == 0 && entry.Value == false).ToList();
 
-        if (eventFalseEvents.Count == 0)
+        List<int> freeEvents = new List<int>();
+       // Debug.Log("Im here");
+        Debug.Log(events.Count);
+        foreach (KeyValuePair<int,bool> entry in events)
+        {
+            Debug.Log(entry.Key);
+            if (!entry.Value)
+            {
+                freeEvents.Add(entry.Key);
+            }
+        }
+
+        if (freeEvents.Count == 0)
         {
             
             return -1; // You can return a specific value or handle this case accordingly
         }
 
-        int randomIndex = UnityEngine.Random.Range(0, eventFalseEvents.Count);
-        return eventFalseEvents[randomIndex].Key;
+        int randomIndex = UnityEngine.Random.Range(0, freeEvents.Count-1);
+        return freeEvents[randomIndex];
     }
 
     public void CompleteEvent(int key)
