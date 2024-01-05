@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 328011062}
   m_Layer: 0
   m_Name: Eventmanager
-  m_TagString: Untagged
+  m_TagString: Eventmanager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,6 +768,7 @@ MonoBehaviour:
   event_3: {fileID: 566915166656887527, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
   event_4: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
   event_5: {fileID: 6339718422149596235, guid: c782998ff3cde1340986052ab1fb5c48, type: 3}
+  currentEvent: 0
 --- !u!4 &328011063
 Transform:
   m_ObjectHideFlags: 0
@@ -1162,9 +1163,10 @@ GameObject:
   m_Component:
   - component: {fileID: 560845745}
   - component: {fileID: 560845744}
+  - component: {fileID: 560845746}
   m_Layer: 0
   m_Name: Clicker
-  m_TagString: Untagged
+  m_TagString: EventSafe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,6 +1200,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560845746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560845743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665c48282109aac43a56f79942f30cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventCounter: 0
 --- !u!1 &563254325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1225,7 @@ GameObject:
   - component: {fileID: 563254327}
   - component: {fileID: 563254328}
   - component: {fileID: 563254329}
+  - component: {fileID: 563254330}
   m_Layer: 0
   m_Name: Event_SlotLinks
   m_TagString: Eventslot
@@ -1341,6 +1357,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf786363ec9bcd4449fbb689057722b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backButton: {fileID: 1978475850}
+  answer: {fileID: 1445287384}
+  wrongAnswer: {fileID: 266009096}
+  question: {fileID: 706696051}
+  eventManager: {fileID: 0}
+--- !u!50 &563254330
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563254325}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &706696051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1760,7 @@ GameObject:
   - component: {fileID: 849049681}
   m_Layer: 0
   m_Name: Event_SlotRechts
-  m_TagString: Eventslot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2422,7 +2470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.4923706, y: -5.558365}
+  m_AnchoredPosition: {x: 9.24, y: -3.59}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978475852
