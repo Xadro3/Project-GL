@@ -14,11 +14,11 @@ public class ButtonManager : MonoBehaviour
     {
         SceneChangeEvent?.Invoke();
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().isCompleted = true;
-        GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode.GetComponent<Node>().isNextNode = true;
-        if(GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2 != null)
-        {
-            GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2.GetComponent<Node>().isNextNode = true;
-        }
+        //GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode.GetComponent<Node>().isNextNode = true;
+        //if(GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2 != null)
+        //{
+        //    GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2.GetComponent<Node>().isNextNode = true;
+        //}
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().LoadOverworld();
     }
 

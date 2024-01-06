@@ -84,19 +84,28 @@ public class NodeLoader : MonoBehaviour
                 overworldgenerator.GetComponent<OverworldGenerator>().nodes = nodes;
             }
             //Check wether we have on Completed node, if yes we disable the firstnodes of the map
+            bool temp=false;
+
             if (!disabledFirstNode)
             {
                 foreach (GameObject gameObject in nodes)
                 {
                     if (gameObject.GetComponent<Node>().isCompleted)
                     {
-                        if (gameObject.GetComponent<Node>().isFirstNode)
-                        {
-                            disabledFirstNode = true;
-                            gameObject.GetComponent<Node>().isUnlocked = false;
-                            gameObject.GetComponent<Node>().isPastNode = true;
-                        }
+                        temp = true;
+                        disabledFirstNode = true;
+                    }
+                }
+            }
 
+            if (temp)
+            {
+                foreach (GameObject gameObject in nodes)
+                {
+                    if (gameObject.GetComponent<Node>().isFirstNode)
+                    {
+                        gameObject.GetComponent<Node>().isUnlocked = false;
+                        gameObject.GetComponent<Node>().isPastNode = true;
                     }
                 }
             }
@@ -104,10 +113,18 @@ public class NodeLoader : MonoBehaviour
             foreach (GameObject gameObject in nodes)
             {
                 gameObject.SetActive(true);
-                if (gameObject.GetComponent<Node>().isCompleted && !gameObject.GetComponent<Node>().isNextNode)
+                if (gameObject.GetComponent<Node>().isUnlocked&&disabledFirstNode)
                 {
                     gameObject.GetComponent<Node>().isUnlocked = false;
                     gameObject.GetComponent<Node>().isPastNode = true;
+                }
+            }
+
+            foreach(GameObject game in nodes)
+            {
+                if (game.GetComponent<Node>().isCompleted)
+                {
+                    game.GetComponent<Node>().UnlockNextNode();
                 }
             }
         }
@@ -153,34 +170,53 @@ public class NodeLoader : MonoBehaviour
                 overworldgenerator.GetComponent<OverworldGenerator>().nodes = nodes;
             }
             //Disable first nodes on the Desert map
+            bool temp = false;
+
             if (!disabledFirstNode2)
             {
                 foreach (GameObject gameObject in nodes)
                 {
                     if (gameObject.GetComponent<Node>().isCompleted)
                     {
-                        if (gameObject.GetComponent<Node>().isFirstNode)
-                        {
-                            disabledFirstNode = true;
-                            gameObject.GetComponent<Node>().isUnlocked = false;
-                            gameObject.GetComponent<Node>().isPastNode = true;
-                        }
-
+                        temp = true;
+                        disabledFirstNode2 = true;
                     }
                 }
             }
-         
 
+            if (temp)
+            {
                 foreach (GameObject gameObject in nodes)
+                {
+                    if (gameObject.GetComponent<Node>().isFirstNode)
+                    {
+                        gameObject.GetComponent<Node>().isUnlocked = false;
+                        gameObject.GetComponent<Node>().isPastNode = true;
+                    }
+                }
+            }
+
+
+            foreach (GameObject gameObject in nodes)
                 {
                 gameObject.SetActive(true);
                 
-                if (gameObject.GetComponent<Node>().isCompleted && !gameObject.GetComponent<Node>().isNextNode)
+                if (!gameObject.GetComponent<Node>().isUnlocked && disabledFirstNode2)
                 {
                     gameObject.GetComponent<Node>().isUnlocked = false;
                     gameObject.GetComponent<Node>().isPastNode = true;
                 }
             }
+
+            foreach (GameObject game in nodes)
+            {
+                if (game.GetComponent<Node>().isCompleted)
+                {
+                    game.GetComponent<Node>().UnlockNextNode();
+                }
+            }
+
+
         }
         else
         {
@@ -189,9 +225,11 @@ public class NodeLoader : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        
 
         
+
+
+
 
         Debug.Log("Scene changed.");
         Debug.Log(SceneManager.GetActiveScene().name);

@@ -45,7 +45,7 @@ public class Node : MonoBehaviour
 
         DisplayNode();
 
-        if (isUnlocked)
+        if (isUnlocked && !isCompleted)
         {
             collider.enabled = true;
             sprite.color = new Color(1, 1, 1, 1);
@@ -53,6 +53,7 @@ public class Node : MonoBehaviour
         if (!isUnlocked)
         {
             sprite.color = Color.gray;
+            collider.enabled = false;
         }
         if (isLastNode&&isCompleted)
         {
@@ -61,27 +62,26 @@ public class Node : MonoBehaviour
         }
         if (isFirstNode)
         {
-            eventType = 0;
+            eventType = 2;
         }
         if (isCompleted)
         {
-            if (nextNode != null)
-            {
-                nextNode.GetComponent<Node>().isUnlocked = true;
-            }
-            if(nextNode2 != null)
-            {
-                nextNode2.GetComponent<Node>().isUnlocked = true;
-            }
-            
+
+                isUnlocked = false;
+                isNextNode = false;
+                isPastNode = true;
+                sprite.color = Color.gray;
+                collider.enabled = false;
         }
+
         if (isPastNode)
         {
-
+            sprite.color = Color.gray;
+            collider.enabled = false;
         }
     }
 
-    public void UnlockNextNode(GameObject nextNode)
+    public void UnlockNextNode()
     {
         if (nextNode != null)
         {
