@@ -1163,7 +1163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 560845745}
   - component: {fileID: 560845744}
-  - component: {fileID: 560845746}
   m_Layer: 0
   m_Name: Clicker
   m_TagString: EventSafe
@@ -1200,19 +1199,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &560845746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560845743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665c48282109aac43a56f79942f30cd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventCounter: 0
 --- !u!1 &563254325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +2506,7 @@ MonoBehaviour:
       - m_Target: {fileID: 560845744}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: ButtonPressed
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
