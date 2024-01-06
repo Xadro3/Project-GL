@@ -15,7 +15,7 @@ public class NodeLoader : MonoBehaviour
     public bool generatedDesertMap = false;
     public bool disabledFirstNode = false;
     public bool disabledFirstNode2 = false;
- 
+    public string originScene;
     private void Awake()
     {
         // It is save to remove listeners even if they
@@ -57,6 +57,7 @@ public class NodeLoader : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Overworld")
         {
+            originScene = "Overworld";
             overworldgenerator = GameObject.FindGameObjectWithTag("Nodegenerator");
             nodeInstancer = GameObject.FindGameObjectsWithTag("Nodeinstancer");
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -112,6 +113,7 @@ public class NodeLoader : MonoBehaviour
         }
         else if(SceneManager.GetActiveScene().name == "DesertMap")
         {
+            originScene = "DesertMap";
             overworldgenerator = GameObject.FindGameObjectWithTag("Nodegenerator");
             nodeInstancer = GameObject.FindGameObjectsWithTag("Nodeinstancer");
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -195,4 +197,8 @@ public class NodeLoader : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
     }
 
+    public void LoadOverworld()
+    {
+        SceneManager.LoadScene(originScene);
+    }
 }
