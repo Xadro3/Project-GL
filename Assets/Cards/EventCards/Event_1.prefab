@@ -614,13 +614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f43b5468419a2e4b9d7b2c4f5f63098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionText: "Radioaktive Strahlung ist sch\xE4dlich, egal in welcher Dosis!"
-  answerText: "Richtig! Geringe Dosen radioaktiver Strahlung, besonders unterhalb
-    bestimmter Schwellenwerte, sind nicht unbedingt sch\xE4dlich und k\xF6nnen sogar
-    Teil unserer nat\xFCrlichen Umgebung sein."
-  wrongAnswerText: "Das ist ein Missverst\xE4ndnis. Tats\xE4chlich k\xF6nnen kleine
-    Dosen radioaktiver Strahlung sicher sein, und wir sind st\xE4ndig einer gewissen
-    nat\xFCrlichen Strahlenbelastung ausgesetzt."
+  questionText: Radioaktive Strahlung schadet, egal in welcher Dosis!
+  answerText: Richtig! Geringe Dosen radioaktiver Strahlung, besonders unterhalb
+    bestimmter Schwellenwerte, schaden nicht und sind sogar normal.
+  wrongAnswerText: In wirklichkeit sind kleine Dosen radioaktiver Strahlung sicher
+    und wir sind durchgehend einer gewissen Strahlenbelastung ausgesetzt.
   solver: {fileID: 0}
   answer: {fileID: 0}
   wrongAnswer: {fileID: 0}
