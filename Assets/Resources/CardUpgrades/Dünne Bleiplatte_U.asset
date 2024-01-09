@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: "D\xFCnne Bleiplatte_U"
+  m_EditorClassIdentifier: 
+  name: "D\xFCnne Bleiplatte"
+  description: <color=#61300d>4</color> Block gegen <color=#dbdb18>Beta</color> und
+    <color=#123493>Gamma</color>, <color=#61300d>25%</color> Durchlass des <color=#123493>Gamma</color>
+    Schadens, immun gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>6</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, <color=#61300d>25%</color> Durchlass des <color=#123493>Gamma</color>
+    Schadens, immun gegen <color=#931111>Alpha</color>
+  artwork: {fileID: 21300000, guid: fe42344f39446b74994cacf33a7cf090, type: 3}
+  currencyCost: 55
+  cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
+  durability: 4
+  cardType: 04000000
+  cardRarity: 00000000
+  protectionTypes: 000000000100000002000000
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 19000000
+  effectTypes: 01000000
+  immunity: 1
+  immunityTypes: 00000000
+  entsorgen: 0
+  upgraded: 0
+  cardUpgrades: 02000000
+  upgradeValues: 02000000
+  cardInfo: "Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen
+    alle Strahlungsarten effektiv zu sein. Die \xFCbliche Dicke f\xFCr so eine Abschirmplatte
+    aus Blei betr\xE4gt 5cm. Mit Blei muss generell vorsichtig umgegangen werden,
+    da es schon bei niedrigen Aufnahmemengen Gesundheitsgef\xE4hrdend ist, also nicht
+    Essen."

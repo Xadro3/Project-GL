@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Verbundpapier_U
+  m_EditorClassIdentifier: 
+  name: Verbundpapier
+  description: <color=#61300d>14</color>  Block gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>16</color>  Block gegen <color=#931111>Alpha</color>
+  artwork: {fileID: 21300000, guid: 482784ff5f7d5f74286769e8beaef84a, type: 3}
+  currencyCost: 110
+  cost: 2
+  durability: 14
+  cardType: 04000000
+  cardRarity: 02000000
+  protectionTypes: 00000000
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 0
+  onBruch: 0
+  onPlay: 0
+  effectValues: 
+  effectTypes: 
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  upgraded: 0
+  cardUpgrades: 02000000
+  upgradeValues: 02000000
+  cardInfo: "Herk\xF6mmliches Drucker Papier reicht vollkommen aus um Alphastrahlung
+    aufzuhalten. Alpha Strahlung hat zwar viel Energie da es aus Protonen und Neutronen
+    besteht, damit aber auch eine gro\xDFe Masse, die Leicht aufzuhalten ist. Generell
+    bei allen Abschirmmaterialien gilt: je dicker das Abschirmmaterial desto besser
+    die Abschirmwirkung."

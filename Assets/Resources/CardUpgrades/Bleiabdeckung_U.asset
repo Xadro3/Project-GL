@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Bleiabdeckung_U
+  m_EditorClassIdentifier: 
+  name: Bleiabdeckung
+  description: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
+    auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
+    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>1</color> Runde"
+  upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
+    auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
+    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>2</color> Runden"
+  artwork: {fileID: 21300000, guid: 776cf84bd97ed7d42be4b39706335592, type: 3}
+  currencyCost: 120
+  cost: 3
+  durability: 0
+  cardType: 00000000
+  cardRarity: 02000000
+  protectionTypes: 000000000100000002000000
+  ability: 1
+  duration: 1
+  abilityTypes: 01000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 3200000000000000
+  effectTypes: 0300000004000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  upgraded: 0
+  cardUpgrades: 03000000
+  upgradeValues: 01000000
+  cardInfo: "Eine Bleiabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter
+    der im Normalfall Radioaktives Material sicher f\xFCr den Transport aufbewahrt.
+    Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen alle Strahlungsarten
+    effektiv zu sein. Die \xFCbliche Dicke f\xFCr so eine Abschirmplatte aus Blei
+    betr\xE4gt 5cm."

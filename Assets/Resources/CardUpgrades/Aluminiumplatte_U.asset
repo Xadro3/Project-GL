@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Aluminiumplatte_U
+  m_EditorClassIdentifier: 
+  name: Aluminiumplatte
+  description: <color=#61300d>12</color>  Block gegen <color=#931111>Alpha</color>
+    und <color=#dbdb18>Beta</color>
+  upgradedDescription: <color=#61300d>14</color>  Block gegen <color=#931111>Alpha</color>
+    und <color=#dbdb18>Beta</color>
+  artwork: {fileID: 21300000, guid: 346a8f8c384c4f24f89687c40fb645f2, type: 3}
+  currencyCost: 120
+  cost: 2
+  durability: 12
+  cardType: 04000000
+  cardRarity: 02000000
+  protectionTypes: 0000000000000000
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 0
+  onBruch: 0
+  onPlay: 0
+  effectValues: 
+  effectTypes: 
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  upgraded: 0
+  cardUpgrades: 02000000
+  upgradeValues: 02000000
+  cardInfo: "Aluminiumfolie bietet genug Atomare Dichte um die relativ schweren Teilchenstrahlungen,
+    Alphastrahlung und Betastrahlung, aufzuhalten. Gegen Gammastrahlung h\xE4tte
+    Aluminiumfolie jedoch nicht einmal ann\xE4hernd genug Dicke und atomare Dichte
+    um eine Abschirmwirkung zu erzeugen. Generell bei allen Abschirmmaterialien gilt:
+    je dicker das Abschirmmaterial desto besser die Abschirmwirkung."

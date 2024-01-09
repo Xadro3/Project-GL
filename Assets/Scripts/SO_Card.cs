@@ -12,6 +12,8 @@ public class SO_Card : ScriptableObject
     [TextAreaAttribute]
     public string upgradedDescription;
     public Sprite artwork;
+    public bool upgraded;
+    public SO_Card upgradedCardInfo;
 
     [Header("Shop Info")]
     public int currencyCost;
@@ -46,7 +48,7 @@ public class SO_Card : ScriptableObject
     public bool entsorgen;
 
     [Header("Upgrade Info")]
-    public bool upgraded;
+    
     public List<GameConstants.cardUpgrades> cardUpgrades;
     public List<int> upgradeValues;
 

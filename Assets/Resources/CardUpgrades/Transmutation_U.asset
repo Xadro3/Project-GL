@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Transmutation_U
+  m_EditorClassIdentifier: 
+  name: Transmutation
+  description: Verringert die Zeitmessung um <color=#61300d>2</color>. Karte kommt
+    auf Entsorgt-Stapel
+  upgradedDescription: Verringert die Zeitmessung um <color=#61300d>3</color>. Karte
+    kommt auf Entsorgt-Stapel
+  artwork: {fileID: 21300000, guid: 60d691fc73646b94790a117c6cfa0b20, type: 3}
+  currencyCost: 130
+  cost: 1
+  durability: 0
+  cardType: 00000000
+  cardRarity: 02000000
+  protectionTypes: 
+  ability: 1
+  duration: 1
+  abilityTypes: 01000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 02000000
+  effectTypes: 13000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 1
+  upgraded: 0
+  cardUpgrades: 01000000
+  upgradeValues: 01000000
+  cardInfo: "Beim Verfahren der Transmutation werden radioaktive Isotope zun\xE4chst,
+    etwa durch chemische Reaktionen, aus den Radioaktiven-Brennst\xE4ben herausgel\xF6st.
+    Die abgetrennten Isotope werden zu neuen Transmutationselementen umgewandelt
+    und in einer Transmutationsanlage mit sehr energiereichen Neutronen bestrahlt.
+    Dadurch kommt es zur Kernumwandlung und zur Spaltung der Isotope. Es entstehen
+    Isotope mit geringeren Halbwertszeiten und damit geringer Radioaktiver Ausstrahlung.
+    \r\nDie Halbwertszeit ist die Zeit bis die H\xE4lfte des Radioaktiven Zerfalles
+    vom Material abgelaufen ist.\r\n"

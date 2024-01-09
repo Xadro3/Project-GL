@@ -18,8 +18,12 @@ MonoBehaviour:
   upgradedDescription: "Wirf <color=#61300d>2</color> zuf\xE4llige Karten von deiner
     Hand ab und ziehe <color=#61300d>3</color> neue"
   artwork: {fileID: 21300000, guid: 45b6e0fb1642fb540818a78dc0cec515, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 08745ff79064c4647b43da8f7dacacb7, type: 2}
   currencyCost: 75
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 01000000
@@ -35,7 +39,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
   cardInfo: "Um neue Werkzeuge und Materialien zu bekommen, liefert S.H.I.E.L.D bei

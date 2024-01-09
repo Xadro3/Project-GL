@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Wolframblech_U
+  m_EditorClassIdentifier: 
+  name: Wolframblech
+  description: <color=#61300d>8</color> Block gegen <color=#dbdb18>Beta</color> und
+    <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
+  upgradedDescription: <color=#61300d>10</color> Block gegen <color=#dbdb18>Beta</color>
+    und <color=#123493>Gamma</color>, immun gegen <color=#931111>Alpha</color>
+  artwork: {fileID: 21300000, guid: 16b1c9ad7941e2f4ea821593870a196a, type: 3}
+  currencyCost: 85
+  cost: 2
+  durability: 8
+  cardType: 04000000
+  cardRarity: 01000000
+  protectionTypes: 000000000100000002000000
+  ability: 0
+  duration: 0
+  abilityTypes: 
+  effect: 0
+  onBruch: 0
+  onPlay: 0
+  effectValues: 
+  effectTypes: 
+  immunity: 1
+  immunityTypes: 00000000
+  entsorgen: 0
+  upgraded: 0
+  cardUpgrades: 02000000
+  upgradeValues: 02000000
+  cardInfo: "Wolfram hat die H\xF6chste Atomare dichte von allen Metallen, was es
+    effektiver zum Abschirmen der Strahlungen macht. Wolfram wird deshalb H\xE4ufig
+    f\xFCr Ger\xE4te in der Strahlungsmedizin verwendet. Selbst Wolfram kann Gamma
+    Strahlung nicht zu 100% Aufhalten."

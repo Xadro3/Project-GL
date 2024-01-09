@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Vitamintabletten_U
+  m_EditorClassIdentifier: 
+  name: Vitamintabletten
+  description: "Senkt jeden Gesundheitsschaden um <color=#61300d>10%</color>, f\xFCr
+    den Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
+  upgradedDescription: "Senkt jeden Gesundheitsschaden um <color=#61300d>10%</color>,
+    f\xFCr den Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
+  artwork: {fileID: 21300000, guid: 909ace7a39d939640874d2c4ddfcfc4e, type: 3}
+  currencyCost: 120
+  cost: 1
+  durability: 0
+  cardType: 01000000
+  cardRarity: 02000000
+  protectionTypes: 
+  ability: 1
+  duration: 100
+  abilityTypes: 00000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 0a000000
+  effectTypes: 18000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 1
+  upgraded: 0
+  cardUpgrades: 00000000
+  upgradeValues: 01000000
+  cardInfo: "Mangel an Vitamine w\xFCrde den K\xF6rper zus\xE4tzlich zu den Strahlenauswirkungen
+    schw\xE4chen, weshalb vorsorgliche Vitamin Zunahme empfohlen wird."

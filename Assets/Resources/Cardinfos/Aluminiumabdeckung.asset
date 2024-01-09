@@ -18,8 +18,12 @@ MonoBehaviour:
   upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
     auf <color=#61300d>0</color> f\xFCr <color=#61300d>2</color> Runden"
   artwork: {fileID: 21300000, guid: f012c785c3128104e9c6d815b8fab383, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 111c9d4b702179046a76c04894b54376, type: 2}
   currencyCost: 75
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 00000000
   cardRarity: 01000000
@@ -35,7 +39,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 03000000
   upgradeValues: 01000000
   cardInfo: "Eine Aluminiumabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter

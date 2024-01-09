@@ -20,8 +20,12 @@ MonoBehaviour:
     Strahlenschaden um <color=#61300d>20%</color>, f\xFCr den Rest des Breaches.
     Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: bdf38932df816424d8394b92c866dcd5, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 7fd6f6ef5e833aa41a210c8bfd0e00cd, type: 2}
   currencyCost: 130
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
@@ -37,7 +41,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
-  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: 'Magnetfelder lenken Teilchenstrahlung, also Alpha- und Betastrahlung,

@@ -20,8 +20,12 @@ MonoBehaviour:
     und <color=#123493>Gamma</color>, <color=#61300d>25%</color> Durchlass des <color=#123493>Gamma</color>
     Schadens, immun gegen <color=#931111>Alpha</color>
   artwork: {fileID: 21300000, guid: 9fc9bdb79e58ba54682fcfed6becd122, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 2b6a75548bb84e04cb4ea9ac559e6d0c, type: 2}
   currencyCost: 85
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 04000000
   cardRarity: 01000000
@@ -37,7 +41,6 @@ MonoBehaviour:
   immunity: 1
   immunityTypes: 00000000
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 02000000
   upgradeValues: 02000000
   cardInfo: "Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen

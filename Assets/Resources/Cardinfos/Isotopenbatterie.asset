@@ -22,8 +22,12 @@ MonoBehaviour:
 
 '
   artwork: {fileID: 21300000, guid: 9fb862573a8345f4ab13a457920fcf46, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 13fd9a8e040096541ae8c7dc639251a4, type: 2}
   currencyCost: 120
   cost: 0
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
@@ -39,7 +43,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
   cardInfo: "In einer Isotopenbatterie, auch Radionuklidbatterie genannt, wird Kernstrahlung
