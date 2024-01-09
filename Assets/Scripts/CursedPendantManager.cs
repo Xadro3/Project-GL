@@ -15,7 +15,7 @@ public class CursedPendantManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        PlayerHealthManager.ActivatePendantDebuff += OnPendantDebuffActivated;
         foreach (GameObject pendantPrefab in pendantPrefabs)
         {
             GameObject newPendantObject = Instantiate(pendantPrefab, Vector3.zero, Quaternion.identity);
@@ -27,7 +27,7 @@ public class CursedPendantManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealthManager.ActivatePendantDebuff += OnPendantDebuffActivated;
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -57,6 +57,7 @@ public class CursedPendantManager : MonoBehaviour
                 pendantInstances[6].GetComponent<CursedPendantScript>().SetPendantActive(true);
                 break;
         }
+        AktivatePendantDisplay();
         Debug.Log("Pendant activated");
     }
 
@@ -68,22 +69,27 @@ public class CursedPendantManager : MonoBehaviour
     {
         if (scene.name == "Encounter" || scene.name == "Overworld" || scene.name == "Shops")
         {
-            pendantContainer = GameObject.FindGameObjectWithTag("CursedPendantContainer");
+            AktivatePendantDisplay();
+        }
+    }
 
-            foreach (GameObject pendant in pendantInstances)
+    private void AktivatePendantDisplay()
+    {
+        pendantContainer = GameObject.FindGameObjectWithTag("CursedPendantContainer");
+
+        foreach (GameObject pendant in pendantInstances)
+        {
+            if (pendant.GetComponent<CursedPendantScript>().isActive)
             {
-                if (pendant.GetComponent<CursedPendantScript>().isActive)
-                {
-                    pendant.transform.SetParent(pendantContainer.transform);
-                    pendant.GetComponent<CursedPendantScript>().SetSpriteRendererActive(true);
-                    pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
-                    pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f, 0f, 0f), Quaternion.identity);
-                }
-                else
-                {
-                    pendant.transform.SetParent(this.gameObject.transform);
-                    pendant.GetComponent<CursedPendantScript>().SetSpriteRendererActive(false);
-                }
+                pendant.transform.SetParent(pendantContainer.transform);
+                pendant.GetComponent<CursedPendantScript>().SetSpriteRendererActive(true);
+                pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
+                pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f, 0f, 0f), Quaternion.identity);
+            }
+            else
+            {
+                pendant.transform.SetParent(this.gameObject.transform);
+                pendant.GetComponent<CursedPendantScript>().SetSpriteRendererActive(false);
             }
         }
     }

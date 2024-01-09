@@ -210,6 +210,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             playerModel.healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
             alphaResistance = alphaResistanceMax;
+            playerModel.alphaBar.SetHealth(alphaResistance);
             Debug.Log("Aua! Ich habe schaden bekommen!");
         }
         if (betaResistance <= 0)
@@ -217,13 +218,16 @@ public class PlayerHealthManager : MonoBehaviour
             betaDotActive = true;
             betaDotDamageSum += betaDotDamage;
             betaResistance = betaResistanceMax;
+            playerModel.betaBar.SetHealth(betaResistance);
             ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
         }
         if (gammaResistance <= 0)
         {
             gammaResistance = gammaResistanceMax;
+            playerModel.gammaBar.SetHealth(gammaResistance);
             TriggerRandomDebuff();
         }
+        UpdateTexts();
     }
 
     public void TriggerRandomDebuff()
