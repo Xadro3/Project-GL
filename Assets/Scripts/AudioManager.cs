@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundmusicMenu;
 
     [Header("----------------- Map -----------------")]
+    public AudioClip backgroundmusicMap;
     public AudioClip nodeClick;
 
     [Header("---------------- Shop ----------------")]
@@ -87,6 +88,11 @@ public class AudioManager : MonoBehaviour
                 musicSource.Play();
                 break;
             case "Overworld" when inEncounter != false: //Musik die auf der Map spielt
+                musicSource.loop = true;
+                inEncounter = false;
+                musicSource.clip = backgroundmusicMap;
+                musicSource.Play();
+                break;
             case "Menu" when inEncounter != false: //Musik die im Haupmenü spielt
                 musicSource.loop = true;
                 inEncounter = false;
@@ -94,10 +100,18 @@ public class AudioManager : MonoBehaviour
                 musicSource.Play();
                 break;
             case "Shops" when inEncounter == false: //Musik die im Laden spielt
-            case "Event" when inEncounter == false: //Musik die im Ereignis spielt
-            case "Workshop" when inEncounter == false: //Musik die in der Werkstadt spielt
                 inEncounter = true;
                 musicSource.clip = backgroundmusicShop;
+                musicSource.Play();
+                break;
+            case "Event" when inEncounter == false: //Musik die im Ereignis spielt
+                inEncounter = true;
+                musicSource.clip = backgroundmusicEreignis;
+                musicSource.Play();
+                break;
+            case "Workshop" when inEncounter == false: //Musik die in der Werkstadt spielt
+                inEncounter = true;
+                musicSource.clip = backgroundmusicWorkshop;
                 musicSource.Play();
                 break;
         }

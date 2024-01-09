@@ -1981,14 +1981,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
-      propertyPath: correctAnswer
-      value: 
-      objectReference: {fileID: 8300000, guid: 49dce4f3d33589242aa308ea10a6a305, type: 3}
-    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
-      propertyPath: incorrectAnswer
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b2cf94b8c7c8f64b9ed5f7d77a32e6f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4243,7 +4235,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5274474400898890431, guid: 043895a3c8b87a549829ff974cbf26bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4414554323912322931, guid: 043895a3c8b87a549829ff974cbf26bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4189055322995932131, guid: 043895a3c8b87a549829ff974cbf26bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 9166353995158232731, guid: 043895a3c8b87a549829ff974cbf26bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 043895a3c8b87a549829ff974cbf26bf, type: 3}
 --- !u!1 &983529493
 GameObject:

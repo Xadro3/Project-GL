@@ -187,7 +187,7 @@ MonoBehaviour:
   enemyTurn: {fileID: 8300000, guid: c79417beebc51d44283fd80f0c66e134, type: 3}
   playerTurn: {fileID: 8300000, guid: 03b51cf5215ba734984b311addc1c3a2, type: 3}
   breachLost: {fileID: 8300000, guid: 1c55453e015405847a119bc662510d26, type: 3}
-  breachWon: {fileID: 0}
+  breachWon: {fileID: 8300000, guid: bc57df48ad7cd75439a0d2f8da924adc, type: 3}
   breachStart: {fileID: 8300000, guid: 2d92428fab413824fa455caa4c76a413, type: 3}
   slotSnap: {fileID: 8300000, guid: 13cf014313598244d8e7d067e69fb3fa, type: 3}
   cardRepair: {fileID: 8300000, guid: 6bd76192573ba024ca068be6ee959f1d, type: 3}
@@ -199,18 +199,18 @@ MonoBehaviour:
   alphaRadiation: {fileID: 8300000, guid: 6688a2bbfb50de64f958d1cf5ab946a5, type: 3}
   betaRadiation: {fileID: 8300000, guid: 1720ca9d0c6415e4e977a50670e310be, type: 3}
   gammaRadiation: {fileID: 8300000, guid: ebe26da2dd35a2244accc786e0226c75, type: 3}
-  backgroundmusicMenu: {fileID: 8300000, guid: 6b2b17dbd99be934babd6df9e93c2475, type: 3}
+  backgroundmusicMenu: {fileID: 8300000, guid: a139dea14a2b0e140baebbdcfa725be4, type: 3}
+  backgroundmusicMap: {fileID: 8300000, guid: a82ccbb8858f2c140b7e07c6a8ada1bd, type: 3}
   nodeClick: {fileID: 8300000, guid: 99feb0493dd9b82428725896cf36550f, type: 3}
-  backgroundmusicShop: {fileID: 8300000, guid: 29ffd304e0e26cf4588493f5cddba2ca, type: 3}
+  backgroundmusicShop: {fileID: 8300000, guid: 2138e8109ba7a144eb610c9b7bda429b, type: 3}
   cardBuy: {fileID: 8300000, guid: f1c47a95803b72c40b7dddd092a00407, type: 3}
-  backgroundmusicWorkshop: {fileID: 0}
+  backgroundmusicWorkshop: {fileID: 8300000, guid: c92785ce3f53f55438750298faf49d2d, type: 3}
   cardUpgrade: {fileID: 8300000, guid: 6bd76192573ba024ca068be6ee959f1d, type: 3}
   workshopCardEntfern: {fileID: 8300000, guid: 171bcb9cec37dcf41be3a28af332d358, type: 3}
   heal: {fileID: 0}
-  backgroundmusicEreignis: {fileID: 0}
-  ARIAProcessing: {fileID: 0}
-  correctAnswer: {fileID: 0}
-  incorrectAnswer: {fileID: 0}
+  backgroundmusicEreignis: {fileID: 8300000, guid: f9bef01e254c1ef4fb60e89ea0e24720, type: 3}
+  correctAnswer: {fileID: 8300000, guid: 49dce4f3d33589242aa308ea10a6a305, type: 3}
+  incorrectAnswer: {fileID: 8300000, guid: 7b2cf94b8c7c8f64b9ed5f7d77a32e6f, type: 3}
 --- !u!1 &8581237013446940325
 GameObject:
   m_ObjectHideFlags: 0
