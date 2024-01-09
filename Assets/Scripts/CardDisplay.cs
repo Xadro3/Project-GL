@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -20,8 +22,34 @@ public class CardDisplay : MonoBehaviour
     public SpriteRenderer shieldIcon;
     public SpriteRenderer entsorgenIcon;
 
+    public TextMeshPro currencyCost;
+    public GameObject currencyField;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
+    {
+        if (scene.name == "Shops" || scene.name == "Workshop")
+        {
+            currencyField.SetActive(true);
+        }
+    }
+    private void OnSceneUnloaded(Scene arg0)
+    {
+        throw new NotImplementedException();
+    }
+
     void Start()
     {
         card = GetComponent<Card>();
@@ -37,6 +65,8 @@ public class CardDisplay : MonoBehaviour
 
         costText.text = card.cost.ToString();
         durabilityText.text = card.durabilityCurrent.ToString();
+
+        currencyCost.text = card.currencyCost.ToString();
     }
 
     public void UpdateDisplay()
@@ -53,6 +83,7 @@ public class CardDisplay : MonoBehaviour
         }
         
         durabilityText.text = card.durabilityCurrent.ToString();
+        currencyCost.text = card.currencyCost.ToString();
     }
 
     public void UpdateDurability(int value)
@@ -71,6 +102,10 @@ public class CardDisplay : MonoBehaviour
         entsorgenIcon.gameObject.SetActive(b);
     }
 
+    public void ActivateCurrencyCostField(bool b)
+    {
+        currencyField.SetActive(b);
+    }
     // Update is called once per frame
     void Update()
     {

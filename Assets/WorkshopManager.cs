@@ -32,8 +32,8 @@ public class WorkshopManager : MonoBehaviour
             instantiatedCard.GetComponent<CardMovementHandler>().enabled = false;
             instantiatedCard.AddComponent<Drag>();
             instantiatedCard.layer = 0;
+            instantiatedCard.GetComponent<CardDisplay>().ActivateCurrencyCostField(true);
         }
-        instantiatedCards[Random.Range(0, 10)].GetComponent<Card>().UpgradeCard();
     }
 
     public void RemoveCards()
@@ -50,6 +50,7 @@ public class WorkshopManager : MonoBehaviour
             instantiatedCard.GetComponent<CardMovementHandler>().enabled = false;
             instantiatedCard.AddComponent<Drag>();
             instantiatedCard.layer = 0;
+            instantiatedCard.GetComponent<CardDisplay>().ActivateCurrencyCostField(true);
         }
     }
 
