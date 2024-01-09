@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> CurrencyUpdateEvent;
     public static event Action<int> CardEnergyCostEffect;
     public static event Action CardRewardChosenSoundEvent;
+    public static event Action NotEnoughEnergyEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -272,6 +273,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            NotEnoughEnergyEvent?.Invoke();
             return false;
         }
     }

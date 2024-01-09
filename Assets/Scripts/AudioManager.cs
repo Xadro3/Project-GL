@@ -136,6 +136,7 @@ public class AudioManager : MonoBehaviour
         Slot.ShieldBuffEvent += HandleCardBuff;
         TurnMaster.StartTurnEvent += HandleStartTurn;
         PlayerHealthManager.EncounterEnd += HandleLostGame;
+        GameManager.NotEnoughEnergyEvent += HandleNoEnergy;
 
 
         //Clip Starten wenn man das Spiel gestartet hat
