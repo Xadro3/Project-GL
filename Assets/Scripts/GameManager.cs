@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerBetaDotDamage()
     {
-        player.ApplyDamage(player.betaDotDamage, GameConstants.radiationTypes.Pure);
+        player.ApplyDamage(player.betaDotDamageSum, GameConstants.radiationTypes.Pure);
     }
     public void EndTurn()
     {

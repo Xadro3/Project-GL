@@ -126,7 +126,6 @@ public class PlayerHealthManager : MonoBehaviour
                 break;
         }
         // check if player survived damage
-        CheckResistances();
         if (CheckHealth() <= 0)
         {
             if (!gm.encounterEndScreenActive)
@@ -219,7 +218,7 @@ public class PlayerHealthManager : MonoBehaviour
             betaDotDamageSum += betaDotDamage;
             betaResistance = betaResistanceMax;
             playerModel.betaBar.SetHealth(betaResistance);
-            ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
+            //ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
         }
         if (gammaResistance <= 0)
         {
