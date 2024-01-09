@@ -158,10 +158,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            player.TriggerRandomDebuff();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //player.TriggerRandomDebuff();
+        //}
     }
     private void SetTokenReward()
     {
@@ -647,4 +647,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpgradeCard(Card card)
+    {
+        deck.UpgradeCard(card);
+    }
 }

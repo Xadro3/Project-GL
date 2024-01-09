@@ -275,6 +275,7 @@ public class Card : MonoBehaviour
 
     public void UpgradeCard()
     {
+        gm.UpgradeCard(this);
         upgraded = true;
         Debug.Log("Original Text: " + cardDescription);
         Debug.Log("Upgraded Text: " + upgradedCardDescription);

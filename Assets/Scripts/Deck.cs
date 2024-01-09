@@ -109,6 +109,12 @@ public class Deck : MonoBehaviour
         cardManager.RemoveCardFromBaseDeck(card);
     }
 
+    public void UpgradeCard(Card card)
+    {
+        cardManager.RemoveCardFromBaseDeck(card);
+        //cardManager.AddCardToBaseDeck(card.upgradeInfo);
+    }
+
     public List<GameObject> GetPlayerDeck()
     {
         playerDeckObjects.Clear();
