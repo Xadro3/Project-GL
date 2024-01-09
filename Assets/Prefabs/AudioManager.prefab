@@ -199,6 +199,7 @@ MonoBehaviour:
   alphaRadiation: {fileID: 8300000, guid: 6688a2bbfb50de64f958d1cf5ab946a5, type: 3}
   betaRadiation: {fileID: 8300000, guid: 1720ca9d0c6415e4e977a50670e310be, type: 3}
   gammaRadiation: {fileID: 8300000, guid: ebe26da2dd35a2244accc786e0226c75, type: 3}
+  noEnergy: {fileID: 8300000, guid: 93d84fa75c1c25b46b6f9c8d3acec78f, type: 3}
   backgroundmusicMenu: {fileID: 8300000, guid: a139dea14a2b0e140baebbdcfa725be4, type: 3}
   backgroundmusicMap: {fileID: 8300000, guid: a82ccbb8858f2c140b7e07c6a8ada1bd, type: 3}
   nodeClick: {fileID: 8300000, guid: 99feb0493dd9b82428725896cf36550f, type: 3}

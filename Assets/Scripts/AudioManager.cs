@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip alphaRadiation;
     public AudioClip betaRadiation;
     public AudioClip gammaRadiation;
+    public AudioClip noEnergy;
 
     [Header("-------------- Hauptmenü -------------")]
     public AudioClip backgroundmusicMenu;
@@ -243,6 +244,11 @@ public class AudioManager : MonoBehaviour
     void HandleLostGame()
     {
         PlaySFX(breachLost);
+    }
+
+    void HandleNoEnergy()
+    {
+        PlaySFX(noEnergy);
     }
 
 
