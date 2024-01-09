@@ -60,8 +60,6 @@ public class Card : MonoBehaviour
 
     //Upgrade
     public bool upgraded;
-    public Dictionary<GameConstants.cardUpgrades, int> cardUpgrade = new Dictionary<GameConstants.cardUpgrades, int>();
-    public string upgradedCardDescription;
     private bool fml;
 
     //Additional Card Info
@@ -89,7 +87,6 @@ public class Card : MonoBehaviour
         durability = cardInfo.durability + durabilityPendantBuff + cardDurabilityDebuffValue;
         durabilityCurrent = durability;
         cardDescription = cardInfo.description;
-        upgradedCardDescription = cardInfo.upgradedDescription;
 
         ability = cardInfo.ability;
         duration = cardInfo.duration;
@@ -112,16 +109,6 @@ public class Card : MonoBehaviour
         for (int i = 0; i < cardInfo.effectTypes.Count; i++)
         {
             cardEffects.Add(cardInfo.effectTypes[i], cardInfo.effectValues[i]);
-        }
-
-        //fill cardUpgrade Dictionary
-        for (int i = 0; i < cardInfo.cardUpgrades.Count; i++)
-        {
-            cardUpgrade.Add(cardInfo.cardUpgrades[i], cardInfo.upgradeValues[i]);
-        }
-        if (upgraded)
-        {
-            UpgradeCard();
         }
 
         if (cardInfo.cardType.Contains(GameConstants.cardType.Schild))
@@ -276,39 +263,6 @@ public class Card : MonoBehaviour
     public void UpgradeCard()
     {
         gm.UpgradeCard(this);
-        upgraded = true;
-        Debug.Log("Original Text: " + cardDescription);
-        Debug.Log("Upgraded Text: " + upgradedCardDescription);
-        cardDescription = upgradedCardDescription;
-        foreach (var entry in cardUpgrade)
-        {
-            switch (entry.Key)
-            {
-                case GameConstants.cardUpgrades.EnergyCost:
-                    cost -= entry.Value;
-                    break;
-
-                case GameConstants.cardUpgrades.Schild:
-                    durability += entry.Value;
-                    break;
-
-                case GameConstants.cardUpgrades.Duration:
-                    duration += entry.Value;
-                    break;
-
-                case GameConstants.cardUpgrades.Effect:
-                    HandleCardEffectUpgrade(entry.Value);
-                    break;
-
-                default:
-                    Debug.LogWarning(gameObject.name + " has an upgrade we do not handle");
-                    break;
-
-            }
-            
-        }
-        SetCurrentDurabilityToMax();
-        UpdateDisplay();
     }
 
     private void HandleCardEffectUpgrade(int value)
