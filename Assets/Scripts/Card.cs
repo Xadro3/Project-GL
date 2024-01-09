@@ -66,7 +66,7 @@ public class Card : MonoBehaviour
     public string sienceInfo;
     private void Awake()
     {
-
+        gm = FindObjectOfType<GameManager>();
     }
 
     private void Start()

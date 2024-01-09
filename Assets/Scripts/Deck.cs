@@ -101,18 +101,18 @@ public class Deck : MonoBehaviour
 
     public void AddCardToBaseDeck(Card card)
     {
-        cardManager.AddCardToBaseDeck(card);
+        cardManager.AddCardToBaseDeck(card.cardInfo);
     }
 
     public void RemoveCardFromBaseDeck(Card card)
     {
-        cardManager.RemoveCardFromBaseDeck(card);
+        cardManager.RemoveCardFromBaseDeck(card.cardInfo);
     }
 
     public void UpgradeCard(Card card)
     {
-        cardManager.RemoveCardFromBaseDeck(card);
-        //cardManager.AddCardToBaseDeck(card.upgradeInfo);
+        cardManager.RemoveCardFromBaseDeck(card.cardInfo);
+        cardManager.AddCardToBaseDeck(card.cardInfo.upgradedCardInfo);
     }
 
     public List<GameObject> GetPlayerDeck()

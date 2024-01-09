@@ -67,14 +67,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void AddCardToBaseDeck(Card card)
+    public void AddCardToBaseDeck(SO_Card cardInfo)
     {
-        baseCards.Add(card.cardInfo);
+        baseCards.Add(cardInfo);
     }
 
-    public void RemoveCardFromBaseDeck(Card card)
+    public void RemoveCardFromBaseDeck(SO_Card cardInfo)
     {
-        baseCards.Remove(card.cardInfo);
+        baseCards.Remove(cardInfo);
     }
 
     public void BuildDeck()

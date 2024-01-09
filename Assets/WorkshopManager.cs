@@ -33,6 +33,7 @@ public class WorkshopManager : MonoBehaviour
             instantiatedCard.AddComponent<Drag>();
             instantiatedCard.layer = 0;
         }
+        instantiatedCards[Random.Range(0, 10)].GetComponent<Card>().UpgradeCard();
     }
 
     public void RemoveCards()
