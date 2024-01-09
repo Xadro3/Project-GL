@@ -318,7 +318,9 @@ public class PlayerHealthManager : MonoBehaviour
                     break;
 
                 case GameConstants.effectTypes.DrawCard:
+                case GameConstants.effectTypes.EnergyGet:
                 case GameConstants.effectTypes.Discard:
+                    Debug.Log("Effect: " + entry);
                     gm.HandleEffect(entry.Key, entry.Value);
                     break;
 
