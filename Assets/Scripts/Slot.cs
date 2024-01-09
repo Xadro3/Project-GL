@@ -118,7 +118,7 @@ public class Slot : MonoBehaviour
         
     }
 
-    private void HandleShieldMaxBuff(int value)
+    public void HandleShieldMaxBuff()
     {
         GetCardInSlotInfo().AdjustDurability(-(GetCardInSlotInfo().durability));
         
@@ -133,7 +133,15 @@ public class Slot : MonoBehaviour
                 switch (entry.Key)
                 {
                     case GameConstants.effectTypes.ShieldMaxBuff:
-                        HandleShieldMaxBuff(entry.Value);
+                        if (card.cardName == "Upcycling")
+                        {
+                            Debug.Log("Upcycling played");
+                            gm.HandleEffect(entry.Key, entry.Value);
+                        }
+                        else
+                        {
+                            HandleShieldMaxBuff();
+                        }
                         break;
 
                     case GameConstants.effectTypes.ShieldBuff:

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229f8b2bb021f03489b9ad6ebc996bf9, type: 3}
+  m_Name: Upcycling
+  m_EditorClassIdentifier: 
+  name: Upcycling
+  description: "L\xF6st eine ausgew\xE4hlte Schildkarte auf, um den maximalen Blockwert
+    einer anderen zu verdoppeln.\r\n"
+  artwork: {fileID: 21300000, guid: 4c976e48322d1814b8702d768cb61dee, type: 3}
+  upgraded: 0
+  upgradedCardInfo: {fileID: 11400000, guid: 135c9f13759cfc740b0e4fa71352b05c, type: 2}
+  currencyCost: 120
+  cost: 3
+  energyCostAffected: 0
+  energyCostIncrease: 0
+  durability: 0
+  cardType: 02000000
+  cardRarity: 02000000
+  protectionTypes: 
+  ability: 1
+  duration: 0
+  abilityTypes: 02000000
+  effect: 1
+  onBruch: 0
+  onPlay: 0
+  effectValues: 0000000000000000
+  effectTypes: 0d0000000c000000
+  immunity: 0
+  immunityTypes: 
+  entsorgen: 0
+  cardInfo: "Beim Upcycling wird h\xE4ufig aus scheinbar nutzlosen oder abgenutzten
+    Gegenst\xE4nden etwas Neues und Wertvolles geschaffen. Dieser kreative Ansatz
+    tr\xE4gt zur Reduzierung von Abfall bei, f\xF6rdert die Nachhaltigkeit und regt
+    zu innovativem Denken \xFCber den Lebenszyklus von Produkten an. \r"

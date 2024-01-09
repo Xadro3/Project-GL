@@ -389,8 +389,29 @@ public class GameManager : MonoBehaviour
                 TriggerEnergyGetEffect(effectValue);
                 Debug.Log("Effect: " + effectType.ToString());
                 break;
+
+            case GameConstants.effectTypes.ShieldMaxBuff:
+                TriggerRandomShieldMaxBuff();
+                break;
         }
     }
+
+    private void TriggerRandomShieldMaxBuff()
+    {
+        List<Slot> activeSlotsWithCard = new List<Slot>();
+        foreach (Slot slot in activeCardSlots)
+        {
+            if (slot.hasCard)
+            {
+                activeSlotsWithCard.Add(slot);
+            }
+        }
+        int randomIndex = Random.Range(0, activeSlotsWithCard.Count);
+        Slot randomSlot = activeSlotsWithCard[randomIndex];
+        Debug.Log("Buffed card in slot: " + randomSlot);
+        randomSlot.HandleShieldMaxBuff();
+    }
+
     private void TriggerCardDrawEffect(int value)
     {
         StartCoroutine(CardDrawEffect(value));
