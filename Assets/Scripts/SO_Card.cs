@@ -9,8 +9,6 @@ public class SO_Card : ScriptableObject
     public new string name;
     [TextAreaAttribute]
     public string description;
-    [TextAreaAttribute]
-    public string upgradedDescription;
     public Sprite artwork;
     public bool upgraded;
     public SO_Card upgradedCardInfo;
@@ -46,12 +44,6 @@ public class SO_Card : ScriptableObject
 
     [Header("Entsorgen")]
     public bool entsorgen;
-
-    [Header("Upgrade Info")]
-    
-    public List<GameConstants.cardUpgrades> cardUpgrades;
-    public List<int> upgradeValues;
-
 
     [Header("Wissenschaftliche Info")]
     [TextAreaAttribute]
