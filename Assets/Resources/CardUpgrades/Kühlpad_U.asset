@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "K\xFChlpad"
   description: Bei voller <color=#dbdb18>Betaleiste</color> wird der nachfolgende
-    Gesundheitsschaden um <color=#61300d>25%</color> reduziert. Karte kommt auf Entsorgt-Stapel
+    Gesundheitsschaden um <color=#61300d>50%</color> reduziert. Karte kommt auf Entsorgt-Stapel
   upgradedDescription: Bei voller <color=#dbdb18>Betaleiste</color> wird der nachfolgende
     Gesundheitsschaden um <color=#61300d>50%</color> reduziert. Karte kommt auf Entsorgt-Stapel
   artwork: {fileID: 21300000, guid: a9a4d0eed440b3e44b803bde47301825, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 85
   cost: 2
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 01000000
@@ -30,12 +34,11 @@ MonoBehaviour:
   effect: 1
   onBruch: 0
   onPlay: 0
-  effectValues: 19000000
+  effectValues: 32000000
   effectTypes: 18000000
   immunity: 0
   immunityTypes: 
   entsorgen: 1
-  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 19000000
   cardInfo: "Verbrennungen sind eine der Hauptsymptome von sehr hohen Dosen Betastrahlung.

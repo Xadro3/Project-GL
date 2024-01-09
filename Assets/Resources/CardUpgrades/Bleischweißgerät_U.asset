@@ -16,8 +16,12 @@ MonoBehaviour:
   description: "Repariert ausgew\xE4hlte <color=#123493>Blei</color> Schildkarte"
   upgradedDescription: "Repariert ausgew\xE4hlte <color=#123493>Blei</color> Schildkarte"
   artwork: {fileID: 21300000, guid: 54adab00a1ccc96469e9082e0bd5817c, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 120
-  cost: 1
+  cost: 0
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 05000000
   cardRarity: 02000000
@@ -33,7 +37,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: "Wegen des Niedrigen Schmelzpunktes von Blei ist es nicht zum Schwei\xDFen

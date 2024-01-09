@@ -18,8 +18,12 @@ MonoBehaviour:
   upgradedDescription: "Verringert die austretende Strahlung f\xFCr <color=#61300d>2</color>
     Runden um <color=#61300d>50%</color>"
   artwork: {fileID: 21300000, guid: 678e6e0248849214ea30abd9c32097a3, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 120
-  cost: 3
+  cost: 2
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 00000000
   cardRarity: 02000000
@@ -35,7 +39,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: "Die meisten Reaktoren werden in einem Wasserbad gek\xFChlt, welches

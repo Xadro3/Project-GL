@@ -14,18 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Papierabdeckung
   description: "Reduziert den <color=#931111>Alpha-</color> Strahlenschaden auf <color=#61300d>0</color>
-    f\xFCr <color=#61300d>1</color> Runde"
+    f\xFCr <color=#61300d>2</color> Runden"
   upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> Strahlenschaden
     auf <color=#61300d>0</color> f\xFCr <color=#61300d>2</color> Runden"
   artwork: {fileID: 21300000, guid: e618ab10fedfb7748a4f304491486f30, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 45
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 00000000
   cardRarity: 00000000
   protectionTypes: 00000000
   ability: 1
-  duration: 1
+  duration: 2
   abilityTypes: 01000000
   effect: 1
   onBruch: 0
@@ -35,7 +39,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 03000000
   upgradeValues: 01000000
   cardInfo: "Eine Papierabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter

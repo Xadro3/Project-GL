@@ -26,7 +26,7 @@ MonoBehaviour:
   cost: 1
   energyCostAffected: 0
   energyCostIncrease: 0
-  durability: 0
+  durability: 8
   cardType: 04000000
   cardRarity: 01000000
   protectionTypes: 000000000100000002000000

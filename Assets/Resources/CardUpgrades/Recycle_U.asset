@@ -18,14 +18,18 @@ MonoBehaviour:
   upgradedDescription: "L\xF6st eine ausgew\xE4hlte Schildkarte auf, um <color=#61300d>2</color>
     Karten zu ziehen"
   artwork: {fileID: 21300000, guid: e6d850d84c6aaa340aaba5bc84c1506f, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 75
   cost: 1
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 02000000
   cardRarity: 01000000
   protectionTypes: 
   ability: 1
-  duration: 1
+  duration: 0
   abilityTypes: 02000000
   effect: 1
   onBruch: 0
@@ -35,7 +39,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: "Bei dem Recycling werden Abfallmaterialien gesammelt, sortiert und wiederverwertet,

@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Papier_U
   m_EditorClassIdentifier: 
   name: Papier
-  description: <color=#61300d>6</color>  Block gegen <color=#931111>Alpha</color>
+  description: <color=#61300d>8</color>  Block gegen <color=#931111>Alpha</color>
   upgradedDescription: <color=#61300d>8</color>  Block gegen <color=#931111>Alpha</color>
   artwork: {fileID: 21300000, guid: df96cd57455838c46ae37ef44cd557ea, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 45
   cost: 1
-  durability: 6
+  energyCostAffected: 0
+  energyCostIncrease: 0
+  durability: 8
   cardType: 04000000
   cardRarity: 00000000
   protectionTypes: 00000000
@@ -33,7 +37,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 02000000
   upgradeValues: 02000000
   cardInfo: "Herk\xF6mmliches Drucker Papier reicht vollkommen aus um Alphastrahlung

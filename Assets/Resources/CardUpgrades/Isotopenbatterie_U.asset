@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: Isotopenbatterie_U
   m_EditorClassIdentifier: 
   name: Isotopenbatterie
-  description: Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
-    um jeweils <color=#61300d>1</color> Punkt und erzeugt <color=#61300d>2</color>
+  description: 'Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
+    um jeweils <color=#61300d>1</color> Punkt und erzeugt <color=#61300d>3</color>
     Energie
+
+'
   upgradedDescription: 'Reduziert <color=#931111>Alpha-</color> und <color=#dbdb18>Betaleiste</color>
     um jeweils <color=#61300d>1</color> Punkt und erzeugt <color=#61300d>3</color>
     Energie
 
 '
   artwork: {fileID: 21300000, guid: 9fb862573a8345f4ab13a457920fcf46, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 120
   cost: 0
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
@@ -34,12 +40,11 @@ MonoBehaviour:
   effect: 1
   onBruch: 0
   onPlay: 0
-  effectValues: 0100000002000000
+  effectValues: 0100000003000000
   effectTypes: 0e00000016000000
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
   cardInfo: "In einer Isotopenbatterie, auch Radionuklidbatterie genannt, wird Kernstrahlung

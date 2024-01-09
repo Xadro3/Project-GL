@@ -15,19 +15,23 @@ MonoBehaviour:
   name: Bleiabdeckung
   description: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
     auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
-    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>1</color> Runde"
+    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>2</color> Runden"
   upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
     auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
     um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>2</color> Runden"
   artwork: {fileID: 21300000, guid: 776cf84bd97ed7d42be4b39706335592, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 120
   cost: 3
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 00000000
   cardRarity: 02000000
   protectionTypes: 000000000100000002000000
   ability: 1
-  duration: 1
+  duration: 2
   abilityTypes: 01000000
   effect: 1
   onBruch: 0
@@ -37,7 +41,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 03000000
   upgradeValues: 01000000
   cardInfo: "Eine Bleiabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter

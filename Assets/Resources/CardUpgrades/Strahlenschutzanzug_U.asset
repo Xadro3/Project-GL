@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: Strahlenschutzanzug_U
   m_EditorClassIdentifier: 
   name: Strahlenschutzanzug
-  description: "Senkt jeden Strahlenschaden um <color=#61300d>1</color>, f\xFCr den
+  description: "Senkt jeden Strahlenschaden um <color=#61300d>2</color>, f\xFCr den
     Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
   upgradedDescription: "Senkt jeden Strahlenschaden um <color=#61300d>2</color>,
     f\xFCr den Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: 0c51ad6300cc7514997591af25d4eff9, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 130
   cost: 2
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
@@ -30,12 +34,11 @@ MonoBehaviour:
   effect: 1
   onBruch: 0
   onPlay: 0
-  effectValues: 01000000
+  effectValues: 02000000
   effectTypes: 02000000
   immunity: 0
   immunityTypes: 
   entsorgen: 1
-  upgraded: 0
   cardUpgrades: 01000000
   upgradeValues: 01000000
   cardInfo: "Strahlenschutzanz\xFCge sorgen daf\xFCr, dass Radionuklide nicht die

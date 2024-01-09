@@ -16,8 +16,12 @@ MonoBehaviour:
   description: Wenn ausgespielt, ziehe <color=#61300d>1</color> Karte
   upgradedDescription: Wenn ausgespielt, ziehe <color=#61300d>1</color> Karte
   artwork: {fileID: 21300000, guid: c083c776fdcd06848a32eb8a8cf54ba7, type: 3}
+  upgraded: 1
+  upgradedCardInfo: {fileID: 0}
   currencyCost: 55
-  cost: 1
+  cost: 0
+  energyCostAffected: 0
+  energyCostIncrease: 0
   durability: 0
   cardType: 01000000
   cardRarity: 00000000
@@ -33,7 +37,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  upgraded: 0
   cardUpgrades: 00000000
   upgradeValues: 01000000
   cardInfo: "Eine Lieferung mit n\xFCtzlichem neuem Werkzeug und Material. Wird von
