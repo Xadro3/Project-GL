@@ -61,7 +61,7 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Emmission_Power: -0.11
-    - _Fading: 0.454
+    - _Fading: 0.474
     m_Colors:
     - _Color: {r: 0, g: 0.4671237, b: 1, a: 0}
   m_BuildTextureStacks: []
