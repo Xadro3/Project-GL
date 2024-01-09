@@ -377,7 +377,12 @@ public class CardMovementHandler : MonoBehaviour
 
             case GameConstants.abilityTargets.AbilityShield when slot.hasCard:
                 Debug.Log("I want to play that on a Shield");
-                if (CanPlayCardOnShield(card, slot))
+                if (card.cardName == "Wiederverwertung")
+                {
+                    wasPlayed = true;
+                    card.SetWasPlayed(true);
+                    OnShieldEffect?.Invoke(card, slot);
+                }else if (CanPlayCardOnShield(card, slot))
                 {
                     if (card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepair) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairPapier) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairBlei) || card.cardEffects.ContainsKey(GameConstants.effectTypes.ShieldRepairAlu))
                     {
@@ -454,6 +459,7 @@ public class CardMovementHandler : MonoBehaviour
 
             case "Recycle":
             case "Upcycling":
+            case "Wiederverwertung":
             case "Bleibeschichtung":
             case "Alubeschichtung":
             case "Papierbeschichtung":

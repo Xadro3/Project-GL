@@ -393,6 +393,29 @@ public class GameManager : MonoBehaviour
             case GameConstants.effectTypes.ShieldMaxBuff:
                 TriggerRandomShieldMaxBuff();
                 break;
+
+            case GameConstants.effectTypes.ShieldRepair:
+                TriggerRandomShieldRepair();
+                break;
+        }
+    }
+
+    private void TriggerRandomShieldRepair()
+    {
+        List<Slot> activeSlotsWithCard = new List<Slot>();
+        foreach (Slot slot in activeCardSlots)
+        {
+            if (slot.hasCard)
+            {
+                activeSlotsWithCard.Add(slot);
+            }
+        }
+        if (activeSlotsWithCard.Count > 0)
+        {
+            int randomIndex = Random.Range(0, activeSlotsWithCard.Count);
+            Slot randomSlot = activeSlotsWithCard[randomIndex];
+            Debug.Log("Repaired card in slot: " + randomSlot);
+            randomSlot.HandleShieldRepair();
         }
     }
 
@@ -406,10 +429,13 @@ public class GameManager : MonoBehaviour
                 activeSlotsWithCard.Add(slot);
             }
         }
-        int randomIndex = Random.Range(0, activeSlotsWithCard.Count);
-        Slot randomSlot = activeSlotsWithCard[randomIndex];
-        Debug.Log("Buffed card in slot: " + randomSlot);
-        randomSlot.HandleShieldMaxBuff();
+        if (activeSlotsWithCard.Count - 1 > 0)
+        {
+            int randomIndex = Random.Range(0, activeSlotsWithCard.Count);
+            Slot randomSlot = activeSlotsWithCard[randomIndex];
+            Debug.Log("Buffed card in slot: " + randomSlot);
+            randomSlot.HandleShieldMaxBuff();
+        } 
     }
 
     private void TriggerCardDrawEffect(int value)
