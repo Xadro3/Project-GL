@@ -43,6 +43,9 @@ public class CardDisplay : MonoBehaviour
         if (scene.name == "Shops" || scene.name == "Workshop")
         {
             currencyField.SetActive(true);
+        }else if (scene.name == "Encounter")
+        {
+            currencyField.SetActive(false);
         }
     }
     private void OnSceneUnloaded(Scene arg0)

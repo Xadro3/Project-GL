@@ -16,9 +16,6 @@ MonoBehaviour:
   description: "Senkt <color=#931111>Alpha</color> und <color=#dbdb18>Beta</color>
     Strahlenschaden um <color=#61300d>20%</color>, f\xFCr den Rest des Breaches.
     Karte kommt auf Entsorgt-Stapel"
-  upgradedDescription: "Senkt <color=#931111>Alpha</color> und <color=#dbdb18>Beta</color>
-    Strahlenschaden um <color=#61300d>20%</color>, f\xFCr den Rest des Breaches.
-    Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: bdf38932df816424d8394b92c866dcd5, type: 3}
   upgraded: 0
   upgradedCardInfo: {fileID: 11400000, guid: 7fd6f6ef5e833aa41a210c8bfd0e00cd, type: 2}
@@ -32,7 +29,7 @@ MonoBehaviour:
   protectionTypes: 0000000001000000
   ability: 1
   duration: 100
-  abilityTypes: 
+  abilityTypes: 00000000
   effect: 1
   onBruch: 0
   onPlay: 0
@@ -41,7 +38,5 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
-  cardUpgrades: 00000000
-  upgradeValues: 01000000
   cardInfo: 'Magnetfelder lenken Teilchenstrahlung, also Alpha- und Betastrahlung,
     ab und haben auf Energiestrahlung, also Gammastrahlung, keine Auswirkung. '

@@ -33,22 +33,22 @@ public class PlayerHealthManager : MonoBehaviour
 
     private PlayerModel playerModel;
 
-    private bool alphaDamageReductionFlat = false;
-    private bool alphaDamageReductionPercent = false;
-    private bool betaDamageReductionFlat = false;
-    private bool betaDamageReductionPercent = false;
-    private bool gammaDamageReductionFlat = false;
-    private bool gammaDamageReductionPercent = false;
+    public bool alphaDamageReductionFlat = false;
+    public bool alphaDamageReductionPercent = false;
+    public bool betaDamageReductionFlat = false;
+    public bool betaDamageReductionPercent = false;
+    public bool gammaDamageReductionFlat = false;
+    public bool gammaDamageReductionPercent = false;
 
-    private bool healthDamageReductionPercent = false;
+    public bool healthDamageReductionPercent = false;
 
     public bool betaDotActive = false;
     public int betaDotDamage = 3;
     public int betaDotDamageSum = 0;
 
-    private int healthDamageReductionFlatValue = 0;
-    private int resistanceDamageReductionPercentValue = 0;
-    private int resistanceDamageReductionFlatValue = 0;
+    public int healthDamageReductionFlatValue = 0;
+    public int resistanceDamageReductionPercentValue = 0;
+    public int resistanceDamageReductionFlatValue = 0;
 
     private List<Tuple<System.Action, string>> triggeredActions = new List<Tuple<System.Action, string>>();
 
@@ -296,6 +296,10 @@ public class PlayerHealthManager : MonoBehaviour
         {
             switch (entry.Key)
             {
+                case GameConstants.effectTypes.RadiationReductionPercent:
+                    gm.wagons[0].HandleEffect(card);
+                    break;
+
                 case GameConstants.effectTypes.ResistanceReductionFlat:
                     TriggerResistanceReductionFlat(card.protectionTypes, entry.Value);
                     Debug.Log("Effect: " + entry);

@@ -14,19 +14,19 @@ public class Enemy : MonoBehaviour
     public int roundTimerMin = 2;
     public int roundTimerMax = 5;
 
-    private int blockDurationAlpha = 0;
-    private int blockDurationBeta = 0;
-    private int blockDurationGamma = 0;
+    public int blockDurationAlpha = 0;
+    public int blockDurationBeta = 0;
+    public int blockDurationGamma = 0;
 
-    private int reductionFlatValue = 0;
-    private int reductionDurationAlphaFlat = 0;
-    private int reductionDurationBetaFlat = 0;
-    private int reductionDurationGammaFlat = 0;
+    public int reductionFlatValue = 0;
+    public int reductionDurationAlphaFlat = 0;
+    public int reductionDurationBetaFlat = 0;
+    public int reductionDurationGammaFlat = 0;
 
-    private int reductionPercentValue = 0;
-    private int reductionDurationAlphaPercent = 0;
-    private int reductionDurationBetaPercent = 0;
-    private int reductionDurationGammaPercent = 0;
+    public float reductionPercentValue = 0f;
+    public int reductionDurationAlphaPercent = 0;
+    public int reductionDurationBetaPercent = 0;
+    public int reductionDurationGammaPercent = 0;
 
     public bool alphaDamageBuff = false;
     public int alphaDamageBuffValue = 2;
@@ -252,7 +252,7 @@ public class Enemy : MonoBehaviour
                     }
                     if (reductionDurationAlphaPercent > 0)
                     {
-                        damageValue -= damageValue * (reductionPercentValue / 100);
+                        damageValue -= damageValue * (int)(reductionPercentValue / 100f);
                         reductionDurationAlphaPercent -= 1;
                     }
                     if (alphaDamageBuff)
@@ -277,7 +277,7 @@ public class Enemy : MonoBehaviour
                     }
                     if (reductionDurationBetaPercent > 0)
                     {
-                        damageValue -= damageValue * (reductionPercentValue / 100);
+                        damageValue -= damageValue * (int)(reductionPercentValue / 100f);
                         reductionDurationBetaPercent -= 1;
                     }
                     if (betaDamageBuff)
@@ -302,7 +302,7 @@ public class Enemy : MonoBehaviour
                     }
                     if (reductionDurationGammaPercent > 0)
                     {
-                        damageValue -= damageValue * (reductionPercentValue / 100);
+                        damageValue -= damageValue * (int)(reductionPercentValue / 100f);
                         reductionDurationGammaPercent -= 1;
                     }
                     if (gammaDamageBuff)
@@ -421,28 +421,38 @@ public class Enemy : MonoBehaviour
         }
         UpdateDamageText();
     }
-    private void TriggerRadiationReductionPercent(List<GameConstants.radiationTypes> radiations, int value, int duration)
+    private void TriggerRadiationReductionPercent(List<GameConstants.radiationTypes> radiations, float value, int duration)
     {
         reductionPercentValue = value;
+        
         foreach (GameConstants.radiationTypes entry in radiations)
         {
+            float temp = 0f;
+            int originalValue = damageStats[entry];
             switch (entry)
             {
                 case GameConstants.radiationTypes.Alpha:
                     reductionDurationAlphaPercent = duration - 1;
-                    damageStats[entry] -= damageStats[entry] * (value / 100);
+                    temp = originalValue * (value / 100f);
+                    damageStats[entry] -= (int)temp;
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     reductionDurationBetaPercent = duration - 1;
-                    damageStats[entry] -= damageStats[entry] * (value / 100);
+                    temp = originalValue * (value / 100f);
+                    damageStats[entry] -= (int)temp;
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     reductionDurationGammaPercent = duration - 1;
-                    damageStats[entry] -= damageStats[entry] * (value / 100);
+                    temp = originalValue * (value / 100f);
+                    damageStats[entry] -= (int)temp;
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
                     break;
             }
+            
         }
         UpdateDamageText();
     }
