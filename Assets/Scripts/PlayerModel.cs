@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PlayerModel : MonoBehaviour
 {
@@ -19,8 +20,22 @@ public class PlayerModel : MonoBehaviour
 
     public Animator playerModelAnimator;
     public Animator playerAbilitySlotAnimator;
+    public Animator playerRessourceTextAnimator;
 
-    // Start is called before the first frame update
+    private void OnEnable()
+    {
+        GameManager.NotEnoughEnergyEvent += HandleNotEnoughEnergy;
+    }
+    private void OnDisable()
+    {
+        GameManager.NotEnoughEnergyEvent -= HandleNotEnoughEnergy;
+    }
+
+    private void HandleNotEnoughEnergy()
+    {
+        playerRessourceTextAnimator.SetTrigger("Energy0");
+    }
+
     void Start()
     {
         

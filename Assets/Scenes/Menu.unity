@@ -282,20 +282,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.size
-      value: 18
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.data[15]
       value: 
-      objectReference: {fileID: 11400000, guid: 8636f6538c8e0e247bb15e9784fe18d6, type: 2}
+      objectReference: {fileID: 11400000, guid: a49b10fe8fee13949832f3034bf50790, type: 2}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.data[16]
       value: 
-      objectReference: {fileID: 11400000, guid: 8636f6538c8e0e247bb15e9784fe18d6, type: 2}
+      objectReference: {fileID: 11400000, guid: a49b10fe8fee13949832f3034bf50790, type: 2}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.data[17]
       value: 
-      objectReference: {fileID: 11400000, guid: 8636f6538c8e0e247bb15e9784fe18d6, type: 2}
+      objectReference: {fileID: 11400000, guid: a49b10fe8fee13949832f3034bf50790, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

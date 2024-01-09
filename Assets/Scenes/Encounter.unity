@@ -29412,6 +29412,10 @@ PrefabInstance:
       propertyPath: playerAbilitySlotAnimator
       value: 
       objectReference: {fileID: 103532310}
+    - target: {fileID: 7676652358885782627, guid: fd661a88c4e57134a919188625ceb3af, type: 3}
+      propertyPath: playerRessourceTextAnimator
+      value: 
+      objectReference: {fileID: 571613767}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -653,4 +653,9 @@ public class GameManager : MonoBehaviour
     {
         deck.UpgradeCard(card);
     }
+
+    public void TriggerEventAward()
+    {
+        pendantManager.AwardRandomPendant();
+    }
 }
