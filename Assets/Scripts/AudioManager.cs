@@ -239,6 +239,11 @@ public class AudioManager : MonoBehaviour
         PlaySFX(gammaRadiation);
     }
 
+    void HandleLostGame()
+    {
+        PlaySFX(breachLost);
+    }
+
 
     //Workshop Sound Handler
     void HandleCardUpgrade()
