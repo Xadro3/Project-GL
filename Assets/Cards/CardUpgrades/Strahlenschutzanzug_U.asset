@@ -15,8 +15,6 @@ MonoBehaviour:
   name: Strahlenschutzanzug
   description: "Senkt jeden Strahlenschaden um <color=#61300d>2</color>, f\xFCr den
     Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
-  upgradedDescription: "Senkt jeden Strahlenschaden um <color=#61300d>2</color>,
-    f\xFCr den Rest des Breaches. Karte kommt auf Entsorgt-Stapel"
   artwork: {fileID: 21300000, guid: 0c51ad6300cc7514997591af25d4eff9, type: 3}
   upgraded: 1
   upgradedCardInfo: {fileID: 0}
@@ -27,9 +25,9 @@ MonoBehaviour:
   durability: 0
   cardType: 01000000
   cardRarity: 02000000
-  protectionTypes: 
+  protectionTypes: 000000000100000002000000
   ability: 1
-  duration: 0
+  duration: 99
   abilityTypes: 00000000
   effect: 1
   onBruch: 0
@@ -39,8 +37,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 1
-  cardUpgrades: 01000000
-  upgradeValues: 01000000
   cardInfo: "Strahlenschutzanz\xFCge sorgen daf\xFCr, dass Radionuklide nicht die
     Haut erreichen. Au\xDFerdem wird normalerweise zus\xE4tzlich eine Atemmaske getragen,
     wodurch keine kontaminierten Partikel aus der Umgebung eingeatmet werden. Einen

@@ -296,6 +296,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             switch (entry.Key)
             {
+                case GameConstants.effectTypes.RadiationReductionFlat:
                 case GameConstants.effectTypes.RadiationReductionPercent:
                     gm.wagons[0].HandleEffect(card);
                     break;
@@ -333,6 +334,10 @@ public class PlayerHealthManager : MonoBehaviour
 
                 case GameConstants.effectTypes.HealthDamageReductionPercent:
                     TriggerHealthDamageReductionPercent(entry.Value);
+                    break;
+
+                default:
+                    Debug.Log("Effect: " + entry + " is not handled.");
                     break;
             }
             UpdateTexts();

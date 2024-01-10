@@ -458,7 +458,7 @@ public class Enemy : MonoBehaviour
     }
     private void TriggerRadiationReductionFlat(List<GameConstants.radiationTypes> radiations, int value, int duration)
     {
-        reductionFlatValue = value;
+        reductionFlatValue += value;
         foreach (GameConstants.radiationTypes entry in radiations)
         {
             switch (entry)
@@ -466,16 +466,21 @@ public class Enemy : MonoBehaviour
                 case GameConstants.radiationTypes.Alpha:
                     reductionDurationAlphaFlat = duration - 1;
                     damageStats[entry] -= value;
+                    Debug.Log("Reduced Alpha damage by: " + value + " to a new total of: " + damageStats[entry]);
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
                     break;
 
                 case GameConstants.radiationTypes.Beta:
                     reductionDurationBetaFlat = duration - 1;
                     damageStats[entry] -= value;
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
+                    Debug.Log("Reduced Beta damage by: " + value + " to a new total of: " + damageStats[entry]);
                     break;
 
                 case GameConstants.radiationTypes.Gamma:
                     reductionDurationGammaFlat = duration - 1;
                     damageStats[entry] -= value;
+                    UpdateDamageDuringRound(entry, damageStats[entry]);
                     break;
             }
         }
