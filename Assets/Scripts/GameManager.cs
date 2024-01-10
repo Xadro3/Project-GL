@@ -468,6 +468,7 @@ public class GameManager : MonoBehaviour
             randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
             deck.RemoveCardFromPlayerDeck(randomCard);
         }
+        UpdateDeckDisplay?.Invoke(deck.playerDeck.Count);
         yield break;
     }
     private void TriggerEnergyGetEffect(int value)
