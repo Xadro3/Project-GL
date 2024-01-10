@@ -15,8 +15,6 @@ MonoBehaviour:
   name: Aluminiumplatte
   description: <color=#61300d>12</color>  Block gegen <color=#931111>Alpha</color>
     und <color=#dbdb18>Beta</color>
-  upgradedDescription: <color=#61300d>14</color>  Block gegen <color=#931111>Alpha</color>
-    und <color=#dbdb18>Beta</color>
   artwork: {fileID: 21300000, guid: 346a8f8c384c4f24f89687c40fb645f2, type: 3}
   upgraded: 0
   upgradedCardInfo: {fileID: 11400000, guid: 371d7727fb7ec774e8eb1579e73d16e3, type: 2}
@@ -27,7 +25,7 @@ MonoBehaviour:
   durability: 12
   cardType: 04000000
   cardRarity: 02000000
-  protectionTypes: 0000000000000000
+  protectionTypes: 0000000001000000
   ability: 0
   duration: 0
   abilityTypes: 
@@ -39,8 +37,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  cardUpgrades: 02000000
-  upgradeValues: 02000000
   cardInfo: "Aluminiumfolie bietet genug Atomare Dichte um die relativ schweren Teilchenstrahlungen,
     Alphastrahlung und Betastrahlung, aufzuhalten. Gegen Gammastrahlung h\xE4tte
     Aluminiumfolie jedoch nicht einmal ann\xE4hernd genug Dicke und atomare Dichte
