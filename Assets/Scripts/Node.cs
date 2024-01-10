@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour
 {
+    public static event System.Action<bool, string> EnteringNodeEvent;
+    
     public int eventType = 2;
     public Sprite eventSprite;
     public Sprite shopSprite;
@@ -121,7 +123,7 @@ public class Node : MonoBehaviour
     }
     public void EnterNode()
     {
-
+        EnteringNodeEvent?.Invoke(isLastNode, nextMap);
         Invoke("LoadNode", 1f);
             
     }

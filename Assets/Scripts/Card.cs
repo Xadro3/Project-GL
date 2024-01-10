@@ -14,7 +14,7 @@ public class Card : MonoBehaviour
 
     //Events
     public event Action<Card> OnDurabilityZero;
-    public static event Action FirstCardPlayedEvent;
+    //public static event Action FirstCardPlayedEvent;
 
 
     //CardInfo

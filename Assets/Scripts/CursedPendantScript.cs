@@ -43,7 +43,7 @@ public class CursedPendantScript : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if (scene.name == "Encounter" && isActive)
+        if (isActive && scene.name == "Encounter")
         {
             GetComponent<BoxCollider2D>().enabled = true;
         }
@@ -52,8 +52,9 @@ public class CursedPendantScript : MonoBehaviour
     private void EveryoneGetInHere()
     {
         //Bringing Pendants to the safety of the Wallet :>
-        gameObject.transform.SetParent(homeBase.transform);
-        GetComponent<BoxCollider2D>().enabled = false;
+        //gameObject.transform.SetParent(homeBase.transform);
+        //GetComponent<BoxCollider2D>().enabled = false;
+        Destroy(gameObject);
     }
 
     private void OnDisable()

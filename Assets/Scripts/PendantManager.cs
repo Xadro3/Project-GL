@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public class PendantManager : MonoBehaviour
 {
-    public static event System.Action<GameConstants.pendantEffect, int> ActivateEncounterBuff;
-    public static event System.Action<GameConstants.pendantEffect, int> ActivatePlayerBuff;
+    //public static event System.Action<GameConstants.pendantEffect, int> ActivateEncounterBuff;
+    //public static event System.Action<GameConstants.pendantEffect, int> ActivatePlayerBuff;
     public static event System.Action<GameConstants.pendantEffect, int> ActivateShopBuff;
     
     public GameObject pendantContainer;
@@ -39,7 +39,7 @@ public class PendantManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if (scene.name == "Encounter" || scene.name == "Overworld" || scene.name == "Shops")
+        if (scene.name == "Encounter" || scene.name == "Overworld" || scene.name == "Shops" || scene.name == "DesertMap")
         {
             pendantContainer = GameObject.FindGameObjectWithTag("PendantContainer");
             
@@ -47,10 +47,7 @@ public class PendantManager : MonoBehaviour
             {
                 if (pendant.GetComponent<PendantScript>().isActive)
                 {
-                    pendant.transform.SetParent(pendantContainer.transform);
-                    pendant.GetComponent<PendantScript>().SetSpriteRendererActive(true);
-                    pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
-                    pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f,0f,0f), Quaternion.identity);
+                    ActivatePendantDisplay(pendant);
                 }
                 else
                 {
@@ -60,7 +57,15 @@ public class PendantManager : MonoBehaviour
             }
         }        
     }
-    
+
+    private void ActivatePendantDisplay(GameObject pendant)
+    {
+        pendant.transform.SetParent(pendantContainer.transform);
+        pendant.GetComponent<PendantScript>().SetSpriteRendererActive(true);
+        pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
+        pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f, 0f, 0f), Quaternion.identity);
+    }
+
     public void TriggerPendantEffects()
     {
         foreach (GameObject pendantObject in pendantInstances)
@@ -126,6 +131,8 @@ public class PendantManager : MonoBehaviour
 
             // Return the randomly chosen inactive pendant
             inactivePendants[randomIndex].GetComponent<PendantScript>().SetPendantActive(true);
+            ActivatePendantDisplay(inactivePendants[randomIndex]);
+            TriggerPendantEffects();
         }
         else
         {

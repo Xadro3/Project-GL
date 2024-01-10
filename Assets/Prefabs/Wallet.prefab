@@ -349,6 +349,14 @@ PrefabInstance:
       propertyPath: shopCurrency
       value: 
       objectReference: {fileID: 4440220774125489240}
+    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: pendantActive.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113615969327713946, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: pendantActive.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> UpdateDeckDisplay;
     public static event Action<int> UpdateDiscardDisplay;
     public static event Action UpdateUI;
-    public static event Action<int> CurrencyUpdateEvent;
+    //public static event Action<int> CurrencyUpdateEvent;
     public static event Action<int> CardEnergyCostEffect;
     public static event Action CardRewardChosenSoundEvent;
     public static event Action NotEnoughEnergyEvent;
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         EncounterEndScript.CardRewardScreenEvent += HandleCardRewardEvent;
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
         CardMovementHandler.CardDropped += HandleCardDroppedEvent;
+        Node.EnteringNodeEvent += HandleNodeEnterEvent;
     }
 
     private void HandleCardDroppedEvent()
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Loaded Scene: " + scene.name);
         interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
         if (scene.name == "Encounter")
         {
@@ -161,9 +163,19 @@ public class GameManager : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
-        //player.TriggerRandomDebuff();
+        //    player.TriggerRandomDebuff();
+        //    pendantManager.AwardRandomPendant();
         //}
     }
+
+    private void HandleNodeEnterEvent(bool isLastNode, string nextMap)
+    {
+        if (isLastNode)
+        {
+            nodeLoader.originScene = nextMap;
+        }
+    }
+
     private void SetTokenReward()
     {
         int completedEncounter = GetCompletedEncounter();
