@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour
 {
+    public Deck deck;
+    public GameManager gameManager;
     public List<GameConstants.cardRarity> cardRarity;
     public List<GameConstants.cardType> cardType;
     public List<GameObject> prefabs;
@@ -18,9 +20,10 @@ public class CardManager : MonoBehaviour
 
     public List<GameObject> cardSafeCards;
 
+    
     public SO_Card[] cardInfos;
-    public Deck deck;
-    public GameManager gameManager;
+    public SO_Card[] cardUpgrades;
+
 
     private void Awake()
     {
@@ -43,6 +46,11 @@ public class CardManager : MonoBehaviour
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
         }
+        foreach (SO_Card cardUpgrade in cardUpgrades)
+        {
+            cardUpgrade.energyCostAffected = false;
+            cardUpgrade.energyCostIncrease = 0;
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -60,6 +68,11 @@ public class CardManager : MonoBehaviour
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
         }
+        foreach (SO_Card cardUpgrade in cardUpgrades)
+        {
+            cardUpgrade.energyCostAffected = false;
+            cardUpgrade.energyCostIncrease = 0;
+        }
         //GetRandomCardFromCardSafe();
     }
 
@@ -69,6 +82,11 @@ public class CardManager : MonoBehaviour
         {
             cardInfo.energyCostAffected = true;
             cardInfo.energyCostIncrease = 0 + value;
+        }
+        foreach (SO_Card cardUpgrade in cardUpgrades)
+        {
+            cardUpgrade.energyCostAffected = true;
+            cardUpgrade.energyCostIncrease = 0 + value;
         }
     }
 
@@ -238,6 +256,7 @@ public class CardManager : MonoBehaviour
     private void LoadCardsFromResources()
     {
         cardInfos = Resources.LoadAll("Cardinfos", typeof(SO_Card)).Cast<SO_Card>().ToArray();
+        cardUpgrades = Resources.LoadAll("CardUpgrades", typeof(SO_Card)).Cast<SO_Card>().ToArray();
     }
 
     public GameObject GetRandomCardFromCardSafe()
