@@ -38,6 +38,11 @@ public class CardManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        foreach (SO_Card cardInfo in cardInfos)
+        {
+            cardInfo.energyCostAffected = false;
+            cardInfo.energyCostIncrease = 0;
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -50,7 +55,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (SO_Card cardInfo in baseCards)
+        foreach (SO_Card cardInfo in cardInfos)
         {
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
@@ -60,7 +65,7 @@ public class CardManager : MonoBehaviour
 
     public void CardEnergyCostEffect(int value)
     {
-        foreach (SO_Card cardInfo in baseCards)
+        foreach (SO_Card cardInfo in cardInfos)
         {
             cardInfo.energyCostAffected = true;
             cardInfo.energyCostIncrease = 0 + value;
