@@ -89,6 +89,7 @@ public class AudioManager : MonoBehaviour
                 musicSource.Play();
                 break;
             case "Overworld" when inEncounter != false: //Musik die auf der Map spielt
+            case "DesertMap" when inEncounter != false:
                 musicSource.loop = true;
                 inEncounter = false;
                 musicSource.clip = backgroundmusicMap;
