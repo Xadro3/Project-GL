@@ -128,6 +128,7 @@ public class Deck : MonoBehaviour
         cardManager.AddCardToBaseDeck(card.cardInfo.upgradedCardInfo);
         cardManager.AddBaseCardsToDeck();
         PopulatePlayerDeck();
+        Debug.Log("UpgradedCard Fired!");
         CardUpgradedEvent?.Invoke(cardNameRemove);
     }
 

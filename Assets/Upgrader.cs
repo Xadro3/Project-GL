@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrader : MonoBehaviour
 {
@@ -10,13 +11,23 @@ public class Upgrader : MonoBehaviour
     bool used;
     private void Start()
     {
+        
+    }
+    private void OnEnable()
+    {
         WorkshopManager.FoundUpgradedCardEvent += HandleCardSwap;
-
+    }
+    private void OnDisable()
+    {
+        WorkshopManager.FoundUpgradedCardEvent -= HandleCardSwap;
     }
 
     private void HandleCardSwap(GameObject upgradedCard)
     {
+        Debug.Log("Swap Handle Fired!");
         upgradedCard.GetComponent<Drag>().startPos = transform.position;
+        upgradedCard.GetComponent<LayoutElement>().ignoreLayout = true;
+        upgradedCard.transform.position = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

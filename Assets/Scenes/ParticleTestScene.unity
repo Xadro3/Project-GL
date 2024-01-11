@@ -21034,6 +21034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ereignis_Card
       objectReference: {fileID: 0}
+    - target: {fileID: 4911422923428110949, guid: aecd23a2e6289f245ac184babb02d2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28207,6 +28211,17 @@ MonoBehaviour:
   roundTimer: 5
   roundTimerMin: 2
   roundTimerMax: 5
+  blockDurationAlpha: 0
+  blockDurationBeta: 0
+  blockDurationGamma: 0
+  reductionFlatValue: 0
+  reductionDurationAlphaFlat: 0
+  reductionDurationBetaFlat: 0
+  reductionDurationGammaFlat: 0
+  reductionPercentValue: 0
+  reductionDurationAlphaPercent: 0
+  reductionDurationBetaPercent: 0
+  reductionDurationGammaPercent: 0
   alphaDamageBuff: 0
   alphaDamageBuffValue: 2
   alphaDamage: 0
@@ -28219,6 +28234,7 @@ MonoBehaviour:
   alphaMax: 15
   betaMax: 10
   gammaMax: 7
+  encounterCompleted: 0
   bossBonus: 1
   encounterPhase: 0
   phaseOneLimit: 5
@@ -37648,9 +37664,19 @@ MonoBehaviour:
   betaResistanceMax: 50
   gammaResistance: 0
   gammaResistanceMax: 50
+  alphaDamageReductionFlat: 0
+  alphaDamageReductionPercent: 0
+  betaDamageReductionFlat: 0
+  betaDamageReductionPercent: 0
+  gammaDamageReductionFlat: 0
+  gammaDamageReductionPercent: 0
+  healthDamageReductionPercent: 0
   betaDotActive: 0
   betaDotDamage: 3
   betaDotDamageSum: 0
+  healthDamageReductionFlatValue: 0
+  resistanceDamageReductionPercentValue: 0
+  resistanceDamageReductionFlatValue: 0
 --- !u!95 &1533739090
 Animator:
   serializedVersion: 5

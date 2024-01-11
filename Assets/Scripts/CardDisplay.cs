@@ -25,6 +25,8 @@ public class CardDisplay : MonoBehaviour
     public TextMeshPro currencyCost;
     public GameObject currencyField;
 
+    public GameObject UpgradeVisual;
+
 
     private void Awake()
     {
@@ -56,6 +58,10 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         card = GetComponent<Card>();
+        if (card.cardInfo.upgraded)
+        {
+            UpgradeVisual.SetActive(true);
+        }
         UpdateDisplay();
     }
 

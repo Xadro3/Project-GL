@@ -17,11 +17,17 @@ public class WorkshopManager : MonoBehaviour
     ShopCurrency shop;
     void Start()
     {
-        Deck.CardUpgradedEvent += RefreshCardDisplay;
         playerHealth = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<PlayerHealthManager>();
         deck = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<Deck>();
         shop = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>();
-
+    }
+    private void OnEnable()
+    {
+        Deck.CardUpgradedEvent += RefreshCardDisplay;
+    }
+    private void OnDisable()
+    {
+        Deck.CardUpgradedEvent -= RefreshCardDisplay;
     }
 
     public void UpgradeCards()
@@ -45,7 +51,6 @@ public class WorkshopManager : MonoBehaviour
                 instantiatedCard.GetComponent<CardDisplay>().ActivateCurrencyCostField(true);
             }
         }
-        
     }
 
     public void RemoveCards()
@@ -97,8 +102,10 @@ public class WorkshopManager : MonoBehaviour
 
     private void RefreshCardDisplay(string removedCardName)
     {
+        Debug.Log("Refreshing Card Display");
         instantiatedCards.Clear();
         instantiatedCards = deck.GetPlayerDeck();
+        List<GameObject> refreshedCards = new List<GameObject>();
         //Debug.Log(instantiatedCard.name);
         foreach (GameObject instantiatedCard in instantiatedCards)
         {
@@ -110,9 +117,17 @@ public class WorkshopManager : MonoBehaviour
             instantiatedCard.AddComponent<Drag>();
             instantiatedCard.layer = 0;
             instantiatedCard.GetComponent<CardDisplay>().ActivateCurrencyCostField(true);
-            if (instantiatedCard.GetComponent<Card>().cardName == removedCardName && instantiatedCard.GetComponent<Card>().upgraded)
+            refreshedCards.Add(instantiatedCard);
+            Debug.Log("Added: " + instantiatedCard.GetComponent<Card>().cardInfo.name);
+            Debug.Log(refreshedCards.Count);
+        }
+        foreach (GameObject refreshedCard in refreshedCards)
+        {
+            if (refreshedCard.GetComponent<Card>().cardInfo.name == removedCardName && refreshedCard.GetComponent<Card>().cardInfo.upgraded)
             {
-                FoundUpgradedCardEvent?.Invoke(instantiatedCard);
+                Debug.Log("Found Upgraded Card Fired!");
+                FoundUpgradedCardEvent?.Invoke(refreshedCard);
+                break;
             }
         }
     }
