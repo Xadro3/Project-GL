@@ -201,7 +201,7 @@ public class NodeLoader : MonoBehaviour
                 {
                 gameObject.SetActive(true);
                 
-                if (!gameObject.GetComponent<Node>().isUnlocked && disabledFirstNode2)
+                if (gameObject.GetComponent<Node>().isUnlocked && disabledFirstNode2)
                 {
                     gameObject.GetComponent<Node>().isUnlocked = false;
                     gameObject.GetComponent<Node>().isPastNode = true;
