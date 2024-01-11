@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("-------------- Hauptmenü -------------")]
     public AudioClip backgroundmusicMenu;
+    public AudioClip gameWonMusic;
 
     [Header("----------------- Map -----------------")]
     public AudioClip backgroundmusicMap;
@@ -116,6 +117,13 @@ public class AudioManager : MonoBehaviour
                 musicSource.clip = backgroundmusicWorkshop;
                 musicSource.Play();
                 break;
+            case "GameWon" when inEncounter != false:
+                musicSource.loop = true;
+                inEncounter = false;
+                musicSource.clip = gameWonMusic;
+                musicSource.Play();
+                break;
+
         }
     }
 

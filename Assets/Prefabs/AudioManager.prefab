@@ -201,6 +201,7 @@ MonoBehaviour:
   gammaRadiation: {fileID: 8300000, guid: ebe26da2dd35a2244accc786e0226c75, type: 3}
   noEnergy: {fileID: 8300000, guid: 93d84fa75c1c25b46b6f9c8d3acec78f, type: 3}
   backgroundmusicMenu: {fileID: 8300000, guid: a139dea14a2b0e140baebbdcfa725be4, type: 3}
+  gameWonMusic: {fileID: 8300000, guid: bc57df48ad7cd75439a0d2f8da924adc, type: 3}
   backgroundmusicMap: {fileID: 8300000, guid: a82ccbb8858f2c140b7e07c6a8ada1bd, type: 3}
   nodeClick: {fileID: 8300000, guid: 99feb0493dd9b82428725896cf36550f, type: 3}
   backgroundmusicShop: {fileID: 8300000, guid: 2138e8109ba7a144eb610c9b7bda429b, type: 3}
