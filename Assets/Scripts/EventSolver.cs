@@ -9,6 +9,7 @@ public class EventSolver : MonoBehaviour
    public GameObject wrongAnswer;
    public GameObject question;
    public EventManager eventManager;
+   public GameObject continuebutton;
     private void Start()
     {
         eventManager = GameObject.FindGameObjectWithTag("Eventmanager").GetComponent<EventManager>();
@@ -21,7 +22,7 @@ public class EventSolver : MonoBehaviour
             collision.collider.GetComponent<Drag>().startPos = transform.position;
             if (collision.collider.GetComponent<EventCard>().isCorrectAnswer)
             {
-                backButton.SetActive(true);
+                continuebutton.SetActive(true);
                 answer.SetActive(true);
                 question.SetActive(false);
                 eventManager.CompleteEvent(eventManager.currentEvent);

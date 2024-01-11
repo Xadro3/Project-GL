@@ -32,6 +32,7 @@ TagManager:
   - WrongAnswer
   - Eventcard
   - Eventmanager
+  - PendantManager
   layers:
   - Default
   - TransparentFX

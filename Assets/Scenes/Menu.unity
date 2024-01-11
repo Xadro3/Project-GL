@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.517
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3982562, g: 0.3780285, b: 0.37114167, a: 0.517}
+  m_IndirectSpecularColor: {r: 0.39826283, g: 0.3780294, b: 0.37112665, a: 0.517}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 5670760164894573993, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: m_Name
       value: Wallet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469804298923173756, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: m_TagString
+      value: PendantManager
       objectReference: {fileID: 0}
     - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: baseCards.Array.size

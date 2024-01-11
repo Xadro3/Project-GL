@@ -118,7 +118,7 @@ public class PendantManager : MonoBehaviour
         }
     }
 
-    public void AwardRandomPendant()
+    public GameObject AwardRandomPendant()
     {
         // Filter the list to include only inactive pendants
         List<GameObject> inactivePendants = pendantInstances.FindAll(pendant => !pendant.GetComponent<PendantScript>().isActive);
@@ -133,11 +133,13 @@ public class PendantManager : MonoBehaviour
             inactivePendants[randomIndex].GetComponent<PendantScript>().SetPendantActive(true);
             ActivatePendantDisplay(inactivePendants[randomIndex]);
             TriggerPendantEffects();
+            return inactivePendants[randomIndex];
         }
         else
         {
             // No inactive pendants found
             Debug.LogWarning("No inactive pendants available.");
+            return null;
         }
     }
 }
