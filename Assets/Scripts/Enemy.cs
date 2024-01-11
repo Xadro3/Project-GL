@@ -50,14 +50,15 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
 
+    int encounterCompleted = 0;
     public int bossBonus = 1;
     public int encounterPhase = 0;
-    public int phaseOneLimit = 5;
-    public int phaseTwoLimit = 10;
-    public int phaseThreeLimit = 15;
-    public int phaseFourLimit = 20;
-    public int phaseFiveLimit = 25;
-    public int phaseSixLimit = 30;
+    public int phaseOneLimit = 6;
+    public int phaseTwoLimit = 11;
+    public int phaseThreeLimit = 16;
+    public int phaseFourLimit = 21;
+    public int phaseFiveLimit = 26;
+    public int phaseSixLimit = 31;
 
     public List<GameConstants.radiationTypes> damageTypes;
 
@@ -66,10 +67,16 @@ public class Enemy : MonoBehaviour
     private GameManager gm;
     private void OnEnable()
     {
-        // Subscribe to the sceneLoaded event
+        Node.EnteringNodeEvent += IncreaseCompletedEncounterCount;
         SceneManager.sceneLoaded += OnSceneLoaded;
         CardMovementHandler.OnEnemyEffect += HandleEnemyEffect;
     }
+
+    private void IncreaseCompletedEncounterCount(bool arg1, string arg2)
+    {
+        encounterCompleted++;
+    }
+
     private void OnDisable()
     {
         // Unsubscribe from the sceneLoaded event
@@ -96,8 +103,8 @@ public class Enemy : MonoBehaviour
     private void SetEncounterPhase()
     {
         int timerMin, timerMax, damageMin, damageMax;
+
         
-        int encounterCompleted = GetComponentInParent<GameManager>().GetCompletedEncounter();
 
         if (encounterCompleted < phaseOneLimit)
         {
