@@ -6,7 +6,7 @@ public class EventSafe : MonoBehaviour
 {
     public int eventCounter;
     public Dictionary<int, bool> events = new();
-
+    bool populated=false;
     void Start()
     {
 
@@ -14,11 +14,16 @@ public class EventSafe : MonoBehaviour
 
     public void PopulateDict()
     {
-        events.Add(1, false);
-        events.Add(2, false);
-        events.Add(3, false);
-        events.Add(4, false);
-        events.Add(5, false);
+        if (!populated)
+        {
+            events.Add(1, false);
+            events.Add(2, false);
+            events.Add(3, false);
+            events.Add(4, false);
+            events.Add(5, false);
+            populated = true;
+        }
+      
     }
     public int GetRandomEventWithFalseValue()
     {

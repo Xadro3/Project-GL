@@ -29,10 +29,21 @@ public class ShopCurrency : MonoBehaviour
         money = money + amountToAdd;
         TriggerCurrencyUpdateEvent();
     }
-    public void RemoveMoney(int amountToRemove)
+    public bool RemoveMoney(int amountToRemove)
     {
-        money = money - amountToRemove;
-        TriggerCurrencyUpdateEvent();
+        if(money - amountToRemove >= 0)
+        {
+            money = money - amountToRemove;
+            TriggerCurrencyUpdateEvent();
+            return true;
+            
+        }
+        else
+        {
+            return false;
+        }
+        
+        
     }
     
     public void TriggerCurrencyUpdateEvent()
