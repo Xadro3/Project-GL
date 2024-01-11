@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkshopManager : MonoBehaviour
 {
-    
+    public static event System.Action<GameObject> FoundUpgradedCardEvent;
+
     public PlayerHealthManager playerHealth;
     public Deck deck;
     List<GameObject> instantiatedCards;
@@ -15,6 +17,7 @@ public class WorkshopManager : MonoBehaviour
     ShopCurrency shop;
     void Start()
     {
+        Deck.CardUpgradedEvent += RefreshCardDisplay;
         playerHealth = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<PlayerHealthManager>();
         deck = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<Deck>();
         shop = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>();
@@ -91,4 +94,27 @@ public class WorkshopManager : MonoBehaviour
         
 
     }
+
+    private void RefreshCardDisplay(string removedCardName)
+    {
+        instantiatedCards.Clear();
+        instantiatedCards = deck.GetPlayerDeck();
+        //Debug.Log(instantiatedCard.name);
+        foreach (GameObject instantiatedCard in instantiatedCards)
+        {
+            instantiatedCard.SetActive(true);
+            instantiatedCard.transform.SetParent(transform);
+            instantiatedCard.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+            instantiatedCard.transform.localScale = new Vector3(4f, 4f, 4f);
+            instantiatedCard.GetComponent<CardMovementHandler>().enabled = false;
+            instantiatedCard.AddComponent<Drag>();
+            instantiatedCard.layer = 0;
+            instantiatedCard.GetComponent<CardDisplay>().ActivateCurrencyCostField(true);
+            if (instantiatedCard.GetComponent<Card>().cardName == removedCardName && instantiatedCard.GetComponent<Card>().upgraded)
+            {
+                FoundUpgradedCardEvent?.Invoke(instantiatedCard);
+            }
+        }
+    }
+
 }

@@ -12,24 +12,24 @@ public class PlayerHealthManager : MonoBehaviour
     [Header("----- Health -----")]
     public int health;
     [Range(0, 100)]
-    public int healthMax = 100;
+    public int healthMax;
     public int hpThresholdLvOne;
     public int hpThresholdLvTwo;
 
     [Header("----- Alpha Resistance -----")]
     public int alphaResistance;
     [Range(0, 50)]
-    public int alphaResistanceMax = 20;
+    public int alphaResistanceMax;
 
     [Header("----- Beta Resistance -----")]
     public int betaResistance;
     [Range(0, 50)]
-    public int betaResistanceMax = 20;
+    public int betaResistanceMax;
 
     [Header("----- Gamma Resistance -----")]
     public int gammaResistance;
     [Range(0, 50)]
-    public int gammaResistanceMax = 30;
+    public int gammaResistanceMax;
 
     private PlayerModel playerModel;
 
@@ -43,7 +43,7 @@ public class PlayerHealthManager : MonoBehaviour
     public bool healthDamageReductionPercent = false;
 
     public bool betaDotActive = false;
-    public int betaDotDamage = 3;
+    public int betaDotDamage;
     public int betaDotDamageSum = 0;
 
     public int healthDamageReductionFlatValue = 0;
@@ -131,7 +131,7 @@ public class PlayerHealthManager : MonoBehaviour
             if (!gm.encounterEndScreenActive)
             {
                 // trigger Game Over
-                Debug.Log("Game Over!");
+                Debug.LogWarning("Game Over!");
                 EncounterEnd?.Invoke();
             }
         }

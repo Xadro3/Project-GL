@@ -158,6 +158,10 @@ public class GameManager : MonoBehaviour
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
         }
+        if (scene.name == "Shop" || scene.name == "Workshops")
+        {
+            cardManager.BuildDeck();
+        }
     }
     private void Update()
     {

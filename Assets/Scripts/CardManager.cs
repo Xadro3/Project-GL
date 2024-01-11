@@ -98,6 +98,7 @@ public class CardManager : MonoBehaviour
     public void RemoveCardFromBaseDeck(SO_Card cardInfo)
     {
         baseCards.Remove(cardInfo);
+        
     }
 
     public void BuildDeck()
@@ -106,7 +107,7 @@ public class CardManager : MonoBehaviour
         deck.PopulatePlayerDeck();
     }
 
-    private void AddBaseCardsToDeck()
+    public void AddBaseCardsToDeck()
     {
         deck.deck.Clear();
         foreach (SO_Card baseCard in baseCards)

@@ -5,9 +5,15 @@ using System.IO;
 
 public class Deck : MonoBehaviour
 {
+    public static event System.Action<string> CardUpgradedEvent;
+
     public List<Card> deck;
     public List<Card> playerDeck;
     public List<GameObject> playerDeckObjects;
+
+    private string cardNameRemove;
+    private Card cardAdd;
+    private Card cardUpgrade;
 
     public CardManager cardManager;
 
@@ -17,6 +23,7 @@ public class Deck : MonoBehaviour
     {
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosen;
     }
+
 
     private void HandleCardRewardChosen(Card chosenCard)
     {
@@ -107,12 +114,21 @@ public class Deck : MonoBehaviour
     public void RemoveCardFromBaseDeck(Card card)
     {
         cardManager.RemoveCardFromBaseDeck(card.cardInfo);
+        Destroy(card.gameObject);
     }
 
     public void UpgradeCard(Card card)
     {
+        cardNameRemove = card.cardName;
         cardManager.RemoveCardFromBaseDeck(card.cardInfo);
+        deck.Remove(card);
+        playerDeck.Remove(card);
+        Destroy(card.gameObject);
+        //Debug.Log("Destroyed!");
         cardManager.AddCardToBaseDeck(card.cardInfo.upgradedCardInfo);
+        cardManager.AddBaseCardsToDeck();
+        PopulatePlayerDeck();
+        CardUpgradedEvent?.Invoke(cardNameRemove);
     }
 
     public List<GameObject> GetPlayerDeck()

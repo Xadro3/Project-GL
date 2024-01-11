@@ -174,6 +174,11 @@ public class Card : MonoBehaviour
             {
                 durabilityCurrent = durability;
             }
+            if (durabilityCurrent <= 0)
+            {
+                OnDurabilityZero?.Invoke(this);
+                cardMovementHandler.MoveToDiscardPile();
+            }
         }
         
         UpdateDisplay();
@@ -263,6 +268,7 @@ public class Card : MonoBehaviour
     public void UpgradeCard()
     {
         gm.UpgradeCard(this);
+        //Destroy(gameObject);
     }
 
     private void HandleCardEffectUpgrade(int value)
