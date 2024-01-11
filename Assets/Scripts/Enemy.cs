@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
 
-    int encounterCompleted = 0;
+    public int encounterCompleted = 0;
     public int bossBonus = 1;
     public int encounterPhase = 0;
     public int phaseOneLimit = 6;

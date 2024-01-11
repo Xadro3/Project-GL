@@ -123,9 +123,13 @@ public class Node : MonoBehaviour
     }
     public void EnterNode()
     {
-        EnteringNodeEvent?.Invoke(isLastNode, nextMap);
-        Invoke("LoadNode", 1f);
-            
+        if (isUnlocked)
+        {
+            isUnlocked = false;
+            Debug.Log("Entering");
+            EnteringNodeEvent?.Invoke(isLastNode, nextMap);
+            Invoke("LoadNode", 1f);
+        }
     }
 
     public void LoadNode()
