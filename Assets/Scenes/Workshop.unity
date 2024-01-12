@@ -6750,7 +6750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.5346, y: 669.17755}
+  m_AnchoredPosition: {x: -253.53467, y: 669.17755}
   m_SizeDelta: {x: 0, y: 30.348389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675374531
@@ -6872,7 +6872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zur Karte
+  m_text: Zur Weltkarte
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5319cc2a93d77464fb4b0572cc24ac86, type: 2}
   m_sharedMaterial: {fileID: 3487124976218935397, guid: 5319cc2a93d77464fb4b0572cc24ac86, type: 2}
