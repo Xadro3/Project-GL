@@ -711,6 +711,7 @@ public class GameManager : MonoBehaviour
         PauseGame(false);
         if (isLastEncounterOnMap)
         {
+            isLastEncounterOnMap = false;
             ResetEnergy();
             player.ResetResistances();
         }
