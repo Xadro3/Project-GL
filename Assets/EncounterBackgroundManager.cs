@@ -20,7 +20,6 @@ public class EncounterBackgroundManager : MonoBehaviour
 
     private void SetEncounterBackground(int encounterCompleted)
     {
-        int randomIndex = 0;
         switch (encounterCompleted)
         {
             case <= 10:

@@ -352,6 +352,7 @@ public class PlayerHealthManager : MonoBehaviour
                 case GameConstants.effectTypes.DrawCard:
                 case GameConstants.effectTypes.EnergyGet:
                 case GameConstants.effectTypes.Discard:
+                case GameConstants.effectTypes.EnergyLose:
                     Debug.Log("Effect: " + entry);
                     gm.HandleEffect(entry.Key, entry.Value);
                     break;

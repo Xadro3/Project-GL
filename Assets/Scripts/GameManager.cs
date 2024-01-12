@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int playerRessourceCurrent;
     public int playerRessourceMax;
     public int playerRessourceBuffMax;
+    public int playerRessourceLoss;
 
     private ActiveCardSlots activeCardSlotsParent;
     public List<Slot> activeCardSlots;
@@ -296,6 +297,11 @@ public class GameManager : MonoBehaviour
     {
         playerRessourceCurrent = playerRessourceMax;
         playerRessourceBuffMax = playerRessourceMax;
+        if (playerRessourceLoss > 0)
+        {
+            playerRessourceCurrent -= playerRessourceLoss;
+            playerRessourceLoss = 0;
+        }
         UpdatePlayerRessource();
     }
     public bool EnoughEnergy(Card card)
@@ -444,7 +450,16 @@ public class GameManager : MonoBehaviour
             case GameConstants.effectTypes.ShieldRepair:
                 TriggerRandomShieldRepair();
                 break;
+
+            case GameConstants.effectTypes.EnergyLose:
+                TriggerEnergyLoseEffect(effectValue);
+                break;
         }
+    }
+
+    private void TriggerEnergyLoseEffect(int value)
+    {
+        playerRessourceLoss += value;
     }
 
     private void TriggerRandomShieldRepair()
