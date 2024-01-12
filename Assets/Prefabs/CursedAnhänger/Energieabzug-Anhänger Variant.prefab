@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342672154576950794, guid: 8fea3ee127fa293468067a111ad65f8d, type: 3}
       propertyPath: description
-      value: -1 Energie (statt 3 startet man mit 2 Energie)
+      value: Die Maximale Energie wird um 1 reduziert
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

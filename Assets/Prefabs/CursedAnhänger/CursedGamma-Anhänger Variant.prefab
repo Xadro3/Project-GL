@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342672154576950794, guid: 8fea3ee127fa293468067a111ad65f8d, type: 3}
       propertyPath: description
-      value: +2 Gamma Strahlenschaden
+      value: "Der Gamma-Strahlenschaden wird um 2 erh\xF6ht"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
