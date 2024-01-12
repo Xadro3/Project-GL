@@ -42,7 +42,7 @@ public class Deck : MonoBehaviour
 
     }
 
-    public void PopulatePlayerDeck()
+    public bool PopulatePlayerDeck()
     {
         playerDeck.Clear();
         foreach (Card card in deck)
@@ -52,6 +52,7 @@ public class Deck : MonoBehaviour
             playerDeck.Add(addedCard);
             //Debug.Log("Added Card: " + addedCard);
         }
+        return true;
     }
 
     public Card Draw()
@@ -134,12 +135,25 @@ public class Deck : MonoBehaviour
 
     public List<GameObject> GetPlayerDeck()
     {
+        StartCoroutine(SetupPlayerDeck());
+        return playerDeckObjects;
+    }
+
+    private IEnumerator SetupPlayerDeck()
+    {
         playerDeckObjects.Clear();
+        while (!cardManager.AddBaseCardsToDeck())
+        {
+            yield return null;
+        }
+        while (!PopulatePlayerDeck())
+        {
+            yield return null;
+        }
         foreach (Card card in deck)
         {
             playerDeckObjects.Add(card.gameObject);
         }
-
-        return playerDeckObjects;
+        yield break;
     }
 }

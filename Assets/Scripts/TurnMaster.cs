@@ -78,28 +78,8 @@ public class TurnMaster : MonoBehaviour
         // Iterate over damage types
         foreach (GameConstants.radiationTypes radiationType in damageTypes)
         {
-            
+            TriggerDamageEvent(radiationType);
             Debug.Log("Dictionary Entry: " + radiationType.ToString() + " with value of: " + wagonDamageStats[radiationType]);
-            switch (radiationType)
-            {
-                case GameConstants.radiationTypes.Alpha:
-                    AlphaDamageEvent?.Invoke();
-                    yield return new WaitForSeconds(2f);
-                    break;
-
-                case GameConstants.radiationTypes.Beta:
-                    BetaDamageEvent?.Invoke();
-                    yield return new WaitForSeconds(2f);
-                    break;
-
-                case GameConstants.radiationTypes.Gamma:
-                    GammaDamageEvent?.Invoke();
-                    yield return new WaitForSeconds(2f);
-                    break;
-
-                default:
-                    break;
-            }
             // Iterate over cards
             foreach (Card card in cardsInPlay)
             {
@@ -117,6 +97,7 @@ public class TurnMaster : MonoBehaviour
                         int damageValue = wagonDamageStats[radiationType];
                         Debug.Log(wagons[0].name + " will deal: " + wagonDamageStats[radiationType] + " of " + radiationType + " to: " + card.cardName);
                         wagonDamageStats[radiationType] = card.AdjustDurability(damageValue);
+                        
                         if (card.effect && radiationType == GameConstants.radiationTypes.Gamma)
                         {
                             wagonDamageStats[radiationType] += card.GammaReduction(card.cardEffects[GameConstants.effectTypes.DamageReductionPercent]);
@@ -136,19 +117,24 @@ public class TurnMaster : MonoBehaviour
                     }
                     card.UpdateDisplay();
                     wagons[0].UpdateDamageDuringRound(radiationType, wagonDamageStats[radiationType]);
-                    yield return new WaitForSeconds(1f);
                 }
+                yield return new WaitForSeconds(2f);
+            }
+            if (wagonDamageStats[radiationType] != 0)
+            {
+                //TriggerDamageEvent(radiationType);
+                gm.PlayerDamage(wagonDamageStats[radiationType], radiationType);
+                yield return new WaitForSeconds(2f);
             }
         }
 
-        foreach (var entry in wagonDamageStats)
-        {
-            if (entry.Value != 0)
-            {
-                gm.PlayerDamage(entry.Value, entry.Key);
-                yield return new WaitForSeconds(1f);
-            }
-        }
+        //foreach (var entry in wagonDamageStats)
+        //{
+        //    if (entry.Value != 0)
+        //    {
+        //        
+        //    }
+        //}
 
         if (gm.IsBetaDotActive())
         {
@@ -167,6 +153,27 @@ public class TurnMaster : MonoBehaviour
         gm.isFirstTurn = false;
         StartTurnEvent?.Invoke();
 
+    }
+
+    private void TriggerDamageEvent(GameConstants.radiationTypes radiationType)
+    {
+        switch (radiationType)
+        {
+            case GameConstants.radiationTypes.Alpha:
+                AlphaDamageEvent?.Invoke();
+                break;
+
+            case GameConstants.radiationTypes.Beta:
+                BetaDamageEvent?.Invoke();
+                break;
+
+            case GameConstants.radiationTypes.Gamma:
+                GammaDamageEvent?.Invoke();
+                break;
+
+            default:
+                break;
+        }
     }
 
     /*private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)

@@ -110,44 +110,47 @@ public class PlayerHealthManager : MonoBehaviour
         switch (damageType)
         {
             case GameConstants.radiationTypes.Alpha:
-                HandleAlphaDamage(damageValue);
+                StartCoroutine(HandleAlphaDamage(damageValue));
                 break;
 
             case GameConstants.radiationTypes.Beta:
-                HandleBetaDamage(damageValue);
+                StartCoroutine(HandleBetaDamage(damageValue));
                 break;
 
             case GameConstants.radiationTypes.Gamma:
-                HandleGammaDamage(damageValue);
+                StartCoroutine(HandleGammaDamage(damageValue));
                 break;
 
             case GameConstants.radiationTypes.Pure:
-                HandlePuredamage(damageValue);
+                StartCoroutine(HandlePuredamage(damageValue));
                 break;
         }
         // check if player survived damage
-        if (CheckHealth() <= 0)
-        {
-            if (!gm.encounterEndScreenActive)
-            {
-                // trigger Game Over
-                Debug.LogWarning("Game Over!");
-                EncounterEnd?.Invoke();
-            }
-        }
+        //if (CheckHealth() <= 0)
+        //{
+        //    if (!gm.encounterEndScreenActive)
+        //    {
+        //        // trigger Game Over
+        //        Debug.LogWarning("Game Over!");
+        //        EncounterEnd?.Invoke();
+        //    }
+        //}
     }
 
-    private void HandlePuredamage(int damageValue)
+    private IEnumerator HandlePuredamage(int damageValue)
     {
         if (healthDamageReductionPercent)
         {
             damageValue = damageValue * (1 - (healthDamageReductionFlatValue/100));
         }
         health -= damageValue;
-        playerModel.alphaBar.SetHealth(health);
+        playerModel.healthBar.SetHealth(health);
+        yield return new WaitForSeconds(2f);
+        CheckHealth();
+        yield break;
     }
 
-    private void HandleGammaDamage(int damageValue)
+    private IEnumerator HandleGammaDamage(int damageValue)
     {
         if (gammaDamageReductionFlat)
         {
@@ -161,10 +164,12 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.gammaBar.SetHealth(gammaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
+        yield return new WaitForSeconds(2f);
         CheckResistances();
+        yield break;
     }
 
-    private void HandleBetaDamage(int damageValue)
+    private IEnumerator HandleBetaDamage(int damageValue)
     {
         if (betaDamageReductionFlat)
         {
@@ -178,7 +183,9 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.betaBar.SetHealth(betaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
+        yield return new WaitForSeconds(2f);
         CheckResistances();
+        yield break;
     }
     public void UpdateTexts()
     {
@@ -186,7 +193,7 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.betaText.text = betaResistance.ToString();
         playerModel.gammaText.text = gammaResistance.ToString();
     }
-    private void HandleAlphaDamage(int damageValue)
+    private IEnumerator HandleAlphaDamage(int damageValue)
     {
         if (alphaDamageReductionFlat)
         {
@@ -200,7 +207,9 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.alphaBar.SetHealth(alphaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
+        yield return new WaitForSeconds(2f);
         CheckResistances();
+        yield break;
     }
 
     private void CheckResistances()
@@ -211,6 +220,7 @@ public class PlayerHealthManager : MonoBehaviour
             alphaResistance = alphaResistanceMax;
             playerModel.alphaBar.SetHealth(alphaResistance);
             Debug.Log("Aua! Ich habe schaden bekommen!");
+            CheckHealth();
         }
         if (betaResistance <= 0)
         {
@@ -286,6 +296,11 @@ public class PlayerHealthManager : MonoBehaviour
             playerModel.characterOne.SetActive(false);
             playerModel.characterTwo.SetActive(false);
             playerModel.characterThree.SetActive(true);
+        }
+        if (health <= 0 && !gm.encounterEndScreenActive)
+        {
+            Debug.LogWarning("Game Over!");
+            EncounterEnd?.Invoke();
         }
         return health;
     }

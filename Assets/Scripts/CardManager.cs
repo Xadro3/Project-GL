@@ -107,7 +107,7 @@ public class CardManager : MonoBehaviour
         deck.PopulatePlayerDeck();
     }
 
-    public void AddBaseCardsToDeck()
+    public bool AddBaseCardsToDeck()
     {
         deck.deck.Clear();
         foreach (SO_Card baseCard in baseCards)
@@ -159,6 +159,7 @@ public class CardManager : MonoBehaviour
                 Debug.LogWarning($"cardType or cardRarity array is empty for card {baseCard.name}");
             }
         }
+        return true;
     }
 
     void InitializePrefabMapping()
