@@ -50,12 +50,18 @@ public class PendantScript : MonoBehaviour
         {
             GetComponent<BoxCollider2D>().enabled = true;
         }
+        
     }
 
     private void EveryoneGetInHere()
     {
         //Bringing Pendants to the safety of the Wallet :>
         gameObject.transform.SetParent(homeBase.transform);
+        gameObject.transform.position = new Vector3(0f, 0f, 0f);
+        gameObject.transform.localScale = new Vector3(60f, 60f, 60f);
+        anhaengerRenderer.enabled = false;
+        bandRenderer.enabled = false;
+        
         GetComponent<BoxCollider2D>().enabled = false;
     }
 
