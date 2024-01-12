@@ -31,7 +31,7 @@ public class PlayerHealthManager : MonoBehaviour
     [Range(0, 50)]
     public int gammaResistanceMax;
 
-    private PlayerModel playerModel;
+    public PlayerModel playerModel;
 
     public bool alphaDamageReductionFlat = false;
     public bool alphaDamageReductionPercent = false;
@@ -43,6 +43,7 @@ public class PlayerHealthManager : MonoBehaviour
     public bool healthDamageReductionPercent = false;
 
     public bool betaDotActive = false;
+    public int betaDotTimer = 0;
     public int betaDotDamage;
     public int betaDotDamageSum = 0;
 
@@ -90,6 +91,11 @@ public class PlayerHealthManager : MonoBehaviour
             betaResistance = betaResistanceMax;
             CheckHealth();
             UpdateTexts();
+            if (betaDotActive)
+            {
+                playerModel.betaDotDisplay.SetActive(true);
+                playerModel.betaDotTimer.text = betaDotTimer.ToString();
+            }
         }
     }
 
@@ -225,7 +231,10 @@ public class PlayerHealthManager : MonoBehaviour
         if (betaResistance <= 0)
         {
             betaDotActive = true;
-            betaDotDamageSum += betaDotDamage;
+            betaDotTimer += 2;
+            playerModel.betaDotDisplay.SetActive(true);
+            playerModel.betaDotTimer.text = betaDotTimer.ToString();
+            betaDotDamageSum = betaDotDamage;
             betaResistance = betaResistanceMax;
             playerModel.betaBar.SetHealth(betaResistance);
             //ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);

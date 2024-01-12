@@ -22,6 +22,9 @@ public class PlayerModel : MonoBehaviour
     public Animator playerAbilitySlotAnimator;
     public Animator playerRessourceTextAnimator;
 
+    public GameObject betaDotDisplay;
+    public TextMeshProUGUI betaDotTimer;
+
     private void OnEnable()
     {
         GameManager.NotEnoughEnergyEvent += HandleNotEnoughEnergy;

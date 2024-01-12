@@ -337,7 +337,18 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerBetaDotDamage()
     {
-        player.ApplyDamage(player.betaDotDamageSum, GameConstants.radiationTypes.Pure);
+        if (player.betaDotTimer > 0)
+        {
+            player.ApplyDamage(player.betaDotDamageSum, GameConstants.radiationTypes.Pure);
+            player.betaDotTimer--;
+            player.playerModel.betaDotTimer.text = player.betaDotTimer.ToString();
+        }
+        else
+        {
+            player.playerModel.betaDotDisplay.SetActive(false);
+            player.betaDotActive = false;
+        }
+        
     }
     public void EndTurn()
     {
