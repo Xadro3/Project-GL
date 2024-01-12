@@ -50,6 +50,7 @@ public class CardDisplay : MonoBehaviour
         {
             currencyField.SetActive(false);
         }
+        UpdateDisplay();
     }
     private void OnSceneUnloaded(Scene arg0)
     {
@@ -63,7 +64,16 @@ public class CardDisplay : MonoBehaviour
         {
             UpgradeVisual.SetActive(true);
         }
+        if (SceneManager.GetActiveScene().name == "Shops" || SceneManager.GetActiveScene().name == "Workshop")
+        {
+            currencyField.SetActive(true);
+        }
+        else
+        {
+            currencyField.SetActive(false);
+        }
         UpdateDisplay();
+        
     }
 
     public void SetupDisplay()
