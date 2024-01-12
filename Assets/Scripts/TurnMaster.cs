@@ -151,6 +151,7 @@ public class TurnMaster : MonoBehaviour
             gm.PauseGame(false);
         }
         gm.isFirstTurn = false;
+        
         StartTurnEvent?.Invoke();
 
     }

@@ -93,11 +93,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void StartEncounter()
+    public IEnumerator StartEncounter()
     {
-        SetEncounterPhase();
-        GenerateTimerValue();
         PopulateDamage();
+        bool settingPhase = false;
+        SetEncounterPhase();
+        while (!settingPhase)
+        {
+            yield return null;
+        }
+        GenerateTimerValue();
+        
+        yield break;
     }
 
     private void SetEncounterPhase()

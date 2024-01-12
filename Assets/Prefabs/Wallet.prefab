@@ -305,6 +305,30 @@ PrefabInstance:
       propertyPath: gammaMax
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseOneLimit
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseSixLimit
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseTwoLimit
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFiveLimit
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFourLimit
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseThreeLimit
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -353,6 +377,10 @@ PrefabInstance:
       propertyPath: pendantActive.Array.size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1294866672478412063, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: m_TagString
+      value: PendantManager
+      objectReference: {fileID: 0}
     - target: {fileID: 4113615969327713946, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: pendantActive.Array.size
       value: 7
@@ -360,6 +388,10 @@ PrefabInstance:
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: betaDotDamage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: betaResistanceMax

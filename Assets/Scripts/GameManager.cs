@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
             interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
             encounterEnd = false;
             cardManager.BuildDeck();
-            wagons[0].StartEncounter();
+            StartCoroutine(wagons[0].StartEncounter());
             DrawCards();
             UpdateDiscard();
             wagons[0].GenerateDamage();
