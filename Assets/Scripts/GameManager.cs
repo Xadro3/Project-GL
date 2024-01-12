@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static event Action CardRewardChosenSoundEvent;
     public static event Action NotEnoughEnergyEvent;
     public static event Action FirstCardPlayedEvent;
+    public static event Action<int> SetEncounterBackgroundEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -100,6 +101,12 @@ public class GameManager : MonoBehaviour
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosenEvent;
         CardMovementHandler.CardDropped += HandleCardDroppedEvent;
         Node.EnteringNodeEvent += HandleNodeEnterEvent;
+        Node.EnteringNodeEvent += IncreaseCompletedEncounterCount;
+    }
+
+    private void IncreaseCompletedEncounterCount(bool arg1, string arg2)
+    {
+        encounterCompleted++;
     }
 
     private void HandleCardDroppedEvent()
@@ -145,6 +152,7 @@ public class GameManager : MonoBehaviour
         interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
         if (scene.name == "Encounter")
         {
+            SetEncounterBackgroundEvent?.Invoke(encounterCompleted);
             playerHand = FindObjectOfType<PlayerHand>(true);
             playerEnergy = FindObjectOfType<PlayerEnergy>(true);
             discardPileParent = FindObjectOfType<DiscardPile>(true).transform;
@@ -161,6 +169,7 @@ public class GameManager : MonoBehaviour
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
             UpdatePlayerRessource();
+
         }
     }
     private void Update()
@@ -182,16 +191,15 @@ public class GameManager : MonoBehaviour
 
     private void SetTokenReward()
     {
-        int completedEncounter = GetCompletedEncounter();
-        if (completedEncounter < 12)
+        if (encounterCompleted < 10)
         {
             tokenRewardAmount = tokenRewardChapterOne;
         }
-        else if (completedEncounter < 24)
+        else if (encounterCompleted < 20)
         {
             tokenRewardAmount = tokenRewardChapterTwo;
         }
-        else if (completedEncounter >= 24)
+        else if (encounterCompleted >= 20)
         {
             tokenRewardAmount = tokenRewardChapterThree;
         }
