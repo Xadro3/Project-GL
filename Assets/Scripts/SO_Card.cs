@@ -21,6 +21,7 @@ public class SO_Card : ScriptableObject
     public bool energyCostAffected = false;
     public int energyCostIncrease = 0;
     public int durability;
+    public int durabilityDebuffValue = 0;
 
     public List<GameConstants.cardType> cardType;
     public List<GameConstants.cardRarity> cardRarity;

@@ -45,11 +45,14 @@ public class CardManager : MonoBehaviour
         {
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
+            cardInfo.durabilityDebuffValue = 0;
+
         }
         foreach (SO_Card cardUpgrade in cardUpgrades)
         {
             cardUpgrade.energyCostAffected = false;
             cardUpgrade.energyCostIncrease = 0;
+            cardUpgrade.durabilityDebuffValue = 0;
         }
     }
 
@@ -67,11 +70,13 @@ public class CardManager : MonoBehaviour
         {
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
+            cardInfo.durabilityDebuffValue = 0;
         }
         foreach (SO_Card cardUpgrade in cardUpgrades)
         {
             cardUpgrade.energyCostAffected = false;
             cardUpgrade.energyCostIncrease = 0;
+            cardUpgrade.durabilityDebuffValue = 0;
         }
         //GetRandomCardFromCardSafe();
     }
@@ -87,6 +92,18 @@ public class CardManager : MonoBehaviour
         {
             cardUpgrade.energyCostAffected = true;
             cardUpgrade.energyCostIncrease = 0 + value;
+        }
+    }
+
+    public void ShieldDebuffEffect(int value)
+    {
+        foreach (SO_Card cardInfo in cardInfos)
+        {
+            cardInfo.durabilityDebuffValue = value;
+        }
+        foreach (SO_Card cardUpgrade in cardUpgrades)
+        {
+            cardUpgrade.durabilityDebuffValue = value;
         }
     }
 

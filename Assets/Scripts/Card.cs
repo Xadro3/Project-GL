@@ -30,6 +30,7 @@ public class Card : MonoBehaviour
     public string cardDescription;
     public bool energyCostAffected;
     public int energyCostIncrease;
+    public bool wasFirstCardPlayed = false;
 
     //Abilities
     public bool ability;
@@ -79,12 +80,13 @@ public class Card : MonoBehaviour
         gameObject.name = cardName;
         cardRarity = cardInfo.cardRarity;
         protectionTypes = cardInfo.protectionTypes;
-        cost = cardInfo.cost + energyCostIncrease;
         energyCostAffected = cardInfo.energyCostAffected;
         energyCostIncrease = cardInfo.energyCostIncrease;
+        cost = cardInfo.cost + energyCostIncrease;
+        
 
 
-        durability = cardInfo.durability + durabilityPendantBuff + cardDurabilityDebuffValue;
+        durability = cardInfo.durability + durabilityPendantBuff - cardInfo.durabilityDebuffValue;
         durabilityCurrent = durability;
         cardDescription = cardInfo.description;
 
@@ -135,11 +137,18 @@ public class Card : MonoBehaviour
     private void OnEnable()
     {
         GameManager.CardEnergyCostEffect += HandleCardEnergyCostEffect;
+        GameManager.FirstCardPlayedEvent += HandleFirstCardPlayed;
+    }
+
+    private void HandleFirstCardPlayed()
+    {
+        wasFirstCardPlayed = true;
     }
 
     private void OnDisable()
     {
         GameManager.CardEnergyCostEffect -= HandleCardEnergyCostEffect;
+        GameManager.FirstCardPlayedEvent -= HandleFirstCardPlayed;
     }
 
     public void HandleCardEnergyCostEffect(int value)
@@ -162,14 +171,13 @@ public class Card : MonoBehaviour
         }
         UpdateDisplay();
     }
-    public void ShieldDebuff()
+    public void ShieldDebuff(int value)
     {
         if (!cardDurabilityDebuffActive)
         {
             cardDurabilityDebuffActive = true;
-            cardDurabilityDebuffValue = 2;
-            durabilityCurrent -= 2;
-            durability -= 2;
+            durabilityCurrent -= value;
+            durability -= value;
             if (durability < durabilityCurrent)
             {
                 durabilityCurrent = durability;

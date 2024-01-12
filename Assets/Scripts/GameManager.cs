@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> CardEnergyCostEffect;
     public static event Action CardRewardChosenSoundEvent;
     public static event Action NotEnoughEnergyEvent;
+    public static event Action FirstCardPlayedEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -46,8 +47,6 @@ public class GameManager : MonoBehaviour
     public CardManager cardManager;
     public ShopCurrency shopCurrency;
     public PendantManager pendantManager;
-
-    private int costIncrease = 0;
 
     private List<Card> cardsToDiscard = new List<Card>();
     private int cardsToDiscardCount = 0;
@@ -87,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
         nodeLoader = FindObjectOfType<NodeLoader>();
+        playerRessourceBuffMax = playerRessourceMax;
     }
     private void OnEnable()
     {
@@ -115,6 +115,10 @@ public class GameManager : MonoBehaviour
                     playedCards.Add(slot.GetCardInSlotInfo());
                     cardsPlayed++;
                 }
+            }
+            if (cardsPlayed == 1)
+            {
+                FirstCardPlayedEvent?.Invoke();
             }
             if (cardsPlayed > 0)
             {
@@ -150,13 +154,13 @@ public class GameManager : MonoBehaviour
             encounterEnd = false;
             cardManager.BuildDeck();
             wagons[0].StartEncounter();
-            UpdatePlayerRessource();
             DrawCards();
             UpdateDiscard();
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
+            UpdatePlayerRessource();
         }
     }
     private void Update()
@@ -164,7 +168,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.TriggerRandomDebuff();
-        //    pendantManager.AwardRandomPendant();
+            pendantManager.AwardRandomPendant();
         }
     }
 
@@ -262,6 +266,15 @@ public class GameManager : MonoBehaviour
         UpdateDeckDisplay(deck.playerDeck.Count);
         haveToShuffle = false;
     }
+    public void MaxEnergyDebuff(int value)
+    {
+        playerRessourceMax -= value;
+        playerRessourceBuffMax = playerRessourceMax;
+        if (playerRessourceCurrent > playerRessourceMax)
+        {
+            playerRessourceCurrent = playerRessourceMax;
+        }
+    }
     public void AddEnergy(int value)
     {
         playerRessourceCurrent += value;
@@ -279,7 +292,7 @@ public class GameManager : MonoBehaviour
     }
     public bool EnoughEnergy(Card card)
     {
-        if ((playerRessourceCurrent - card.cost + costIncrease) >= 0)
+        if ((playerRessourceCurrent - card.cost) >= 0)
         {
             return true;
         }
@@ -293,7 +306,7 @@ public class GameManager : MonoBehaviour
     {
         if (EnoughEnergy(card))
         {
-            playerRessourceCurrent -= card.cost + costIncrease;
+            playerRessourceCurrent -= card.cost;
             UpdatePlayerRessource();
             
         }
@@ -304,9 +317,9 @@ public class GameManager : MonoBehaviour
     }
     public void RefundCardCost(Card card)
     {
-        if ((playerRessourceMax >= (playerRessourceCurrent + card.cost)) || (playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)))
+        if ((playerRessourceMax + playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)) || (playerRessourceBuffMax >= (playerRessourceCurrent + card.cost)))
         {
-            playerRessourceCurrent += card.cost + costIncrease;
+            playerRessourceCurrent += card.cost;
             UpdatePlayerRessource();
         }
         else
@@ -354,19 +367,23 @@ public class GameManager : MonoBehaviour
     {
         wagons[0].ActivateDamageBuff(radiationType);
     }
-    public void ActivateShieldDebuff()
+    public void ActivateShieldDebuff(int value)
     {
-        List<Card> cards = new List<Card>();
+        cardManager.ShieldDebuffEffect(value);
 
-        cards.AddRange(FindObjectsOfType<Card>(true));
-        if (cards != null && cards.Count > 0)
+        if (SceneManager.GetActiveScene().name == "Encounter")
         {
-            foreach (Card card in cards)
+            List<Card> cards = new List<Card>();
+
+            cards.AddRange(FindObjectsOfType<Card>(true));
+            if (cards != null && cards.Count > 0)
             {
-                card.ShieldDebuff();
+                foreach (Card card in cards)
+                {
+                    card.ShieldDebuff(value);
+                }
             }
         }
-        
     }
     public void RemoveCardFromEncounter(Card card)
     {
@@ -377,7 +394,6 @@ public class GameManager : MonoBehaviour
         //costIncrease += increase;
         cardManager.CardEnergyCostEffect(increase);
         CardEnergyCostEffect?.Invoke(increase);
-        Debug.Log("Fire");
     }
     public bool IsBetaDotActive()
     {
@@ -693,7 +709,9 @@ public class GameManager : MonoBehaviour
             case GameConstants.pendantEffect.firstTurnMoreEnergy:
                 if (isFirstTurn)
                 {
+                    Debug.Log("First Turn more Energy: " + playerRessourceBuffMax + " will get + " + effectValue);
                     playerRessourceCurrent += effectValue;
+                    playerRessourceBuffMax += effectValue;
                     playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
                 }
                 break;

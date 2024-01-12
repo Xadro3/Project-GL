@@ -248,9 +248,9 @@ public class PlayerHealthManager : MonoBehaviour
         Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta)), "ActivateDamageBuffBeta"),
         Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma)), "ActivateDamageBuffGamma"),
         Tuple.Create((System.Action)(() => gm.SetCardCostIncrease(1)), "SetCardCostIncrease"),
-        Tuple.Create((System.Action)(() => gm.playerRessourceMax -= 1), "DecreasePlayerResourceMax"),
+        Tuple.Create((System.Action)(() => gm.MaxEnergyDebuff(1)), "DecreasePlayerResourceMax"),
         Tuple.Create((System.Action)(() => gm.playerHandMax -= 1), "DecreasePlayerHandMax"),
-        Tuple.Create((System.Action)(() => gm.ActivateShieldDebuff()), "ActivateShieldDebuff")
+        Tuple.Create((System.Action)(() => gm.ActivateShieldDebuff(2)), "ActivateShieldDebuff")
         };
 
         // Filter out actions that have already been triggered
