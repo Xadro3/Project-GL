@@ -355,7 +355,7 @@ public class CardMovementHandler : MonoBehaviour
                 
                 if (card.cardEffects.ContainsKey(GameConstants.effectTypes.Discard))
                 {
-                    if (CheckCardsInHandForEffect())
+                    if (CheckCardsInHandForEffect() >= card.cardEffects.GetValueOrDefault(GameConstants.effectTypes.Discard, 0))
                     {
                         wasPlayed = true;
                         card.SetWasPlayed(true);
@@ -431,11 +431,11 @@ public class CardMovementHandler : MonoBehaviour
         }
     }
 
-    private bool CheckCardsInHandForEffect()
+    private int CheckCardsInHandForEffect()
     {
         List<Card> cardsInHand = new List<Card>();
         cardsInHand.AddRange(gm.playerHand.GetComponentsInChildren<Card>());
-        return true;
+        return cardsInHand.Count;
     }
 
     private bool CanPlayCardOnShield(Card card, Slot slot)
