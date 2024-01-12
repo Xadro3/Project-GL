@@ -70,7 +70,7 @@ public class CursedPendantScript : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
 
     private void OnMouseOver()
@@ -97,5 +97,6 @@ public class CursedPendantScript : MonoBehaviour
     public void SetPendantActive(bool b)
     {
         isActive = b;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 }

@@ -60,7 +60,11 @@ public class PendantManager : MonoBehaviour
 
     private void ActivatePendantDisplay(GameObject pendant)
     {
-        pendant.transform.SetParent(pendantContainer.transform);
+        if (pendantContainer != null)
+        {
+            pendant.transform.SetParent(pendantContainer.transform);
+            pendant.GetComponent<Animator>().enabled = true;
+        }
         pendant.GetComponent<PendantScript>().SetSpriteRendererActive(true);
         pendant.GetComponent<RectTransform>().localScale = new Vector3(60f, 60f, 60f);
         pendant.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector3(0f, 0f, 0f), Quaternion.identity);
@@ -131,8 +135,8 @@ public class PendantManager : MonoBehaviour
 
             // Return the randomly chosen inactive pendant
             inactivePendants[randomIndex].GetComponent<PendantScript>().SetPendantActive(true);
-            ActivatePendantDisplay(inactivePendants[randomIndex]);
-            TriggerPendantEffects();
+            //ActivatePendantDisplay(inactivePendants[randomIndex]);
+            //TriggerPendantEffects();
             return inactivePendants[randomIndex];
         }
         else

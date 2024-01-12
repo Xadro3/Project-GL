@@ -161,11 +161,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    player.TriggerRandomDebuff();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            player.TriggerRandomDebuff();
         //    pendantManager.AwardRandomPendant();
-        //}
+        }
     }
 
     private void HandleNodeEnterEvent(bool isLastNode, string nextMap)

@@ -19,6 +19,7 @@ public class ButtonManager : MonoBehaviour
         //{
         //    GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().activeNode.GetComponent<Node>().nextNode2.GetComponent<Node>().isNextNode = true;
         //}
+        Debug.Log(GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().originScene + " thats what I am trying to load");
         GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>().LoadOverworld();
     }
 
