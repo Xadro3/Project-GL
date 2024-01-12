@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
     public bool paperBuffPendantActive;
     public int pendantBuffValue = 0;
 
+    public bool isLastEncounterOnMap = false;
+
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
@@ -187,6 +189,7 @@ public class GameManager : MonoBehaviour
         if (isLastNode)
         {
             nodeLoader.originScene = nextMap;
+            isLastEncounterOnMap = true;
         }
     }
 
@@ -706,6 +709,11 @@ public class GameManager : MonoBehaviour
         }
         Shuffle();
         PauseGame(false);
+        if (isLastEncounterOnMap)
+        {
+            ResetEnergy();
+            player.ResetResistances();
+        }
         yield break;
     }
     private void HandleCardRewardChosenEvent(Card obj)
