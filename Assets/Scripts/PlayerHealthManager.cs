@@ -109,6 +109,13 @@ public class PlayerHealthManager : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
     }
 
+    public void ResetResistances()
+    {
+        alphaResistance = alphaResistanceMax;
+        betaResistance = betaResistanceMax;
+        gammaResistance = gammaResistanceMax;
+    }
+
     // function to apply damage -> currently only total damage no debuffs here
     public void ApplyDamage(int damageValue, GameConstants.radiationTypes damageType)
     {
