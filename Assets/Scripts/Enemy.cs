@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     public int reductionDurationBetaPercent = 0;
     public int reductionDurationGammaPercent = 0;
     [Header("----- Alpha Damage -----")]
+    public bool scaleAlphaWithPhase;
     public int alphaDamageReduction;
     public bool alphaDamageBuff = false;
     public int alphaDamageBuffValue = 2;
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
     [Header("----- Scaling -----")]
+    
     private bool settingPhase = false;
     public int encounterCompleted = 0;
     public int bossBonus = 1;
@@ -512,12 +514,21 @@ public class Enemy : MonoBehaviour
     }
     private void SetAlphaDamage(int min, int max)
     {
-        alphaMin = min - alphaDamageReduction;
-        alphaMax = max - alphaDamageReduction;
+        if (scaleAlphaWithPhase)
+        {
+            alphaMin = min - encounterPhase;
+            alphaMax = max - encounterPhase;
+        }
+        else
+        {
+            alphaMin = min - alphaDamageReduction;
+            alphaMax = max - alphaDamageReduction;
+        }
         if (alphaMin <= 0)
         {
             alphaMin = 1;
         }
+        
     }
     private void SetBetaDamage(int min, int max)
     {
