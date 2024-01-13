@@ -142,6 +142,7 @@ public class PlayerHealthManager : MonoBehaviour
                 StartCoroutine(HandlePuredamage(damageValue));
                 break;
         }
+        CheckHealth();
         // check if player survived damage
         //if (CheckHealth() <= 0)
         //{
