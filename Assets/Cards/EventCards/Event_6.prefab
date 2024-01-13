@@ -50,24 +50,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: answerText
-      value: "Korrekt. Diese Scanner verursachen nur 0.00001 bis 0.002 mSv pro Scan,
-        was deutlich niedriger ist als die nat\xFCrliche Hintergrundstrahlung von
-        etwa 0.01 mSv."
+      value: "Korrekt. Einige Pilzarten, wie 'Cryptococcus neoformans', k\xF6nnen
+        sich an radioaktive Bedingungen anpassen und unter diesen Bedingungen schneller
+        wachsen."
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: "Es wird geklaubt das die neuartigen Ganzk\xF6rperscanner in den Flugh\xE4fen
-        die Strahlenbelastung erheblich erh\xF6hen, trifft dies zu?"
+      value: "Es kam die Frage auf, wie das Wachstum bestimmter Pilze durch Radioaktivit\xE4t
+        in der Umgebung beeinflusst wird, was denken Sie?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
-      value: "Inkorrekt. Die Strahlenbelastung durch Ganzk\xF6rperscanner liegt nur
-        0.00001 bis 0.002 mSv pro Scan, was deutlich niedriger ist als die nat\xFCrliche
-        Hintergrundstrahlung von etwa 0.01 mSv."
+      value: "Das ist nicht zutreffend. Tats\xE4chlich gibt es Pilze, wie zum Beispiel
+        der 'Cryptococcus neoformans' der sich den radioaktiven Bedingungen anpassen
+        kann und dadurch schneller w\xE4chst."
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Ja, sie sind eine wesentliche zus\xE4tzliche Quelle von Strahlenexposition."
+      value: Alle Pilze sterben in radioaktiven Umgebungen.
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -75,8 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Nein, die Strahlenbelastung durch diese Scanner ist minimal und liegt
-        weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      value: "Einige Pilzarten k\xF6nnen in radioaktiven Umgebungen schneller wachsen."
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -84,12 +83,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Das ist wie mit allem im Leben: Die Dosis macht das Gift, wenn die
-        Scanner H\xE4ufig verwendet werden dann kann es schon zu Problemen f\xFChren."
+      value: "Radioaktivit\xE4t hat keinen Einfluss auf das Wachstum von Pilzen."
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name
-      value: Event_5
+      value: Event_6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

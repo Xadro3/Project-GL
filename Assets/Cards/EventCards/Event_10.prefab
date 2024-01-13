@@ -50,24 +50,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: answerText
-      value: "Korrekt. Diese Scanner verursachen nur 0.00001 bis 0.002 mSv pro Scan,
-        was deutlich niedriger ist als die nat\xFCrliche Hintergrundstrahlung von
-        etwa 0.01 mSv."
+      value: "Korrekt. Die Staatliche Agentur zur Verwaltung der Sperrzone hat selbst
+        rund 24 offizielle Touristenrouten zur Besichtigung von Tschernobyl eingerichtet
+        und eine eint\xE4gige Teilnahme an diesen Routen verursacht weniger Strahlenbelastung
+        als ein Flug von Berlin nach Tokyo (0.1 mSv)."
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: "Es wird geklaubt das die neuartigen Ganzk\xF6rperscanner in den Flugh\xE4fen
-        die Strahlenbelastung erheblich erh\xF6hen, trifft dies zu?"
+      value: "Es hei\xDFt das der Tschernobyl Supergau so monumental war, dass die
+        Umgebung rund um Tschernobyl bis heute immer noch nicht betretbar ist. Trifft
+        diese Aussage zu?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
-      value: "Inkorrekt. Die Strahlenbelastung durch Ganzk\xF6rperscanner liegt nur
-        0.00001 bis 0.002 mSv pro Scan, was deutlich niedriger ist als die nat\xFCrliche
-        Hintergrundstrahlung von etwa 0.01 mSv."
+      value: Das ist nicht korrekt. Es gibt inzwischen mehrere offizielle Touristenrouten
+        durch das Gebiet rund um Tschernobyl und eine Teilnahme daran ist gesundheitlich
+        unbedenklich. Komplett verschwunden ist die Strahlenbelastung jedoch noch
+        nicht.
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Ja, sie sind eine wesentliche zus\xE4tzliche Quelle von Strahlenexposition."
+      value: "Richtig, die Sperrzone rund um Tschernobyl ist heute immer noch geschlossen
+        und ein l\xE4ngerer Aufenthalt dort w\xE4re nach wie vor gef\xE4hrlich"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -75,8 +79,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Nein, die Strahlenbelastung durch diese Scanner ist minimal und liegt
-        weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      value: Falsch, es gibt inzwischen mehrere Touristenrouten in der Umgebung von
+        Tschernobyl, auch in die Sperrzone hinein, und die Teilnahme daran ist unbedenklich.
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -84,12 +88,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Das ist wie mit allem im Leben: Die Dosis macht das Gift, wenn die
-        Scanner H\xE4ufig verwendet werden dann kann es schon zu Problemen f\xFChren."
+      value: "Falsch, die Radioaktive Strahlung des Tschernobyl Unfalls hat sich
+        inzwischen komplett aufgel\xF6st."
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name
-      value: Event_5
+      value: Event_10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
