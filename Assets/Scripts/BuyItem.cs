@@ -19,7 +19,7 @@ public class BuyItem : MonoBehaviour
             card = collision.transform.gameObject.GetComponent<Card>();
             if (!card.isBought)
             {
-                if(GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().money-card.currencyCost > 0)
+                if(GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().money-card.currencyCost >= 0)
                 {
                     card.isBought = true;
                     
