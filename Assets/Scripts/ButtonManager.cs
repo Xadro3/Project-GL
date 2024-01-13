@@ -33,6 +33,12 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ResetGame()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Wallet"));
+        SceneManager.LoadScene("Menu");
+    }
+
     public void ChangeScene2()
     {
         SceneManager.LoadScene(scene2);

@@ -25,13 +25,17 @@ public class OverworldSceneChanger : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                SceneChangeEvent?.Invoke();
-                audio.PlaySFX(clip);
-                audio.PlaySFX(audio.nodeClick);
-                Debug.Log(hit.transform.name);
-                hit.collider.gameObject.GetComponent<Node>().EnterNode();
-                animator.Play("TransitionClose");
-}
+                if (hit.collider.gameObject.GetComponent<Node>() != null)
+                {
+                    SceneChangeEvent?.Invoke();
+                    audio.PlaySFX(clip);
+                    audio.PlaySFX(audio.nodeClick);
+                    Debug.Log(hit.transform.name);
+                    hit.collider.gameObject.GetComponent<Node>().EnterNode();
+                    animator.Play("TransitionClose");
+                }
+            }
+               
         }
        
     }

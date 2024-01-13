@@ -24,6 +24,9 @@ public class Seller : MonoBehaviour
             deck.RemoveCardFromBaseDeck(collision.gameObject.GetComponent<Card>());
             this.gameObject.SetActive(false);
             used = true;
+            SellCard?.Invoke();
         }
     }
+
+    public static System.Action SellCard;
 }

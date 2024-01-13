@@ -22,6 +22,7 @@ public class EventSolver : MonoBehaviour
             collision.collider.GetComponent<Drag>().startPos = transform.position;
             if (collision.collider.GetComponent<EventCard>().isCorrectAnswer)
             {
+                CORRECTANSWER?.Invoke();
                 continuebutton.SetActive(true);
                 answer.SetActive(true);
                 question.SetActive(false);
@@ -30,6 +31,7 @@ public class EventSolver : MonoBehaviour
             }
             else
             {
+                WRONGANSWER?.Invoke();
                 wrongAnswer.SetActive(true);
                 question.SetActive(false);
                 backButton.SetActive(true);
@@ -37,4 +39,8 @@ public class EventSolver : MonoBehaviour
             }
         }
     }
+
+    public static System.Action CORRECTANSWER;
+
+    public static System.Action WRONGANSWER;
 }

@@ -37,7 +37,11 @@ public class Upgrader : MonoBehaviour
         {
             used = true;
             collision.collider.GetComponent<Drag>().startPos = transform.position;
-            collision.collider.GetComponent<Card>().UpgradeCard();            
+            collision.collider.GetComponent<Card>().UpgradeCard();
+            UpgradeCard?.Invoke();
         }
     }
+
+    public static System.Action UpgradeCard;
+    
 }

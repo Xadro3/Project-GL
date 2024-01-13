@@ -81,6 +81,10 @@ public class Node : MonoBehaviour
             sprite.color = Color.gray;
             collider.enabled = false;
         }
+        if (isLastNode)
+        {
+            eventType = 2;
+        }
     }
 
     public void UnlockNextNode()

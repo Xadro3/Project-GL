@@ -146,8 +146,11 @@ public class AudioManager : MonoBehaviour
         TurnMaster.StartTurnEvent += HandleStartTurn;
         PlayerHealthManager.EncounterEnd += HandleLostGame;
         GameManager.NotEnoughEnergyEvent += HandleNoEnergy;
-
-
+        EventSolver.WRONGANSWER += HandleWrongAnswer;
+        EventSolver.CORRECTANSWER += HandleCorrectAnswer;
+        Upgrader.UpgradeCard += HandleCardUpgrade;
+        Seller.SellCard += HandleWorkshopCardEntfern;
+        BuyItem.Buycard += HandleCardBuy;
         //Clip Starten wenn man das Spiel gestartet hat
         if (SceneManager.GetActiveScene().name == "Menu")
         {
@@ -277,6 +280,18 @@ public class AudioManager : MonoBehaviour
     void HandleCardBuy()
     {
         PlaySFX(cardBuy);
+    }
+
+    //Event Sound Handler
+
+    void HandleCorrectAnswer()
+    {
+        PlaySFX(correctAnswer);
+    }
+
+    void HandleWrongAnswer()
+    {
+        PlaySFX(incorrectAnswer);
     }
 
 }

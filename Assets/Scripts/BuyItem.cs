@@ -30,11 +30,14 @@ public class BuyItem : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(card.currencyCost);
                     GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>().AddCardToBaseDeck(card);
                     LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+                    Buycard?.Invoke();
                 }
               
             }
         }
         Canvas.ForceUpdateCanvases();
     }
+
+    public static System.Action Buycard;
 
 }
