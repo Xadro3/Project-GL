@@ -185,10 +185,18 @@ public class Card : MonoBehaviour
             if (durabilityCurrent <= 0)
             {
                 OnDurabilityZero?.Invoke(this);
-                cardMovementHandler.MoveToDiscardPile();
+                if (cardMovementHandler != null && cardMovementHandler.enabled)
+                {
+                    cardMovementHandler.MoveToDiscardPile();
+                }
+                else
+                {
+                    cardMovementHandler = GetComponent<CardMovementHandler>();
+                    cardMovementHandler.enabled = true;
+                    cardMovementHandler.MoveToDiscardPile();
+                }                               
             }
         }
-        
         UpdateDisplay();
     }
     
