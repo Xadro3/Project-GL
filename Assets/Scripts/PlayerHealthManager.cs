@@ -30,26 +30,30 @@ public class PlayerHealthManager : MonoBehaviour
     public int gammaResistance;
     [Range(0, 50)]
     public int gammaResistanceMax;
+    public int gammaPureDamage;
 
+    [Header("----- Beta Dot Damage -----")]
+    public bool betaDotActive = false;
+    public int betaDotTimer = 0;
+    public int betaDotDamage;
+    public int betaDotDamageSum = 0;
+
+    [Header("----- Display -----")]
     public PlayerModel playerModel;
 
+    [Header("----- Buffs -----")]
     public bool alphaDamageReductionFlat = false;
     public bool alphaDamageReductionPercent = false;
     public bool betaDamageReductionFlat = false;
     public bool betaDamageReductionPercent = false;
     public bool gammaDamageReductionFlat = false;
     public bool gammaDamageReductionPercent = false;
-
     public bool healthDamageReductionPercent = false;
-
-    public bool betaDotActive = false;
-    public int betaDotTimer = 0;
-    public int betaDotDamage;
-    public int betaDotDamageSum = 0;
-
     public int healthDamageReductionFlatValue = 0;
     public int resistanceDamageReductionPercentValue = 0;
     public int resistanceDamageReductionFlatValue = 0;
+
+
 
     private List<Tuple<System.Action, string>> triggeredActions = new List<Tuple<System.Action, string>>();
 
@@ -249,6 +253,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         if (gammaResistance <= 0)
         {
+            ApplyDamage(gammaPureDamage, GameConstants.radiationTypes.Pure);
             gammaResistance = gammaResistanceMax;
             playerModel.gammaBar.SetHealth(gammaResistance);
             TriggerRandomDebuff();
