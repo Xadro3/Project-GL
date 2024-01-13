@@ -229,7 +229,8 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (alphaResistance <= 0)
         {
-            playerModel.healthBar.SetHealth(health -= Mathf.RoundToInt(healthMax * 0.75f));
+            int alphaPureDamage = Mathf.RoundToInt(healthMax * 0.75f);
+            ApplyDamage(alphaPureDamage, GameConstants.radiationTypes.Pure);
             alphaResistance = alphaResistanceMax;
             playerModel.alphaBar.SetHealth(alphaResistance);
             Debug.Log("Aua! Ich habe schaden bekommen!");
