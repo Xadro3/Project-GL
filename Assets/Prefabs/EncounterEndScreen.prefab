@@ -880,6 +880,7 @@ MonoBehaviour:
   targetPosition: {fileID: 3308154473056445101}
   btn_weiter: {fileID: 5953964270967415072}
   btn_beenden: {fileID: 3793793144530259455}
+  shieldTokenGrp: {fileID: 4301417408500365287}
 --- !u!1 &4255683016914127932
 GameObject:
   m_ObjectHideFlags: 0

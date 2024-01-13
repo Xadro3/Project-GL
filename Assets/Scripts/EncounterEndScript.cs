@@ -21,6 +21,7 @@ public class EncounterEndScript : MonoBehaviour
     public GameObject targetPosition;
     public Button btn_weiter;
     public Button btn_beenden;
+    public GameObject shieldTokenGrp;
 
     private void Awake()
     {
@@ -39,12 +40,14 @@ public class EncounterEndScript : MonoBehaviour
             case true:
                 victoryText.gameObject.SetActive(true);
                 defeatText.gameObject.SetActive(false);
+                shieldTokenGrp.SetActive(true);
                 UpdateRewardAmount(rewardAmount);
                 break;
 
             case false:
                 defeatText.gameObject.SetActive(true);
                 victoryText.gameObject.SetActive(false);
+                shieldTokenGrp.SetActive(false);
                 btn_weiter.gameObject.SetActive(false);
                 break;
         }
