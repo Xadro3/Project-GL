@@ -84,15 +84,15 @@ public class PlayerHealthManager : MonoBehaviour
         {
             playerModel = FindObjectOfType<PlayerModel>();
             playerModel.alphaBar.SetMaxHealth(alphaResistanceMax);
-            playerModel.alphaBar.SetHealth(alphaResistanceMax);
+            playerModel.alphaBar.SetHealth(alphaResistance);
             playerModel.betaBar.SetMaxHealth(betaResistanceMax);
-            playerModel.betaBar.SetHealth(betaResistanceMax);
+            playerModel.betaBar.SetHealth(betaResistance);
             playerModel.gammaBar.SetMaxHealth(gammaResistanceMax);
             playerModel.gammaBar.SetHealth(gammaResistance);
             playerModel.healthBar.SetMaxHealth(healthMax);
             playerModel.healthBar.SetHealth(health);
-            alphaResistance = alphaResistanceMax;
-            betaResistance = betaResistanceMax;
+            //alphaResistance = alphaResistanceMax;
+            //betaResistance = betaResistanceMax;
             CheckHealth();
             UpdateTexts();
             if (betaDotActive)

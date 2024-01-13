@@ -8,16 +8,16 @@ public class Enemy : MonoBehaviour
     public static event System.Action EncounterEnd;
 
     private EnemyModel enemyModel;
-
+    [Header("----- Round Timer -----")]
     public int damageValue = 0;
     public int roundTimer = 0;
     public int roundTimerMin = 2;
     public int roundTimerMax = 5;
-
+    [Header("----- Blocking -----")]
     public int blockDurationAlpha = 0;
     public int blockDurationBeta = 0;
     public int blockDurationGamma = 0;
-
+    [Header("----- Reduction -----")]
     public int reductionFlatValue = 0;
     public int reductionDurationAlphaFlat = 0;
     public int reductionDurationBetaFlat = 0;
@@ -27,15 +27,16 @@ public class Enemy : MonoBehaviour
     public int reductionDurationAlphaPercent = 0;
     public int reductionDurationBetaPercent = 0;
     public int reductionDurationGammaPercent = 0;
-
+    [Header("----- Alpha Damage -----")]
+    public int alphaDamageReduction;
     public bool alphaDamageBuff = false;
     public int alphaDamageBuffValue = 2;
     public int alphaDamage;
-
+    [Header("----- Beta Damage -----")]
     public bool betaDamageBuff = false;
     public int betaDamageBuffValue = 2;
     public int betaDamage;
-
+    [Header("----- Gamma Damage -----")]
     public bool gammaDamageBuff = false;
     public int gammaDamageBuffValue = 2;
     public int gammaDamage;
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
     private int gammaMin = 1;
     [Range(1, 50)]
     public int gammaMax;
-
+    [Header("----- Scaling -----")]
     private bool settingPhase = false;
     public int encounterCompleted = 0;
     public int bossBonus = 1;
@@ -511,8 +512,12 @@ public class Enemy : MonoBehaviour
     }
     private void SetAlphaDamage(int min, int max)
     {
-        alphaMin = min;
-        alphaMax = max;
+        alphaMin = min - alphaDamageReduction;
+        alphaMax = max - alphaDamageReduction;
+        if (alphaMin <= 0)
+        {
+            alphaMin = 1;
+        }
     }
     private void SetBetaDamage(int min, int max)
     {
