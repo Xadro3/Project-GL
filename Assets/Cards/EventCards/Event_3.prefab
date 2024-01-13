@@ -48,6 +48,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3013176485618123524, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013176485618123524, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013176485618123524, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013176485618123524, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000009414
+      objectReference: {fileID: 0}
     - target: {fileID: 3866443376222870544, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
       value: Das stimmt. Wir sind jederzeit einem solchen Risiko ausgesetzt.
