@@ -11,6 +11,11 @@ public class EventManager : MonoBehaviour
     public GameObject event_3;
     public GameObject event_4;
     public GameObject event_5;
+    public GameObject event_6;
+    public GameObject event_7;
+    public GameObject event_8;
+    public GameObject event_9;
+    public GameObject event_10;
     public int currentEvent;
     void Start()
     {
@@ -37,6 +42,24 @@ public class EventManager : MonoBehaviour
                 Instantiate(event_4);
                 break;
             case 4:
+                Instantiate(event_5);
+                break;
+            case 5:
+                Instantiate(event_5);
+                break;
+            case 6:
+                Instantiate(event_5);
+                break;
+            case 7:
+                Instantiate(event_5);
+                break;
+            case 8:
+                Instantiate(event_5);
+                break;
+            case 9:
+                Instantiate(event_5);
+                break;
+            case 10:
                 Instantiate(event_5);
                 break;
 

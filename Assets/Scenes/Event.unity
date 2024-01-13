@@ -1522,6 +1522,11 @@ MonoBehaviour:
   event_3: {fileID: 566915166656887527, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
   event_4: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
   event_5: {fileID: 6339718422149596235, guid: c782998ff3cde1340986052ab1fb5c48, type: 3}
+  event_6: {fileID: 6339718422149596235, guid: a45c864d84e5ce84297e304584f3347e, type: 3}
+  event_7: {fileID: 6339718422149596235, guid: d6a41b1c51fa5cb4e951d583136a4868, type: 3}
+  event_8: {fileID: 6339718422149596235, guid: e6de0c6bee8ff474a9034069b597e780, type: 3}
+  event_9: {fileID: 6339718422149596235, guid: d57c53fee5972cd47b1bf7cd40cce4ed, type: 3}
+  event_10: {fileID: 6339718422149596235, guid: a95c7d9219c857841ae591eba545132d, type: 3}
   currentEvent: 0
 --- !u!4 &328011063
 Transform:
