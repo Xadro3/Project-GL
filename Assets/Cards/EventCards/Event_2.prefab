@@ -14,32 +14,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949965052686804089, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
-      value: "Nein, das ist ein Irrtum. Tats\xE4chlich sind Kohlekraftwerke und Langstreckenfl\xFCge
-        f\xFCr viel mehr Strahlung verantwortlich."
+      value: "Nein, das nicht Korrekt. Kohlekraftwerke und Langstreckenfl\xFCge verursachen
+        deutlich mehr Strahlung Belastung f\xFCr die Umgebung."
       objectReference: {fileID: 0}
     - target: {fileID: 3239442702382604812, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
-      value: "Nicht ganz. Die meiste Strahlung erhalten wir von nat\xFCrlichen Quellen
-        wie Radon."
+      value: "Eigentlich stammt die meiste Strahlung aus nat\xFCrlichen Quellen wie
+        Radon."
       objectReference: {fileID: 0}
     - target: {fileID: 4996625599061415423, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
-      value: Das stimmt. Atomkraftwerke sind eine bedeutende Quelle der Strahlenbelastung.
+      value: Ja, Atomkraftwerke sind eine Hauptquelle Ionisierender Strahlung.
       objectReference: {fileID: 0}
     - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: answerText
-      value: "Genau! Atomkraftwerke tragen nur etwa 0,05% zur Strahlenbelastung jedes
-        Jahr bei. Kohlekraftwerke und Langstreckenfl\xFCge verursachen ein Vielfaches
-        davon"
+      value: "Richtig. Atomkraftwerke tragen nur etwa 0,05% zur j\xE4hrlichen Strahlenbelastung
+        bei. Kohlekraftwerke und Langstreckenfl\xFCge verursachen ein Vielfaches
+        davon."
       objectReference: {fileID: 0}
     - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: questionText
-      value: Ein Grossteil der Strahlenbelastung kommt von Atomkraftreaktoren!
+      value: "Wie w\xFCrden Sie auf diese Aussage Antworten?: \u201CEin Gro\xDFteil
+        der Strahlenbelastung pro Jahr kommt von Atomkraftreaktoren!\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: wrongAnswerText
-      value: "In Wirklichkeit ist der Beitrag von Atomkraftwerken zur j\xE4hrlichen
-        Strahlenbelastung minimal im Vergleich zu anderen Quellen."
+      value: "Das ist ein Irrtum. Der Anteil von Atomkraftwerken an der j\xE4hrlichen
+        Strahlenbelastung liegt nur bei etwa 0,05%, Kohlekraftwerke und Langstreckenfl\xFCge
+        verursachen ein Vielfaches davon."
       objectReference: {fileID: 0}
     - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: m_LocalPosition.x
