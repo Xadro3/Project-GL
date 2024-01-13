@@ -14,13 +14,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949965052686804089, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
-      value: "Nein, das nicht Korrekt. Kohlekraftwerke und Langstreckenfl\xFCge verursachen
+      value: "Nein, das nicht korrekt. Kohlekraftwerke und Langstreckenfl\xFCge verursachen
         deutlich mehr Strahlung Belastung f\xFCr die Umgebung."
       objectReference: {fileID: 0}
     - target: {fileID: 3239442702382604812, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
       value: "Eigentlich stammt die meiste Strahlung aus nat\xFCrlichen Quellen wie
         Radon."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239442702382604812, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4996625599061415423, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
@@ -34,14 +38,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: questionText
-      value: "Wie w\xFCrden Sie auf diese Aussage Antworten?: \u201CEin Gro\xDFteil
+      value: "Wie w\xFCrden Sie auf diese Aussage antworten?: \u201CEin Gro\xDFteil
         der Strahlenbelastung pro Jahr kommt von Atomkraftreaktoren!\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 5291547162502206634, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: wrongAnswerText
       value: "Das ist ein Irrtum. Der Anteil von Atomkraftwerken an der j\xE4hrlichen
-        Strahlenbelastung liegt nur bei etwa 0,05%, Kohlekraftwerke und Langstreckenfl\xFCge
-        verursachen ein Vielfaches davon."
+        Strahlenbelastung liegt bei nur etwa 0,05%, Kohlekraftwerke und Langstreckenfl\xFCge
+        verursachen ein Vielfaches davon. A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 7390930751700849443, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -50,32 +50,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3866443376222870544, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
-      value: "Richtig, unsere Hauptsorge sollte nur die k\xFCnstliche Ionisierende-Strahlung
-        sorgen."
+      value: Das stimmt. Wir sind jederzeit einem solchen Risiko ausgesetzt.
       objectReference: {fileID: 0}
     - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: answerText
-      value: "Richtig. Nat\xFCrliche Strahlung, insbesondere in der N\xE4he von radioaktiven
-        Materialien, kann bei l\xE4ngerer Exposition genauso gef\xE4hrlich sein wie
-        k\xFCnstliche Strahlung."
+      value: "Korrekt. Der spezielle Reaktortyp von Tschernobyl ist in westlichen
+        L\xE4ndern nicht in Gebrauch, was das Risiko eines \xE4hnlichen Vorfalls
+        erheblich reduziert. Au\xDFerdem sind unsere Sicherheitsma\xDFnahmen seit
+        dem Vorfall \xFCberarbeitet worden."
       objectReference: {fileID: 0}
     - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: questionText
-      value: "Wir haben Nachricht erhalten das einige Menschen glauben das \u201Cdie
-        in der Natur vorkommende ionisierende Strahlung ungef\xE4hrlich ist und nur
-        menschengemachte ionisierende Strahlung ist gef\xE4hrlich sei!\u201D was
-        halten Sie davon?"
+      value: "Ist diese Aussage korrekt?: \u201CEin Tschernobyl-artiger Supergau
+        kann jederzeit auch im Westen passieren!\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: wrongAnswerText
-      value: "Das ist nicht richtig. Nat\xFCrliche Strahlung kann unter bestimmten
-        Umst\xE4nden, insbesondere in der N\xE4he von radioaktiven Materialien, genauso
-        gef\xE4hrlich sein wie k\xFCnstliche Strahlung."
+      value: "Das ist nicht korrekt. Der Reaktortyp, der zum Ungl\xFCck in Tschernobyl
+        f\xFChrte, ist in westlichen L\xE4ndern nicht verbreitet, was das Risiko
+        eines \xE4hnlichen Vorfalls erheblich verringert. Au\xDFerdem sind unsere
+        Sicherheitsma\xDFnahmen seit dem Vorfall \xFCberarbeitet worden. A.R.I.A
+        Out"
       objectReference: {fileID: 0}
     - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
-      value: "Falsch, in der Natur vorkommende Strahlung, besonders in der Umgebung
-        von radioaktivem Material, kann genauso gef\xE4hrlich sein, wie die K\xFCnstliche."
+      value: "Unwahrscheinlich, da der Reaktortyp, der zum Unfall in Tschernobyl
+        f\xFChrte, nur in der Sowjetunion verwendet wurde und unsere Sicherheitsvorkehrungen
+        seither auch zugenommen haben."
       objectReference: {fileID: 0}
     - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: isCorrectAnswer
@@ -83,8 +84,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632402266898820067, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
-      value: "Es h\xE4ngt von der Dosis ab. Jedoch kommt nat\xFCrliche Strahlung
-        meist in deutlich geringerer Intensit\xE4t vor als k\xFCnstliche."
+      value: "Es h\xE4ngt von der Sicherheit und Wartung der einzelnen Reaktoren
+        ab, sollten diese nicht eingehalten werden sind wir dem Risiko durchaus ausgesetzt."
       objectReference: {fileID: 0}
     - target: {fileID: 6632402266898820067, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: isCorrectAnswer

@@ -51,25 +51,27 @@ PrefabInstance:
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: answerText
       value: "Richtig. Gammastrahlen sind elektromagnetische Wellen mit sehr hoher
-        Energie. Im Gegensatz zu Alpha- und Betastrahlungen, die aus Partikeln bestehen,
-        sind Gammastrahlen in der Lage, Materialien zu durchdringen und k\xF6nnen
-        sowohl nat\xFCrlich als auch k\xFCnstlich erzeugt werden."
+        Energie. Gammastrahlen haben die k\xFCrzeste Wellenl\xE4nge und die h\xF6chste
+        bekannte Frequenz vom Elektromagnetischen Spektrum. Alpha- und Betastrahlen
+        sind Teilchenstrahlungen und damit nicht in den Frequenzen einbezogen."
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
       value: "Ihr Azubi leitete die Frage weiter, inwiefern sich Gamma im Vergleich
-        zu anderer Ionisierender Strahlung verh\xE4lt, was soll ich ihm weiterleiten?"
+        zu anderer Ionisierender Strahlung verh\xE4lt. Was soll ich ihm weiterleiten?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
-      value: Das ist nicht korrekt. Die Besonderheit von Gammastrahlen liegt in ihrer
-        hohen Energie und ihrer elektromagnetischen Natur, im Unterschied zu Alpha-
-        und Betastrahlen, die Teilchenstrahlungen sind.
+      value: "Das ist nicht korrekt. Die Besonderheit von Gammastrahlen liegt in
+        ihrer hohen Energie und ihrer elektromagnetischen Natur. Gammastrahlen haben
+        au\xDFerdem die k\xFCrzeste Wellenl\xE4nge und die h\xF6chste bekannte Frequenz
+        vom Elektromagnetischen Spektrum. Alpha- und Betastrahlen sind Teilchenstrahlungen
+        und damit nicht in den Frequenzen einbezogen. A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
       value: "Wenig. Alpha-, Beta- und Gammastrahlung sind sehr \xE4hnlich, wenn
-        nicht sogar gleich"
+        nicht sogar gleich."
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -77,8 +79,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: Gamma-Strahlen sind elektromagnetisch und sehr energiereich, im Gegensatz
-        zu Alpha und Betastrahlung, welche Teilchenstrahlungen sind.
+      value: Im Gegensatz zu Alpha- und Betastrahlung ist Gammastrahlung sehr energiereich,
+        elektromagnetisch geladen und keine Teilchenstrahlung.
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -86,8 +88,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Gammastrahlen haben eine k\xFCrzere Wellenl\xE4nge und damit eine h\xF6here
-        Frequenz als R\xF6ntgenstrahlen."
+      value: "Gammastrahlen haben eine l\xE4ngere Wellenl\xE4nge und damit eine h\xF6here
+        Frequenz als Alpha- und Betastrahlung."
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name

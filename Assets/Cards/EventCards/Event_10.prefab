@@ -53,25 +53,26 @@ PrefabInstance:
       value: "Korrekt. Die Staatliche Agentur zur Verwaltung der Sperrzone hat selbst
         rund 24 offizielle Touristenrouten zur Besichtigung von Tschernobyl eingerichtet
         und eine eint\xE4gige Teilnahme an diesen Routen verursacht weniger Strahlenbelastung
-        als ein Flug von Berlin nach Tokyo (0.1 mSv)."
+        (0.003 bis 0.004 mSv) als ein Flug von Berlin nach Tokyo (0.1 mSv)."
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: "Es hei\xDFt das der Tschernobyl Supergau so monumental war, dass die
-        Umgebung rund um Tschernobyl bis heute immer noch nicht betretbar ist. Trifft
-        diese Aussage zu?"
+      value: "Es hei\xDFt, dass der Tschernobyl Supergau so monumental war, dass
+        die Umgebung rund um Tschernobyl bis heute immer noch nicht betretbar ist.
+        Trifft diese Aussage zu?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
-      value: Das ist nicht korrekt. Es gibt inzwischen mehrere offizielle Touristenrouten
-        durch das Gebiet rund um Tschernobyl und eine Teilnahme daran ist gesundheitlich
-        unbedenklich. Komplett verschwunden ist die Strahlenbelastung jedoch noch
-        nicht.
+      value: "Das ist nicht korrekt. Die Staatliche Agentur zur Verwaltung der Sperrzone
+        hat selbst rund 24 offizielle Touristenrouten zur Besichtigung von Tschernobyl
+        eingerichtet und eine eint\xE4gige Teilnahme an diesen Routen verursacht
+        weniger Strahlenbelastung (0.003 bis 0.004 mSv) als ein Flug von Berlin nach
+        Tokyo (0.1 mSv). A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
       value: "Richtig, die Sperrzone rund um Tschernobyl ist heute immer noch geschlossen
-        und ein l\xE4ngerer Aufenthalt dort w\xE4re nach wie vor gef\xE4hrlich"
+        und ein l\xE4ngerer Aufenthalt dort w\xE4re nach wie vor gef\xE4hrlich."
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -80,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
       value: Falsch, es gibt inzwischen mehrere Touristenrouten in der Umgebung von
-        Tschernobyl, auch in die Sperrzone hinein, und die Teilnahme daran ist unbedenklich.
+        Tschernobyl, auch in die Sperrzone hinein.
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer

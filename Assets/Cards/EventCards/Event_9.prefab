@@ -52,24 +52,28 @@ PrefabInstance:
       propertyPath: answerText
       value: "Korrekt. Transformation wurde bis jetzt nur in einzelnen Nukliden von
         Nuklearem Material durchgef\xFChrt. Bei gr\xF6\xDFeren Mengen entsteht ein
-        Partitionsproblem, da es aktuell Technisch unm\xF6glich ist, jedes einzelne
+        Partitionsproblem, da es aktuell technisch unm\xF6glich ist, jedes einzelne
         Nuklid in so gro\xDFen Proben zu isolieren."
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: "Es kam die Frage auf ob wir durch Transmutation die Halbwertszeit des
-        Atomaren M\xFClls deutlich reduzieren k\xF6nnten, was das Problem der Endlagerung
-        zumindest Halbwegs l\xF6sen k\xF6nnte, was halten Sie von dieser L\xF6sung?"
+      value: "Es kam die Frage auf, ob wir durch Transmutation die Halbwertszeit
+        des atomaren M\xFClls deutlich reduzieren k\xF6nnten, was das Problem der
+        Endlagerung zumindest halbwegs l\xF6sen k\xF6nnte. Was halten Sie von dieser
+        L\xF6sung?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
       value: "Das ist nicht korrekt. Transformation existiert und funktioniert in
         einzelnen Nukliden, es ist f\xFCr die Anwendung bei gro\xDFen Materialmengen
-        jedoch aus technischen Gr\xFCnden ungeeignet."
+        jedoch aus technischen Gr\xFCnden ungeeignet. Bei gr\xF6\xDFeren Mengen entsteht
+        ein Partitionsproblem, da es aktuell technisch unm\xF6glich ist, jedes einzelne
+        Nuklid in so gro\xDFen Proben zu isolieren und wird entsprechend momentan
+        nicht f\xFCr die Atomm\xFCllentsorgung verwendet. A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: Nein so ein Vorgang wie Transformation zur Verringerung der Halbwertszeit
+      value: Nein, so ein Vorgang wie Transformation zur Verringerung der Halbwertszeit
         existiert nicht.
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
@@ -79,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
       value: "Transformation existiert und funktioniert, es ist jedoch praktisch
-        nicht m\xF6glich, es bei so gro\xDFen Mengen Atomaren M\xFClls wie durch
+        nicht m\xF6glich, es bei so gro\xDFen Mengen atomaren M\xFClls wie durch
         Reaktoren entstehen, anzuwenden."
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
@@ -88,8 +92,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Ja Transformation kann das Problem der Langzeitlagerung von Atomarem
-        M\xFCll deutlich verringern."
+      value: "Ja, Transformation wird derzeit eingesetzt um das Problem der Langzeitlagerung
+        von atomarem M\xFCll deutlich zu verringern."
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name

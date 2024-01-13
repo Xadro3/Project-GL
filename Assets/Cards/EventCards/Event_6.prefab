@@ -57,13 +57,13 @@ PrefabInstance:
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
       value: "Es kam die Frage auf, wie das Wachstum bestimmter Pilze durch Radioaktivit\xE4t
-        in der Umgebung beeinflusst wird, was denken Sie?"
+        in der Umgebung beeinflusst wird. Was denken Sie?"
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
       value: "Das ist nicht zutreffend. Tats\xE4chlich gibt es Pilze, wie zum Beispiel
         der 'Cryptococcus neoformans' der sich den radioaktiven Bedingungen anpassen
-        kann und dadurch schneller w\xE4chst."
+        kann und dadurch schneller w\xE4chst. A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text

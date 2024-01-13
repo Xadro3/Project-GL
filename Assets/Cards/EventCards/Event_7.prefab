@@ -55,15 +55,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: Ihr Azubi hat gefragt was die Halbwertszeit eines radioaktiven Materials
-        beschreibt, wie wollen Sie Antworten?
+      value: Ihr Azubi hat gefragt, was die Halbwertszeit eines radioaktiven Materials
+        beschreibt. Wie wollen Sie Antworten?
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
       value: "Nicht ganz korrekt. Die Halbwertszeit bezieht sich auf die Zeitdauer,
-        in der die H\xE4lfte der Atome eines radioaktiven Stoffes zerf\xE4llt, und
-        nicht auf den kompletten Zerfall oder das Ende der Radioaktivit\xE4t eines
-        Stoffes."
+        in der die H\xE4lfte der Atome eines radioaktiven Stoffes zerfallen und nicht
+        auf den kompletten Zerfall oder das Ende der Radioaktivit\xE4t eines Stoffes.
+        A.R.I.A Out"
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
@@ -77,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
       value: "Die Halbwertszeit ist die Zeitspanne, in der die H\xE4lfte der Atome
-        eines radioaktiven Materials zerfallen ist."
+        eines radioaktiven Materials zerfallen sind."
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name
-      value: Event_6
+      value: Event_7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,15 +10,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 566915166656887527, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: m_Name
-      value: Event_4 Variant
+      value: Event_4
       objectReference: {fileID: 0}
     - target: {fileID: 2439197518661726024, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: text
-      value: "Ja, sie sind eine wesentliche zus\xE4tzliche Quelle von Strahlenexposition."
+      value: "Falsch, in der Natur vorkommende Strahlung, besonders in der Umgebung
+        von radioaktivem Material, kann genauso gef\xE4hrlich sein, wie die K\xFCnstliche."
       objectReference: {fileID: 0}
     - target: {fileID: 2728454961071466813, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: text
-      value: "Sie sind nur bei h\xE4ufigem Gebrauch gef\xE4hrlich."
+      value: "Es h\xE4ngt von der Dosis ab. Jedoch kommt k\xFCnstliche Strahlung
+        meist in deutlich geringerer Intensit\xE4t vor als nat\xFCrliche."
       objectReference: {fileID: 0}
     - target: {fileID: 2728454961071466813, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: isCorrectAnswer
@@ -26,28 +28,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: answerText
-      value: "Richtig! Diese Scanner verursachen nur 0.00001 bis 0.002 mSv pro Scan,
-        was deutlich niedriger ist als die nat\xFCrliche Hintergrundstrahlung von
-        etwa 0.01 mSv."
+      value: "Richtig. Nat\xFCrliche Strahlung, insbesondere in der N\xE4he von radioaktiven
+        Materialien, kann bei l\xE4ngerer Exposition genauso gef\xE4hrlich sein wie
+        k\xFCnstliche Strahlung. "
       objectReference: {fileID: 0}
     - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: questionText
-      value: "Die neuartigen Ganzk\xF6rperscanner in Flugh\xE4fen erh\xF6hen deine
-        Strahlenbelastung erheblich!"
+      value: "Wir haben Nachricht erhalten, dass einige Menschen glauben, dass \u201Cdie
+        in der Natur vorkommende ionisierende Strahlung ungef\xE4hrlich ist und NUR
+        menschengemachte Strahlung gef\xE4hrlich sei!\u201D Was halten Sie davon?"
       objectReference: {fileID: 0}
     - target: {fileID: 4631669326460854171, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: wrongAnswerText
-      value: "Das ist ein Missverst\xE4ndnis. Die Strahlenbelastung durch Ganzk\xF6rperscanner
-        ist sehr gering und liegt weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      value: "Das ist nicht richtig. Nat\xFCrliche Strahlung kann unter bestimmten
+        Umst\xE4nden, insbesondere in der N\xE4he von radioaktiven Materialien, genauso
+        gef\xE4hrlich sein wie k\xFCnstliche Strahlung. Die k\xFCnstliche Strahlung
+        tritt meistens in h\xF6herer Intensit\xE4t auf als die nat\xFCrliche. A.R.I.A
+        Out"
       objectReference: {fileID: 0}
     - target: {fileID: 5511895976367087310, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: text
-      value: "Nein, die Strahlenbelastung durch diese Scanner ist minimal und liegt
-        weit unter der nat\xFCrlichen Hintergrundstrahlung."
+      value: "Richtig, unsere Hauptsorge sollte nur die k\xFCnstliche Ionisierende
+        Strahlung sein."
       objectReference: {fileID: 0}
     - target: {fileID: 5511895976367087310, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: isCorrectAnswer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8050317313147000850, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: m_LocalPosition.x
