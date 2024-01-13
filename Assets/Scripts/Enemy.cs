@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     [Range(1, 50)]
     public int gammaMax;
 
+    private bool settingPhase = false;
     public int encounterCompleted = 0;
     public int bossBonus = 1;
     public int encounterPhase = 0;
@@ -96,9 +97,9 @@ public class Enemy : MonoBehaviour
     public IEnumerator StartEncounter()
     {
         PopulateDamage();
-        bool settingPhase = false;
+        settingPhase = true;
         SetEncounterPhase();
-        while (!settingPhase)
+        while (settingPhase)
         {
             yield return null;
         }
@@ -189,6 +190,7 @@ public class Enemy : MonoBehaviour
         {
             MakeEncounterBoss();
         }
+        settingPhase = false;
     }
     private void MakeEncounterBoss()
     {
@@ -209,6 +211,7 @@ public class Enemy : MonoBehaviour
     {
         int i = Random.Range(roundTimerMin, roundTimerMax + 1);
         roundTimer = i;
+        Debug.Log("Setting timer. Min: " + roundTimerMin + " Max: " + roundTimerMax + " RoundTimer: " + roundTimer);
         enemyModel.roundTimerText.text = roundTimer.ToString();
     }
 
