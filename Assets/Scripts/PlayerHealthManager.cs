@@ -30,7 +30,6 @@ public class PlayerHealthManager : MonoBehaviour
     public int gammaResistance;
     [Range(0, 50)]
     public int gammaResistanceMax;
-    public int gammaPureDamage;
 
     [Header("----- Beta Dot Damage -----")]
     public bool betaDotActive = false;
@@ -38,9 +37,10 @@ public class PlayerHealthManager : MonoBehaviour
     public int betaDotDamageSum = 0;
 
     [Header("----- Health Damage -----")]
-    public int betaDotDamage;
     [Range(0, 1)]
     public float alphaHealthDamagePercent;
+    public int betaDotDamage;
+    public int gammaPureDamage;
 
     [Header("----- Display -----")]
     public PlayerModel playerModel;
