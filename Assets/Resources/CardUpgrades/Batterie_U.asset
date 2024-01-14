@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Batterie_U
   m_EditorClassIdentifier: 
   name: Batterie
-  description: "Wirf <color=#61300d>1</color> Karte zuf\xE4llige Karte von deiner
-    Hand ab, um <color=#61300d>2</color> Energie zu erhalten"
-  upgradedDescription: "Wirf <color=#61300d>1</color> Karte zuf\xE4llige Karte von
-    deiner Hand ab, um <color=#61300d>2</color> Energie zu erhalten"
+  description: "Wirf <color=#61300d>1</color> zuf\xE4llige Karte von deiner Hand
+    ab, um <color=#61300d>2</color> Energie zu erhalten"
   artwork: {fileID: 21300000, guid: 8ee60639167c0e247843dbdfdbfd6fdd, type: 3}
   upgraded: 1
   upgradedCardInfo: {fileID: 0}
@@ -25,6 +23,7 @@ MonoBehaviour:
   energyCostAffected: 0
   energyCostIncrease: 0
   durability: 0
+  durabilityDebuffValue: 0
   cardType: 01000000
   cardRarity: 00000000
   protectionTypes: 
@@ -39,7 +38,5 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  cardUpgrades: 01000000
-  upgradeValues: 01000000
   cardInfo: "Eine herk\xF6mmlich verf\xFCgbare Batterie, gut zur Energieversorgung
     kleiner Ger\xE4te, nicht essbar und sicher vor Kindern aufbewahren."
