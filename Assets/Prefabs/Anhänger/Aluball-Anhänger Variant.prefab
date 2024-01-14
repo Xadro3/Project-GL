@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: description
-      value: 'Gibt jedem Alu Schild +1 auf seinen Blockwert '
+      value: Der Blockwert jedes Aluminiumschildes wird um +1 angehoben.
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: pendantEffectType

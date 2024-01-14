@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: description
-      value: Die erste Karte eines Breaches kostet 1 Energie weniger
+      value: Die erste ausgespielte Karte wird um 1 Energie reduziert.
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: pendantEffectType

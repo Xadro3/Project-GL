@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: description
-      value: Der Spieler bekommt 10 HP dazu
+      value: "Die maximale HP wird um 10 erh\xF6ht."
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: pendantEffectType
