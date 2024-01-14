@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(wagons[0].StartEncounter());
             DrawCards();
             UpdateDiscard();
+            ResetEnergy();
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
