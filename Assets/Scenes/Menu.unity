@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642449194895223296, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: alphaHealthDamagePercent
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4225666654361541015, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: m_LocalPosition.x
