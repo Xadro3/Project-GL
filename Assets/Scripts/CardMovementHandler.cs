@@ -216,7 +216,7 @@ public class CardMovementHandler : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    if (!wasPlayed && !card.wasPlayed)
+                    if (!wasPlayed && !card.wasPlayed && !isDragging)
                     {
                         ShowCardPopup();
                     }
@@ -280,7 +280,6 @@ public class CardMovementHandler : MonoBehaviour
                                     gm.PayCardCost(card);
                                     return;
                                 }
-                                
                             }
 
                             if (!card.ability && !slot.hasCard && slot.CompareTag("ActiveCardSlot"))
@@ -294,7 +293,6 @@ public class CardMovementHandler : MonoBehaviour
                                 gm.PayCardCost(card);
                                 //initialHandSlot.GetComponent<Slot>().HasCard(false);
                             }
-
                         }
                         else
                         {
