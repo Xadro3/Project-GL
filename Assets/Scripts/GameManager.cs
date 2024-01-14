@@ -179,11 +179,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    player.TriggerRandomDebuff();
-        //    pendantManager.AwardRandomPendant();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            player.TriggerRandomDebuff();
+            pendantManager.AwardRandomPendant();
+        }
     }
 
     private void HandleNodeEnterEvent(bool isLastNode, string nextMap)
@@ -410,7 +410,11 @@ public class GameManager : MonoBehaviour
             {
                 foreach (Card card in cards)
                 {
-                    card.ShieldDebuff(value);
+                    if (!card.ability)
+                    {
+                        card.ShieldDebuff(value);
+                    }
+                    
                 }
             }
         }
