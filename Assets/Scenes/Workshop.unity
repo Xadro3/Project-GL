@@ -6751,7 +6751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.53473, y: 669.17755}
+  m_AnchoredPosition: {x: -253.53476, y: 669.17755}
   m_SizeDelta: {x: 0, y: 30.348389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675374531
@@ -7327,7 +7327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
   deck: {fileID: 0}
-  amount: 20
+  amount: 50
   menu: {fileID: 353846392}
   upgrades: {fileID: 313966329}
   sell: {fileID: 1750053313}
