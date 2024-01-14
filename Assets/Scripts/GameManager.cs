@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static event Action NotEnoughEnergyEvent;
     public static event Action FirstCardPlayedEvent;
     public static event Action<int> SetEncounterBackgroundEvent;
+    public static event Action GameLostEvent;
 
     public int playerRessourceCurrent;
     public int playerRessourceMax;
@@ -660,23 +661,23 @@ public class GameManager : MonoBehaviour
     }
     private void HandleEncounterEnd()
     {
-        wagons[0].TriggerEncounterEndAnimation();
-        player.TriggerEncounterEndAnimation();
-        if (wagons[0].roundTimer <= 0 && player.health > 0)
-        {
-            encounterWon = true;
-        }
-        else
-        {
-            encounterWon = false;
-        }
-        foreach (Slot activeCardSlot in activeCardSlots)
-        {
-            activeCardSlot.gameObject.SetActive(false);
-        }
-
         if (!encounterEndScreenActive)
         {
+            wagons[0].TriggerEncounterEndAnimation();
+            player.TriggerEncounterEndAnimation();
+            if (wagons[0].roundTimer <= 0 && player.health > 0)
+            {
+                encounterWon = true;
+            }
+            else
+            {
+                GameLostEvent?.Invoke();
+                encounterWon = false;
+            }
+            foreach (Slot activeCardSlot in activeCardSlots)
+            {
+                activeCardSlot.gameObject.SetActive(false);
+            }
             StartCoroutine(EndingEncounter());
         }
     }

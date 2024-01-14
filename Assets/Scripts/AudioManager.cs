@@ -144,7 +144,7 @@ public class AudioManager : MonoBehaviour
         Slot.ShieldRepairEvent += HandleCardRepair;
         Slot.ShieldBuffEvent += HandleCardBuff;
         TurnMaster.StartTurnEvent += HandleStartTurn;
-        PlayerHealthManager.EncounterEnd += HandleLostGame;
+        GameManager.GameLostEvent += HandleLostGame;
         GameManager.NotEnoughEnergyEvent += HandleNoEnergy;
         EventSolver.WRONGANSWER += HandleWrongAnswer;
         EventSolver.CORRECTANSWER += HandleCorrectAnswer;
@@ -256,6 +256,7 @@ public class AudioManager : MonoBehaviour
 
     void HandleLostGame()
     {
+        Debug.Log("Game Lost Sound");
         PlaySFX(breachLost);
     }
 
