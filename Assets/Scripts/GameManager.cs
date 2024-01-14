@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static event Action UpdateUI;
     //public static event Action<int> CurrencyUpdateEvent;
     public static event Action<int> CardEnergyCostEffect;
+    public static event Action<int> CardEnergyDecreseEffect;
     public static event Action CardRewardChosenSoundEvent;
     public static event Action NotEnoughEnergyEvent;
     public static event Action FirstCardPlayedEvent;
@@ -36,7 +37,9 @@ public class GameManager : MonoBehaviour
     public PlayerHand playerHand;
     public int playerHandMax;
     public int playerHandCurrent;
+    public bool playerHandMaxBuffActive = false;
     public int playerHandMaxBuff = 0;
+    public bool playerHandMaxDebuffActive = false;
     public int playerHandMaxDebuff = 0;
 
     public List<Enemy> wagons;
@@ -191,7 +194,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.TriggerRandomDebuff();
-            pendantManager.AwardRandomPendant();
+            pendantManager.AwardRandomPendant();            
         }
     }
 
@@ -297,9 +300,12 @@ public class GameManager : MonoBehaviour
     }
     public void MaxEnergyDebuff(int value)
     {
-        playerRessourceDebuff = value;
-        playerRessourceMax -= playerRessourceDebuff;
-        playerRessourceDebuffActive = true;
+        if (!playerRessourceDebuffActive)
+        {
+            playerRessourceDebuff = value;
+            playerRessourceMax -= playerRessourceDebuff;
+            playerRessourceDebuffActive = true;
+        }
     }
     public void AddEnergy(int value)
     {
@@ -440,6 +446,11 @@ public class GameManager : MonoBehaviour
         //costIncrease += increase;
         cardManager.CardEnergyCostEffect(increase);
         CardEnergyCostEffect?.Invoke(increase);
+    }
+    public void SetCardCostDecrese(int decrese)
+    {
+        cardManager.CardEnergyDecreseCost(decrese);
+        CardEnergyDecreseEffect?.Invoke(decrese);
     }
     public bool IsBetaDotActive()
     {
@@ -752,10 +763,10 @@ public class GameManager : MonoBehaviour
 
             case GameConstants.pendantEffect.firstCardLessCost:
                 firstCardPendantActive = true;
-                //if (!isFirstCardPlayed)
-                //{
-                //    costIncrease = -effectValue;
-                //}
+                if (!firstCardPendantActive)
+                {
+                    SetCardCostDecrese(effectValue);
+                }
                 break;
 
             case GameConstants.pendantEffect.buffAlu:
@@ -778,7 +789,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameConstants.pendantEffect.firstTurnMoreCards:
-                PlayerHandMaxBuff(effectValue);
+                if (!playerHandMaxBuffActive) 
+                {
+                    PlayerHandMaxBuff(effectValue);
+                }
                 break;
         }
     }
@@ -786,11 +800,18 @@ public class GameManager : MonoBehaviour
     private void PlayerHandMaxBuff(int effectValue)
     {
         playerHandMaxBuff = effectValue;
+        playerHandMax += playerHandMaxBuff;
+        playerHandMaxBuffActive = true;
     }
 
     public void PlayerHandMaxDebuff(int value)
     {
-        playerHandMaxDebuff = value;
+        if (!playerHandMaxDebuffActive)
+        {
+            playerHandMaxDebuff = value;
+            playerHandMax -= playerHandMaxDebuff;
+            playerHandMaxDebuffActive = true;
+        }
     }
 
     public void UpgradeCard(Card card)

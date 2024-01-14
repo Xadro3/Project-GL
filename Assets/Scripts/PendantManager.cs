@@ -24,7 +24,6 @@ public class PendantManager : MonoBehaviour
             GameObject newPendantObject = Instantiate(pendantPrefab, Vector3.zero, Quaternion.identity);
             pendantInstances.Add(newPendantObject);
             newPendantObject.transform.SetParent(transform);
-
         }
     }
 

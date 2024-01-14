@@ -154,11 +154,6 @@ public class CardMovementHandler : MonoBehaviour
             {
                 //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 isDragging = true;
-                if (!gm.isFirstCardPlayed && gm.firstCardPendantActive)
-                {
-                    card.cost -= 1;
-                    card.UpdateDisplay();
-                }
             }
             OnCardClicked?.Invoke(this);
             SetSortingOrder(transform.GetSiblingIndex());

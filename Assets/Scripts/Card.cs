@@ -30,6 +30,7 @@ public class Card : MonoBehaviour
     public string cardDescription;
     public bool energyCostAffected;
     public int energyCostIncrease;
+    public int energyCostDecrese;
     public bool wasFirstCardPlayed = false;
 
     //Abilities
@@ -82,7 +83,8 @@ public class Card : MonoBehaviour
         protectionTypes = cardInfo.protectionTypes;
         energyCostAffected = cardInfo.energyCostAffected;
         energyCostIncrease = cardInfo.energyCostIncrease;
-        cost = cardInfo.cost + energyCostIncrease;
+        energyCostDecrese = cardInfo.energyCostDecrese;
+        cost = cardInfo.cost + energyCostIncrease - energyCostDecrese;
         
 
 
@@ -138,6 +140,7 @@ public class Card : MonoBehaviour
     {
         GameManager.CardEnergyCostEffect += HandleCardEnergyCostEffect;
         GameManager.FirstCardPlayedEvent += HandleFirstCardPlayed;
+        GameManager.CardEnergyDecreseEffect += HandleCardEnergyDecreseEffect;
     }
 
     private void HandleFirstCardPlayed()
@@ -149,6 +152,7 @@ public class Card : MonoBehaviour
     {
         GameManager.CardEnergyCostEffect -= HandleCardEnergyCostEffect;
         GameManager.FirstCardPlayedEvent -= HandleFirstCardPlayed;
+        GameManager.CardEnergyDecreseEffect -= HandleCardEnergyDecreseEffect;
     }
 
     public void HandleCardEnergyCostEffect(int value)
@@ -157,17 +161,25 @@ public class Card : MonoBehaviour
         UpdateEnergyCost();
     }
 
+    public void HandleCardEnergyDecreseEffect(int value)
+    {
+        energyCostDecrese = value;
+        UpdateEnergyCost();
+    }
+
+
     public void UpdateEnergyCost()
     {
         cost = cardInfo.cost;
         energyCostIncrease = cardInfo.energyCostIncrease;
+        energyCostDecrese = cardInfo.energyCostDecrese;
         if (cost + energyCostIncrease < 0)
         {
             cost = 0;
         }
         else
         {
-            cost = cost + energyCostIncrease;
+            cost = cost + energyCostIncrease - energyCostDecrese;
         }
         UpdateDisplay();
     }

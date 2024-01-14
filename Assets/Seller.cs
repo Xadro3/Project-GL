@@ -30,5 +30,5 @@ public class Seller : MonoBehaviour
         }
     }
 
-    public static System.Action SellCard;
+    public static event System.Action SellCard;
 }

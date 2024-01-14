@@ -20,6 +20,7 @@ public class SO_Card : ScriptableObject
     public int cost;
     public bool energyCostAffected = false;
     public int energyCostIncrease = 0;
+    public int energyCostDecrese = 0;
     public int durability;
     public int durabilityDebuffValue = 0;
 

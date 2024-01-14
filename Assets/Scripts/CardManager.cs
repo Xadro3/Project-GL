@@ -70,12 +70,14 @@ public class CardManager : MonoBehaviour
         {
             cardInfo.energyCostAffected = false;
             cardInfo.energyCostIncrease = 0;
+            cardInfo.energyCostDecrese = 0;
             cardInfo.durabilityDebuffValue = 0;
         }
         foreach (SO_Card cardUpgrade in cardUpgrades)
         {
             cardUpgrade.energyCostAffected = false;
             cardUpgrade.energyCostIncrease = 0;
+            cardUpgrade.energyCostDecrese = 0;
             cardUpgrade.durabilityDebuffValue = 0;
         }
         //GetRandomCardFromCardSafe();
@@ -92,6 +94,20 @@ public class CardManager : MonoBehaviour
         {
             cardUpgrade.energyCostAffected = true;
             cardUpgrade.energyCostIncrease = 0 + value;
+        }
+    }
+
+    public void CardEnergyDecreseCost(int value)
+    {
+        foreach (SO_Card cardInfo in cardInfos)
+        {
+            cardInfo.energyCostAffected = true;
+            cardInfo.energyCostDecrese = 0 + value;
+        }
+        foreach (SO_Card cardUpgrade in cardUpgrades)
+        {
+            cardUpgrade.energyCostAffected = true;
+            cardUpgrade.energyCostDecrese = 0 + value;
         }
     }
 
