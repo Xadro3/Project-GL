@@ -459,6 +459,7 @@ public class CardMovementHandler : MonoBehaviour
 
             case "Recycle":
             case "Upcycling":
+            case "Vernietung":
             case "Wiederverwertung":
             case "Bleibeschichtung":
             case "Alubeschichtung":
