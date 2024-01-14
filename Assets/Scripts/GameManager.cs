@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public int playerRessourceMax;
     public int playerRessourceBuffMax;
     public int playerRessourceLoss;
+    public int playerRessourceDebuff;
+    public int playerRessourceBuff;
 
     private ActiveCardSlots activeCardSlotsParent;
     public List<Slot> activeCardSlots;
@@ -174,6 +176,7 @@ public class GameManager : MonoBehaviour
             pendantManager.TriggerPendantEffects();
             UpdatePlayerRessource();
             isFirstTurn = true;
+            encounterEndScreenActive = false;
 
         }
     }
@@ -280,8 +283,14 @@ public class GameManager : MonoBehaviour
         UpdateDeckDisplay(deck.playerDeck.Count);
         haveToShuffle = false;
     }
+    public void MaxEnergyBuff(int value)
+    {
+        playerRessourceBuff = value;
+    }
     public void MaxEnergyDebuff(int value)
     {
+        playerRessourceDebuff = value;
+
         playerRessourceMax -= value;
         playerRessourceBuffMax = playerRessourceMax;
         if (playerRessourceCurrent > playerRessourceMax)
@@ -300,6 +309,7 @@ public class GameManager : MonoBehaviour
     }
     public void ResetEnergy()
     {
+        
         playerRessourceCurrent = playerRessourceMax;
         playerRessourceBuffMax = playerRessourceMax;
         if (playerRessourceLoss > 0)
