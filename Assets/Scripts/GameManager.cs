@@ -176,14 +176,14 @@ public class GameManager : MonoBehaviour
             encounterEnd = false;
             cardManager.BuildDeck();
             StartCoroutine(wagons[0].StartEncounter());
-            DrawCards();
-            UpdateDiscard();
-            wagons[0].GenerateDamage();
-            SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
             ResetEnergy();
             UpdatePlayerRessource();
+            DrawCards();
+            UpdateDiscard();
+            wagons[0].GenerateDamage();
+            SetTokenReward();
             isFirstTurn = true;
             encounterEndScreenActive = false;
 
