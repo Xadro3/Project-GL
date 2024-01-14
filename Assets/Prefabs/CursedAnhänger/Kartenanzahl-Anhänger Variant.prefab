@@ -110,8 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342672154576950794, guid: 8fea3ee127fa293468067a111ad65f8d, type: 3}
       propertyPath: description
-      value: Die Anzahl der Karten die man am Start einer Runde auf die Hand bekommt
-        wird um 1 reduziert
+      value: Die Anzahl der Karten die man auf die Hand bekommt wird um 1 reduziert
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
