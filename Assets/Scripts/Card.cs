@@ -30,7 +30,7 @@ public class Card : MonoBehaviour
     public string cardDescription;
     public bool energyCostAffected;
     public int energyCostIncrease;
-    public int energyCostDecrese;
+    public int energyCostDecrease;
     public bool wasFirstCardPlayed = false;
 
     //Abilities
@@ -83,8 +83,8 @@ public class Card : MonoBehaviour
         protectionTypes = cardInfo.protectionTypes;
         energyCostAffected = cardInfo.energyCostAffected;
         energyCostIncrease = cardInfo.energyCostIncrease;
-        energyCostDecrese = cardInfo.energyCostDecrese;
-        cost = cardInfo.cost + energyCostIncrease - energyCostDecrese;
+        energyCostDecrease = cardInfo.energyCostDecrease;
+        cost = cardInfo.cost + energyCostIncrease - energyCostDecrease;
         
 
 
@@ -140,7 +140,7 @@ public class Card : MonoBehaviour
     {
         GameManager.CardEnergyCostEffect += HandleCardEnergyCostEffect;
         GameManager.FirstCardPlayedEvent += HandleFirstCardPlayed;
-        GameManager.CardEnergyDecreseEffect += HandleCardEnergyDecreseEffect;
+        GameManager.CardEnergyDecreaseEffect += HandleCardEnergyDecreaseEffect;
     }
 
     private void HandleFirstCardPlayed()
@@ -152,7 +152,7 @@ public class Card : MonoBehaviour
     {
         GameManager.CardEnergyCostEffect -= HandleCardEnergyCostEffect;
         GameManager.FirstCardPlayedEvent -= HandleFirstCardPlayed;
-        GameManager.CardEnergyDecreseEffect -= HandleCardEnergyDecreseEffect;
+        GameManager.CardEnergyDecreaseEffect -= HandleCardEnergyDecreaseEffect;
     }
 
     public void HandleCardEnergyCostEffect(int value)
@@ -161,9 +161,9 @@ public class Card : MonoBehaviour
         UpdateEnergyCost();
     }
 
-    public void HandleCardEnergyDecreseEffect(int value)
+    public void HandleCardEnergyDecreaseEffect(int value)
     {
-        energyCostDecrese = value;
+        energyCostDecrease = value;
         UpdateEnergyCost();
     }
 
@@ -172,14 +172,14 @@ public class Card : MonoBehaviour
     {
         cost = cardInfo.cost;
         energyCostIncrease = cardInfo.energyCostIncrease;
-        energyCostDecrese = cardInfo.energyCostDecrese;
+        energyCostDecrease = cardInfo.energyCostDecrease;
         if (cost + energyCostIncrease < 0)
         {
             cost = 0;
         }
         else
         {
-            cost = cost + energyCostIncrease - energyCostDecrese;
+            cost = cost + energyCostIncrease - energyCostDecrease;
         }
         UpdateDisplay();
     }
