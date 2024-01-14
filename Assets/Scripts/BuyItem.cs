@@ -6,6 +6,7 @@ public class BuyItem : MonoBehaviour
 {
     Card card;
     GridLayout grid;
+    public GameObject gameObject;
     private void Start()
     {
         grid = GetComponent<GridLayout>();
@@ -24,7 +25,7 @@ public class BuyItem : MonoBehaviour
                     card.isBought = true;
                     
                     //collision.transform.GetComponent<Drag>().startPos = GameObject.FindGameObjectWithTag("PlayerInventory").transform.position;
-                    collision.transform.SetParent(GameObject.FindGameObjectWithTag("PlayerInventory").transform);
+                    collision.transform.SetParent(gameObject.transform);
                     collision.transform.SetAsFirstSibling();
                     card.GetComponent<Drag>().bought = true;
                     GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>().RemoveMoney(card.currencyCost);

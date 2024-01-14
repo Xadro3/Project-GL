@@ -19,8 +19,10 @@ public class Seller : MonoBehaviour
         Debug.Log(collision.collider.name);
         if (collision.transform.tag == "Card"&& !used)
         {
+            used = true;
             shop.AddMoney(collision.gameObject.GetComponent<Card>().currencyCost);
             collision.collider.GetComponent<Drag>().startPos = transform.position;
+            collision.collider.transform.SetParent(this.transform);
             deck.RemoveCardFromBaseDeck(collision.gameObject.GetComponent<Card>());
             this.gameObject.SetActive(false);
             used = true;

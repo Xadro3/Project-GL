@@ -28,6 +28,7 @@ public class Upgrader : MonoBehaviour
         upgradedCard.GetComponent<Drag>().startPos = transform.position;
         upgradedCard.GetComponent<LayoutElement>().ignoreLayout = true;
         upgradedCard.transform.position = transform.position;
+        upgradedCard.transform.SetParent(this.transform);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
