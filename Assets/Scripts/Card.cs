@@ -173,7 +173,7 @@ public class Card : MonoBehaviour
         cost = cardInfo.cost;
         energyCostIncrease = cardInfo.energyCostIncrease;
         energyCostDecrease = cardInfo.energyCostDecrease;
-        if (cost + energyCostIncrease < 0)
+        if (cost + energyCostIncrease - energyCostDecrease < 0)
         {
             cost = 0;
         }
