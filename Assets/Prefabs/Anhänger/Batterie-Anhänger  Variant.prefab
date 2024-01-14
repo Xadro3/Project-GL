@@ -126,7 +126,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: description
-      value: Gibt dem Spieler im ersten Zug 1 Energie mehr
+      value: 'Zu Beginn des ersten Zugs erhalte 1 Energie mehr.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 4889955897915521454, guid: 3900c5d09eea9474fa969242e16727a0, type: 3}
       propertyPath: pendantEffectType

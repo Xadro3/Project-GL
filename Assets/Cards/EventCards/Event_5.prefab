@@ -57,8 +57,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: questionText
-      value: "Es wird geklaubt, dass die neuartigen Ganzk\xF6rperscanner in den Flugh\xE4fen
-        die Strahlenbelastung erheblich erh\xF6hen. Trifft dies zu?"
+      value: "Es wird gelaubt, dass die neuartigen Ganzk\xF6rperscanner in den Flugh\xE4fen
+        die Strahlenbelastung erheblich erh\xF6hen. Trifft dies zu? "
       objectReference: {fileID: 0}
     - target: {fileID: 2358122837867666395, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: wrongAnswerText
