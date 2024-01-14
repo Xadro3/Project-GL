@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Seller : MonoBehaviour
 {
-    Deck deck;
+    public Deck deck;
     bool used;
     ShopCurrency shop;
     // Start is called before the first frame update
     void Start()
     {
-        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
+        deck = GameObject.FindGameObjectWithTag("Deck2").GetComponent<Deck>();
         shop = GameObject.FindGameObjectWithTag("Wallet").GetComponentInChildren<ShopCurrency>();
     }
 

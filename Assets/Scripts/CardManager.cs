@@ -131,7 +131,7 @@ public class CardManager : MonoBehaviour
     public void RemoveCardFromBaseDeck(SO_Card cardInfo)
     {
         baseCards.Remove(cardInfo);
-        
+        Debug.Log("Removing Card " + cardInfo.name);
     }
 
     public void BuildDeck()
