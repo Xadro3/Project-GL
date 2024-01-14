@@ -123,8 +123,8 @@ public class Enemy : MonoBehaviour
         if (scene.name == "Encounter")
         {
             enemyModel = FindObjectOfType<EnemyModel>();
-
-        }
+            ResetDurationCounter();
+}
     }
 
     public IEnumerator StartEncounter()
@@ -141,6 +141,15 @@ public class Enemy : MonoBehaviour
         yield break;
     }
 
+    private void ResetDurationCounter()
+    {
+        reductionDurationAlphaFlat = 0;
+        reductionDurationBetaFlat = 0;
+        reductionDurationGammaFlat = 0;
+        reductionDurationAlphaPercent = 0;
+        reductionDurationBetaPercent = 0;
+        reductionDurationGammaPercent = 0;
+    }
     private void SetEncounterPhase()
     {
         int timerMin, timerMax, damageMin, damageMax;
