@@ -414,7 +414,6 @@ public class GameManager : MonoBehaviour
                     {
                         card.ShieldDebuff(value);
                     }
-                    
                 }
             }
         }
