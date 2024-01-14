@@ -97,13 +97,13 @@ public class PlayerHealthManager : MonoBehaviour
             playerModel.healthBar.SetHealth(health);
             //alphaResistance = alphaResistanceMax;
             //betaResistance = betaResistanceMax;
-            CheckHealth();
-            UpdateTexts();
             if (betaDotActive)
             {
                 playerModel.betaDotDisplay.SetActive(true);
                 playerModel.betaDotTimer.text = betaDotTimer.ToString();
             }
+            CheckHealth();
+            UpdateTexts();
         }
     }
 
