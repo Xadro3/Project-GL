@@ -327,7 +327,7 @@ public class PlayerHealthManager : MonoBehaviour
             playerModel.characterTwo.SetActive(false);
             playerModel.characterThree.SetActive(true);
         }
-        if (health <= 0 && !gm.encounterEndScreenActive)
+        if (health <= 0)
         {
             Debug.LogWarning("Game Over!");
             EncounterEnd?.Invoke();

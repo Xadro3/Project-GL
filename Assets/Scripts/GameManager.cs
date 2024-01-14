@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour
     public void DrawCards()
     {
         int cardsInHand = CountOccupiedHandSlots();
-        if (cardsInHand < playerHandMax)
+        if (cardsInHand <= playerHandMax)
         {
             //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
             if (deck.deck.Count <= (discardPile.Count + playerHandMax + graveyardPile.Count) || deck.playerDeck.Count <= 0)
@@ -399,13 +399,13 @@ public class GameManager : MonoBehaviour
     }
     public void ActivateShieldDebuff(int value)
     {
-        cardManager.ShieldDebuffEffect(value);
-
         if (SceneManager.GetActiveScene().name == "Encounter")
         {
             List<Card> cards = new List<Card>();
-
-            cards.AddRange(FindObjectsOfType<Card>(true));
+            cards.AddRange(discardPile);
+            cards.AddRange(playedCards);
+            cards.AddRange(playerHand.GetComponentsInChildren<Card>());
+            cards.AddRange(deck.playerDeck);
             if (cards != null && cards.Count > 0)
             {
                 foreach (Card card in cards)
@@ -414,6 +414,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        cardManager.ShieldDebuffEffect(value);
     }
     public void RemoveCardFromEncounter(Card card)
     {
@@ -647,8 +648,11 @@ public class GameManager : MonoBehaviour
         {
             activeCardSlot.gameObject.SetActive(false);
         }
-        
-        StartCoroutine(EndingEncounter());
+
+        if (!encounterEndScreenActive)
+        {
+            StartCoroutine(EndingEncounter());
+        }
     }
     private IEnumerator EndingEncounter()
     {
@@ -658,7 +662,7 @@ public class GameManager : MonoBehaviour
         UpdateUI?.Invoke();
 
         yield return new WaitForSeconds(1f);
-       
+
         GameObject endingScreen = Instantiate(endScreenPrefab, pauseMenu.offscreenPosition.transform.position, Quaternion.identity);
         endingScreen.GetComponent<EncounterEndScript>().SetupScreen(encounterWon, tokenRewardAmount, pauseMenu.offscreenPosition);
         if (encounterWon)
