@@ -42,27 +42,57 @@ public class Enemy : MonoBehaviour
     public int gammaDamageBuffValue = 2;
     public int gammaDamage;
 
-    private int alphaMin = 1;
-    [Range(1, 50)]
-    public int alphaMax;
-    private int betaMin = 1;
-    [Range(1, 50)]
-    public int betaMax;
-    private int gammaMin = 1;
-    [Range(1, 50)]
-    public int gammaMax;
     [Header("----- Scaling -----")]
-    
     private bool settingPhase = false;
     public int encounterCompleted = 0;
-    public int bossBonus = 1;
     public int encounterPhase = 0;
-    public int phaseOneLimit = 6;
-    public int phaseTwoLimit = 11;
-    public int phaseThreeLimit = 16;
-    public int phaseFourLimit = 21;
-    public int phaseFiveLimit = 26;
-    public int phaseSixLimit = 31;
+    public int bossBonus;
+
+    [Header("----- Phase 1 -----")]
+    public int phaseOneLimit;
+    public int phaseOneTimerMin;
+    public int phaseOneTimerMax;
+    public int phaseOneDamageMin;
+    public int phaseOneDamageMax;
+    [Header("----- Phae 2 -----")]
+    public int phaseTwoLimit;
+    public int phaseTwoTimerMin;
+    public int phaseTwoTimerMax;
+    public int phaseTwoDamageMin;
+    public int phaseTwoDamageMax;
+    [Header("----- Phase 3 -----")]
+    public int phaseThreeLimit;
+    public int phaseThreeTimerMin;
+    public int phaseThreeTimerMax;
+    public int phaseThreeDamageMin;
+    public int phaseThreeDamageMax;
+    [Header("----- Phase 4 -----")]
+    public int phaseFourLimit;
+    public int phaseFourTimerMin;
+    public int phaseFourTimerMax;
+    public int phaseFourDamageMin;
+    public int phaseFourDamageMax;
+    [Header("----- Phase 5 -----")]
+    public int phaseFiveLimit;
+    public int phaseFiveTimerMin;
+    public int phaseFiveTimerMax;
+    public int phaseFiveDamageMin;
+    public int phaseFiveDamageMax;
+    [Header("----- Phase 6 -----")]
+    public int phaseSixLimit;
+    public int phaseSixTimerMin;
+    public int phaseSixTimerMax;
+    public int phaseSixDamageMin;
+    public int phaseSixDamageMax;
+
+    [Header("----- Damage Display No Function -----")]
+    public int alphaMin;
+    public int alphaMax;
+    public int betaMin;
+    public int betaMax;
+    public int gammaMin;
+    public int gammaMax;
+
 
     public List<GameConstants.radiationTypes> damageTypes;
 
@@ -115,15 +145,13 @@ public class Enemy : MonoBehaviour
     {
         int timerMin, timerMax, damageMin, damageMax;
 
-        
-
         if (encounterCompleted < phaseOneLimit)
         {
             encounterPhase = 1;
-            timerMin = 2;
-            timerMax = 5;
-            damageMin = 2;
-            damageMax = 5;
+            timerMin = phaseOneTimerMin;
+            timerMax = phaseOneTimerMax;
+            damageMin = phaseOneDamageMin;
+            damageMax = phaseOneDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);
@@ -132,10 +160,10 @@ public class Enemy : MonoBehaviour
         else if (encounterCompleted < phaseTwoLimit)
         {
             encounterPhase = 2;
-            timerMin = 3;
-            timerMax = 6;
-            damageMin = 4;
-            damageMax = 7;
+            timerMin = phaseTwoTimerMin;
+            timerMax = phaseTwoTimerMax;
+            damageMin = phaseTwoDamageMin;
+            damageMax = phaseTwoDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);
@@ -144,10 +172,10 @@ public class Enemy : MonoBehaviour
         else if (encounterCompleted < phaseThreeLimit)
         {
             encounterPhase = 3;
-            timerMin = 4;
-            timerMax = 7;
-            damageMin = 6;
-            damageMax = 8;
+            timerMin = phaseThreeTimerMin;
+            timerMax = phaseThreeTimerMax;
+            damageMin = phaseThreeDamageMin;
+            damageMax = phaseThreeDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);
@@ -156,10 +184,10 @@ public class Enemy : MonoBehaviour
         else if (encounterCompleted < phaseFourLimit)
         {
             encounterPhase = 4;
-            timerMin = 5;
-            timerMax = 8;
-            damageMin = 8;
-            damageMax = 10;
+            timerMin = phaseFourTimerMin;
+            timerMax = phaseFourTimerMax;
+            damageMin = phaseFourDamageMin;
+            damageMax = phaseFourDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);
@@ -168,10 +196,10 @@ public class Enemy : MonoBehaviour
         else if (encounterCompleted < phaseFiveLimit)
         {
             encounterPhase = 5;
-            timerMin = 6;
-            timerMax = 9;
-            damageMin = 10;
-            damageMax = 12;
+            timerMin = phaseFiveTimerMin;
+            timerMax = phaseFiveTimerMax;
+            damageMin = phaseFiveDamageMin;
+            damageMax = phaseFiveDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);
@@ -180,10 +208,10 @@ public class Enemy : MonoBehaviour
         else if (encounterCompleted >= phaseSixLimit)
         {
             encounterPhase = 6;
-            timerMin = 7;
-            timerMax = 10;
-            damageMin = 12;
-            damageMax = 14;
+            timerMin = phaseSixTimerMin;
+            timerMax = phaseSixTimerMax;
+            damageMin = phaseSixDamageMin;
+            damageMax = phaseSixDamageMax;
             SetTimer(timerMin, timerMax);
             SetAlphaDamage(damageMin, damageMax);
             SetBetaDamage(damageMin, damageMax);

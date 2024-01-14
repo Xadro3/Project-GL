@@ -255,6 +255,7 @@ public class PlayerHealthManager : MonoBehaviour
             betaResistance = betaResistanceMax;
             playerModel.betaBar.SetHealth(betaResistance);
             //ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
+            CheckHealth();
         }
         if (gammaResistance <= 0)
         {
@@ -262,7 +263,9 @@ public class PlayerHealthManager : MonoBehaviour
             gammaResistance = gammaResistanceMax;
             playerModel.gammaBar.SetHealth(gammaResistance);
             TriggerRandomDebuff();
+            CheckHealth();
         }
+        CheckHealth();
         UpdateTexts();
     }
 

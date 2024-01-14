@@ -173,6 +173,7 @@ public class GameManager : MonoBehaviour
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
             UpdatePlayerRessource();
+            isFirstTurn = true;
 
         }
     }
