@@ -4950,7 +4950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1303644505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4960,7 +4960,7 @@ RectTransform:
   m_GameObject: {fileID: 1303644504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0154325515, y: 0.0154325515, z: 0.0154325515}
+  m_LocalScale: {x: 0.012977232, y: 0.012977232, z: 0.012977232}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 769601514}
@@ -4990,7 +4990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gibt jedem Blei Schild +1 auf seinen Blockwert
+  m_text: "Die Anzahl der Karten die man auf die Hand bekommt wird um 1 erh\xF6ht.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
