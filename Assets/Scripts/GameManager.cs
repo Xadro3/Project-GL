@@ -22,8 +22,11 @@ public class GameManager : MonoBehaviour
     public int playerRessourceMax;
     public int playerRessourceBuffMax;
     public int playerRessourceLoss;
-    public int playerRessourceDebuff;
-    public int playerRessourceBuff;
+    public bool playerRessourceDebuffActive = false;
+    public int playerRessourceDebuff = 0;
+    public bool playerRessourceBuffActive = false;
+    public int playerRessourceBuff = 0;
+    
 
     private ActiveCardSlots activeCardSlotsParent;
     public List<Slot> activeCardSlots;
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
     public PlayerEnergy playerEnergy;
     public PlayerHand playerHand;
     public int playerHandMax;
+    public int playerHandCurrent;
+    public int playerHandMaxBuff = 0;
+    public int playerHandMaxDebuff = 0;
 
     public List<Enemy> wagons;
 
@@ -169,11 +175,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(wagons[0].StartEncounter());
             DrawCards();
             UpdateDiscard();
-            ResetEnergy();
             wagons[0].GenerateDamage();
             SetTokenReward();
             pauseMenu = FindObjectOfType<PauseMenu>(true);
             pendantManager.TriggerPendantEffects();
+            ResetEnergy();
             UpdatePlayerRessource();
             isFirstTurn = true;
             encounterEndScreenActive = false;
@@ -286,17 +292,14 @@ public class GameManager : MonoBehaviour
     public void MaxEnergyBuff(int value)
     {
         playerRessourceBuff = value;
+        playerRessourceMax += playerRessourceBuff;
+        playerRessourceBuffActive = true;
     }
     public void MaxEnergyDebuff(int value)
     {
         playerRessourceDebuff = value;
-
-        playerRessourceMax -= value;
-        playerRessourceBuffMax = playerRessourceMax;
-        if (playerRessourceCurrent > playerRessourceMax)
-        {
-            playerRessourceCurrent = playerRessourceMax;
-        }
+        playerRessourceMax -= playerRessourceDebuff;
+        playerRessourceDebuffActive = true;
     }
     public void AddEnergy(int value)
     {
@@ -309,7 +312,6 @@ public class GameManager : MonoBehaviour
     }
     public void ResetEnergy()
     {
-        
         playerRessourceCurrent = playerRessourceMax;
         playerRessourceBuffMax = playerRessourceMax;
         if (playerRessourceLoss > 0)
@@ -769,24 +771,26 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameConstants.pendantEffect.firstTurnMoreEnergy:
-                if (isFirstTurn)
+                if (!playerRessourceBuffActive)
                 {
-                    Debug.Log("First Turn more Energy: " + playerRessourceBuffMax + " will get + " + effectValue);
-                    playerRessourceCurrent += effectValue;
-                    playerRessourceBuffMax += effectValue;
-                    playerEnergy.UpdatePlayerEnergy(playerRessourceCurrent);
+                    MaxEnergyBuff(effectValue);
                 }
                 break;
 
             case GameConstants.pendantEffect.firstTurnMoreCards:
-                if (isFirstTurn)
-                {
-                    playerHandMax += effectValue;
-                    DrawCards();
-                    playerHandMax -= effectValue;
-                }
+                PlayerHandMaxBuff(effectValue);
                 break;
         }
+    }
+
+    private void PlayerHandMaxBuff(int effectValue)
+    {
+        playerHandMaxBuff = effectValue;
+    }
+
+    public void PlayerHandMaxDebuff(int value)
+    {
+        playerHandMaxDebuff = value;
     }
 
     public void UpgradeCard(Card card)
