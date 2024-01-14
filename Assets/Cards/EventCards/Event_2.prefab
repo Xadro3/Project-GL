@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2949965052686804089, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text
       value: "Nein, das nicht korrekt. Kohlekraftwerke und Langstreckenfl\xFCge verursachen
-        deutlich mehr Strahlung Belastung f\xFCr die Umgebung."
+        deutlich mehr Strahlenbelastung f\xFCr die Umgebung."
       objectReference: {fileID: 0}
     - target: {fileID: 3239442702382604812, guid: 2e1658adb6033774cb5bbab9def05c0f, type: 3}
       propertyPath: text

@@ -1383,7 +1383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0014039, y: 0.52098}
+  m_AnchoredPosition: {x: 0.0014039, y: -1.2901496}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &266009098
@@ -1833,7 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458654397}
   - component: {fileID: 458654398}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TokenAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5649,7 +5649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.038303, y: 0.52113}
+  m_AnchoredPosition: {x: 0.038303, y: -1.29}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445287386
@@ -5672,7 +5672,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Danke, ich war mir nicht mehr ganz sicher A.R.I.A out
+  m_text: "Korrekt. Diese Scanner verursachen nur 0.00001 bis 0.002 mSv pro Scan,
+    was deutlich niedriger ist als die nat\xFCrliche Hintergrundstrahlung von etwa
+    0.01 mSv. Der maximal Grenzwert der Strahlenexposition in Deutschland liegt bei
+    1 mSv pro Jahr f\xFCr Personen der allgemeinen Bev\xF6lkerung."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5759,7 +5762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535740362}
   - component: {fileID: 1535740363}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Textfeld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6127,7 +6130,7 @@ GameObject:
   - component: {fileID: 1609225445}
   - component: {fileID: 1609225447}
   - component: {fileID: 1609225446}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7669,7 +7672,7 @@ GameObject:
   - component: {fileID: 1952827285}
   - component: {fileID: 1952827284}
   - component: {fileID: 1952827283}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Kartenanzahl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
