@@ -280,30 +280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wallet (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseTwoTimerMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseTwoTimerMin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseFourTimerMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseFourTimerMin
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseThreeTimerMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076717916309002633, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: phaseThreeTimerMin
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
