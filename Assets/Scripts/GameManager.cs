@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static event Action UpdateUI;
     //public static event Action<int> CurrencyUpdateEvent;
     public static event Action<int> CardEnergyCostEffect;
-    public static event Action<int> CardEnergyDecreseEffect;
+    public static event Action<int> CardEnergyDecreaseEffect;
     public static event Action CardRewardChosenSoundEvent;
     public static event Action NotEnoughEnergyEvent;
     public static event Action FirstCardPlayedEvent;
@@ -447,10 +447,10 @@ public class GameManager : MonoBehaviour
         cardManager.CardEnergyCostEffect(increase);
         CardEnergyCostEffect?.Invoke(increase);
     }
-    public void SetCardCostDecrese(int decrese)
+    public void SetCardCostDecrease(int decrease)
     {
-        cardManager.CardEnergyDecreseCost(decrese);
-        CardEnergyDecreseEffect?.Invoke(decrese);
+        cardManager.CardEnergyDecreaseCost(decrease);
+        CardEnergyDecreaseEffect?.Invoke(decrease);
     }
     public bool IsBetaDotActive()
     {
@@ -762,11 +762,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameConstants.pendantEffect.firstCardLessCost:
-                firstCardPendantActive = true;
                 if (!firstCardPendantActive)
                 {
-                    SetCardCostDecrese(effectValue);
+                    SetCardCostDecrease(effectValue);
                 }
+                firstCardPendantActive = true;
                 break;
 
             case GameConstants.pendantEffect.buffAlu:
