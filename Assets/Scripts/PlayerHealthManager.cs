@@ -35,8 +35,12 @@ public class PlayerHealthManager : MonoBehaviour
     [Header("----- Beta Dot Damage -----")]
     public bool betaDotActive = false;
     public int betaDotTimer = 0;
-    public int betaDotDamage;
     public int betaDotDamageSum = 0;
+
+    [Header("----- Health Damage -----")]
+    public int betaDotDamage;
+    [Range(0, 1)]
+    public float alphaHealthDamagePercent;
 
     [Header("----- Display -----")]
     public PlayerModel playerModel;
@@ -234,7 +238,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (alphaResistance <= 0)
         {
-            int alphaPureDamage = Mathf.RoundToInt(healthMax * 0.75f);
+            int alphaPureDamage = Mathf.RoundToInt(healthMax * alphaHealthDamagePercent);
             ApplyDamage(alphaPureDamage, GameConstants.radiationTypes.Pure);
             alphaResistance = alphaResistanceMax;
             playerModel.alphaBar.SetHealth(alphaResistance);

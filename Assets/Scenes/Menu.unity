@@ -236,6 +236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2642449194895223296, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
+      propertyPath: alphaHealthDamagePercent
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4225666654361541015, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0612144
