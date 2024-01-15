@@ -1981,10 +1981,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8875156968109808936, guid: 4740ccdb0190a02458ba15ea690b4dac, type: 3}
-      propertyPath: cardRepair
-      value: 
-      objectReference: {fileID: 8300000, guid: 3f0aea19e8e85c14580e8114d1c87098, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
