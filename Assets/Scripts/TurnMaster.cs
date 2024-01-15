@@ -124,8 +124,6 @@ public class TurnMaster : MonoBehaviour
             {
                 //TriggerDamageEvent(radiationType);
                 gm.PlayerDamage(wagonDamageStats[radiationType], radiationType);
-                yield return new WaitForSeconds(2f);
-                gm.player.CheckHealth();
             }
         }
 

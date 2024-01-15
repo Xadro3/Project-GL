@@ -160,11 +160,24 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        EndTurnButtonEventScript.EndTurnEvent -= EndTurnEvent;
+        CardPopup.PauseGame -= PauseGame;
+        Enemy.EncounterEnd -= HandleEncounterEnd;
+        PlayerHealthManager.EncounterEnd -= HandleEncounterEnd;
+        EncounterEndScript.CardRewardScreenEvent -= HandleCardRewardEvent;
+        CardMovementHandler.CardRewardChosenEvent -= HandleCardRewardChosenEvent;
+        CardMovementHandler.CardDropped -= HandleCardDroppedEvent;
+        Node.EnteringNodeEvent -= HandleNodeEnterEvent;
+        Node.EnteringNodeEvent -= IncreaseCompletedEncounterCount;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Loaded Scene: " + scene.name);
-        interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
+        if (scene.name != "GameWon")
+        {
+            interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
+        }
         if (scene.name == "Encounter")
         {
             SetEncounterBackgroundEvent?.Invoke(encounterCompleted);
@@ -173,7 +186,6 @@ public class GameManager : MonoBehaviour
             discardPileParent = FindObjectOfType<DiscardPile>(true).transform;
             activeCardSlotsParent = FindObjectOfType<ActiveCardSlots>(true);
             activeCardSlots = activeCardSlotsParent.activeCardSlots;
-            interactionBlock = FindObjectOfType<InteractionBlock>(true).transform;
             encounterEnd = false;
             cardManager.BuildDeck();
             StartCoroutine(wagons[0].StartEncounter());
@@ -187,7 +199,15 @@ public class GameManager : MonoBehaviour
             SetTokenReward();
             isFirstTurn = true;
             encounterEndScreenActive = false;
-
+        }
+        if (scene.name == "GameWon")
+        {
+            playerHand = null;
+            playerEnergy = null;
+            discardPileParent = null;
+            activeCardSlotsParent = null;
+            activeCardSlots = null;
+            interactionBlock = null;
         }
     }
     private void Update()

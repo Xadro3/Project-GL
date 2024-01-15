@@ -163,6 +163,32 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        CardMovementHandler.CardDropped -= HandleCardDropped;
+        PauseMenu.OpenPauseEvent -= HandleOpenPause;
+        PauseMenu.ClosePauseEvent -= HandleClosePause;
+        EndTurnButtonEventScript.EndTurnEvent -= HandleEndTurn;
+        TurnMaster.AlphaDamageEvent -= HandleAlphaRadiation;
+        TurnMaster.BetaDamageEvent -= HandleBetaRadiation;
+        TurnMaster.GammaDamageEvent -= HandleGammaRadiation;
+        TurnMaster.AttackStartEvent -= HandleAttackStart;
+        GameManager.CardRewardChosenSoundEvent -= HandleReward;
+        CardMovementHandler.ShowCardPopupEvent -= HandleCardInfo;
+        CardMovementHandler.CardMoveToDiscardPileEvent -= HandleCardDestroy;
+        Slot.ShieldRepairEvent -= HandleCardRepair;
+        Slot.ShieldBuffEvent -= HandleCardBuff;
+        TurnMaster.StartTurnEvent -= HandleStartTurn;
+        GameManager.GameLostEvent -= HandleLostGame;
+        GameManager.NotEnoughEnergyEvent -= HandleNoEnergy;
+        EventSolver.WRONGANSWER -= HandleWrongAnswer;
+        EventSolver.CORRECTANSWER -= HandleCorrectAnswer;
+        Upgrader.UpgradeCard -= HandleCardUpgrade;
+        Seller.SellCard -= HandleWorkshopCardEntfern;
+        BuyItem.Buycard -= HandleCardBuy;
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
+
     private void Update()
     {
         //Zum Abspielen des BreachBackgroundLoops, nachdem der Anfangs Interlude durchgelaufen ist

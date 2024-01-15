@@ -35,7 +35,11 @@ public class Deck : MonoBehaviour
 
     }
 
-    
+    private void OnDestroy()
+    {
+        CardMovementHandler.CardRewardChosenEvent -= HandleCardRewardChosen;
+    }
+
 
     private void OnEnable()
     {
