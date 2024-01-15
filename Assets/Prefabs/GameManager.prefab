@@ -49,14 +49,28 @@ MonoBehaviour:
   hpThresholdLvOne: 70
   hpThresholdLvTwo: 30
   alphaResistance: 0
-  alphaResistanceMax: 10
+  alphaResistanceMax: 5
   betaResistance: 0
-  betaResistanceMax: 20
+  betaResistanceMax: 10
   gammaResistance: 0
   gammaResistanceMax: 50
   betaDotActive: 0
-  betaDotDamage: 3
+  betaDotTimer: 0
   betaDotDamageSum: 0
+  alphaHealthDamagePercent: 0.4
+  betaDotDamage: 10
+  gammaPureDamage: 5
+  playerModel: {fileID: 0}
+  alphaDamageReductionFlat: 0
+  alphaDamageReductionPercent: 0
+  betaDamageReductionFlat: 0
+  betaDamageReductionPercent: 0
+  gammaDamageReductionFlat: 0
+  gammaDamageReductionPercent: 0
+  healthDamageReductionPercent: 0
+  healthDamageReductionFlatValue: 0
+  resistanceDamageReductionPercentValue: 0
+  resistanceDamageReductionFlatValue: 0
 --- !u!1 &1294866672478412063
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +83,7 @@ GameObject:
   - component: {fileID: 1244283829204245278}
   m_Layer: 0
   m_Name: PendantManager
-  m_TagString: Untagged
+  m_TagString: PendantManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,6 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676ec6692f9361a42a2399f53a9a6f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deck: {fileID: 1662629947016396295}
+  gameManager: {fileID: 876589576019141775}
   cardRarity: 000000000100000002000000
   cardType: 000000000100000002000000030000000400000005000000
   prefabs:
@@ -201,8 +217,7 @@ MonoBehaviour:
   cardSafe: {fileID: 6315868828182914236}
   cardSafeCards: []
   cardInfos: []
-  deck: {fileID: 1662629947016396295}
-  gameManager: {fileID: 876589576019141775}
+  cardUpgrades: []
 --- !u!1 &3168500216812357211
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +315,19 @@ MonoBehaviour:
   roundTimer: 5
   roundTimerMin: 2
   roundTimerMax: 5
+  blockDurationAlpha: 0
+  blockDurationBeta: 0
+  blockDurationGamma: 0
+  reductionFlatValue: 0
+  reductionDurationAlphaFlat: 0
+  reductionDurationBetaFlat: 0
+  reductionDurationGammaFlat: 0
+  reductionPercentValue: 0
+  reductionDurationAlphaPercent: 0
+  reductionDurationBetaPercent: 0
+  reductionDurationGammaPercent: 0
+  scaleAlphaWithPhase: 0
+  alphaDamageReduction: 0
   alphaDamageBuff: 0
   alphaDamageBuffValue: 2
   alphaDamage: 0
@@ -309,17 +337,45 @@ MonoBehaviour:
   gammaDamageBuff: 0
   gammaDamageBuffValue: 2
   gammaDamage: 0
-  alphaMax: 8
-  betaMax: 6
-  gammaMax: 4
-  bossBonus: 1
+  encounterCompleted: 0
   encounterPhase: 0
-  phaseOneLimit: 5
-  phaseTwoLimit: 10
-  phaseThreeLimit: 15
-  phaseFourLimit: 20
-  phaseFiveLimit: 25
-  phaseSixLimit: 30
+  bossBonus: 1
+  phaseOneLimit: 6
+  phaseOneTimerMin: 2
+  phaseOneTimerMax: 5
+  phaseOneDamageMin: 2
+  phaseOneDamageMax: 5
+  phaseTwoLimit: 11
+  phaseTwoTimerMin: 2
+  phaseTwoTimerMax: 5
+  phaseTwoDamageMin: 4
+  phaseTwoDamageMax: 7
+  phaseThreeLimit: 16
+  phaseThreeTimerMin: 3
+  phaseThreeTimerMax: 6
+  phaseThreeDamageMin: 6
+  phaseThreeDamageMax: 8
+  phaseFourLimit: 21
+  phaseFourTimerMin: 3
+  phaseFourTimerMax: 6
+  phaseFourDamageMin: 8
+  phaseFourDamageMax: 10
+  phaseFiveLimit: 26
+  phaseFiveTimerMin: 6
+  phaseFiveTimerMax: 9
+  phaseFiveDamageMin: 10
+  phaseFiveDamageMax: 12
+  phaseSixLimit: 31
+  phaseSixTimerMin: 7
+  phaseSixTimerMax: 10
+  phaseSixDamageMin: 12
+  phaseSixDamageMax: 14
+  alphaMin: 0
+  alphaMax: 5
+  betaMin: 0
+  betaMax: 5
+  gammaMin: 0
+  gammaMax: 5
   damageTypes: 000000000100000002000000
 --- !u!1 &5645322283587892421
 GameObject:
@@ -375,11 +431,21 @@ MonoBehaviour:
   playerRessourceCurrent: 3
   playerRessourceMax: 3
   playerRessourceBuffMax: 0
+  playerRessourceLoss: 0
+  playerRessourceDebuffActive: 0
+  playerRessourceDebuff: 0
+  playerRessourceBuffActive: 0
+  playerRessourceBuff: 0
   activeCardSlots: []
   playedCards: []
   playerEnergy: {fileID: 0}
   playerHand: {fileID: 0}
   playerHandMax: 5
+  playerHandCurrent: 0
+  playerHandMaxBuffActive: 0
+  playerHandMaxBuff: 0
+  playerHandMaxDebuffActive: 0
+  playerHandMaxDebuff: 0
   wagons:
   - {fileID: 451517925634909162}
   discardPile: []
@@ -416,6 +482,7 @@ MonoBehaviour:
   bleiBuffPendantActive: 0
   paperBuffPendantActive: 0
   pendantBuffValue: 0
+  isLastEncounterOnMap: 0
 --- !u!1 &6315868828182914236
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +580,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 876589576019141775}
+    - target: {fileID: 3536430354970372937, guid: b3d17936f0ee3cf499ae65b576b52ef4, type: 3}
+      propertyPath: pendantActive.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3586737965159920589, guid: b3d17936f0ee3cf499ae65b576b52ef4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         mySceneManager = FindObjectOfType<MySceneManager>();
-        nodeLoader = FindObjectOfType<NodeLoader>();
         playerRessourceBuffMax = playerRessourceMax;
     }
     private void OnEnable()
@@ -119,7 +118,7 @@ public class GameManager : MonoBehaviour
         Node.EnteringNodeEvent += IncreaseCompletedEncounterCount;
     }
 
-    private void IncreaseCompletedEncounterCount(bool arg1, string arg2)
+    private void IncreaseCompletedEncounterCount(GameObject node)
     {
         encounterCompleted++;
     }
@@ -219,11 +218,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HandleNodeEnterEvent(bool isLastNode, string nextMap)
+    private void HandleNodeEnterEvent(GameObject node)
     {
-        if (isLastNode)
+        if (node.GetComponent<Node>().isLastNode)
         {
-            nodeLoader.originScene = nextMap;
+            nodeLoader.originScene = node.GetComponent<Node>().nextMap;
             isLastEncounterOnMap = true;
         }
     }

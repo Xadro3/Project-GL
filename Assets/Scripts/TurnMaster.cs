@@ -25,11 +25,13 @@ public class TurnMaster : MonoBehaviour
     {
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
+        GameManager.GameLostEvent += HandleGameLost;
     }
     private void OnDisable()
     {
         // Unsubscribe from the sceneLoaded event
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        GameManager.GameLostEvent -= HandleGameLost;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -38,6 +40,11 @@ public class TurnMaster : MonoBehaviour
         {
             endTurnButton = FindObjectOfType<ButtonRotate>();
         }
+    }
+
+    private void HandleGameLost()
+    {
+        StopAllCoroutines();
     }
 
     void Start()

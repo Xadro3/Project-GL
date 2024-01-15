@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour
 {
-    public static event System.Action<bool, string> EnteringNodeEvent;
+    public static event System.Action<GameObject> EnteringNodeEvent;
     
     public int eventType = 2;
     public Sprite eventSprite;
@@ -131,7 +131,7 @@ public class Node : MonoBehaviour
         {
             isUnlocked = false;
             Debug.Log("Entering");
-            EnteringNodeEvent?.Invoke(isLastNode, nextMap);
+            EnteringNodeEvent?.Invoke(this.gameObject);
             Invoke("LoadNode", 1f);
         }
     }

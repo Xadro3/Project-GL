@@ -22,9 +22,11 @@ public class NodeLoader : MonoBehaviour
         // didn't exist so far.
         // This makes sure it is added only once
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        Node.EnteringNodeEvent -= OnNodeEntered;
 
         // Add the listener to be called when a scene is loaded
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Node.EnteringNodeEvent += OnNodeEntered;
 
         DontDestroyOnLoad(gameObject);
 
@@ -238,5 +240,10 @@ public class NodeLoader : MonoBehaviour
     public void LoadOverworld()
     {
         SceneManager.LoadScene(originScene);
+    }
+
+    private void OnNodeEntered(GameObject node)
+    {
+        activeNode = node;
     }
 }

@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
         CardMovementHandler.OnEnemyEffect += HandleEnemyEffect;
     }
 
-    private void IncreaseCompletedEncounterCount(bool arg1, string arg2)
+    private void IncreaseCompletedEncounterCount(GameObject node)
     {
         encounterCompleted++;
     }

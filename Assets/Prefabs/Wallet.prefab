@@ -303,136 +303,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 4225666654361541015}
     m_Modifications:
     - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: betaMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: alphaMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: gammaMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseOneLimit
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseSixLimit
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseTwoLimit
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFiveLimit
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFourLimit
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseThreeLimit
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseOneTimerMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseOneTimerMin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseSixTimerMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseSixTimerMin
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseTwoTimerMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseTwoTimerMin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFiveTimerMax
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFiveTimerMin
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFourTimerMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFourTimerMin
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseOneDamageMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseOneDamageMin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseSixDamageMax
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseSixDamageMin
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseTwoDamageMax
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseTwoDamageMin
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFiveDamageMax
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFiveDamageMin
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFourDamageMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseFourDamageMin
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseThreeTimerMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseThreeTimerMin
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseThreeDamageMax
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: phaseThreeDamageMin
-      value: 6
+      propertyPath: roundTimer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_LocalPosition.x
@@ -475,44 +347,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: nodeLoader
+      value: 
+      objectReference: {fileID: 543046507562185286}
+    - target: {fileID: 876589576019141775, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: shopCurrency
       value: 
       objectReference: {fileID: 4440220774125489240}
-    - target: {fileID: 1244283829204245278, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantActive.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294866672478412063, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: m_TagString
-      value: PendantManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113615969327713946, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: pendantActive.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: betaDotDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: gammaPureDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: betaResistanceMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: alphaResistanceMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
-      propertyPath: alphaHealthDamagePercent
-      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
