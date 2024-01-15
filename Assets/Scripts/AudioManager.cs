@@ -78,7 +78,10 @@ public class AudioManager : MonoBehaviour
     private void OnSceneLoad(Scene scene, LoadSceneMode arg1)
     {
         //Sobald Scene gestartet ist spielt der sceneTransitionOpen Sound ab
-        PlaySFX(sceneTransitionOpen);
+        if (scene.name != "Menu")
+        {
+            PlaySFX(sceneTransitionOpen);
+        }
 
         //Nach checken in welcher scene man sich befindet startet entsprechende Musik
         switch (scene.name)
