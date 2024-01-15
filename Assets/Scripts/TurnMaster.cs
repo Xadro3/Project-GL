@@ -118,14 +118,13 @@ public class TurnMaster : MonoBehaviour
                     card.UpdateDisplay();
                     wagons[0].UpdateDamageDuringRound(radiationType, wagonDamageStats[radiationType]);
                 }
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
             }
             if (wagonDamageStats[radiationType] != 0)
             {
                 //TriggerDamageEvent(radiationType);
                 gm.PlayerDamage(wagonDamageStats[radiationType], radiationType);
-                yield return new WaitForSeconds(2f);
-                gm.player.CheckHealth();
+                yield return new WaitForSeconds(1f);
             }
         }
 

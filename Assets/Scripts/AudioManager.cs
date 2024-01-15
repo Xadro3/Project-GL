@@ -78,7 +78,10 @@ public class AudioManager : MonoBehaviour
     private void OnSceneLoad(Scene scene, LoadSceneMode arg1)
     {
         //Sobald Scene gestartet ist spielt der sceneTransitionOpen Sound ab
-        PlaySFX(sceneTransitionOpen);
+        if (scene.name != "Menu")
+        {
+            PlaySFX(sceneTransitionOpen);
+        }
 
         //Nach checken in welcher scene man sich befindet startet entsprechende Musik
         switch (scene.name)
@@ -158,6 +161,32 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        CardMovementHandler.CardDropped -= HandleCardDropped;
+        PauseMenu.OpenPauseEvent -= HandleOpenPause;
+        PauseMenu.ClosePauseEvent -= HandleClosePause;
+        EndTurnButtonEventScript.EndTurnEvent -= HandleEndTurn;
+        TurnMaster.AlphaDamageEvent -= HandleAlphaRadiation;
+        TurnMaster.BetaDamageEvent -= HandleBetaRadiation;
+        TurnMaster.GammaDamageEvent -= HandleGammaRadiation;
+        TurnMaster.AttackStartEvent -= HandleAttackStart;
+        GameManager.CardRewardChosenSoundEvent -= HandleReward;
+        CardMovementHandler.ShowCardPopupEvent -= HandleCardInfo;
+        CardMovementHandler.CardMoveToDiscardPileEvent -= HandleCardDestroy;
+        Slot.ShieldRepairEvent -= HandleCardRepair;
+        Slot.ShieldBuffEvent -= HandleCardBuff;
+        TurnMaster.StartTurnEvent -= HandleStartTurn;
+        GameManager.GameLostEvent -= HandleLostGame;
+        GameManager.NotEnoughEnergyEvent -= HandleNoEnergy;
+        EventSolver.WRONGANSWER -= HandleWrongAnswer;
+        EventSolver.CORRECTANSWER -= HandleCorrectAnswer;
+        Upgrader.UpgradeCard -= HandleCardUpgrade;
+        Seller.SellCard -= HandleWorkshopCardEntfern;
+        BuyItem.Buycard -= HandleCardBuy;
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
     private void Update()

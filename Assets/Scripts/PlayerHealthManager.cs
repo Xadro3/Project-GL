@@ -167,7 +167,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         health -= damageValue;
         playerModel.healthBar.SetHealth(health);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         CheckHealth();
         yield break;
     }
@@ -186,7 +186,7 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.gammaBar.SetHealth(gammaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " gamma damage. My resistance is at: " + gammaResistance);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         CheckResistances();
         yield break;
     }
@@ -205,7 +205,7 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.betaBar.SetHealth(betaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " beta damage. My resistance is at: " + betaResistance);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         CheckResistances();
         yield break;
     }
@@ -229,7 +229,7 @@ public class PlayerHealthManager : MonoBehaviour
         playerModel.alphaBar.SetHealth(alphaResistance);
         UpdateTexts();
         Debug.Log("I just took: " + damageValue + " alpha damage. My resistance is at: " + alphaResistance);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         CheckResistances();
         yield break;
     }
@@ -243,7 +243,6 @@ public class PlayerHealthManager : MonoBehaviour
             alphaResistance = alphaResistanceMax;
             playerModel.alphaBar.SetHealth(alphaResistance);
             Debug.Log("Aua! Ich habe schaden bekommen!");
-            CheckHealth();
         }
         if (betaResistance <= 0)
         {
@@ -255,7 +254,6 @@ public class PlayerHealthManager : MonoBehaviour
             betaResistance = betaResistanceMax;
             playerModel.betaBar.SetHealth(betaResistance);
             //ApplyDamage(betaDotDamageSum, GameConstants.radiationTypes.Pure);
-            CheckHealth();
         }
         if (gammaResistance <= 0)
         {
@@ -263,7 +261,6 @@ public class PlayerHealthManager : MonoBehaviour
             gammaResistance = gammaResistanceMax;
             playerModel.gammaBar.SetHealth(gammaResistance);
             TriggerRandomDebuff();
-            CheckHealth();
         }
         CheckHealth();
         UpdateTexts();
