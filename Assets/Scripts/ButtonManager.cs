@@ -35,12 +35,15 @@ public class ButtonManager : MonoBehaviour
 
     public void ResetGame()
     {
+        NodeLoader node = GameObject.FindGameObjectWithTag("NodeWallet").GetComponent<NodeLoader>();
         Destroy(GameObject.FindGameObjectWithTag("Wallet"));
         Destroy(GameObject.FindGameObjectWithTag("Audio"));
-        foreach(GameObject game in GameObject.FindGameObjectsWithTag("Node"))
+        
+        foreach(GameObject game in node.nodes)
         {
             Destroy(game);
         }
+
         SceneManager.LoadScene("Menu");
     }
 
