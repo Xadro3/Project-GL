@@ -183,7 +183,7 @@ MonoBehaviour:
   sceneTransitionClose: {fileID: 8300000, guid: 17e66ae4ffe87454f837c2e24b0d285d, type: 3}
   breachStartingInterlude: {fileID: 8300000, guid: 5e867240c50edaa4fa031be0349f11e0, type: 3}
   breachBackgroundLoop: {fileID: 8300000, guid: e50d6f0b3a9e0334bb9834a644a457e4, type: 3}
-  endTurn: {fileID: 8300000, guid: f12150ee6e920e3419f47263977fa498, type: 3}
+  endTurn: {fileID: 0}
   enemyTurn: {fileID: 8300000, guid: c79417beebc51d44283fd80f0c66e134, type: 3}
   playerTurn: {fileID: 8300000, guid: 03b51cf5215ba734984b311addc1c3a2, type: 3}
   breachLost: {fileID: 8300000, guid: 1c55453e015405847a119bc662510d26, type: 3}
