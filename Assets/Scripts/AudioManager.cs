@@ -137,9 +137,9 @@ public class AudioManager : MonoBehaviour
         PauseMenu.OpenPauseEvent += HandleOpenPause;
         PauseMenu.ClosePauseEvent += HandleClosePause;
         EndTurnButtonEventScript.EndTurnEvent += HandleEndTurn;
-        TurnMaster.AlphaDamageEvent += HandleAlphaRadiation;
-        TurnMaster.BetaDamageEvent += HandleBetaRadiation;
-        TurnMaster.GammaDamageEvent += HandleGammaRadiation;
+        PlayerHealthManager.AlphaDamageEvent += HandleAlphaRadiation;
+        PlayerHealthManager.BetaDamageEvent += HandleBetaRadiation;
+        PlayerHealthManager.GammaDamageEvent += HandleGammaRadiation;
         TurnMaster.AttackStartEvent += HandleAttackStart;
         GameManager.CardRewardChosenSoundEvent += HandleReward;
         CardMovementHandler.ShowCardPopupEvent += HandleCardInfo;
@@ -169,9 +169,9 @@ public class AudioManager : MonoBehaviour
         PauseMenu.OpenPauseEvent -= HandleOpenPause;
         PauseMenu.ClosePauseEvent -= HandleClosePause;
         EndTurnButtonEventScript.EndTurnEvent -= HandleEndTurn;
-        TurnMaster.AlphaDamageEvent -= HandleAlphaRadiation;
-        TurnMaster.BetaDamageEvent -= HandleBetaRadiation;
-        TurnMaster.GammaDamageEvent -= HandleGammaRadiation;
+        PlayerHealthManager.AlphaDamageEvent -= HandleAlphaRadiation;
+        PlayerHealthManager.BetaDamageEvent -= HandleBetaRadiation;
+        PlayerHealthManager.GammaDamageEvent -= HandleGammaRadiation;
         TurnMaster.AttackStartEvent -= HandleAttackStart;
         GameManager.CardRewardChosenSoundEvent -= HandleReward;
         CardMovementHandler.ShowCardPopupEvent -= HandleCardInfo;

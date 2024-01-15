@@ -10,16 +10,16 @@ public class ParticleTrigger : MonoBehaviour
 
     private void Start()
     {
-       TurnMaster.AlphaDamageEvent += HandleAlphaRadiation;
-       TurnMaster.BetaDamageEvent += HandleBetaRadiation;
-       TurnMaster.GammaDamageEvent += HandleGammaRadiation;   
+        PlayerHealthManager.AlphaDamageEvent += HandleAlphaRadiation;
+        PlayerHealthManager.BetaDamageEvent += HandleBetaRadiation;
+        PlayerHealthManager.GammaDamageEvent += HandleGammaRadiation;   
     }
 
     private void OnDisable()
     {
-        TurnMaster.AlphaDamageEvent -= HandleAlphaRadiation;
-        TurnMaster.BetaDamageEvent -= HandleBetaRadiation;
-        TurnMaster.GammaDamageEvent -= HandleGammaRadiation;
+        PlayerHealthManager.AlphaDamageEvent -= HandleAlphaRadiation;
+        PlayerHealthManager.BetaDamageEvent -= HandleBetaRadiation;
+        PlayerHealthManager.GammaDamageEvent -= HandleGammaRadiation;
     }
 
 

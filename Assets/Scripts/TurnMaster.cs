@@ -11,9 +11,6 @@ public class TurnMaster : MonoBehaviour
 
     public static event System.Action StartTurnEvent;
     public static event System.Action AttackStartEvent;
-    public static event System.Action AlphaDamageEvent;
-    public static event System.Action BetaDamageEvent;
-    public static event System.Action GammaDamageEvent;
 
     public int savedDamageValue;
     public List<string> savedDamageTypes;
@@ -78,7 +75,6 @@ public class TurnMaster : MonoBehaviour
         // Iterate over damage types
         foreach (GameConstants.radiationTypes radiationType in damageTypes)
         {
-            TriggerDamageEvent(radiationType);
             Debug.Log("Dictionary Entry: " + radiationType.ToString() + " with value of: " + wagonDamageStats[radiationType]);
             // Iterate over cards
             foreach (Card card in cardsInPlay)
@@ -155,27 +151,6 @@ public class TurnMaster : MonoBehaviour
         
         StartTurnEvent?.Invoke();
 
-    }
-
-    private void TriggerDamageEvent(GameConstants.radiationTypes radiationType)
-    {
-        switch (radiationType)
-        {
-            case GameConstants.radiationTypes.Alpha:
-                AlphaDamageEvent?.Invoke();
-                break;
-
-            case GameConstants.radiationTypes.Beta:
-                BetaDamageEvent?.Invoke();
-                break;
-
-            case GameConstants.radiationTypes.Gamma:
-                GammaDamageEvent?.Invoke();
-                break;
-
-            default:
-                break;
-        }
     }
 
     /*private IEnumerator ProcessCardsWithDelay(List<Enemy> wagons)

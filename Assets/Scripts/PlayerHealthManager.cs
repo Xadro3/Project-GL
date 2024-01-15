@@ -9,6 +9,10 @@ public class PlayerHealthManager : MonoBehaviour
     public static event System.Action EncounterEnd;
     public static event Action<String> ActivatePendantDebuff;
 
+    public static event System.Action AlphaDamageEvent;
+    public static event System.Action BetaDamageEvent;
+    public static event System.Action GammaDamageEvent;
+
     [Header("----- Health -----")]
     public int health;
     [Range(0, 100)]
@@ -74,12 +78,19 @@ public class PlayerHealthManager : MonoBehaviour
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
         CardMovementHandler.OnPlayerEffect += HandlePlayerEffect;
+        GameManager.GameLostEvent += HandleGameLost;
     }
     private void OnDisable()
     {
         // Unsubscribe from the sceneLoaded event
         SceneManager.sceneLoaded -= OnSceneLoaded;
         CardMovementHandler.OnPlayerEffect -= HandlePlayerEffect;
+        GameManager.GameLostEvent -= HandleGameLost;
+    }
+
+    private void HandleGameLost()
+    {
+        StopAllCoroutines();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -123,11 +134,8 @@ public class PlayerHealthManager : MonoBehaviour
         betaResistance = betaResistanceMax;
         gammaResistance = gammaResistanceMax;
     }
-
-    // function to apply damage -> currently only total damage no debuffs here
-    public void ApplyDamage(int damageValue, GameConstants.radiationTypes damageType)
+    public IEnumerator HandleDamage(int damageValue, GameConstants.radiationTypes damageType)
     {
-        //switch > if :)
         switch (damageType)
         {
             case GameConstants.radiationTypes.Alpha:
@@ -146,7 +154,15 @@ public class PlayerHealthManager : MonoBehaviour
                 StartCoroutine(HandlePuredamage(damageValue));
                 break;
         }
+        yield return new WaitForSeconds(1f);
         CheckHealth();
+        yield break;
+    }
+    // function to apply damage -> currently only total damage no debuffs here
+    public void ApplyDamage(int damageValue, GameConstants.radiationTypes damageType)
+    {
+        StartCoroutine(HandleDamage(damageValue, damageType));
+        
         // check if player survived damage
         //if (CheckHealth() <= 0)
         //{
@@ -238,6 +254,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (alphaResistance <= 0)
         {
+            AlphaDamageEvent?.Invoke();
             int alphaPureDamage = Mathf.RoundToInt(healthMax * alphaHealthDamagePercent);
             ApplyDamage(alphaPureDamage, GameConstants.radiationTypes.Pure);
             alphaResistance = alphaResistanceMax;
@@ -246,6 +263,7 @@ public class PlayerHealthManager : MonoBehaviour
         }
         if (betaResistance <= 0)
         {
+            BetaDamageEvent?.Invoke();
             betaDotActive = true;
             betaDotTimer += 2;
             playerModel.betaDotDisplay.SetActive(true);
@@ -258,6 +276,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (gammaResistance <= 0)
         {
             ApplyDamage(gammaPureDamage, GameConstants.radiationTypes.Pure);
+            GammaDamageEvent?.Invoke();
             gammaResistance = gammaResistanceMax;
             playerModel.gammaBar.SetHealth(gammaResistance);
             TriggerRandomDebuff();
