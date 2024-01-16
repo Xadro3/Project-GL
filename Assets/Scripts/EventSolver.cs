@@ -26,7 +26,7 @@ public class EventSolver : MonoBehaviour
                 continuebutton.SetActive(true);
                 answer.SetActive(true);
                 question.SetActive(false);
-                eventManager.CompleteEvent(eventManager.currentEvent);
+                eventManager.CompleteEvent();
 
             }
             else
@@ -35,7 +35,7 @@ public class EventSolver : MonoBehaviour
                 wrongAnswer.SetActive(true);
                 question.SetActive(false);
                 backButton.SetActive(true);
-                eventManager.CompleteEvent(eventManager.currentEvent);
+                eventManager.CompleteEvent();
             }
         }
     }
