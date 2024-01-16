@@ -73,22 +73,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: Nein, so ein Vorgang wie Transformation zur Verringerung der Halbwertszeit
-        existiert nicht.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
-      propertyPath: isCorrectAnswer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
-      propertyPath: text
       value: "Transformation existiert und funktioniert, es ist jedoch praktisch
         nicht m\xF6glich, es bei so gro\xDFen Mengen atomaren M\xFClls wie durch
         Reaktoren entstehen, anzuwenden."
       objectReference: {fileID: 0}
-    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+    - target: {fileID: 3206970457044605582, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: text
+      value: Nein, so ein Vorgang wie Transformation zur Verringerung der Halbwertszeit
+        existiert nicht.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text

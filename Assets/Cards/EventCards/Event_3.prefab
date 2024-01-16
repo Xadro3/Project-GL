@@ -66,7 +66,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3866443376222870544, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
-      value: Das stimmt. Wir sind jederzeit einem solchen Risiko ausgesetzt.
+      value: "Unwahrscheinlich, da der Reaktortyp, der zum Unfall in Tschernobyl
+        f\xFChrte, nur in der Sowjetunion verwendet wurde und unsere Sicherheitsvorkehrungen
+        seither auch zugenommen haben."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866443376222870544, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4147977273601645893, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: answerText
@@ -90,13 +96,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text
-      value: "Unwahrscheinlich, da der Reaktortyp, der zum Unfall in Tschernobyl
-        f\xFChrte, nur in der Sowjetunion verwendet wurde und unsere Sicherheitsvorkehrungen
-        seither auch zugenommen haben."
+      value: Das stimmt. Wir sind jederzeit einem solchen Risiko ausgesetzt.
       objectReference: {fileID: 0}
     - target: {fileID: 6345476029640240534, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: isCorrectAnswer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6632402266898820067, guid: 87096b68a46fe4944bd889cf495a1c9a, type: 3}
       propertyPath: text

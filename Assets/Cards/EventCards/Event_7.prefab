@@ -76,17 +76,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Die Halbwertszeit ist die Zeitspanne, in der die H\xE4lfte der Atome
-        eines radioaktiven Materials zerfallen sind."
+      value: "Die Halbwertszeit ist die Dauer, bis die Radioaktivit\xE4t des Materials
+        endet und es ungef\xE4hrlich wird."
       objectReference: {fileID: 0}
     - target: {fileID: 4694588869210516232, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: isCorrectAnswer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: text
-      value: "Die Halbwertszeit ist die Dauer, bis die Radioaktivit\xE4t des Materials
-        endet und es ungef\xE4hrlich wird."
+      value: "Die Halbwertszeit ist die Zeitspanne, in der die H\xE4lfte der Atome
+        eines radioaktiven Materials zerfallen sind."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981590148119670141, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7431314161747787431, guid: 4a387e751187f6e4693939edbf8baa1a, type: 3}
       propertyPath: m_Name
