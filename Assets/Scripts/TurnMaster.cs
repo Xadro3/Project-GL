@@ -173,7 +173,7 @@ public class TurnMaster : MonoBehaviour
         {
             endTurnButton.RotateKnopfBack();
             gm.ResetEnergy();
-            gm.DrawCards();
+            StartCoroutine(gm.DrawCards());
             wagons[0].UpdateTimer(1);
             wagons[0].GenerateDamage();
             gm.PauseGame(false);

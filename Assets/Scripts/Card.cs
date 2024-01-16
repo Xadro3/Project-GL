@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public static event System.Action<GameObject> EntsorgenEvent;
+
     public SO_Card cardInfo;
     public GameManager gm;
     CardDisplay cardDisplay;
@@ -142,7 +144,10 @@ public class Card : MonoBehaviour
         GameManager.FirstCardPlayedEvent += HandleFirstCardPlayed;
         GameManager.CardEnergyDecreaseEffect += HandleCardEnergyDecreaseEffect;
     }
-
+    private void OnDestroy()
+    {
+        EntsorgenEvent?.Invoke(this.gameObject);
+    }
     private void HandleFirstCardPlayed()
     {
         wasFirstCardPlayed = true;
@@ -254,6 +259,7 @@ public class Card : MonoBehaviour
     {
         cardMovementHandler.SetNewParent(newParent);
         SetCurrentDurabilityToMax();
+        cardDisplay = GetComponent<CardDisplay>();
         cardDisplay.UpdateDisplay();
         OnDurabilityZero = null;
     }

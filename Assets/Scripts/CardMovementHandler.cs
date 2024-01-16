@@ -103,6 +103,10 @@ public class CardMovementHandler : MonoBehaviour
     public void MoveToDiscardPile()
     {
         CardMoveToDiscardPileEvent?.Invoke();
+        if (card.entsorgen)
+        {
+            Destroy(card.gameObject);
+        }
         if (activeCardSlot != null)
         {
             activeCardSlot.HasCard(false);

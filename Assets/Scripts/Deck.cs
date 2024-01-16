@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Deck : MonoBehaviour
 {
@@ -22,8 +23,32 @@ public class Deck : MonoBehaviour
     void Awake()
     {
         CardMovementHandler.CardRewardChosenEvent += HandleCardRewardChosen;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        Card.EntsorgenEvent += HandleEntsorgen;
     }
 
+    
+    private void HandleEntsorgen(GameObject card)
+    {
+        Card foundCard = deck.Find(c => c.gameObject == card);
+
+        if (foundCard != null)
+        {
+            deck.Remove(foundCard);
+            Destroy(foundCard.gameObject);
+        }        
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        if (scene.name == "Encounter" || scene.name == "Shops" || scene.name == "Workshops")
+        {
+            foreach (Card card in playerDeck)
+            {
+                Destroy(card.gameObject);
+            }
+        }
+    }
 
     private void HandleCardRewardChosen(Card chosenCard)
     {
@@ -38,6 +63,8 @@ public class Deck : MonoBehaviour
     private void OnDestroy()
     {
         CardMovementHandler.CardRewardChosenEvent -= HandleCardRewardChosen;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        Card.EntsorgenEvent -= HandleEntsorgen;
     }
 
 

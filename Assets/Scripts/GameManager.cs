@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
     public int pendantBuffValue = 0;
 
     public bool isLastEncounterOnMap = false;
+    public bool shuffling = false;
+    public bool drawing = false;
 
     private void Awake()
     {
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour
         CardMovementHandler.CardDropped += HandleCardDroppedEvent;
         Node.EnteringNodeEvent += HandleNodeEnterEvent;
         Node.EnteringNodeEvent += IncreaseCompletedEncounterCount;
+        Card.EntsorgenEvent += HandleEntsorgen;
     }
 
     private void IncreaseCompletedEncounterCount(GameObject node)
@@ -169,7 +172,14 @@ public class GameManager : MonoBehaviour
         CardMovementHandler.CardDropped -= HandleCardDroppedEvent;
         Node.EnteringNodeEvent -= HandleNodeEnterEvent;
         Node.EnteringNodeEvent -= IncreaseCompletedEncounterCount;
+        Card.EntsorgenEvent -= HandleEntsorgen;
     }
+
+    private void HandleEntsorgen(GameObject card)
+    {
+        discardPile.Remove(card.GetComponent<Card>());
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Loaded Scene: " + scene.name);
@@ -192,7 +202,7 @@ public class GameManager : MonoBehaviour
             pendantManager.TriggerPendantEffects();
             ResetEnergy();
             UpdatePlayerRessource();
-            DrawCards();
+            StartCoroutine(DrawCards());
             UpdateDiscard();
             wagons[0].GenerateDamage();
             SetTokenReward();
@@ -275,20 +285,22 @@ public class GameManager : MonoBehaviour
     {
         interactionBlock.gameObject.SetActive(b);
     }
-    public void DrawCards()
+    public IEnumerator DrawCards()
     {
         int cardsInHand = CountOccupiedHandSlots();
         if (cardsInHand <= playerHandMax)
         {
-            //Wenn Anzahl an Cards im Deck <= Cards im Discard + Cards auf der Hand + Cards aufm Graveyard
-            if (deck.deck.Count <= (discardPile.Count + playerHandMax + graveyardPile.Count) || deck.playerDeck.Count <= 0)
+            for (int cardsToDraw = playerHandMax - cardsInHand; 0 < cardsToDraw; cardsToDraw--)
             {
-                Shuffle();
-            }
-
-            // drawing cards up to playerHandMax
-            for (int i = 0; i < (playerHandMax - cardsInHand); i++)
-            {
+                if (deck.playerDeck.Count < cardsToDraw ||deck.deck.Count <= (discardPile.Count + playerHandMax + graveyardPile.Count) || deck.playerDeck.Count <= 0)
+                {
+                    shuffling = true;
+                    Shuffle();
+                }
+                while (shuffling)
+                {
+                    yield return null;
+                }
                 Card randomCard = deck.Draw();
                 //Debug.Log("I just drew the card: " + randomCard);
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
@@ -297,9 +309,11 @@ public class GameManager : MonoBehaviour
             }
         }
         UpdateDeckDisplay?.Invoke(deck.playerDeck.Count);
+        yield break;
     }
     public void Shuffle()
     {
+        deck.playerDeck.Clear();
         if (discardPile.Count >= 1)
         {
             foreach (Card card in discardPile)
@@ -311,6 +325,7 @@ public class GameManager : MonoBehaviour
         }
         UpdateDeckDisplay(deck.playerDeck.Count);
         haveToShuffle = false;
+        shuffling = false;
     }
     public void MaxEnergyBuff(int value)
     {
