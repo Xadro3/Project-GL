@@ -321,6 +321,10 @@ public class Enemy : MonoBehaviour
                         damageValue = 0;
                         blockDurationAlpha -= 1;
                     }
+                    if (damageValue < 0)
+                    {
+                        damageValue = 0;
+                    }
                     damageStats[damageTypes[i]] = damageValue;
                     alphaDamage = damageValue;
                     break;
@@ -345,6 +349,10 @@ public class Enemy : MonoBehaviour
                     {
                         damageValue = 0;
                         blockDurationBeta -= 1;
+                    }
+                    if (damageValue < 0)
+                    {
+                        damageValue = 0;
                     }
                     damageStats[damageTypes[i]] = damageValue;
                     betaDamage = damageValue;
@@ -371,12 +379,16 @@ public class Enemy : MonoBehaviour
                         damageValue = 0;
                         blockDurationGamma -= 1;
                     }
+                    if (damageValue < 0)
+                    {
+                        damageValue = 0;
+                    }
                     damageStats[damageTypes[i]] = damageValue;
                     gammaDamage = damageValue;
                     break;
 
                 case GameConstants.radiationTypes.Pure:
-                    damageValue = Random.Range(0,0);
+                    damageValue = 0;
                     break;
             }
         }
@@ -386,6 +398,10 @@ public class Enemy : MonoBehaviour
 
     public void UpdateDamageDuringRound(GameConstants.radiationTypes damageType, int value)
     {
+        if (value < 0)
+        {
+            value = 0;
+        }
         damageStats[damageType] = value;
         UpdateDamageText();
     }
