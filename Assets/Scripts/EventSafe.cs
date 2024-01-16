@@ -21,6 +21,13 @@ public class EventSafe : MonoBehaviour
             events.Add(3, false);
             events.Add(4, false);
             events.Add(5, false);
+            events.Add(6, false);
+            events.Add(7, false);
+            events.Add(8, false);
+            events.Add(9, false);
+            events.Add(10, false);
+
+
             populated = true;
         }
       
