@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: Bleiabdeckung_U
   m_EditorClassIdentifier: 
   name: Bleiabdeckung
-  description: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
-    auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
-    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>2</color> Runden"
-  upgradedDescription: "Reduziert den <color=#931111>Alpha-</color> und <color=#dbdb18>Beta-</color>Strahlenschaden
-    auf <color=#61300d>0</color>, <color=#123493>Gamma-</color>Strahlenschaden wird
-    um <color=#61300d>50%</color> verringert f\xFCr <color=#61300d>2</color> Runden"
+  description: "Reduziert den <color=#931111>Alpha-</color>, <color=#dbdb18>Beta-</color>
+    und <color=#123493>Gamma-</color>Strahlenschaden auf <color=#61300d>0</color>
+    f\xFCr <color=#61300d>2</color> Runden"
   artwork: {fileID: 21300000, guid: 776cf84bd97ed7d42be4b39706335592, type: 3}
   upgraded: 1
   upgradedCardInfo: {fileID: 0}
@@ -26,7 +23,9 @@ MonoBehaviour:
   cost: 3
   energyCostAffected: 0
   energyCostIncrease: 0
+  energyCostDecrease: 0
   durability: 0
+  durabilityDebuffValue: 0
   cardType: 00000000
   cardRarity: 02000000
   protectionTypes: 000000000100000002000000
@@ -41,8 +40,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  cardUpgrades: 03000000
-  upgradeValues: 01000000
   cardInfo: "Eine Bleiabdeckung direkt auf dem aufgebrochenen Castoren-Beh\xE4lter
     der im Normalfall Radioaktives Material sicher f\xFCr den Transport aufbewahrt.
     Blei verf\xFCgt als Schwermetall \xFCber genug atomare Dichte um gegen alle Strahlungsarten
