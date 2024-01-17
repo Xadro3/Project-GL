@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7703215, g: 0.73119634, b: 0.71787554, a: 1}
+  m_IndirectSpecularColor: {r: 0.77043235, g: 0.7313207, b: 0.71803945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6187,7 +6187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   node: {fileID: 800221291744621716, guid: 25583076071c77545b5595933a2749ed, type: 3}
   overworld: {fileID: 221713680}
-  nextNode: {fileID: 1146048546}
+  nextNode: {fileID: 0}
   nextNode2: {fileID: 1160323510}
   instantiatedNode: {fileID: 0}
   isStartNode: 0

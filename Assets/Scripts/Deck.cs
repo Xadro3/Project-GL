@@ -47,6 +47,10 @@ public class Deck : MonoBehaviour
             {
                 Destroy(card.gameObject);
             }
+            foreach (Card card in deck)
+            {
+                Destroy(card.gameObject);
+            }
         }
     }
 

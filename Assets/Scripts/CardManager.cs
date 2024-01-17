@@ -36,11 +36,13 @@ public class CardManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
         foreach (SO_Card cardInfo in cardInfos)
         {
             cardInfo.energyCostAffected = false;
@@ -62,6 +64,11 @@ public class CardManager : MonoBehaviour
         {
 
         }
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+
     }
 
     private void Start()
@@ -142,6 +149,10 @@ public class CardManager : MonoBehaviour
 
     public bool AddBaseCardsToDeck()
     {
+        foreach (Card card in deck.deck)
+        {
+            Destroy(card.gameObject);
+        }
         deck.deck.Clear();
         foreach (SO_Card baseCard in baseCards)
         {
