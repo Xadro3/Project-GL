@@ -111,7 +111,7 @@ public class CardMovementHandler : MonoBehaviour
         {
             activeCardSlot.HasCard(false);
         }
-        
+        card.SetCurrentDurabilityToMax();
         gm.discardPile.Add(card);
         gm.UpdateDiscard();
         SetNewParent(gm.discardPileParent);

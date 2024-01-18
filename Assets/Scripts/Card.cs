@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
 
     public SO_Card cardInfo;
     public GameManager gm;
-    CardDisplay cardDisplay;
+    public CardDisplay cardDisplay;
     public CardMovementHandler cardMovementHandler;
 
     private int tankedRadiation;
@@ -257,11 +257,10 @@ public class Card : MonoBehaviour
 
     public void BackInPlay(Transform newParent)
     {
+        OnDurabilityZero = null;
         cardMovementHandler.SetNewParent(newParent);
         SetCurrentDurabilityToMax();
-        cardDisplay = GetComponent<CardDisplay>();
         cardDisplay.UpdateDisplay();
-        OnDurabilityZero = null;
     }
 
     public void SetWasPlayed(bool b)

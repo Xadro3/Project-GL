@@ -1812,7 +1812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 0}
   gm: {fileID: 0}
-  cardMovementHandler: {fileID: 0}
+  cardDisplay: {fileID: 1683418508922787866}
+  cardMovementHandler: {fileID: 3170304551409798378}
   cardName: 
   cardRarity: 
   protectionTypes: 
@@ -1825,6 +1826,7 @@ MonoBehaviour:
   cardDescription: 
   energyCostAffected: 0
   energyCostIncrease: 0
+  energyCostDecrease: 0
   wasFirstCardPlayed: 0
   ability: 0
   duration: 0

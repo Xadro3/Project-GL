@@ -91,19 +91,22 @@ public class CardDisplay : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        descriptionText.text = card.cardDescription;
+        if (card != null)
+        {
+            descriptionText.text = card.cardDescription;
 
-        if (card.cost < 0)
-        {
-            costText.text = "0";
+            if (card.cost < 0)
+            {
+                costText.text = "0";
+            }
+            else
+            {
+                costText.text = card.cost.ToString();
+            }
+
+            durabilityText.text = card.durabilityCurrent.ToString();
+            currencyCost.text = card.currencyCost.ToString();
         }
-        else
-        {
-            costText.text = card.cost.ToString();
-        }
-        
-        durabilityText.text = card.durabilityCurrent.ToString();
-        currencyCost.text = card.currencyCost.ToString();
     }
 
     public void UpdateDurability(int value)
