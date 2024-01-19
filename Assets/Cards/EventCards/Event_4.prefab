@@ -17,6 +17,10 @@ PrefabInstance:
       value: "Falsch, in der Natur vorkommende Strahlung, besonders in der Umgebung
         von radioaktivem Material, kann genauso gef\xE4hrlich sein, wie die K\xFCnstliche."
       objectReference: {fileID: 0}
+    - target: {fileID: 2439197518661726024, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
+      propertyPath: isCorrectAnswer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2728454961071466813, guid: 3f6a42d7bed1ce94e803e59dcdf672bc, type: 3}
       propertyPath: text
       value: "Es h\xE4ngt von der Dosis ab. Jedoch kommt k\xFCnstliche Strahlung
