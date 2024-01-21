@@ -122,11 +122,17 @@ public class CardManager : MonoBehaviour
     {
         foreach (SO_Card cardInfo in cardInfos)
         {
-            cardInfo.durabilityDebuffValue = value;
+            if (!cardInfo.ability)
+            {
+                cardInfo.durabilityDebuffValue = value;
+            }
         }
         foreach (SO_Card cardUpgrade in cardUpgrades)
         {
-            cardUpgrade.durabilityDebuffValue = value;
+            if (!cardUpgrade.ability)
+            {
+                cardUpgrade.durabilityDebuffValue = value;
+            }
         }
     }
 

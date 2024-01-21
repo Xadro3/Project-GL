@@ -302,6 +302,7 @@ public class GameManager : MonoBehaviour
                     yield return null;
                 }
                 Card randomCard = deck.Draw();
+                randomCard.wasDrawn = true;
                 //Debug.Log("I just drew the card: " + randomCard);
                 randomCard.GetComponent<CardMovementHandler>().DrawCardSetup(playerHand.transform);
                 deck.RemoveCardFromPlayerDeck(randomCard);
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour
     }
     public void Shuffle()
     {
-        deck.playerDeck.Clear();
+        //deck.playerDeck.Clear();
         if (discardPile.Count >= 1)
         {
             foreach (Card card in discardPile)
@@ -322,6 +323,7 @@ public class GameManager : MonoBehaviour
                 card.BackInPlay(deck.transform);
             }
             discardPile.Clear();
+            UpdateDiscard();
         }
         UpdateDeckDisplay(deck.playerDeck.Count);
         haveToShuffle = false;

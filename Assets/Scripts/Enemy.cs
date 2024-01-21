@@ -143,6 +143,7 @@ public class Enemy : MonoBehaviour
 
     private void ResetDurationCounter()
     {
+        reductionFlatValue = 0;
         reductionDurationAlphaFlat = 0;
         reductionDurationBetaFlat = 0;
         reductionDurationGammaFlat = 0;
@@ -574,8 +575,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            alphaMin = min - alphaDamageReduction;
-            alphaMax = max - alphaDamageReduction;
+            alphaMin = min;
+            alphaMax = max;
         }
         if (alphaMin <= 0)
         {

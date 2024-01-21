@@ -34,6 +34,8 @@ public class Card : MonoBehaviour
     public int energyCostIncrease;
     public int energyCostDecrease;
     public bool wasFirstCardPlayed = false;
+    public bool onDiscardPile = false;
+    public bool wasDrawn = false;
 
     //Abilities
     public bool ability;
@@ -75,6 +77,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
+        
         gm = FindObjectOfType<GameManager>();
         cardMovementHandler = GetComponent<CardMovementHandler>();
         cardDisplay = GetComponent<CardDisplay>();
@@ -87,8 +90,8 @@ public class Card : MonoBehaviour
         energyCostIncrease = cardInfo.energyCostIncrease;
         energyCostDecrease = cardInfo.energyCostDecrease;
         cost = cardInfo.cost + energyCostIncrease - energyCostDecrease;
-        
 
+        Debug.Log(gameObject.name + " spawend");
 
         durability = cardInfo.durability + durabilityPendantBuff - cardInfo.durabilityDebuffValue;
         durabilityCurrent = durability;
@@ -193,13 +196,16 @@ public class Card : MonoBehaviour
         if (!cardDurabilityDebuffActive)
         {
             cardDurabilityDebuffActive = true;
-            durabilityCurrent -= value;
+            if (wasDrawn)
+            {
+                durabilityCurrent -= value;
+            }
             durability -= value;
             if (durability < durabilityCurrent)
             {
                 durabilityCurrent = durability;
             }
-            if (durabilityCurrent <= 0)
+            if (durabilityCurrent <= 0 && !onDiscardPile && wasDrawn)
             {
                 OnDurabilityZero?.Invoke(this);
                 if (cardMovementHandler != null && cardMovementHandler.enabled)
@@ -229,11 +235,10 @@ public class Card : MonoBehaviour
     public int AdjustDurability(int value)
     {
         tankedRadiation = Math.Min(value, durabilityCurrent);
-        
         durabilityCurrent -= value;
         UpdateDisplay();
         
-        if (durabilityCurrent <= 0)
+        if (durabilityCurrent <= 0 && !onDiscardPile)
         {
             OnDurabilityZero?.Invoke(this);
             cardMovementHandler.MoveToDiscardPile();
@@ -257,10 +262,12 @@ public class Card : MonoBehaviour
 
     public void BackInPlay(Transform newParent)
     {
-        OnDurabilityZero = null;
+        wasDrawn = false;
         cardMovementHandler.SetNewParent(newParent);
+        onDiscardPile = false;
         SetCurrentDurabilityToMax();
         cardDisplay.UpdateDisplay();
+        OnDurabilityZero = null;
     }
 
     public void SetWasPlayed(bool b)

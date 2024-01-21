@@ -18,7 +18,7 @@ public class TurnMaster : MonoBehaviour
     public int savedDamageValue;
     public List<string> savedDamageTypes;
     public Dictionary<GameConstants.radiationTypes, int> damageStats = new Dictionary<GameConstants.radiationTypes, int>();
-    private List<Card> cardsInPlay = new List<Card>();
+    public List<Card> cardsInPlay = new List<Card>();
     private ButtonRotate endTurnButton = null;
 
     private void OnEnable()
@@ -174,10 +174,10 @@ public class TurnMaster : MonoBehaviour
             endTurnButton.RotateKnopfBack();
             gm.ResetEnergy();
             StartCoroutine(gm.DrawCards());
-            wagons[0].UpdateTimer(1);
-            wagons[0].GenerateDamage();
-            gm.PauseGame(false);
             gm.player.CheckHealth();
+            wagons[0].GenerateDamage();
+            wagons[0].UpdateTimer(1);
+            gm.PauseGame(false);
         }
         gm.isFirstTurn = false;
         
