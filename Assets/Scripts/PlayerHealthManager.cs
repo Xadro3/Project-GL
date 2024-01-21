@@ -289,12 +289,12 @@ public class PlayerHealthManager : MonoBehaviour
         // Array of actions with names
         Tuple<System.Action, string>[] actions = new Tuple<System.Action, string>[]
         {
-        //Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Alpha)), "ActivateDamageBuffAlpha"),
-        //Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta)), "ActivateDamageBuffBeta"),
-        //Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma)), "ActivateDamageBuffGamma"),
-        //Tuple.Create((System.Action)(() => gm.SetCardCostIncrease(1)), "SetCardCostIncrease"),
-        //Tuple.Create((System.Action)(() => gm.MaxEnergyDebuff(1)), "DecreasePlayerResourceMax"),
-        //Tuple.Create((System.Action)(() => gm.PlayerHandMaxDebuff(1)), "DecreasePlayerHandMax"),
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Alpha)), "ActivateDamageBuffAlpha"),
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Beta)), "ActivateDamageBuffBeta"),
+        Tuple.Create((System.Action)(() => gm.ActivateDamageBuff(GameConstants.radiationTypes.Gamma)), "ActivateDamageBuffGamma"),
+        Tuple.Create((System.Action)(() => gm.SetCardCostIncrease(1)), "SetCardCostIncrease"),
+        Tuple.Create((System.Action)(() => gm.MaxEnergyDebuff(1)), "DecreasePlayerResourceMax"),
+        Tuple.Create((System.Action)(() => gm.PlayerHandMaxDebuff(1)), "DecreasePlayerHandMax"),
         Tuple.Create((System.Action)(() => gm.ActivateShieldDebuff(2)), "ActivateShieldDebuff")
         };
 
