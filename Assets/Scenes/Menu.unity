@@ -280,46 +280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wallet (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[15]
-      value: 
-      objectReference: {fileID: 11400000, guid: 75471654e6497b047ae9fbb9629d6f41, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[16]
-      value: 
-      objectReference: {fileID: 11400000, guid: 75471654e6497b047ae9fbb9629d6f41, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[17]
-      value: 
-      objectReference: {fileID: 11400000, guid: 75471654e6497b047ae9fbb9629d6f41, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[18]
-      value: 
-      objectReference: {fileID: 11400000, guid: d23c912c49af72a4b9c87a672137f44e, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[19]
-      value: 
-      objectReference: {fileID: 11400000, guid: d23c912c49af72a4b9c87a672137f44e, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[20]
-      value: 
-      objectReference: {fileID: 11400000, guid: d23c912c49af72a4b9c87a672137f44e, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[21]
-      value: 
-      objectReference: {fileID: 11400000, guid: 76d554a82a7f0ad4abe285e1003c340b, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[22]
-      value: 
-      objectReference: {fileID: 11400000, guid: 76d554a82a7f0ad4abe285e1003c340b, type: 2}
-    - target: {fileID: 8121324359747747910, guid: bb6889e36e722df418bc8c53362d84cd, type: 3}
-      propertyPath: baseCards.Array.data[23]
-      value: 
-      objectReference: {fileID: 11400000, guid: 76d554a82a7f0ad4abe285e1003c340b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
