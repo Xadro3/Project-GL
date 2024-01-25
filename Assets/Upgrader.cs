@@ -34,7 +34,7 @@ public class Upgrader : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.collider.name);
-        if (collision.transform.tag == "Card"&& !used)
+        if (collision.transform.tag == "Card"&& !used && !collision.gameObject.GetComponent<Card>().upgraded)
         {
             used = true;
             collision.collider.GetComponent<Drag>().startPos = transform.position;
