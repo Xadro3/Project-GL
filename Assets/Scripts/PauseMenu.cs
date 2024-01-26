@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,6 +19,25 @@ public class PauseMenu : MonoBehaviour
     private GameManager gm;
 
     AudioManager audioManager;
+
+    private void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
+    {
+        if (scene.name == "Encounter")
+        {
+            latch = false;
+            gameObject.transform.position = offscreenPosition.transform.position;
+        }
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void Start()
     {
