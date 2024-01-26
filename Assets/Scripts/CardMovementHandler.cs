@@ -409,7 +409,6 @@ public class CardMovementHandler : MonoBehaviour
                 break;
         }
         SetSortingOrder(transform.GetSiblingIndex());
-        CardDropped?.Invoke();
         if (hasPlaceholder)
         {
             hasPlaceholder = false;

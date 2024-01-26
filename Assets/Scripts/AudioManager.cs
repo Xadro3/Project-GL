@@ -225,6 +225,7 @@ public class AudioManager : MonoBehaviour
     //Breach Sound Handler
     void HandleCardDropped()
     {
+        Debug.Log("Dropped!");
         PlaySFX(slotSnap); // Do something when this event is triggered
     }
 
