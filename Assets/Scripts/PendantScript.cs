@@ -14,6 +14,7 @@ public class PendantScript : MonoBehaviour
     public SpriteRenderer anhaengerRenderer;
     public PendantManager homeBase;
     public GameObject infoPopup;
+    public bool popupActive = false;
     
     [Header("Effect Info")]
     public int pendantEffectValue;
@@ -34,6 +35,12 @@ public class PendantScript : MonoBehaviour
         ButtonManager.SceneChangeEvent += EveryoneGetInHere;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+        CardPopup.PauseGame += OnPopupTrigger;
+    }
+
+    private void OnPopupTrigger(bool b)
+    {
+        popupActive = b;
     }
 
     private void OnSceneUnloaded(Scene scene)
@@ -69,11 +76,13 @@ public class PendantScript : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        CardPopup.PauseGame -= OnPopupTrigger;
     }
     private void OnDestroy()
     {
         OverworldSceneChanger.SceneChangeEvent -= EveryoneGetInHere;
         ButtonManager.SceneChangeEvent -= EveryoneGetInHere;
+        CardPopup.PauseGame -= OnPopupTrigger;
     }
 
     private void Start()
@@ -83,7 +92,7 @@ public class PendantScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !popupActive)
         {
             ShowInfoPopup();
         }
@@ -93,7 +102,6 @@ public class PendantScript : MonoBehaviour
     {
         // Instantiate the card popup prefab
         GameObject cardPopup = Instantiate(infoPopup, transform.position, Quaternion.identity);
-
         // Set the card popup content (you can customize this based on your card's data)
         CardPopup popupScript = cardPopup.GetComponent<CardPopup>();
         if (popupScript != null)

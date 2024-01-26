@@ -14,6 +14,7 @@ public class CursedPendantScript : MonoBehaviour
     public SpriteRenderer anhaengerRenderer;
     public CursedPendantManager homeBase;
     public GameObject infoPopup;
+    public bool popupActive = false;
 
     [Header("Effect Info")]
     public bool isActive = false;
@@ -23,6 +24,10 @@ public class CursedPendantScript : MonoBehaviour
         anhaengerRenderer.enabled = b;
         bandRenderer.enabled = b;
     }
+    private void OnPopupTrigger(bool b)
+    {
+        popupActive = b;
+    }
 
     private void Awake()
     {
@@ -31,7 +36,8 @@ public class CursedPendantScript : MonoBehaviour
         ButtonManager.SceneChangeEvent += EveryoneGetInHere;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
-        
+        CardPopup.PauseGame += OnPopupTrigger;
+
     }
     private void OnSceneUnloaded(Scene scene)
     {
@@ -61,11 +67,13 @@ public class CursedPendantScript : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        CardPopup.PauseGame -= OnPopupTrigger;
     }
     private void OnDestroy()
     {
         OverworldSceneChanger.SceneChangeEvent -= EveryoneGetInHere;
         ButtonManager.SceneChangeEvent -= EveryoneGetInHere;
+        CardPopup.PauseGame -= OnPopupTrigger;
     }
 
     private void Start()
@@ -75,7 +83,7 @@ public class CursedPendantScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !popupActive)
         {
             ShowInfoPopup();
         }
