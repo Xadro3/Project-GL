@@ -2213,6 +2213,8 @@ MonoBehaviour:
   question: {fileID: 706696051}
   eventManager: {fileID: 0}
   continuebutton: {fileID: 1978475850}
+  chosenAnswer: {fileID: 0}
+  notChosenAnsweres: []
 --- !u!50 &563254330
 Rigidbody2D:
   serializedVersion: 4

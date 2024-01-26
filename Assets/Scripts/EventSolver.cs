@@ -1,18 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EventSolver : MonoBehaviour
 {
-   public GameObject backButton;
-   public GameObject answer;
-   public GameObject wrongAnswer;
-   public GameObject question;
-   public EventManager eventManager;
-   public GameObject continuebutton;
+    public GameObject backButton;
+    public GameObject answer;
+    public GameObject wrongAnswer;
+    public GameObject question;
+    public EventManager eventManager;
+    public GameObject continuebutton;
+    public List<GameObject> allAnsweres;
+
+    private void Awake()
+    {
+        allAnsweres.Clear();
+        EventCard.AnswerSpawned += HandleAnswerSpawned;
+    }
+
+    private void OnDisable()
+    {
+        EventCard.AnswerSpawned -= HandleAnswerSpawned;
+    }
+
+    private void HandleAnswerSpawned(GameObject answer)
+    {
+        allAnsweres.Add(answer);
+    }
+
     private void Start()
     {
         eventManager = GameObject.FindGameObjectWithTag("Eventmanager").GetComponent<EventManager>();
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,6 +56,13 @@ public class EventSolver : MonoBehaviour
                 question.SetActive(false);
                 backButton.SetActive(true);
                 eventManager.CompleteEvent();
+            }
+            foreach (GameObject answer in allAnsweres)
+            {
+                if (answer != collision.gameObject)
+                {
+                    answer.SetActive(false);
+                }
             }
         }
     }
