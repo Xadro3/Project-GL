@@ -71,11 +71,11 @@ namespace ThePed
 
             y += Time.deltaTime*scrollSpeed;
 
-            while (y >= yDistance)
+           while (y >= yDistance)
             {
                 //Switch the alignment after the first credit has left the screen
-                if (linesDisplayed > maxLinesOnScreen+2 && text.alignment != TextAnchor.UpperCenter)
-                    text.alignment = TextAnchor.UpperCenter;
+              //  if (linesDisplayed > maxLinesOnScreen+2 && text.alignment != TextAnchor.UpperCenter)
+                //    text.alignment = TextAnchor.UpperCenter;
 
                 LinesToText();
 
@@ -87,8 +87,11 @@ namespace ThePed
                     play = false;
             }
 
-            textTrans.anchoredPosition = startingPos + new Vector2(0, y);
+            textTrans.anchoredPosition = startingPos + new Vector2(0, y); 
+     
+      
         }
+    
 
         public void LinesToText()
         {
