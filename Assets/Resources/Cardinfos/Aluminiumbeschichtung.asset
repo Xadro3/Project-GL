@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Aluminiumbeschichtung
   m_EditorClassIdentifier: 
   name: Alubeschichtung
-  description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+4</color> Block"
-  upgradedDescription: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+5</color>
-    Block"
+  description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+6</color> Block"
   artwork: {fileID: 21300000, guid: 6b8abb5017d5fe34ab2f963cce66cac1, type: 3}
   upgraded: 0
   upgradedCardInfo: {fileID: 11400000, guid: 809e6810e052d54458ea75d5184d2691, type: 2}
@@ -23,7 +21,9 @@ MonoBehaviour:
   cost: 1
   energyCostAffected: 0
   energyCostIncrease: 0
+  energyCostDecrease: 0
   durability: 0
+  durabilityDebuffValue: 0
   cardType: 03000000
   cardRarity: 01000000
   protectionTypes: 
@@ -38,8 +38,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  cardUpgrades: 01000000
-  upgradeValues: 01000000
   cardInfo: "Eine d\xFCnne Aluminiumbeschichtung die auf alle m\xF6glichen Oberfl\xE4chen
     aufgetragen werden k\xF6nnte und sie somit die Abschirmwirkung ein wenig verst\xE4rkt.
     Aluminiumfolie bietet genug Atomare Dichte um die relativ schweren Teilchenstrahlungen,

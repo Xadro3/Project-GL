@@ -7741,7 +7741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3385363175083470461, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: noShops
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3385363175083470461, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: noEvents
@@ -7749,11 +7749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3385363175083470461, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: noWorkshops
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3385363175083470461, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: noEncounters
-      value: 14
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4517258209820764413, guid: 112766ae750d2d34688ff717da08ff6f, type: 3}
       propertyPath: m_Name

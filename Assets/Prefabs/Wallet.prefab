@@ -306,6 +306,78 @@ PrefabInstance:
       propertyPath: roundTimer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseSixDamageMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseSixDamageMin
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFiveDamageMax
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFiveDamageMin
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFourDamageMax
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseFourDamageMin
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseThreeDamageMax
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 451517925634909162, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: phaseThreeDamageMin
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e006f6fa34d76c4fa48a337730b6547, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: bb8f5ceddb14cbd4ab2ab5492954d8df, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a51ac872b6d9a040b064429ab59d368, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 240e0fb499fdf05459abf3407ca943a6, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 805035b0a97cec74ea21e78fbc7a1907, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 98555a2e09e253c4ab0c60b31c7dac10, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: af608f9a56c55dc4993119c139ccb12f, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b4bb88168dde654197b26fa066e9f5b, type: 2}
+    - target: {fileID: 497335996542417445, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: baseCards.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: e836448961a5bc2459ace06b8808909a, type: 2}
     - target: {fileID: 715201817508064984, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -357,6 +429,14 @@ PrefabInstance:
     - target: {fileID: 5645322283587892421, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: betaDotDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978955686827921507, guid: 7a63a7c16edb23d4abc7c77d80c60530, type: 3}
+      propertyPath: gammaResistanceMax
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -42,14 +42,6 @@ public class CardDisplay : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if (scene.name == "Shops" || scene.name == "Workshop")
-        {
-            currencyField.SetActive(true);
-        }
-        if (scene.name == "Encounter")
-        {
-            currencyField.SetActive(false);
-        }
         UpdateDisplay();
     }
     private void OnSceneUnloaded(Scene arg0)
@@ -64,7 +56,7 @@ public class CardDisplay : MonoBehaviour
         {
             UpgradeVisual.SetActive(true);
         }
-        if (SceneManager.GetActiveScene().name == "Shops" || SceneManager.GetActiveScene().name == "Workshop")
+        if (SceneManager.GetActiveScene().name == "Shops")
         {
             currencyField.SetActive(true);
         }

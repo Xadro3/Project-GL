@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Papierbeschichtung_U
   m_EditorClassIdentifier: 
   name: Papierbeschichtung
-  description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+3</color> Block"
-  upgradedDescription: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+3</color>
-    Block"
+  description: "Ausgew\xE4hlte Schildkarte bekommt <color=#61300d>+6</color> Block"
   artwork: {fileID: 21300000, guid: a19ccbeb1790e044398d7401758e7ee8, type: 3}
   upgraded: 1
   upgradedCardInfo: {fileID: 0}
@@ -23,7 +21,9 @@ MonoBehaviour:
   cost: 1
   energyCostAffected: 0
   energyCostIncrease: 0
+  energyCostDecrease: 0
   durability: 0
+  durabilityDebuffValue: 0
   cardType: 03000000
   cardRarity: 00000000
   protectionTypes: 
@@ -38,8 +38,6 @@ MonoBehaviour:
   immunity: 0
   immunityTypes: 
   entsorgen: 0
-  cardUpgrades: 01000000
-  upgradeValues: 01000000
   cardInfo: "Eine d\xFCnne Papierbeschichtung die auf alle m\xF6glichen Oberfl\xE4chen
     aufgetragen werden k\xF6nnte und sie somit die Abschirmwirkung ein wenig verst\xE4rkt.
     Herk\xF6mmliches Drucker Papier reicht vollkommen aus um Alphastrahlung aufzuhalten.
